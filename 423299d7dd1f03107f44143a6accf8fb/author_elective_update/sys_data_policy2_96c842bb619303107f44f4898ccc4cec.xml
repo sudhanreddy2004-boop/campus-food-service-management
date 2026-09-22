@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_data_policy2">
+    <sys_data_policy2 action="DELETE">
+        <active>false</active>
+        <apply_import_set>true</apply_import_set>
+        <apply_soap>true</apply_soap>
+        <conditions table="x_snc_campus_foo_1_problem_task">state=3^EQ<item display_value="Closed Complete" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="3"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </conditions>
+        <description/>
+        <enforce_ui>true</enforce_ui>
+        <inherit>false</inherit>
+        <model_id/>
+        <model_table>x_snc_campus_foo_1_problem_task</model_table>
+        <reverse_if_false>true</reverse_if_false>
+        <short_description>Require Resolution Notes when Resolved</short_description>
+        <sys_class_name>sys_data_policy2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-20 04:14:23</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>96c842bb619303107f44f4898ccc4cec</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Require Resolution Notes when Resolved</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_data_policy2_96c842bb619303107f44f4898ccc4cec</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-20 05:26:14</sys_updated_on>
+    </sys_data_policy2>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</application>
+        <file_path/>
+        <instance_id>8ed1cdc7c38fcf94a03197af05013150</instance_id>
+        <instance_name>ltm-hck-2876-0046</instance_name>
+        <name>sys_data_policy2_96c842bb619303107f44f4898ccc4cec</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_data_policy2"><sys_data_policy2 action="INSERT_OR_UPDATE"><active>false</active><apply_import_set>true</apply_import_set><apply_soap>true</apply_soap><conditions table="x_snc_campus_foo_1_problem_task">state=3^EQ<item display_value="Closed Complete" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="3"/><item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/></conditions><description/><enforce_ui>true</enforce_ui><inherit>false</inherit><model_id/><model_table>x_snc_campus_foo_1_problem_task</model_table><reverse_if_false>true</reverse_if_false><short_description>Require Resolution Notes when Resolved</short_description><sys_class_name>sys_data_policy2</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-20 04:14:23</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>96c842bb619303107f44f4898ccc4cec</sys_id><sys_mod_count>2</sys_mod_count><sys_name>Require Resolution Notes when Resolved</sys_name><sys_overrides/><sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package><sys_policy/><sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope><sys_update_name>sys_data_policy2_96c842bb619303107f44f4898ccc4cec</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-20 05:26:14</sys_updated_on></sys_data_policy2></record_update>]]></payload>
+        <payload_hash>165071277</payload_hash>
+        <record_name>Require Resolution Notes when Resolved</record_name>
+        <reverted_from/>
+        <source>023299d7dd1f03107f44143a6accf8ff</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-20 05:26:14</sys_created_on>
+        <sys_id>25f9127f611703107f44f4898ccc4ca2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a0bd477f270000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-20 05:26:14</sys_updated_on>
+        <type>Data Policy</type>
+        <update_guid>65f9127f2e1703106dcdf10f92aaa9a1</update_guid>
+        <update_guid_history>65f9127f2e1703106dcdf10f92aaa9a1:165071277,4bfc4ab32ed30310750ca165ce515a06:-1399067826,c589c6fbd793031039fbb41ca903237f:1074285978</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-20 11:59:43</sys_created_on>
+        <sys_db_object display_value="" name="sys_data_policy2">sys_data_policy2</sys_db_object>
+        <sys_id>74fcceec441544aa9bb9434e10d0c184</sys_id>
+        <sys_metadata>96c842bb619303107f44f4898ccc4cec</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Require Resolution Notes when Resolved</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_parent display_value="">f7264637619303107f44f4898ccc4c6e</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_scope_delete display_value="">00ca93000f1045668006564f73c0b4e4</sys_scope_delete>
+        <sys_update_name>sys_data_policy2_96c842bb619303107f44f4898ccc4cec</sys_update_name>
+        <sys_update_version display_value="sys_data_policy2_96c842bb619303107f44f4898ccc4cec">25f9127f611703107f44f4898ccc4ca2</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-20 11:59:43</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="one_api_service_plan_feature">
+    <one_api_service_plan_feature action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applicability_condition/>
+        <applicability_condition_expression/>
+        <applicability_condition_table/>
+        <applicability_script><![CDATA[(function(currentInputs, context) {
+  
+  if(gs.nil(currentInputs) || gs.nil(currentInputs.enable_query_rewrite) || gs.nil(currentInputs.search_type) || gs.nil(currentInputs.query))
+    return false;
+  
+  if (typeof currentInputs.enable_query_rewrite === 'boolean' && !currentInputs.enable_query_rewrite) 
+    return currentInputs.enable_query_rewrite;
+  else if (typeof currentInputs.enable_query_rewrite === 'string' && String(currentInputs.enable_query_rewrite).toLowerCase() !== 'true')
+    return false;
+    
+  if(String(currentInputs.search_type).toLowerCase() != String(sn_ais_rag.RAGRetrievalDefinitionConstants.SEARCH_TYPE_KEYWORD).toLowerCase())
+    return true;
+
+  return false;
+  
+})(currentInputs, context);]]></applicability_script>
+        <applicability_type>script</applicability_type>
+        <delay_output_processing>false</delay_output_processing>
+        <depends_on/>
+        <depends_on_list/>
+        <error_policy>continue_service_plan_execution</error_policy>
+        <feature display_value="838469a5ffe96210a81effffffffff62">df99d263085343107f447d6c83c8224b</feature>
+        <return_request>false</return_request>
+        <service_plan display_value="___$y$t3m_bu1163r___-838469a5ffe96210a81effffffffff62, 03dd699943141210fd2f0a952cb8f2d0, eacdd76f77801210e9c41345ba5a99a2, 542203de7fe81210a01c7d8b7d86658c-default">5399d263085343107f447d6c83c82251</service_plan>
+        <sys_class_name>one_api_service_plan_feature</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-19 10:46:15</sys_created_on>
+        <sys_id>1f99d263085343107f447d6c83c82251</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>___$y$t3m_bu1163r___-838469a5ffe96210a81effffffffff62, 03dd699943141210fd2f0a952cb8f2d0, eacdd76f77801210e9c41345ba5a99a2, 542203de7fe81210a01c7d8b7d86658c-default: 838469a5ffe96210a81effffffffff62</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>one_api_service_plan_feature_1f99d263085343107f447d6c83c82251</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-19 10:46:15</sys_updated_on>
+        <timeout_policy>continue_service_plan_execution</timeout_policy>
+        <timeout_sec>60</timeout_sec>
+    </one_api_service_plan_feature>
+</record_update>

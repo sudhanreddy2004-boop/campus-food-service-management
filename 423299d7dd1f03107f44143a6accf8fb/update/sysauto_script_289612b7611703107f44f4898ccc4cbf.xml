@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <advanced>true</advanced>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_run_end/>
+        <entered_run_start/>
+        <entered_time>1970-01-01 00:00:00</entered_time>
+        <max_drift/>
+        <name>Escalate Overdue Problem Tasks</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <repeat_every/>
+        <run_as display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_daysofweek/>
+        <run_end/>
+        <run_month>1</run_month>
+        <run_period>1970-01-01 00:30:00</run_period>
+        <run_start>2026-09-20 05:11:25</run_start>
+        <run_time>1970-01-01 00:00:00</run_time>
+        <run_type>periodically</run_type>
+        <run_weekinmonth>1</run_weekinmonth>
+        <script><![CDATA[var escalationHours = 4;
+
+var escalationOrder = {
+    'Mess Staff Group': 'Hostel Admin Group',
+    'Hostel Admin Group': 'Hostel Management Group'
+};
+
+var task = new GlideRecord('x_snc_campus_foo_1_problem_task');
+task.addQuery('state', 'NOT IN', '3,4');
+task.query();
+
+while (task.next()) {
+    var hoursOpen = gs.dateDiff(task.opened_at, gs.nowDateTime(), true) / 3600;
+
+    if (hoursOpen >= escalationHours) {
+        var currentGroupName = task.assignment_group.name.toString();
+        var nextGroupName = escalationOrder[currentGroupName];
+
+        if (nextGroupName) {
+            var nextGroup = new GlideRecord('sys_user_group');
+            nextGroup.addQuery('name', nextGroupName);
+            nextGroup.query();
+
+            if (nextGroup.next()) {
+                task.assignment_group = nextGroup.getUniqueValue();
+                task.opened_at = new GlideDateTime();
+                task.update();
+                gs.info('Escalated ' + task.number + ' to ' + nextGroupName);
+            }
+        }
+    }
+}]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-20 05:15:07</sys_created_on>
+        <sys_id>289612b7611703107f44f4898ccc4cbf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Escalate Overdue Problem Tasks</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sysauto_script_289612b7611703107f44f4898ccc4cbf</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-20 05:15:07</sys_updated_on>
+        <time_zone/>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_flow">
+    <sys_hub_flow action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <active>false</active>
+        <allow_high_security_roles>false</allow_high_security_roles>
+        <annotation/>
+        <attributes>labelCacheCleanUpExecuted=true</attributes>
+        <authored_on_release_version>29000</authored_on_release_version>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <compiler_build/>
+        <copied_from/>
+        <copied_from_name/>
+        <description/>
+        <display_name_after_preview/>
+        <flow_priority>MEDIUM</flow_priority>
+        <generation_source/>
+        <internal_name>close_all_related_records</internal_name>
+        <label_cache>null</label_cache>
+        <latest_snapshot/>
+        <master_snapshot/>
+        <master_snapshot_digest/>
+        <name>close all related records</name>
+        <natlang/>
+        <outputs/>
+        <pre_compiled>false</pre_compiled>
+        <remote_trigger_id/>
+        <run_as>user</run_as>
+        <run_with_roles/>
+        <sc_callable>false</sc_callable>
+        <show_draft_actions>false</show_draft_actions>
+        <show_triggered_flows>false</show_triggered_flows>
+        <status>draft</status>
+        <substatus/>
+        <sys_class_name>sys_hub_flow</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-22 09:57:26</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>253ba5a8552f03107f4429801dee3e31</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>close all related records</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_hub_flow_253ba5a8552f03107f4429801dee3e31</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-22 09:57:26</sys_updated_on>
+        <type>subflow</type>
+        <updation_source/>
+        <version>2</version>
+        <version_record/>
+    </sys_hub_flow>
+    <sys_translated_text action="delete_multiple" query="documentkey=253ba5a8552f03107f4429801dee3e31"/>
+    <sys_variable_value action="delete_multiple" query="document_key=253ba5a8552f03107f4429801dee3e31"/>
+    <sys_hub_flow_stage action="delete_multiple" query="flow=253ba5a8552f03107f4429801dee3e31"/>
+    <sys_flow_cat_variable_model action="delete_multiple" query="id=253ba5a8552f03107f4429801dee3e31^sys_idNOT INe13ba5a8552f03107f4429801dee3e32"/>
+    <sys_flow_cat_variable_model action="INSERT_OR_UPDATE">
+        <id>253ba5a8552f03107f4429801dee3e31</id>
+        <name>close all related records</name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-22 09:57:26</sys_created_on>
+        <sys_id>e13ba5a8552f03107f4429801dee3e32</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-22 09:57:26</sys_updated_on>
+    </sys_flow_cat_variable_model>
+    <sys_flow_cat_variable action="delete_multiple" query="flow_catalog_model=e13ba5a8552f03107f4429801dee3e32"/>
+    <sys_hub_flow_input action="delete_multiple" query="model=253ba5a8552f03107f4429801dee3e31"/>
+    <sys_hub_flow_output action="delete_multiple" query="model=253ba5a8552f03107f4429801dee3e31"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=253ba5a8552f03107f4429801dee3e31"/>
+    <sys_hub_trigger_instance_v2 action="delete_multiple" query="flow=253ba5a8552f03107f4429801dee3e31"/>
+    <sys_hub_action_instance_v2 action="delete_multiple" query="flow=253ba5a8552f03107f4429801dee3e31"/>
+    <sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=253ba5a8552f03107f4429801dee3e31"/>
+    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=253ba5a8552f03107f4429801dee3e31"/>
+    <sys_hub_pill_compound action="delete_multiple" query="attached_to=253ba5a8552f03107f4429801dee3e31"/>
+    <sys_hub_flow_variable action="delete_multiple" query="model=253ba5a8552f03107f4429801dee3e31"/>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_253ba5a8552f03107f4429801dee3e31"/>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_output_253ba5a8552f03107f4429801dee3e31"/>
+    <sys_flow_trigger_plan action="delete_multiple" query="plan_id=253ba5a8552f03107f4429801dee3e31"/>
+    <sys_flow_subflow_plan action="delete_multiple" query="plan_id=253ba5a8552f03107f4429801dee3e31"/>
+</record_update>

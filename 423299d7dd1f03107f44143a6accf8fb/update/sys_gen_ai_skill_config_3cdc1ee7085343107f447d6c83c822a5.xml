@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_gen_ai_skill_config">
+    <sys_gen_ai_skill_config action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <channels/>
+        <discoverable>true</discoverable>
+        <hint>Campus Food Priority Analyzer</hint>
+        <skill_id display_value="Campus Food Priority Analyzer">4fcc16e7085343107f447d6c83c8228e</skill_id>
+        <supervision/>
+        <sys_class_name>sys_gen_ai_skill_config</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-19 11:00:16</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>3cdc1ee7085343107f447d6c83c822a5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Campus Food Priority Analyzer</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_gen_ai_skill_config_3cdc1ee7085343107f447d6c83c822a5</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-19 11:00:16</sys_updated_on>
+        <use_knowledge_graph>false</use_knowledge_graph>
+        <visible>true</visible>
+    </sys_gen_ai_skill_config>
+</record_update>

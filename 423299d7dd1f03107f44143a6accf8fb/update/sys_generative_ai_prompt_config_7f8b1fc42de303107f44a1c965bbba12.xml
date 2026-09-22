@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_generative_ai_prompt_config">
+    <sys_generative_ai_prompt_config action="INSERT_OR_UPDATE">
+        <ai_config display_value="OneExtend Capability Definition: Classify Food Complaint (Now LLM Service - Now LLM Generic)">3f8b1fc42de303107f44a1c965bbba0f</ai_config>
+        <definition display_value="Classify Food Complaint (Now LLM Service - Now LLM Generic)">2b8bdbc42de303107f44a1c965bbbae5</definition>
+        <filter_properties>{}</filter_properties>
+        <filter_type>default</filter_type>
+        <is_default>false</is_default>
+        <order>0</order>
+        <sys_class_name>sys_generative_ai_prompt_config</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 04:51:19</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>7f8b1fc42de303107f44a1c965bbba12</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>3f8b1fc42de303107f44a1c965bbba0f</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_generative_ai_prompt_config_7f8b1fc42de303107f44a1c965bbba12</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 12:25:19</sys_updated_on>
+    </sys_generative_ai_prompt_config>
+</record_update>

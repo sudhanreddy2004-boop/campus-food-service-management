@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_rectangle_menu_item">
+    <sp_rectangle_menu_item action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <color>default</color>
+        <condition/>
+        <display_1/>
+        <display_2/>
+        <display_date/>
+        <filter/>
+        <glyph/>
+        <hint/>
+        <kb_article/>
+        <kb_category/>
+        <kb_topic/>
+        <label>Help</label>
+        <order>400</order>
+        <record_script/>
+        <sc_cat_item/>
+        <sc_category/>
+        <short_description/>
+        <sp_page display_value="cfms_help">a61ba1a8552f03107f4429801dee3e70</sp_page>
+        <sp_rectangle_menu display_value="CFMS Main Menu">252621a855eb03107f4429801dee3eb5</sp_rectangle_menu>
+        <sp_rectangle_menu_item/>
+        <sys_class_name>sp_rectangle_menu_item</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-22 09:57:57</sys_created_on>
+        <sys_id>9eda2128552f03107f4429801dee3e0f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Help</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_rectangle_menu_item_9eda2128552f03107f4429801dee3e0f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-22 09:57:57</sys_updated_on>
+        <table/>
+        <type>page</type>
+        <url/>
+        <url_target/>
+    </sp_rectangle_menu_item>
+    <sys_translated_text action="delete_multiple" query="documentkey=9eda2128552f03107f4429801dee3e0f"/>
+</record_update>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container">
+    <sp_container action="INSERT_OR_UPDATE">
+        <aria_label/>
+        <background_color/>
+        <background_image/>
+        <background_style>default</background_style>
+        <bootstrap_alt>false</bootstrap_alt>
+        <class_name/>
+        <container_class_name/>
+        <name>Home Page - Test Page - Container 1</name>
+        <order>1</order>
+        <semantic_tag/>
+        <sp_page display_value="home_page">a8e32523085b03107f447d6c83c822be</sp_page>
+        <subheader>false</subheader>
+        <sys_class_name>sp_container</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-19 06:51:29</sys_created_on>
+        <sys_id>20e32523085b03107f447d6c83c822dc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Home Page - Test Page - Container 1</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_container_20e32523085b03107f447d6c83c822dc</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-19 06:51:29</sys_updated_on>
+        <title/>
+        <width>container</width>
+    </sp_container>
+</record_update>

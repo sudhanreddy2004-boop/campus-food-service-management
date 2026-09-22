@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_agent_tool_m2m">
+    <sn_aia_agent_tool_m2m action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <agent display_value="Food Base Priority Agent">8ce9263f619703107f44f4898ccc4c00</agent>
+        <description>Retrieve the Food Base Problem record using the record number provided by the Flow. Return the Use Case and other relevant fields from the matching Food Base Problem record. The Use Case is required for the next lookup.</description>
+        <display_mode>inline</display_mode>
+        <display_output>true</display_output>
+        <document_status/>
+        <entity>sn_aia_agent</entity>
+        <entity_id>8ce9263f619703107f44f4898ccc4c00</entity_id>
+        <execution_mode>autopilot</execution_mode>
+        <inputs>[{"name":"record_number","value":"","description":"The Food Base Problem record number provided by the Flow.","mandatory":false},{"name":"crudInputs","value":{"operation":"lookup","table":{"value":"x_snc_campus_foo_1_food_base_problem","displayValue":"Food Base Problem"},"query":"number={{record_number}}","returnFields":[{"name":"use_case","label":"Use Case","type":"choice","referenceTable":null,"referenceTableDefaultField":null,"referenceKey":null,"id":"use_case","sublabel":"use_case"},{"name":"number","label":"Number","type":"string","referenceTable":null,"referenceTableDefaultField":null,"referenceKey":null,"id":"number","sublabel":"number"},{"name":"student_count","label":"Student Count","type":"integer","referenceTable":null,"referenceTableDefaultField":null,"referenceKey":null,"id":"student_count","sublabel":"student_count"},{"name":"problem_type","label":"Problem Type","type":"string","referenceTable":null,"referenceTableDefaultField":null,"referenceKey":null,"id":"problem_type","sublabel":"problem_type"}],"limit":"1","orderBy":"","sortType":""},"description":"CRUD Input Variables. These are already pre-defined. Under no circumstances should you prompt the user for this information or attempt to change these values."}]</inputs>
+        <max_auto_executions>10</max_auto_executions>
+        <name>Get Food Base Problem</name>
+        <output_transformation_strategy>none</output_transformation_strategy>
+        <post_message/>
+        <post_processing_script/>
+        <pre_message/>
+        <pre_run>false</pre_run>
+        <requires_text_refined_message>false</requires_text_refined_message>
+        <requires_widget_transformation>true</requires_widget_transformation>
+        <should_display_refined_message>false</should_display_refined_message>
+        <sys_class_name>sn_aia_agent_tool_m2m</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-20 07:18:44</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>ddb3fa73611b03107f44f4898ccc4c73</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Get Food Base Problem</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_agent_tool_m2m_ddb3fa73611b03107f44f4898ccc4c73</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-20 07:18:44</sys_updated_on>
+        <timeout/>
+        <tool display_value="Get Food Base Problem">55b3fa73611b03107f44f4898ccc4c6f</tool>
+        <tool_attributes>{}</tool_attributes>
+        <transformation_instructions/>
+        <widgets>db0e858eff62b210f465ffffffffff2c</widgets>
+    </sn_aia_agent_tool_m2m>
+</record_update>

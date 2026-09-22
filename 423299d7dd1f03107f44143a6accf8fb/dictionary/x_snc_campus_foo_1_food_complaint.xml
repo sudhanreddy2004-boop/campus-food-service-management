@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="82e28d27081703107f447d6c83c8222a" label="Food Complaint" max_length="40" name="x_snc_campus_foo_1_food_complaint" type="collection">
+        <element label="Not Resolved At" max_length="40" name="not_resolved_at" type="glide_date_time"/>
+        <element label="Description" mandatory="true" max_length="255" name="description" type="string_full_utf8"/>
+        <element label="AI Confidence" max_length="40" name="ai_confidence" type="integer"/>
+        <element label="Feedback Eligible" max_length="40" name="feedback_eligible" type="boolean"/>
+        <element choice="1" label="Meal Type" mandatory="true" max_length="40" name="meal_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="BreakFast" value="breakfast"/>
+                <element inactive_on_update="false" label="Lunch" value="lunch"/>
+                <element inactive_on_update="false" label="Dinner" value="dinner"/>
+            </choice>
+        </element>
+        <element label="Problem Type" max_length="100" name="problem_type" type="string"/>
+        <element choice="1" label="Category" max_length="40" name="category" type="choice">
+            <choice/>
+        </element>
+        <element choice="1" label="Priority" max_length="40" name="priority" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Medium" value="3"/>
+                <element inactive_on_update="false" label="Critical" value="1"/>
+                <element inactive_on_update="false" label="High" value="2"/>
+                <element inactive_on_update="false" label="Low" value="4"/>
+            </choice>
+        </element>
+        <element choice="1" label="Use Case" mandatory="true" max_length="40" name="use_case" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Emergency Food Assistance" value="emergency_food_assistance"/>
+                <element inactive_on_update="false" label="Special Diet Request" value="special_diet_request"/>
+                <element inactive_on_update="false" label="Allergy Management Request" value="allergy_management_request"/>
+                <element inactive_on_update="false" label="Meal Not Available" value="meal_not_available"/>
+                <element inactive_on_update="false" label="Hostel Mess Billing Issue" value="hostel_mess_billing_issue"/>
+                <element inactive_on_update="false" label="Food Quality Complaint" value="food_quality_complaint"/>
+                <element inactive_on_update="false" label="Food Menu Feedback" value="food_menu_feedback"/>
+                <element inactive_on_update="false" label="Smart Menu Recommendation" value="smart_menu_recommendation"/>
+                <element inactive_on_update="false" label="Missed Meal Request" value="missed_meal_request"/>
+                <element inactive_on_update="false" label="Meal Reservation / Pre-Booking" value="meal_reservation_pre_booking"/>
+                <element inactive_on_update="false" label="Food Wastage Reporting" value="food_wastage_reporting"/>
+                <element inactive_on_update="false" label="Food Hygiene Issue" value="food_hygiene_issue"/>
+            </choice>
+        </element>
+        <element label="Not-Resolved Reason" max_length="255" name="not_resolved_reason" type="string_full_utf8"/>
+        <element label="Resolved At" max_length="40" name="resolved_at" type="glide_date_time"/>
+        <element label="Opened At" max_length="40" name="opened_at" type="glide_date_time"/>
+        <element label="Resolution Notes" max_length="255" name="resolution_notes" type="string_full_utf8"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element label="AI Classification" max_length="255" name="ai_classification" type="string_full_utf8"/>
+        <element label="Base Problem" max_length="32" name="base_problem" reference="x_snc_campus_foo_1_food_base_problem" type="reference"/>
+        <element label="Problem Type(Normalized)" max_length="100" name="problem_type_normalized" type="string"/>
+        <element label="Mess Hall" mandatory="true" max_length="32" name="mess_hall" reference="x_snc_campus_foo_1_mess_hall" type="reference"/>
+        <element label="Student" mandatory="true" max_length="32" name="student" reference="x_snc_campus_foo_1_student" type="reference"/>
+        <element label="Closed At" max_length="40" name="closed_at" type="glide_date_time"/>
+        <element choice="1" label="State" max_length="40" name="state" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Closed" value="closed"/>
+                <element inactive_on_update="false" label="Active" value="active"/>
+                <element inactive_on_update="false" label="Monitoring" value="monitoring"/>
+                <element inactive_on_update="false" label="Resolved" value="resolved"/>
+            </choice>
+        </element>
+        <element label="Attachment" max_length="40" name="attachment" type="user_image"/>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <index name="index">
+            <element name="sys_class_name"/>
+        </index>
+        <index name="index2">
+            <element name="base_problem"/>
+        </index>
+        <index name="index3">
+            <element name="student"/>
+        </index>
+        <index name="index4">
+            <element name="mess_hall"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="one_api_feature_provider">
+    <one_api_feature_provider action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <feature display_value="542203de7fe81210a01c7d8b7d86658c-2">a0d95e63085343107f447d6c83c822f1</feature>
+        <feature_service display_value="OneExtendGenericProvider">5233278353111110c271ddeeff7b129b</feature_service>
+        <feature_service_factory><![CDATA[(function() { return new global.OneExtendGenericProvider(); })()]]></feature_service_factory>
+        <name>RAG provider</name>
+        <short_description>Auto Generated </short_description>
+        <sys_class_name>one_api_feature_provider</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-19 10:47:08</sys_created_on>
+        <sys_id>28d95e63085343107f447d6c83c822f2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>RAG provider</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>one_api_feature_provider_28d95e63085343107f447d6c83c822f2</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-19 10:47:08</sys_updated_on>
+        <type>Service Plan</type>
+        <type_document display_value="ServicePlanFeatureExecutor">c51e26ab7f881210caf7439f9c866544</type_document>
+    </one_api_feature_provider>
+</record_update>

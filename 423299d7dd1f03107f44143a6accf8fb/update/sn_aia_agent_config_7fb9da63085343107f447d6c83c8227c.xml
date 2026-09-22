@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_agent_config">
+    <sn_aia_agent_config action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <agent display_value="Campus Food Priority Analyzer">6e1492a7081343107f447d6c83c82261</agent>
+        <agent_descriptor/>
+        <agent_learning>false</agent_learning>
+        <doc_url/>
+        <icon_url/>
+        <public>false</public>
+        <run_as_user/>
+        <specialist_enabled>false</specialist_enabled>
+        <sys_class_name>sn_aia_agent_config</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-19 10:46:49</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>7fb9da63085343107f447d6c83c8227c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_agent_config_7fb9da63085343107f447d6c83c8227c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-19 10:46:49</sys_updated_on>
+    </sn_aia_agent_config>
+</record_update>

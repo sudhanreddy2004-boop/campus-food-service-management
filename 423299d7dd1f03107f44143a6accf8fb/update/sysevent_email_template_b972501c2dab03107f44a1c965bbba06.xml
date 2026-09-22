@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysevent_email_template">
+    <sysevent_email_template action="INSERT_OR_UPDATE">
+        <collection>x_snc_campus_foo_1_complain_tasks</collection>
+        <email_layout/>
+        <message/>
+        <message_html><![CDATA[<table style="font-family: Arial,Helvetica,sans-serif; background-color: #f4f6f8; padding: 25px;" border="0" width="100%" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td align="center"><!-- Main Card -->
+<table style="background-color: #ffffff; border-radius: 10px; overflow: hidden; border: 1px solid #e1e5e8;" border="0" width="650" cellspacing="0" cellpadding="0"><!-- Header -->
+<tbody>
+<tr>
+<td style="background-color: #b35c00; padding: 25px; text-align: center;">
+<div style="font-size: 24px; color: #ffffff; font-weight: bold;">Campus Food Services</div>
+<div style="font-size: 14px; color: #fff1df; margin-top: 6px;">Food Complaint Escalation</div>
+</td>
+</tr>
+<!-- Content -->
+<tr>
+<td style="padding: 30px;">
+<div style="font-size: 22px; color: #b35c00; font-weight: bold; margin-bottom: 10px;">Food Complaint Escalated</div>
+<div style="font-size: 15px; color: #555555; line-height: 1.6; margin-bottom: 20px;">Hello Team, <br><br>A food complaint has been escalated to your team for further action. Please review the complaint details below.</div>
+<!-- Escalation Alert -->
+<div style="background-color: #fff4e5; border-left: 4px solid #b35c00; padding: 14px 16px; margin-bottom: 25px; color: #704000; font-size: 14px;"><strong>Action Required:</strong><br>Please review the complaint and take the necessary action.</div>
+<!-- Complaint Details -->
+<table style="border: 1px solid #e1e5e8;" border="0" width="100%" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="padding: 12px; background-color: #f7f9fa; font-weight: bold; color: #444444; border-bottom: 1px solid #e1e5e8;" width="40%">Complaint Number</td>
+<td style="padding: 12px; color: #222222; border-bottom: 1px solid #e1e5e8;">${number}</td>
+</tr>
+<tr>
+<td style="padding: 12px; background-color: #f7f9fa; font-weight: bold; color: #444444; border-bottom: 1px solid #e1e5e8;">Mess Hall</td>
+<td style="padding: 12px; color: #222222; border-bottom: 1px solid #e1e5e8;">${mess_hall}</td>
+</tr>
+<tr>
+<td style="padding: 12px; background-color: #f7f9fa; font-weight: bold; color: #444444; border-bottom: 1px solid #e1e5e8;">Meal Type</td>
+<td style="padding: 12px; color: #222222; border-bottom: 1px solid #e1e5e8;">${meal_type}</td>
+</tr>
+<tr>
+<td style="padding: 12px; background-color: #f7f9fa; font-weight: bold; color: #444444; border-bottom: 1px solid #e1e5e8;">Priority</td>
+<td style="padding: 12px; color: #c0392b; font-weight: bold; border-bottom: 1px solid #e1e5e8;">${priority}</td>
+</tr>
+<tr>
+<td style="padding: 12px; background-color: #f7f9fa; font-weight: bold; color: #444444; border-bottom: 1px solid #e1e5e8;">Problem Type</td>
+<td style="padding: 12px; color: #222222; border-bottom: 1px solid #e1e5e8;">${problem_type}</td>
+</tr>
+<tr>
+<td style="padding: 12px; background-color: #f7f9fa; font-weight: bold; color: #444444; border-bottom: 1px solid #e1e5e8;">Use Case Number</td>
+<td style="padding: 12px; color: #222222; border-bottom: 1px solid #e1e5e8;">${use_case_number}</td>
+</tr>
+<tr>
+<td style="padding: 12px; background-color: #f7f9fa; font-weight: bold; color: #444444; border-bottom: 1px solid #e1e5e8;">Student Count</td>
+<td style="padding: 12px; color: #222222; border-bottom: 1px solid #e1e5e8;">${student_count}</td>
+</tr>
+<tr>
+<td style="padding: 12px; background-color: #f7f9fa; font-weight: bold; color: #444444;">Description</td>
+<td style="padding: 12px; color: #222222;">${short_description}</td>
+</tr>
+</tbody>
+</table>
+<!-- Closing -->
+<div style="margin-top: 28px; color: #555555; font-size: 14px; line-height: 1.7;">Thank you for your attention to this complaint. <br><br>Regards,<br><strong style="color: #b35c00;"> Campus Food Services </strong></div>
+</td>
+</tr>
+<!-- Footer -->
+<tr>
+<td style="background-color: #f4f6f8; padding: 15px; text-align: center; font-size: 12px; color: #777777;">This is an automated notification from Campus Food Services.</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>]]></message_html>
+        <message_list/>
+        <message_text><![CDATA[Hello Team,
+
+A food complaint has been escalated to your team for further action.
+
+Number: ${number}
+
+Mess Hall: ${mess_hall}
+
+Meal Type: ${meal_type}
+
+Priority: ${priority}
+
+Problem Type: ${problem_type}
+
+Use Case Number: ${use_case_number}
+
+student Count: ${student_count}
+
+Description: ${short_description}
+
+Please review the complaint and take the necessary action.
+
+Thank you,
+Campus Food Services]]></message_text>
+        <name>Food Complaint-Escalation </name>
+        <sms_alternate><![CDATA[Food complaint ${number}
+
+has been escalated to your team. 
+
+Please review and take action.]]></sms_alternate>
+        <subject>Food Complaint Escalated </subject>
+        <sys_class_name>sysevent_email_template</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 09:00:16</sys_created_on>
+        <sys_id>b972501c2dab03107f44a1c965bbba06</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Food Complaint-Escalation </sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sysevent_email_template_b972501c2dab03107f44a1c965bbba06</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 09:33:04</sys_updated_on>
+        <sys_version>2</sys_version>
+    </sysevent_email_template>
+</record_update>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="kb_uc_can_contribute_mtom">
+    <kb_uc_can_contribute_mtom action="INSERT_OR_UPDATE">
+        <kb_knowledge_base display_value="Campus Food Services Knowledge">3c927ca855e303107f4429801dee3e31</kb_knowledge_base>
+        <sys_class_name>kb_uc_can_contribute_mtom</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-22 05:54:40</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>dda3bc2c55e303107f4429801dee3e52</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>use case based knowledge article.Has atleast one role apart from snc_internal KB</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>kb_uc_can_contribute_mtom_dda3bc2c55e303107f4429801dee3e52</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-22 05:54:40</sys_updated_on>
+        <user_criteria display_value="Has atleast one role apart from snc_internal KB">f9397919f79d52507787d3e543bfd6cd</user_criteria>
+    </kb_uc_can_contribute_mtom>
+</record_update>

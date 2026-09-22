@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cs_branding_setup">
+    <sys_cs_branding_setup action="INSERT_OR_UPDATE">
+        <agent_bubble_bg_color>#F5F6F7</agent_bubble_bg_color>
+        <agent_bubble_font_color>#10171A</agent_bubble_font_color>
+        <bg_color>#FFFFFF</bg_color>
+        <body_font_name/>
+        <body_font_src/>
+        <bot_bubble_bg_color>#F5F6F7</bot_bubble_bg_color>
+        <bot_bubble_font_color>#10171A</bot_bubble_font_color>
+        <branding_key>campus_food_commission_agnet</branding_key>
+        <branding_name>Campus Food commission agnet</branding_name>
+        <bubble_bg_color>#BDDEE7</bubble_bg_color>
+        <bubble_font_color>#10171A</bubble_font_color>
+        <button_bg_action_color>#0080A3</button_bg_action_color>
+        <button_bg_color>#FFFFFF</button_bg_color>
+        <button_hover_bg_header_color>#FFFFFF1A</button_hover_bg_header_color>
+        <button_hover_bg_modal_color>#F1F2F3</button_hover_bg_modal_color>
+        <button_primary_bg_active_color/>
+        <button_primary_bg_color/>
+        <button_primary_bg_hover_color/>
+        <button_selection_text_color>#0080A3</button_selection_text_color>
+        <category_bg_color>#FFFFFF</category_bg_color>
+        <category_font_color>#37444A</category_font_color>
+        <chat_body_font_size>1</chat_body_font_size>
+        <chat_header_font_size>1</chat_header_font_size>
+        <chat_icon_bg_color>#9898E4</chat_icon_bg_color>
+        <choicepicker_input_bg_color>#FFFFFF</choicepicker_input_bg_color>
+        <choicepicker_input_icon_color>#4F5C62</choicepicker_input_icon_color>
+        <citation_badge_background_color>#C6CBCB</citation_badge_background_color>
+        <citation_badge_background_hover_color>#A3ABAC</citation_badge_background_hover_color>
+        <close_icon_color>#4F5C62</close_icon_color>
+        <disabled_input_bg_color>#FFFFFF</disabled_input_bg_color>
+        <disabled_link_color>#85909566</disabled_link_color>
+        <error_color>#E52239</error_color>
+        <focus_ring_color>#359325</focus_ring_color>
+        <header_bg_color>#032D42</header_bg_color>
+        <header_font_color>#FFFFFF</header_font_color>
+        <header_font_name/>
+        <header_font_src/>
+        <header_label>Campus Food commission agnet</header_label>
+        <highlight_color>#FFDA72</highlight_color>
+        <highlight_text_color>#10171A</highlight_text_color>
+        <hover_bg_multichoice_color>#BDDEE780</hover_bg_multichoice_color>
+        <input_bg_color>#FFFFFF</input_bg_color>
+        <input_field_icon_color>#4F5C62</input_field_icon_color>
+        <input_field_text_color>#151920</input_field_text_color>
+        <input_placeholder_text_color>#151920</input_placeholder_text_color>
+        <left_panel_header_label/>
+        <link_color>#113A82</link_color>
+        <link_color_nonneutral_bg>#113A82</link_color_nonneutral_bg>
+        <load_animation_color>#032D42</load_animation_color>
+        <menu_icon_color>#FFFFFF</menu_icon_color>
+        <menu_title>Contact Support</menu_title>
+        <modal_body_bg_color>#FFFFFF</modal_body_bg_color>
+        <modal_header_bg_color>#F5F6F7</modal_header_bg_color>
+        <msg_delay>100</msg_delay>
+        <new_messages_notifications_enabled>true</new_messages_notifications_enabled>
+        <non_clickable_title_color>#10171A</non_clickable_title_color>
+        <notification_bg>#efeff4</notification_bg>
+        <notification_txt>#0F78C4</notification_txt>
+        <overlay_area_color>#00000080</overlay_area_color>
+        <placeholder_text/>
+        <primary_button_action_text_color>#FFFFFF</primary_button_action_text_color>
+        <search_icon_color>#00566E</search_icon_color>
+        <search_page_header_label/>
+        <search_toggle_button_label/>
+        <secondary_text_color>#29353B</secondary_text_color>
+        <seperator_color>#AAB2B6</seperator_color>
+        <shadow_color>#3838381A</shadow_color>
+        <sys_class_name>sys_cs_branding_setup</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-20 10:39:07</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>6261abbf619f03107f44f4898ccc4c07</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Campus Food commission agnet</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_cs_branding_setup_6261abbf619f03107f44f4898ccc4c07</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-20 10:40:22</sys_updated_on>
+        <system_message_color>#37444A</system_message_color>
+        <timestamp_color>#37444A</timestamp_color>
+        <tooltip_bg_color>#0B1012</tooltip_bg_color>
+        <tooltip_text_color>#FFFFFF</tooltip_text_color>
+        <type_presence_delay>0</type_presence_delay>
+        <unread_conversation_count_display_enabled>true</unread_conversation_count_display_enabled>
+        <va_logo/>
+        <va_profile display_value="Abel Tuter">f0fc46b13723210042106710ce41f15b</va_profile>
+    </sys_cs_branding_setup>
+</record_update>

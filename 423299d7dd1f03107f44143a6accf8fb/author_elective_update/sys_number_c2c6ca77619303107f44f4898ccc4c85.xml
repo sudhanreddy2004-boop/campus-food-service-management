@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_number">
+    <sys_number action="DELETE">
+        <category display_value="" name="x_snc_campus_foo_1_problem_task">x_snc_campus_foo_1_problem_task</category>
+        <maximum_digits>7</maximum_digits>
+        <number>1000</number>
+        <prefix>PT</prefix>
+        <sys_class_name>sys_number</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-20 04:02:26</sys_created_on>
+        <sys_id>c2c6ca77619303107f44f4898ccc4c85</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>PT</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_number_c2c6ca77619303107f44f4898ccc4c85</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-20 04:02:26</sys_updated_on>
+    </sys_number>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</application>
+        <file_path/>
+        <instance_id>8ed1cdc7c38fcf94a03197af05013150</instance_id>
+        <instance_name>ltm-hck-2876-0046</instance_name>
+        <name>sys_number_c2c6ca77619303107f44f4898ccc4c85</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_number"><sys_number action="INSERT_OR_UPDATE"><category display_value="" name="x_snc_campus_foo_1_problem_task">x_snc_campus_foo_1_problem_task</category><maximum_digits>7</maximum_digits><number>1000</number><prefix>PT</prefix><sys_class_name>sys_number</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-20 04:02:26</sys_created_on><sys_id>c2c6ca77619303107f44f4898ccc4c85</sys_id><sys_mod_count>0</sys_mod_count><sys_name>PT</sys_name><sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package><sys_policy/><sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope><sys_update_name>sys_number_c2c6ca77619303107f44f4898ccc4c85</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-20 04:02:26</sys_updated_on></sys_number></record_update>]]></payload>
+        <payload_hash>-1320380187</payload_hash>
+        <record_name>PT</record_name>
+        <reverted_from/>
+        <source>023299d7dd1f03107f44143a6accf8ff</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-20 04:02:26</sys_created_on>
+        <sys_id>86c6ca77619303107f44f4898ccc4cdc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a0bcfac6f60000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-20 04:02:26</sys_updated_on>
+        <type>Number</type>
+        <update_guid>4ac6ca779b93031070c0898ec187addb</update_guid>
+        <update_guid_history>4ac6ca779b93031070c0898ec187addb:-1320380187</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-20 11:59:46</sys_created_on>
+        <sys_db_object display_value="" name="sys_number">sys_number</sys_db_object>
+        <sys_id>1f7b23e290df4580854d140399bb8e61</sys_id>
+        <sys_metadata>c2c6ca77619303107f44f4898ccc4c85</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>PT</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_parent display_value="">f7264637619303107f44f4898ccc4c6e</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_scope_delete display_value="">00ca93000f1045668006564f73c0b4e4</sys_scope_delete>
+        <sys_update_name>sys_number_c2c6ca77619303107f44f4898ccc4c85</sys_update_name>
+        <sys_update_version display_value="sys_number_c2c6ca77619303107f44f4898ccc4c85">86c6ca77619303107f44f4898ccc4cdc</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-20 11:59:46</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

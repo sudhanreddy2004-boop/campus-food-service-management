@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_agent">
+    <sn_aia_agent action="INSERT_OR_UPDATE">
+        <advanced_mode>false</advanced_mode>
+        <agent_type>internal</agent_type>
+        <applicability_script><![CDATA[/** 
+ * Function to process inputs related to ServiceNow change request operations 
+ * 
+ * @param {Object} inputs - The input parameters object 
+ * @param {string} inputs.objective - The purpose or goal of the operation 
+ * @param {string} inputs.execution_plan_id - Unique identifier for the execution plan 
+ * @param {Object} inputs.context - Context information about the ServiceNow change request 
+ * @param {string} inputs.context.url - The URL of the change request in Service Operations Workspace 
+ * @param {string} inputs.context.table - The ServiceNow table name (e.g., 'change_request') 
+ * @param {string} inputs.context.record_sys_id - The sys ID of the record 
+ * @param {string} inputs.context.route - The route type (e.g., 'record') 
+ * @param {string} inputs.context.additional_context - Additional contextual information in JSON format 
+ * @param {string} inputs.context.experience - The UI experience name (e.g., 'Service Operations Workspace') 
+ * @param {string} inputs.context.number - The request number 
+ * @param {string} inputs.context.portal - The portal ID 
+ * @param {string} inputs.context.device_type - The device type from which the experience is accessed, e.g.'mweb' 
+ * @param {string} inputs.context.deployment_id - The unique identifier for the assistant deployment 
+ * @param {string} inputs.context.assistant_type - The type of assistant, e.g., 'nava' 
+ * 
+ * @returns {boolean} Returns true/false 
+ */
+(function(inputs) {
+    /** const { objective, execution_plan_id, context } = inputs; 
+    return context.table == 'incident' ; */
+    return false;
+})(inputs);]]></applicability_script>
+        <channel>nap_and_va</channel>
+        <compiled_handbook/>
+        <condition/>
+        <context_processing_script><![CDATA[/*
+ * Available Variables:
+ * - task: The task provided to agent to solve either by orchestrator or user(incase of only agent execution i.e agent is invoked as seperate entity instead from a workflow).
+ * - user_utterance: The user utterance provided. and task = user_utterance in case of individual agent execution.
+ * - agent_id: The agent id.
+ * - context: An object that carries additional contextual information for the agent.
+ *          It always includes a "pageContext" and may include a "triggerContext",
+ *          depending on how and from where the agent is invoked.
+ *
+ *          Behavior by invocation type:
+ *          ---------------------------------
+ *          - When invoked via the startAiAgentConversation API:
+ *                If a "contextMemory" parameter is provided in the API request,
+ *                it will be available here as the "triggerContext".
+ *                The "pageContext" is always present in this call, regardless
+ *                of whether the agent is executed individually or as part of a use case.
+ *                Example:
+ *                    {
+ *                        pageContext: { ... },
+ *                        triggerContext: { ... } // Derived from contextMemory (if passed)
+ *                    }
+ *
+ *          - When invoked as part of a use case or workflow:
+ *                The "pageContext" and "triggerContext" objects available here
+ *                may have been *modified* by the use case’s context processing script.
+ *                This means the use case may alter, extend, or overwrite values
+ *                from the original "pageContext" or "triggerContext"
+ *                before the context reaches the agent.
+ *                If the use case was originally triggered via the API,
+ *                the initial "triggerContext" is still derived from the
+ *                "contextMemory" parameter, but its contents may have been updated
+ *                by the use case logic.
+ *
+ *          - When executed directly (standalone agent execution):
+ *                The "pageContext" will always be present (default or empty),
+ *                and the "triggerContext" will only be populated if explicitly
+ *                passed through the API call.
+ * Return an modified context like: { pageContext : {},triggerContext:{} }
+ */
+(function(task, user_utterance, agent_id, context) {
+    return {
+        pageContext : context?.pageContext,
+		triggerContext : context?.triggerContext
+    };
+})(task,user_utterance, agent_id, context);]]></context_processing_script>
+        <description>This agent automates the priority assignment for Food Base Problem records by matching the Use Case field with entries in the Use Case Priority table. It retrieves and updates the record with the correct priority and reason, ensuring compliance with configured rules. Designed for ServiceNow users managing Food Base Problem processes, the agent streamlines and standardizes priority determination.</description>
+        <extends/>
+        <extension_configuration/>
+        <external_agent_configuration/>
+        <inputs>{}</inputs>
+        <instructions>Expertise: The agent specializes in analyzing Food Base Problem records and retrieving priority information based on Use Case matching.
+1. Monitor Food Base Problem records for creation or Use Case updates.
+2. Read the Use Case field from the record; Student Count and Problem Type are available as context but not used for priority calculation.
+3. Search the Use Case Priority table for an exact match to the Use Case.
+4. If a match is found, retrieve the Priority and Priority Reason from the table.
+5. Update the Food Base Problem record with the retrieved Priority and Priority Reason.
+6. If no matching Use Case is found, indicate that no matching Use Case Priority configuration exists and do not assign a priority.
+7. If the Use Case field is empty, indicate that the Use Case is required to determine priority and do not assign a priority.
+8. Never invent, guess, or independently determine a priority; always rely on the Use Case Priority table as the source of truth.</instructions>
+        <internal_name>global.x_snc_campus_foo_1.Food Base Priority Agent</internal_name>
+        <name>Food Base Priority Agent</name>
+        <outputs>""</outputs>
+        <parent/>
+        <post_processing_message/>
+        <processing_message/>
+        <proficiency>- The agent autonomously analyzes Food Base Problem records upon creation or Use Case updates, ensuring that each record is assigned a priority and priority reason strictly according to the Use Case Priority table. It guarantees that priorities are only assigned when an exact Use Case match is found, and communicates clearly when information is missing or no match exists. This ensures consistent, transparent, and policy-compliant priority assignment, making the agent a trusted authority for priority management in the Food Base Problem domain.
+- The agent is capable of retrieving Food Base Problem records using the record number provided by the Flow, extracting the Use Case and other contextual fields (such as Student Count and Problem Type) as needed. This retrieval is foundational for all subsequent actions, as the Use Case field is required for priority lookup. The agent never prompts for or modifies input variables, ensuring data integrity and strict adherence to process automation.
+- The agent can search the Use Case Priority table for an exact match to the Use Case retrieved from a Food Base Problem record, and, if found, retrieve the configured Base Priority and Priority Reason. This ensures that priority assignment is always based on authoritative configuration, never on agent inference or user input. The agent’s use of this TOOL guarantees that only valid, policy-compliant priorities are assigned.
+- The agent can autonomously execute the full priority assignment process: monitoring for new or updated Food Base Problem records, retrieving the Use Case, searching for an exact match in the Use Case Priority table, and updating the original record with the correct Priority and Priority Reason. If no match is found or the Use Case is missing, the agent communicates the issue and refrains from assigning a priority, ensuring transparency and compliance with business rules.
+- The agent is proficient in identifying when a Use Case is missing from a Food Base Problem record or when no matching Use Case Priority configuration exists. In such cases, it communicates clearly that priority assignment cannot proceed, and refrains from assigning any priority or reason. This ensures that all priority assignments are fully justified, traceable, and compliant with organizational policy, and that no assumptions or errors are introduced into the process.</proficiency>
+        <record_type>custom</record_type>
+        <required_translations>[]</required_translations>
+        <research>false</research>
+        <role>The agent is responsible for automatically determining and assigning the priority and priority reason to Food Base Problem records in ServiceNow. It acts as a reliable intermediary, ensuring that priorities are strictly matched based on the Use Case field against the Use Case Priority table. The agent maintains accuracy by never inventing or guessing priorities, and communicates clearly when a match cannot be found or when required information is missing. It operates autonomously upon record creation or Use Case updates, providing consistent and transparent priority assignment.</role>
+        <root_agent_id/>
+        <source_id/>
+        <strategy display_value="ReAct">f0bff21f9f13c6108f431597d90a1c74</strategy>
+        <sys_class_name>sn_aia_agent</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-20 06:37:52</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>8ce9263f619703107f44f4898ccc4c00</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Food Base Priority Agent</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_agent_8ce9263f619703107f44f4898ccc4c00</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-20 07:19:03</sys_updated_on>
+    </sn_aia_agent>
+</record_update>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_agent">
+    <sn_aia_agent action="INSERT_OR_UPDATE">
+        <advanced_mode>false</advanced_mode>
+        <agent_type>internal</agent_type>
+        <applicability_script><![CDATA[/** 
+ * Function to process inputs related to ServiceNow change request operations 
+ * 
+ * @param {Object} inputs - The input parameters object 
+ * @param {string} inputs.objective - The purpose or goal of the operation 
+ * @param {string} inputs.execution_plan_id - Unique identifier for the execution plan 
+ * @param {Object} inputs.context - Context information about the ServiceNow change request 
+ * @param {string} inputs.context.url - The URL of the change request in Service Operations Workspace 
+ * @param {string} inputs.context.table - The ServiceNow table name (e.g., 'change_request') 
+ * @param {string} inputs.context.record_sys_id - The sys ID of the record 
+ * @param {string} inputs.context.route - The route type (e.g., 'record') 
+ * @param {string} inputs.context.additional_context - Additional contextual information in JSON format 
+ * @param {string} inputs.context.experience - The UI experience name (e.g., 'Service Operations Workspace') 
+ * @param {string} inputs.context.number - The request number 
+ * @param {string} inputs.context.portal - The portal ID 
+ * @param {string} inputs.context.device_type - The device type from which the experience is accessed, e.g.'mweb' 
+ * @param {string} inputs.context.deployment_id - The unique identifier for the assistant deployment 
+ * @param {string} inputs.context.assistant_type - The type of assistant, e.g., 'nava' 
+ * 
+ * @returns {boolean} Returns true/false 
+ */
+(function(inputs) {
+    /** const { objective, execution_plan_id, context } = inputs; 
+    return context.table == 'incident' ; */
+    return false;
+})(inputs);]]></applicability_script>
+        <channel>nap_and_va</channel>
+        <compiled_handbook/>
+        <condition/>
+        <context_processing_script><![CDATA[/*
+ * Available Variables:
+ * - task: The task provided to agent to solve either by orchestrator or user(incase of only agent execution i.e agent is invoked as seperate entity instead from a workflow).
+ * - user_utterance: The user utterance provided. and task = user_utterance in case of individual agent execution.
+ * - agent_id: The agent id.
+ * - context: An object that carries additional contextual information for the agent.
+ *          It always includes a "pageContext" and may include a "triggerContext",
+ *          depending on how and from where the agent is invoked.
+ *
+ *          Behavior by invocation type:
+ *          ---------------------------------
+ *          - When invoked via the startAiAgentConversation API:
+ *                If a "contextMemory" parameter is provided in the API request,
+ *                it will be available here as the "triggerContext".
+ *                The "pageContext" is always present in this call, regardless
+ *                of whether the agent is executed individually or as part of a use case.
+ *                Example:
+ *                    {
+ *                        pageContext: { ... },
+ *                        triggerContext: { ... } // Derived from contextMemory (if passed)
+ *                    }
+ *
+ *          - When invoked as part of a use case or workflow:
+ *                The "pageContext" and "triggerContext" objects available here
+ *                may have been *modified* by the use case’s context processing script.
+ *                This means the use case may alter, extend, or overwrite values
+ *                from the original "pageContext" or "triggerContext"
+ *                before the context reaches the agent.
+ *                If the use case was originally triggered via the API,
+ *                the initial "triggerContext" is still derived from the
+ *                "contextMemory" parameter, but its contents may have been updated
+ *                by the use case logic.
+ *
+ *          - When executed directly (standalone agent execution):
+ *                The "pageContext" will always be present (default or empty),
+ *                and the "triggerContext" will only be populated if explicitly
+ *                passed through the API call.
+ * Return an modified context like: { pageContext : {},triggerContext:{} }
+ */
+(function(task, user_utterance, agent_id, context) {
+    return {
+        pageContext : context?.pageContext,
+		triggerContext : context?.triggerContext
+    };
+})(task,user_utterance, agent_id, context);]]></context_processing_script>
+        <description>This AI agent calculates the priority of a Food Base Problem using the problem's Use Case, Student Count, Total Student Count, and the matching Use Case Priority configuration. It calculates the affected student percentage, applies the configured priority rules and safety-critical conditions, and updates the Current Priority, AI Risk Score, Priority Reason, and AI Summary fields. The agent is used only for priority calculation when a new Food Base Problem is created or when its affected student count changes.</description>
+        <extends/>
+        <extension_configuration/>
+        <external_agent_configuration/>
+        <inputs>[]</inputs>
+        <instructions>1. Retrieve the Food Base Problem record and read the Use Case, Student Count, Total Student Count, Current Priority, and other priority-related fields.
+
+2. Find the active Use Case Priority record that matches the Food Base Problem Use Case. Read the Base Priority, Affected Threshold, Priority Level, Safety Critical, and Active values.
+
+3. Calculate the affected student percentage using: Affected Percentage = (Student Count / Total Student Count) × 100. If Total Student Count is missing or zero, do not calculate the priority and report that the total student count is unavailable.
+
+4. If Safety Critical is true, set the final priority to Critical.
+
+5. If Safety Critical is false, compare the Affected Percentage with the configured Affected Threshold. If the Affected Percentage is greater than or equal to the threshold, increase the Base Priority by one level. Otherwise, keep the Base Priority unchanged.
+
+6. Use only these priority levels: Low = 1, Medium = 2, High = 3, and Critical = 4. Do not allow the final priority to exceed Critical.
+
+7. Update the Food Base Problem Current Priority with the calculated final priority.
+
+8. Update the AI Risk Score using the priority value: Low = 1, Medium = 2, High = 3, Critical = 4.
+
+9. Update Priority Reason with a concise explanation containing the Use Case, Student Count, Total Student Count, affected percentage, configured threshold, and the reason for the final priority.
+
+10. Update AI Summary with a short explanation of the calculation. Do not modify Student Count, Total Student Count, Use Case Priority configuration, Assignment Group, Assigned To, Status, or SLA fields.</instructions>
+        <internal_name>global.x_snc_campus_foo_1.Campus Food Priority Analyzer</internal_name>
+        <name>Campus Food Priority Analyzer</name>
+        <outputs>""</outputs>
+        <parent/>
+        <post_processing_message/>
+        <processing_message/>
+        <proficiency>- Expertly analyzes Food Base Problem records to determine and update their priority, strictly following the configured Use Case Priority rules. The agent's proficiency lies in interpreting priority-related fields, applying calculation logic, and ensuring that only the prescribed priority levels and rules are used, without deviation or invention. The agent does not handle assignments, SLAs, complaints, or any unrelated tasks, maintaining a focused and rule-driven approach to priority calculation.
+- Efficiently retrieves and reads all necessary fields from both the Food Base Problem record and the active Use Case Priority configuration, including Use Case, Student Count, Total Student Count, Current Priority, Base Priority, Affected Threshold, Priority Level, Safety Critical, and Active values. This ensures the agent operates with complete and accurate information for priority determination.
+- Calculates the affected student percentage using the formula: (Student Count / Total Student Count) × 100. If Total Student Count is missing or zero, the agent refrains from calculating priority and reports the unavailability of total student count, ensuring data integrity and compliance with configured rules.
+- Automatically assigns a Critical priority to Food Base Problems when the Safety Critical flag is true, ensuring that safety-related issues are escalated to the highest priority in accordance with the configuration.
+- Compares the calculated affected percentage with the configured Affected Threshold. If the percentage meets or exceeds the threshold, the agent increases the Base Priority by one level, ensuring the final priority does not exceed Critical. If below threshold, the Base Priority remains unchanged. This capability enables responsive priority adjustment based on real-time impact.
+- Enforces strict adherence to the allowed priority levels: Low (1), Medium (2), High (3), and Critical (4). The agent ensures that the final priority value never exceeds Critical, maintaining consistency and compliance with the configuration.
+- Updates the Food Base Problem Current Priority field with the calculated final priority, reflecting the agent's assessment and ensuring that the record accurately represents the current urgency based on configured rules.
+- Updates the AI Risk Score field by assigning a value corresponding to the final priority: Low = 1, Medium = 2, High = 3, Critical = 4. This capability provides a standardized risk assessment aligned with the priority calculation.
+- Generates and updates the Priority Reason field with a concise explanation detailing the Use Case, Student Count, Total Student Count, affected percentage, configured threshold, and the specific reason for the assigned final priority. This capability enhances clarity and accountability in priority determination.
+- Updates the AI Summary field with a brief explanation of the priority calculation process, summarizing the key steps and logic used. This capability facilitates rapid comprehension of the agent's decision-making for stakeholders.
+- Operates strictly within the defined scope, refraining from modifying Student Count, Total Student Count, Use Case Priority configuration, Assignment Group, Assigned To, Status, or SLA fields. The agent ensures that only priority-related fields are updated, preserving the integrity of other data and respecting role limitations.</proficiency>
+        <record_type>custom</record_type>
+        <required_translations/>
+        <research>false</research>
+        <role>You are the Campus Food Priority Analyzer. Your only responsibility is to calculate the priority of a Food Base Problem. Read the Food Base Problem fields and the matching active Use Case Priority configuration, perform the required calculation, and update the priority-related fields. Use the configured rules as the source of truth. Do not invent rules or modify the priority configuration. Do not assign users, manage SLAs, resolve complaints, or perform unrelated tasks.</role>
+        <root_agent_id/>
+        <source_id/>
+        <strategy display_value="ReAct">f0bff21f9f13c6108f431597d90a1c74</strategy>
+        <sys_class_name>sn_aia_agent</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-19 10:46:49</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>6e1492a7081343107f447d6c83c82261</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Campus Food Priority Analyzer</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_agent_6e1492a7081343107f447d6c83c82261</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-19 10:47:02</sys_updated_on>
+    </sn_aia_agent>
+</record_update>

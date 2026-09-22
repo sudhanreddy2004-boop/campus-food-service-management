@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="1075c1ab081703107f447d6c83c8224e" label="Food Base Problem" max_length="40" name="x_snc_campus_foo_1_food_base_problem" type="collection">
+        <element label="AI Risk Score" max_length="40" name="ai_risk_score" type="integer"/>
+        <element label="Special Diet Request" max_length="40" name="special_diet_request" type="string"/>
+        <element label="Proposed Priority" max_length="255" name="proposed_priority" type="string_full_utf8"/>
+        <element label="Knowledge Insights" max_length="255" name="knowledge_insights" type="string_full_utf8"/>
+        <element label="Missed Meal Request" max_length="40" name="missed_meal_request" type="string"/>
+        <element label="Latest Ticket" max_length="32" name="latest_ticket" reference="x_snc_campus_foo_1_food_complaint" type="reference"/>
+        <element label="Assigned to" max_length="32" name="assigned_to" reference="sys_user" type="reference"/>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Assignment Group" max_length="32" name="assignment_group" reference="sys_user_group" type="reference"/>
+        <element label="Problem Type Normalized" max_length="100" name="problem_type_normalized" type="string"/>
+        <element label="Problem Type" max_length="100" name="problem_type" type="string"/>
+        <element label="Emergency Food Assistance" max_length="40" name="emergency_food_assistance" type="string"/>
+        <element label="Allergy Management Request" max_length="40" name="allergy_management_request" type="string"/>
+        <element label="Hostel Mess Billing Issue" max_length="40" name="hostel_mess_billing_issue" type="string"/>
+        <element label="Open Ticket Count" max_length="40" name="open_ticket_count" type="integer"/>
+        <element label="Latest Reported At" max_length="40" name="latest_reported_at" type="glide_date_time"/>
+        <element label="Food Hygiene Issue" max_length="40" name="food_hygiene_issue" type="string"/>
+        <element choice="1" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Active" value="active"/>
+                <element inactive_on_update="false" label="Resolved" value="resolved"/>
+                <element inactive_on_update="false" label="Closed" value="closed"/>
+                <element inactive_on_update="false" label="Monitoring" value="monitoring"/>
+            </choice>
+        </element>
+        <element label="Food Menu Feedback" max_length="40" name="food_menu_feedback" type="string"/>
+        <element label="First Ticket" max_length="32" name="first_ticket" reference="x_snc_campus_foo_1_food_complaint" type="reference"/>
+        <element choice="1" label="Current Priority" max_length="40" name="current_priority" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Critical" value="1"/>
+                <element inactive_on_update="false" label="Medium" value="3"/>
+                <element inactive_on_update="false" label="Low" value="4"/>
+                <element inactive_on_update="false" label="High" value="2"/>
+            </choice>
+        </element>
+        <element label="First Reported At" max_length="40" name="first_reported_at" type="glide_date_time"/>
+        <element label="Food Quality Complaint" max_length="40" name="food_quality_complaint" type="string"/>
+        <element label="Meal Not Available" max_length="40" name="meal_not_available" type="string"/>
+        <element label="Mess Hall" mandatory="true" max_length="32" name="mess_hall" reference="x_snc_campus_foo_1_mess_hall" type="reference"/>
+        <element label="AI Summary" max_length="255" name="ai_summary" type="string_full_utf8"/>
+        <element label="Food Wastage Reporting" max_length="40" name="food_wastage_reporting" type="string"/>
+        <element label="Smart Menu Recommendation" max_length="40" name="smart_menu_recommendation" type="string"/>
+        <element choice="1" label="Use Case" mandatory="true" max_length="40" name="use_case" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Allergy Management Request" value="allergy_management_request"/>
+                <element inactive_on_update="false" label="Food Hygiene Issue" value="food_hygiene_issue"/>
+                <element inactive_on_update="false" label="Special Diet Request" value="special_diet_request"/>
+                <element inactive_on_update="false" label="Emergency Food Assistance" value="emergency_food_assistance"/>
+                <element inactive_on_update="false" label="Missed Meal Request" value="missed_meal_request"/>
+                <element inactive_on_update="false" label="Smart Menu Recommendation" value="smart_menu_recommendation"/>
+                <element inactive_on_update="false" label="Food Menu Feedback" value="food_menu_feedback"/>
+                <element inactive_on_update="false" label="Meal Not Available" value="meal_not_available"/>
+                <element inactive_on_update="false" label="Food Wastage Reporting" value="food_wastage_reporting"/>
+                <element inactive_on_update="false" label="Meal Reservation / Pre-Booking" value="meal_reservation_pre_booking"/>
+                <element inactive_on_update="false" label="Hostel Mess Billing Issue" value="hostel_mess_billing_issue"/>
+                <element inactive_on_update="false" label="Food Quality Complaint" value="food_quality_complaint"/>
+            </choice>
+        </element>
+        <element label="Meal Reservation / Pre-Booking" max_length="40" name="meal_reservation_pre_booking" type="string"/>
+        <element label="Priority Reason" max_length="255" name="priority_reason" type="string_full_utf8"/>
+        <element label="Student Count" max_length="40" name="student_count" type="integer"/>
+        <element choice="1" choice_field="meal_type" choice_table="x_snc_campus_foo_1_food_complaint" label="Meal Type" mandatory="true" max_length="40" name="meal_type" type="choice">
+            <choice/>
+        </element>
+        <element label="Ticket Count" max_length="40" name="ticket_count" type="integer"/>
+        <element choice="1" label="Category" max_length="40" name="category" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Dietary" value="dietary"/>
+                <element inactive_on_update="false" label="Menu Feedback" value="menu_feedback"/>
+                <element inactive_on_update="false" label="Food Availability" value="food_availability"/>
+                <element inactive_on_update="false" label="Food Hygiene" value="food_hygiene"/>
+                <element inactive_on_update="false" label="Billing" value="billing"/>
+                <element inactive_on_update="false" label="Food Quality" value="food_quality"/>
+                <element inactive_on_update="false" label="Food Safety" value="food_safety"/>
+                <element inactive_on_update="false" label="Other" value="other"/>
+                <element inactive_on_update="false" label="Food Wastage" value="food_wastage"/>
+                <element inactive_on_update="false" label="Allergy" value="allergy"/>
+            </choice>
+        </element>
+        <element label="Resolved Ticket Count" max_length="40" name="resolved_ticket_count" type="integer"/>
+        <element label="Recommended Action" max_length="255" name="recommended_action" type="string_full_utf8"/>
+        <index name="index">
+            <element name="sys_class_name"/>
+        </index>
+        <index name="index2">
+            <element name="mess_hall"/>
+        </index>
+        <index name="index3">
+            <element name="assigned_to"/>
+        </index>
+        <index name="index4">
+            <element name="first_ticket"/>
+        </index>
+        <index name="index5">
+            <element name="latest_ticket"/>
+        </index>
+        <index name="index6">
+            <element name="assignment_group"/>
+        </index>
+    </element>
+</database>

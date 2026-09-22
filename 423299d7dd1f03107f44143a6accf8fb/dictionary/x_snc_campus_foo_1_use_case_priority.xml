@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="da5aceaf085f03107f447d6c83c82286" label="Use Case Priority" max_length="40" name="x_snc_campus_foo_1_use_case_priority" type="collection">
+        <element choice="1" label="Priority Level" max_length="40" name="priority_level" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Low" value="1"/>
+                <element inactive_on_update="false" label="High" value="3"/>
+                <element inactive_on_update="false" label="Medium" value="2"/>
+                <element inactive_on_update="false" label="Critical" value="4"/>
+            </choice>
+        </element>
+        <element label="Safety Critical" max_length="40" name="safety_critical" type="boolean"/>
+        <element label="Active" max_length="40" name="active" type="boolean"/>
+        <element choice="1" choice_field="use_case" choice_table="x_snc_campus_foo_1_food_base_problem" label="Use Case" mandatory="true" max_length="40" name="use_case" type="choice">
+            <choice/>
+        </element>
+        <element choice="1" label="Base Priority" mandatory="true" max_length="40" name="base_priority" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Medium" value="3"/>
+                <element inactive_on_update="false" label="Low" value="4"/>
+                <element inactive_on_update="false" label="High" value="2"/>
+                <element inactive_on_update="false" label="Critical" value="1"/>
+            </choice>
+        </element>
+        <element label="Affected Threshold" mandatory="true" max_length="40" name="affected_threshold" type="integer"/>
+    </element>
+</database>

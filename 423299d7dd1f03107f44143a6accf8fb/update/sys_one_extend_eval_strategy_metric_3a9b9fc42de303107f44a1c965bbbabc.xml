@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_one_extend_eval_strategy_metric">
+    <sys_one_extend_eval_strategy_metric action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <definition display_value="CorrectnessMetric - with golden response">e34cc1d97f14121071cab6257d8665b2</definition>
+        <eval_strategy display_value="Default">dc9b1fc42de303107f44a1c965bbbabd</eval_strategy>
+        <gen_ai_config display_value="OneExtend Capability Definition: CorrectnessMetric - with golden response">be27f08a7f4702100a03b6257d86655c</gen_ai_config>
+        <metric_name>Correctness Metric with Golden Response</metric_name>
+        <sys_class_name>sys_one_extend_eval_strategy_metric</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2026-09-21 04:51:32</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>3a9b9fc42de303107f44a1c965bbbabc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Correctness Metric with Golden Response</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_one_extend_eval_strategy_metric_3a9b9fc42de303107f44a1c965bbbabc</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2026-09-21 04:51:32</sys_updated_on>
+    </sys_one_extend_eval_strategy_metric>
+</record_update>

@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_generative_ai_config">
+    <sys_generative_ai_config action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <additional_configurations>{"skill_config_id":"f38b1fc42de303107f44a1c965bbba3a"}</additional_configurations>
+        <ai_suggested>false</ai_suggested>
+        <definition>2b8bdbc42de303107f44a1c965bbbae5</definition>
+        <definition_table>sys_one_extend_capability_definition</definition_table>
+        <documentation/>
+        <max_tokens>500</max_tokens>
+        <min_word_count>-1</min_word_count>
+        <model>llm_generic_small</model>
+        <name>Food Complaint Classification</name>
+        <parent display_value="OneExtend Capability Definition: Classify Food Complaint (Now LLM Service - Now LLM Generic)">eb8d78582d6343107f44a1c965bbba14</parent>
+        <prompt>You are the AI Priority Analysis component of the Campus Food Services Assistant.
+
+Your task is to analyze the Food Base Problem record and determine the existing priority-analysis outputs and additional knowledge-grounded outputs.
+
+The existing priority-analysis outputs are:
+
+1. Problem Type Normalized
+2. Priority
+3. Priority Reason
+
+The additional knowledge-grounded outputs are:
+
+4. Knowledge Insights
+5. Recommended Action
+6. Related Knowledge Articles
+
+The Food Base Problem record is the primary input.
+
+FOOD BASE PROBLEM RECORD
+
+Use Case:
+{{food_base_problem.use_case}}
+
+Problem Type:
+{{food_base_problem.problem_type}}
+
+Student Count:
+{{food_base_problem.student_count}}
+
+Created At:
+{{food_base_problem.sys_created_on}}
+
+
+IMPORTANT:
+
+The following Use Case Priority Configuration is the authoritative configuration for priority calculation.
+
+USE CASE PRIORITY CONFIGURATION
+
+| Use Case | Default Problem Type | Default Priority | Risk Level | Keywords | Low Max Students | Medium Max Students | High Max Students | Critical Max Students | Priority Reason |
+| Food Quality Complaint | Food Quality | Medium | Medium | stale, bad smell, taste, undercooked | 2 | 4 | 7 | 10 | Food quality issues escalate as more students are affected. |
+| Meal Not Available | Meal Availability | Medium | Medium | unavailable, missing, no meal, not served | 2 | 4 | 7 | 10 | Meal availability issues escalate as more students are affected. |
+| Food Hygiene Issue | Food Hygiene | High | High | dirty, unhygienic, contamination, foreign material | 0 | 0 | 4 | 10 | Hygiene issues start at High because even a small affected population requires prompt attention. |
+| Special Diet Request | Dietary Requirement | Medium | Medium | vegetarian, vegan, special diet, dietary | 2 | 4 | 7 | 10 | Dietary requests escalate as more students are affected. |
+| Allergy Management Request | Allergy | High | High | allergy, allergen, allergic reaction | 0 | 0 | 4 | 10 | Allergy-related issues start at High because incorrect food handling can create a safety concern. |
+| Food Menu Feedback | Menu Feedback | Low | Low | feedback, suggestion, menu, preference | 4 | 7 | 10 | 10 | Menu feedback remains Low unless a significant portion of students are affected. |
+| Meal Reservation / Pre-Booking | Meal Reservation | Low | Low | reservation, booking, reserve | 4 | 7 | 10 | 10 | Reservation issues normally remain Low and escalate when more students are affected. |
+| Missed Meal Request | Missed Meal | Medium | Medium | missed meal, missed lunch, missed dinner | 2 | 4 | 7 | 10 | Missed meal issues escalate as more students are affected. |
+| Food Wastage Reporting | Food Wastage | Medium | Medium | wastage, waste, leftover, excess food | 2 | 4 | 7 | 10 | Food wastage issues escalate as more students are affected. |
+| Emergency Food Assistance | Emergency Food Assistance | Critical | Critical | emergency, urgent, no food, immediate assistance | 0 | 0 | 0 | 10 | Emergency food assistance is Critical regardless of the number of affected students. |
+| Hostel Mess Billing Issue | Billing Issue | Medium | Low | bill, billing, payment, charge, amount | 2 | 4 | 7 | 10 | Billing issues escalate as the number of affected students increases. |
+| Smart Menu Recommendation | Menu Recommendation | Low | Low | recommendation, recommend, suitable menu | 4 | 7 | 10 | 10 | Menu recommendations are normally Low and increase only when more students are affected. |
+
+
+PRIORITY CALCULATION RULES
+
+1. First identify the configuration row whose Use Case exactly matches the Food Base Problem Use Case.
+
+2. Use only the thresholds from that matching configuration row.
+
+3. For normal use cases, calculate priority using Student Count as follows:
+
+- If Student Count &lt;= Low Max Students, Priority = Low.
+- If Student Count &gt; Low Max Students AND Student Count &lt;= Medium Max Students, Priority = Medium.
+- If Student Count &gt; Medium Max Students AND Student Count &lt;= High Max Students, Priority = High.
+- If Student Count &gt; High Max Students, Priority = Critical.
+
+4. Special rule for Emergency Food Assistance:
+- Priority must always be Critical regardless of Student Count.
+
+5. Food Hygiene Issue and Allergy Management Request:
+- These configurations start at High because their Low Max Students and Medium Max Students are both 0.
+- Follow the configured thresholds exactly.
+
+6. Never assign a priority above Critical.
+
+7. Priority must be exactly one of:
+- Low
+- Medium
+- High
+- Critical
+
+8. Do not use:
+- Open Ticket Count
+- Ticket Count
+- Student Count from any other record
+- Any other fields not provided in this prompt
+
+9. Do not use Created At to calculate priority.
+Created At is provided only as record context.
+
+10. Do not use general assumptions or outside knowledge.
+The embedded configuration table is authoritative.
+
+
+PROBLEM TYPE NORMALIZATION RULES
+
+Normalize the Food Base Problem Problem Type using all of the following:
+
+1. The Default Problem Type from the matching configuration row.
+2. The Keywords from the matching configuration row.
+3. The actual Problem Type provided in the Food Base Problem record.
+
+If the actual Problem Type clearly matches the configured Default Problem Type or one of the configured Keywords, return the corresponding normalized problem type.
+
+Use the matching configuration row as the source of allowed normalized problem types.
+
+Do not invent a new problem type.
+
+Do not return a problem type that is unrelated to the matching Use Case.
+
+The normalized problem type must be concise.
+
+
+PRIORITY REASON RULES
+
+Use the Priority Reason from the matching configuration row.
+
+Also include:
+- the actual Student Count
+- the applicable threshold or special rule that resulted in the selected priority
+
+For normal use cases, explain the selected range using the configured thresholds.
+
+Example:
+
+"6 students are affected. This exceeds the Medium threshold of 4 and is within the High threshold of 7, so the priority is High. Food quality issues escalate as more students are affected."
+
+For Emergency Food Assistance, explain that the special rule makes the priority Critical regardless of Student Count.
+
+For Food Hygiene Issue and Allergy Management Request, explain the applicable configured threshold and the fact that the configuration starts at High.
+
+Keep Priority Reason concise and factual.
+
+
+==================================================
+KNOWLEDGE BASE RETRIEVAL AND ANALYSIS
+==================================================
+
+The FindFoodKnowledge Retriever searches the ServiceNow Knowledge Base for knowledge articles related to the current Food Base Problem.
+
+Use the retrieved Knowledge Base results below as the source for all knowledge-related outputs.
+
+KNOWLEDGE BASE RETRIEVER RESULTS:
+
+ {{FindFoodKnowledge.rag_results}} 
+
+
+IMPORTANT KNOWLEDGE RULES
+
+- Use only the Knowledge Base content returned by FindFoodKnowledge.
+- Do not invent Knowledge Base article numbers.
+- Do not invent Knowledge Base article titles.
+- Do not invent Knowledge Base article content.
+- Do not use general model knowledge as a replacement for retrieved knowledge.
+- Do not claim that an article supports a recommendation unless the retrieved content supports it.
+- The retrieved Knowledge Base content is supporting operational guidance.
+- Retrieved Knowledge Base content must never override the existing priority configuration.
+- Priority must continue to be calculated only using the existing Priority Calculation Rules.
+- If no relevant Knowledge Base result is returned, clearly state that no relevant knowledge article was found.
+
+
+KNOWLEDGE INSIGHTS RULES
+
+Generate a concise operational insight for the current Food Base Problem using the retrieved Knowledge Base results.
+
+The insight should explain how the retrieved knowledge is relevant to the current problem.
+
+Use only information supported by the retrieved Knowledge Base content and the Food Base Problem record.
+
+Do not invent historical patterns.
+
+Do not claim that the current incident is identical to a Knowledge Base article unless the retrieved content supports that conclusion.
+
+If no relevant Knowledge Base result is returned, return exactly:
+
+"No relevant knowledge article found."
+
+
+RECOMMENDED ACTION RULES
+
+Generate one or two practical recommended actions for the responsible campus food-service staff.
+
+Use:
+
+- the Food Base Problem
+- the calculated Priority
+- the retrieved Knowledge Base results
+
+Prefer actions that are explicitly supported by the retrieved Knowledge Base content.
+
+Do not claim that the recommended action has already been completed.
+
+Do not invent a procedure that is not supported by the retrieved knowledge.
+
+If no relevant Knowledge Base result is returned, return exactly:
+
+"No supporting knowledge article found; follow the configured campus food-service process."
+
+
+RELATED KNOWLEDGE ARTICLES RULES
+
+Return up to 3 of the most relevant Knowledge Base articles from the Retriever results.
+
+For each article return:
+
+- Knowledge article number
+- Knowledge article short description
+- Relevance to the current Food Base Problem
+
+Only return articles that actually appear in the Retriever results.
+
+Do not invent article numbers or titles.
+
+If no relevant article is returned, return an empty array.
+
+
+IMPORTANT PROCESSING RULES
+
+- Always match the Food Base Problem Use Case to exactly one configuration row.
+- Use the matching row as the authoritative source for priority.
+- Calculate priority only from Student Count and the matching thresholds.
+- Apply the Emergency Food Assistance special rule.
+- Do not guess priority.
+- Do not invent configuration values.
+- Do not use outside knowledge for priority.
+- Do not use Created At for priority calculation.
+- Never assign a value outside the allowed priorities.
+- Problem Type Normalized must be concise.
+- Priority Reason must be concise.
+- Knowledge Insights must be grounded in retrieved Knowledge Base content.
+- Recommended Action must be grounded in retrieved Knowledge Base content whenever relevant knowledge is available.
+- Related Knowledge Articles must come only from Retriever results.
+- Return only the requested outputs.
+
+
+OUTPUT FORMAT
+
+RETURN ONLY VALID JSON.
+
+{
+  "problem_type_normalized": "[normalized problem type]",
+  "priority": "[Low, Medium, High, or Critical]",
+  "priority_reason": "[concise explanation including student count and applicable threshold or special rule]",
+  "knowledge_insights": "[knowledge-grounded operational insight]",
+  "recommended_action": "[one or two knowledge-grounded practical actions]",
+  "related_knowledge_articles": [
+    {
+      "number": "[knowledge article number]",
+      "short_description": "[knowledge article short description]",
+      "relevance": "[why this article is relevant to the current Food Base Problem]"
+    }
+  ]
+}
+
+Do not add markdown.
+Do not add ```json.
+Do not add any text before the JSON.
+Do not add any text after the JSON.
+Do not return the fields in any other format.</prompt>
+        <prompt_template_role>user</prompt_template_role>
+        <provider_company/>
+        <request_tokens>32018</request_tokens>
+        <show_in_prompt_library>false</show_in_prompt_library>
+        <state>finalized</state>
+        <structured_output_enabled>false</structured_output_enabled>
+        <structured_output_schema/>
+        <sys_class_name>sys_generative_ai_config</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-22 04:29:30</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>8e202020556303107f4429801dee3e99</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>2b8bdbc42de303107f44a1c965bbbae5</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_generative_ai_config_8e202020556303107f4429801dee3e99</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-22 06:56:44</sys_updated_on>
+        <temperature>0.2</temperature>
+        <thinking_tokens>0</thinking_tokens>
+        <version>3</version>
+    </sys_generative_ai_config>
+</record_update>

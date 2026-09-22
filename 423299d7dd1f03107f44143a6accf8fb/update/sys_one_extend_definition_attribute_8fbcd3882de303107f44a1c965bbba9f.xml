@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_one_extend_definition_attribute">
+    <sys_one_extend_definition_attribute action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <advanced>false</advanced>
+        <apply_filter>false</apply_filter>
+        <attribute_label/>
+        <capability display_value="Classify Food Complaint">6f8bdbc42de303107f44a1c965bbbad4</capability>
+        <choice_list/>
+        <contains_large_input>false</contains_large_input>
+        <data_type>glide_record</data_type>
+        <default_value>FBP0001007</default_value>
+        <definition/>
+        <description>The Food Base Problem record containing the use case, problem type, student count, and created time. Use these fields to normalize the problem type and determine the appropriate priority using the matching Use Case Priority Configuration.</description>
+        <group/>
+        <hidden>false</hidden>
+        <info/>
+        <label>Food Base Problem</label>
+        <mandatory>true</mandatory>
+        <name>food_base_problem</name>
+        <order>100</order>
+        <schema>{"tableName":"x_snc_campus_foo_1_food_base_problem","sysId":"e4c721ab085b03107f447d6c83c82295"}</schema>
+        <sys_class_name>sys_one_extend_definition_attribute</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 04:56:27</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>8fbcd3882de303107f44a1c965bbba9f</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>food_base_problem</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_one_extend_definition_attribute_8fbcd3882de303107f44a1c965bbba9f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 06:22:17</sys_updated_on>
+        <translate>false</translate>
+        <truncate>false</truncate>
+        <type>input</type>
+        <user_query>false</user_query>
+    </sys_one_extend_definition_attribute>
+    <sys_translated_text action="delete_multiple" query="documentkey=8fbcd3882de303107f44a1c965bbba9f"/>
+</record_update>

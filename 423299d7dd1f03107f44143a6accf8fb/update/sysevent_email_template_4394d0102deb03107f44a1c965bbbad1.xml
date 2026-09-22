@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysevent_email_template">
+    <sysevent_email_template action="INSERT_OR_UPDATE">
+        <collection>x_snc_campus_foo_1_complain_tasks</collection>
+        <email_layout/>
+        <message/>
+        <message_html><![CDATA[<table style="font-family: Arial,Helvetica,sans-serif; background-color: #f4f6f8; padding: 25px;" border="0" width="100%" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td align="center"><!-- Main Card -->
+<table style="background-color: #ffffff; border-radius: 10px; overflow: hidden; border: 1px solid #e1e5e8;" border="0" width="650" cellspacing="0" cellpadding="0"><!-- Header -->
+<tbody>
+<tr>
+<td style="background-color: #287a4b; padding: 25px; text-align: center;">
+<div style="font-size: 24px; color: #ffffff; font-weight: bold;">Campus Food Services</div>
+<div style="font-size: 14px; color: #e3f4e8; margin-top: 6px;">Food Complaint Resolution</div>
+</td>
+</tr>
+<!-- Content -->
+<tr>
+<td style="padding: 30px;">
+<div style="font-size: 22px; color: #287a4b; font-weight: bold; margin-bottom: 10px;">Food Complaint Resolved</div>
+<div style="font-size: 15px; color: #555555; line-height: 1.6; margin-bottom: 20px;">Hello, <br><br>Your food complaint has been successfully resolved. Please find the complaint details below.</div>
+<!-- Resolved Status -->
+<div style="background-color: #eaf7ef; border-left: 4px solid #287a4b; padding: 14px 16px; margin-bottom: 25px; color: #25633d; font-size: 14px;"><strong>Status: Resolved</strong><br>Thank you for bringing this issue to our attention.</div>
+<!-- Complaint Details -->
+<table style="border: 1px solid #e1e5e8;" border="0" width="100%" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="padding: 12px; background-color: #f7f9fa; font-weight: bold; color: #444444; border-bottom: 1px solid #e1e5e8;" width="40%">Complaint Number</td>
+<td style="padding: 12px; color: #222222; border-bottom: 1px solid #e1e5e8;">${number}</td>
+</tr>
+<tr>
+<td style="padding: 12px; background-color: #f7f9fa; font-weight: bold; color: #444444; border-bottom: 1px solid #e1e5e8;">Student Count</td>
+<td style="padding: 12px; color: #222222; border-bottom: 1px solid #e1e5e8;">${student_count}</td>
+</tr>
+<tr>
+<td style="padding: 12px; background-color: #f7f9fa; font-weight: bold; color: #444444; border-bottom: 1px solid #e1e5e8;">Use Case Number</td>
+<td style="padding: 12px; color: #222222; border-bottom: 1px solid #e1e5e8;">${use_case_number}</td>
+</tr>
+<tr>
+<td style="padding: 12px; background-color: #f7f9fa; font-weight: bold; color: #444444; border-bottom: 1px solid #e1e5e8;">Priority</td>
+<td style="padding: 12px; color: #222222; border-bottom: 1px solid #e1e5e8;">${priority}</td>
+</tr>
+<tr>
+<td style="padding: 12px; background-color: #f7f9fa; font-weight: bold; color: #444444; border-bottom: 1px solid #e1e5e8;">Problem Type</td>
+<td style="padding: 12px; color: #222222; border-bottom: 1px solid #e1e5e8;">${problem_type}</td>
+</tr>
+<tr>
+<td style="padding: 12px; background-color: #f7f9fa; font-weight: bold; color: #444444; border-bottom: 1px solid #e1e5e8;">Mess Hall</td>
+<td style="padding: 12px; color: #222222; border-bottom: 1px solid #e1e5e8;">${mess_hall}</td>
+</tr>
+<tr>
+<td style="padding: 12px; background-color: #f7f9fa; font-weight: bold; color: #444444; border-bottom: 1px solid #e1e5e8;">Meal Type</td>
+<td style="padding: 12px; color: #222222; border-bottom: 1px solid #e1e5e8;">${meal_type}</td>
+</tr>
+<tr>
+<td style="padding: 12px; background-color: #f7f9fa; font-weight: bold; color: #444444;">Description</td>
+<td style="padding: 12px; color: #222222;">${short_description}</td>
+</tr>
+</tbody>
+</table>
+<!-- Closing -->
+<div style="margin-top: 28px; color: #555555; font-size: 14px; line-height: 1.7;">Thank you for bringing this issue to our attention. <br><br>Regards,<br><strong style="color: #287a4b;"> Campus Food Services </strong></div>
+</td>
+</tr>
+<!-- Footer -->
+<tr>
+<td style="background-color: #f4f6f8; padding: 15px; text-align: center; font-size: 12px; color: #777777;">This is an automated notification from Campus Food Services.</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>]]></message_html>
+        <message_list/>
+        <message_text><![CDATA[Hello,
+
+Your food complaint has been resolved.
+
+Number: ${number}
+
+student Count: ${student_count}
+
+Use Case Number: ${use_case_number}
+
+Priority: ${priority}
+
+Problem Type: ${problem_type}
+
+Mess Hall: ${mess_hall}
+
+Meal Type: ${meal_type}
+
+Description: ${short_description}
+
+Thank you for bringing this issue to our attention.
+
+Regards,
+Campus Food Services]]></message_text>
+        <name>Food Complaint -Resolved</name>
+        <sms_alternate><![CDATA[Food complaint ${number}
+
+ has been resolved. 
+
+Thank you for bringing this issue to our attention.]]></sms_alternate>
+        <subject>Food Complaint Resolved </subject>
+        <sys_class_name>sysevent_email_template</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 09:04:20</sys_created_on>
+        <sys_id>4394d0102deb03107f44a1c965bbbad1</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Food Complaint -Resolved</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sysevent_email_template_4394d0102deb03107f44a1c965bbbad1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 09:31:33</sys_updated_on>
+        <sys_version>2</sys_version>
+    </sysevent_email_template>
+</record_update>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_trigger_configuration">
+    <sn_aia_trigger_configuration action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <business_rule/>
+        <channel display_value="Now Assist Panel">b023fcb3537321106167ddeeff7b12a8</channel>
+        <condition table="x_snc_campus_foo_1_food_base_problem">use_case!=<item display_value="-- None --" endquery="false" field="use_case" goto="false" newquery="false" operator="!=" or="false" value=""/>
+        </condition>
+        <description/>
+        <enable_discovery>false</enable_discovery>
+        <internal_name>global.x_snc_campus_foo_1.Food Base Problem Priority Trigger</internal_name>
+        <name>Food Base Problem Priority Trigger</name>
+        <notification_script/>
+        <objective_template><![CDATA[Automatically launch the Food Base Problem Priority Agent when a Food Base Problem record is created or updated and has a Use Case. The agent receives the Food Base Problem record number, retrieves the Food Base Problem details, matches the Use Case with the Use Case Priority table, and returns the configured Base Priority and Priority Reason.]]></objective_template>
+        <portal display_value="">undefined</portal>
+        <profile/>
+        <run_as>assigned_to</run_as>
+        <run_as_script/>
+        <run_as_user/>
+        <run_dayofmonth/>
+        <run_dayofweek/>
+        <run_period/>
+        <run_start/>
+        <run_time/>
+        <show_notifications>false</show_notifications>
+        <sys_class_name>sn_aia_trigger_configuration</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-20 07:01:18</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>02bfa23f619703107f44f4898ccc4cb1</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Food Base Problem Priority Trigger</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_trigger_configuration_02bfa23f619703107f44f4898ccc4cb1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-20 07:21:37</sys_updated_on>
+        <target_table>x_snc_campus_foo_1_food_base_problem</target_table>
+        <trigger_flow display_value="Food Base Problem - AI Agent: Food Base Priority Agent - aabfae3b61d703107f44f4898ccc4c85">2ebfae3b61d703107f44f4898ccc4c86</trigger_flow>
+        <trigger_flow_definition_type>record_create_or_update</trigger_flow_definition_type>
+        <trigger_strategy>unique_changes</trigger_strategy>
+        <usecase/>
+    </sn_aia_trigger_configuration>
+</record_update>

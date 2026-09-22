@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_trigger_configuration">
+    <sn_aia_trigger_configuration action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <business_rule/>
+        <channel display_value="Now Assist Panel">b023fcb3537321106167ddeeff7b12a8</channel>
+        <condition table="x_snc_campus_foo_1_food_base_problem">use_case!=null<item display_value="null" endquery="false" field="use_case" goto="false" newquery="false" operator="!=" or="false" value="null"/>
+        </condition>
+        <description/>
+        <enable_discovery>false</enable_discovery>
+        <internal_name>global.x_snc_campus_foo_1.Priority Analyzer</internal_name>
+        <name>Priority Analyzer</name>
+        <notification_script/>
+        <objective_template><![CDATA[Calculate and update the priority of a Food Base Problem based on its Use Case, Student Count, Total Student Count, and the matching Use Case Priority configuration.]]></objective_template>
+        <portal/>
+        <profile/>
+        <run_as>assigned_to</run_as>
+        <run_as_script/>
+        <run_as_user/>
+        <run_dayofmonth/>
+        <run_dayofweek/>
+        <run_period/>
+        <run_start/>
+        <run_time/>
+        <show_notifications>false</show_notifications>
+        <sys_class_name>sn_aia_trigger_configuration</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-19 10:59:25</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>d0ac9ea7085343107f447d6c83c822f5</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>x_snc_campus_foo_1_food_base_problem</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_trigger_configuration_d0ac9ea7085343107f447d6c83c822f5</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-19 10:59:30</sys_updated_on>
+        <target_table>x_snc_campus_foo_1_food_base_problem</target_table>
+        <trigger_flow display_value="Food Base Problem - AI Agent: Campus Food Priority Analyzer - ecac52e7085343107f447d6c83c822a9">24ac52e7085343107f447d6c83c822ab</trigger_flow>
+        <trigger_flow_definition_type>record_create_or_update</trigger_flow_definition_type>
+        <trigger_strategy/>
+        <usecase/>
+    </sn_aia_trigger_configuration>
+</record_update>

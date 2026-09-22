@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="31c75917dd5f03107f44143a6accf883" label="student" max_length="40" name="x_snc_campus_foo_1_student" type="collection">
+        <element label="Mess Hall" mandatory="true" max_length="32" name="mess_hall" reference="x_snc_campus_foo_1_mess_hall" type="reference"/>
+        <element label="Contact Number" max_length="15" name="contact_number" type="string"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Student Name" mandatory="true" max_length="32" name="user" reference="sys_user" type="reference"/>
+        <element label="Student ID" mandatory="true" max_length="20" name="student_id" type="string"/>
+        <element label="Allergies" max_length="255" name="allergies" type="string"/>
+        <element label="Room Number" mandatory="true" max_length="20" name="room_number" type="string"/>
+        <element label="Hostel Name" mandatory="true" max_length="100" name="hostel_name" type="string"/>
+        <element choice="1" label="Dietary Preference" max_length="40" name="dietary_preference" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="other" value="other"/>
+                <element inactive_on_update="false" label="Non-Vegetarian" value="non-veg"/>
+                <element inactive_on_update="false" label="vegetarian" value="veg"/>
+            </choice>
+        </element>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <index name="index">
+            <element name="sys_class_name"/>
+        </index>
+        <index name="index2">
+            <element name="user"/>
+        </index>
+        <index name="index3">
+            <element name="mess_hall"/>
+        </index>
+    </element>
+</database>

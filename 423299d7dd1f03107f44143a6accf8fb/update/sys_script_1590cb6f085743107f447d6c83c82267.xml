@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>false</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_snc_campus_foo_1_food_base_problem</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Percentage of Mess Hall Population</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+    var config = _getConfig(current.use_case.toString());
+    if (!config) {
+        gs.warn('No priority config found for use_case: ' + current.use_case);
+        return;
+    }
+
+    var levelMap = { 'Critical': 1, 'High': 2, 'Medium': 3, 'Low': 4 };
+    var level = levelMap[config.basePriority] || 3;
+
+    current.current_priority = level.toString();
+    current.priority_reason = 'Priority set to "' + config.basePriority +
+                               '" based on the base priority configured for use case "' +
+                               current.use_case + '".';
+    // No current.update() — After rule auto-saves field changes
+
+    function _getConfig(useCase) {
+        var gr = new GlideRecord('x_snc_campus_foo_1_use_case_priority');
+        gr.addQuery('use_case', useCase);
+        gr.addQuery('active', true);
+        gr.query();
+        if (gr.next()) {
+            return {
+                basePriority: gr.base_priority.toString(),
+                safetyCritical: gr.safety_critical == true
+            };
+        }
+        return null;
+    }
+
+})(current, previous);
+
+// // function computeExpectedPriority(baseLevel, studentCount, messHallSysId, thresholdPercent, safetyCritical) {
+// //     if (safetyCritical) return 1; // Critical immediately
+
+// //     var totalStudents = _getActiveStudentCount(messHallSysId);
+// //     if (totalStudents === 0) return baseLevel; // avoid divide-by-zero, no escalation possible
+
+// //     var percentAffected = (studentCount / totalStudents) * 100;
+// //     var stepsUp = Math.floor(percentAffected / thresholdPercent);
+
+// //     return Math.max(1, baseLevel - stepsUp);
+
+// //     function _getActiveStudentCount(messHall) {
+// //         var ga = new GlideAggregate('x_snc_campus_foo_1_student');
+// //         ga.addQuery('mess_hall', messHall);
+// //         ga.addQuery('active', true);
+// //         ga.addAggregate('COUNT');
+// //         ga.query();
+// //         if (ga.next()) {
+// //             return parseInt(ga.getAggregate('COUNT'), 10) || 0;
+// //         }
+// //         return 0;
+// //     }
+// // }
+
+// (function executeRule(current, previous /*null when async*/) {
+
+//     var config = _getConfig(current.use_case.toString());
+//     if (!config) {
+//         gs.warn('No priority config found for use_case: ' + current.use_case);
+//         return;
+//     }
+
+//     var levelMap = { 'Critical': 1, 'High': 2, 'Medium': 3, 'Low': 4 };
+//     var baseLevel = levelMap[config.basePriority] || 3;
+
+//     var newLevel;
+//     var reason;
+
+//     if (config.safetyCritical) {
+//         newLevel = 1;
+//         reason = current.use_case + ' is flagged Safety Critical — set to Critical immediately, regardless of count.';
+//     } else {
+//         var totalStudents = _getMessHallStudentCount(current.mess_hall);
+//         var studentCount = parseInt(current.student_count, 10) || 0;
+//         var percentAffected = totalStudents > 0 ? (studentCount / totalStudents) * 100 : 0;
+//         var stepsUp = Math.floor(percentAffected / config.thresholdPercent);
+
+//         newLevel = Math.max(1, baseLevel - stepsUp);
+//         reason = studentCount + ' of ' + totalStudents + ' students (' + percentAffected.toFixed(1) +
+//                  '%) affected. Base priority "' + config.basePriority + '", threshold ' +
+//                  config.thresholdPercent + '%. Escalated ' + stepsUp + ' level(s).';
+//     }
+
+//     current.current_priority = newLevel.toString();
+//     current.priority_reason = reason;
+//     current.update();
+
+//     function _getConfig(useCase) {
+//         var gr = new GlideRecord('x_snc_campus_foo_1_use_case_priority');
+//         gr.addQuery('use_case', useCase);
+//         gr.addQuery('active', true);
+//         gr.query();
+//         if (gr.next()) {
+//             return {
+//                 basePriority: gr.base_priority.toString(),
+//                 thresholdPercent: parseInt(gr.affected_threshold, 10) || 10,
+//                 safetyCritical: gr.safety_critical == true
+//             };
+//         }
+//         return null;
+//     }
+
+//     function _getMessHallStudentCount(messHall) {
+//         var ga = new GlideAggregate('x_snc_campus_foo_1_student');
+//         ga.addQuery('mess_hall', messHall);
+//         ga.addQuery('active', true);
+//         ga.addAggregate('COUNT');
+//         ga.query();
+//         return ga.next() ? (parseInt(ga.getAggregate('COUNT'), 10) || 0) : 0;
+//     }
+
+// })(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-19 13:38:49</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>1590cb6f085743107f447d6c83c82267</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>Percentage of Mess Hall Population</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_script_1590cb6f085743107f447d6c83c82267</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-19 14:31:28</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=1590cb6f085743107f447d6c83c82267"/>
+</record_update>

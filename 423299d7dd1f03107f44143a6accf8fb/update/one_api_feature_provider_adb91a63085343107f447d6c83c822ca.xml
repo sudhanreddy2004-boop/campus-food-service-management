@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="one_api_feature_provider">
+    <one_api_feature_provider action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <feature display_value="2cbb9fcc7fb012105e0f2334dc8665bd">e1b91a63085343107f447d6c83c822ca</feature>
+        <feature_service display_value="OneExtendGenericProvider">5233278353111110c271ddeeff7b129b</feature_service>
+        <feature_service_factory><![CDATA[(function() { return new global.OneExtendGenericProvider(); })()]]></feature_service_factory>
+        <name>Guardian Metrics provider</name>
+        <short_description>Auto Generated </short_description>
+        <sys_class_name>one_api_feature_provider</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-19 10:46:40</sys_created_on>
+        <sys_id>adb91a63085343107f447d6c83c822ca</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Guardian Metrics provider</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>one_api_feature_provider_adb91a63085343107f447d6c83c822ca</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-19 10:46:40</sys_updated_on>
+        <type>FDIH Action</type>
+        <type_document display_value="Execute Guardian Moderations">c6ca836eb7237110926b9bbf7e11a931</type_document>
+    </one_api_feature_provider>
+</record_update>

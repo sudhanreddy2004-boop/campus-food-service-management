@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="ais_semantic_search_embedding_model_configuration">
+    <ais_semantic_search_embedding_model_configuration action="INSERT_OR_UPDATE">
+        <default>false</default>
+        <document_match_threshold>0.3</document_match_threshold>
+        <embedding_model display_value="ServiceNow Embedding (E5)">c153d0f2432302104611495d9bb8f2ec</embedding_model>
+        <semantic_search_configuration display_value="FindFoodKnowledge">f8d7e02055a303107f4429801dee3e0d</semantic_search_configuration>
+        <sys_class_name>ais_semantic_search_embedding_model_configuration</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-22 05:03:01</sys_created_on>
+        <sys_id>74d7e02055a303107f4429801dee3e11</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>ais_semantic_search_embedding_model_configuration_74d7e02055a303107f4429801dee3e11</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-22 05:03:01</sys_updated_on>
+    </ais_semantic_search_embedding_model_configuration>
+</record_update>

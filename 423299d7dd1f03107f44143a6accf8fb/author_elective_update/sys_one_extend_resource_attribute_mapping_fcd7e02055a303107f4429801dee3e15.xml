@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_one_extend_resource_attribute_mapping">
+    <sys_one_extend_resource_attribute_mapping action="DELETE">
+        <attribute_value_script><![CDATA[(function execute(currentInputs, context) {
+    /* @param {Object} currentInputs - Inputs provided for the current step.*/
+    /* @param {Object} context - Execution context, which may include:*/
+    /*						   - Previous tool outputs/inputs (e.g., context['ToolName.attributeName'] or context.getValue('ToolName.attributeName')).*/
+    /*						   - Additional context information (e.g., context.getAllValues()).*/
+    /* @returns {Object} - The computed value for the attribute.*/
+    return '';
+})(currentInputs, context);]]></attribute_value_script>
+        <attribute_value_template>f8d7e02055a303107f4429801dee3e0d</attribute_value_template>
+        <attribute_value_type>template</attribute_value_type>
+        <from_resource_mapping/>
+        <resource_attribute_name display_value="semantic_search_configuration">bad642b0ffef22103fefffffffffff3b</resource_attribute_name>
+        <resource_mapping display_value="FindFoodKnowledge">28d7a02055a303107f4429801dee3eb0</resource_mapping>
+        <sys_class_name>sys_one_extend_resource_attribute_mapping</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-22 05:03:01</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>fcd7e02055a303107f4429801dee3e15</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_one_extend_resource_attribute_mapping_fcd7e02055a303107f4429801dee3e15</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-22 05:03:01</sys_updated_on>
+        <truncate>false</truncate>
+        <type>input</type>
+    </sys_one_extend_resource_attribute_mapping>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</application>
+        <file_path/>
+        <instance_id>8ed1cdc7c38fcf94a03197af05013150</instance_id>
+        <instance_name>ltm-hck-2876-0046</instance_name>
+        <name>sys_one_extend_resource_attribute_mapping_fcd7e02055a303107f4429801dee3e15</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_one_extend_resource_attribute_mapping"&gt;&lt;sys_one_extend_resource_attribute_mapping action="INSERT_OR_UPDATE"&gt;&lt;attribute_value_script&gt;&lt;![CDATA[(function execute(currentInputs, context) {
+    /* @param {Object} currentInputs - Inputs provided for the current step.*/
+    /* @param {Object} context - Execution context, which may include:*/
+    /*						   - Previous tool outputs/inputs (e.g., context['ToolName.attributeName'] or context.getValue('ToolName.attributeName')).*/
+    /*						   - Additional context information (e.g., context.getAllValues()).*/
+    /* @returns {Object} - The computed value for the attribute.*/
+    return '';
+})(currentInputs, context);]]&gt;&lt;/attribute_value_script&gt;&lt;attribute_value_template&gt;f8d7e02055a303107f4429801dee3e0d&lt;/attribute_value_template&gt;&lt;attribute_value_type&gt;template&lt;/attribute_value_type&gt;&lt;from_resource_mapping/&gt;&lt;resource_attribute_name display_value="semantic_search_configuration"&gt;bad642b0ffef22103fefffffffffff3b&lt;/resource_attribute_name&gt;&lt;resource_mapping display_value="FindFoodKnowledge"&gt;28d7a02055a303107f4429801dee3eb0&lt;/resource_mapping&gt;&lt;sys_class_name&gt;sys_one_extend_resource_attribute_mapping&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-22 05:03:01&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;fcd7e02055a303107f4429801dee3e15&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name/&gt;&lt;sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1"&gt;423299d7dd1f03107f44143a6accf8fb&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Campus Food Services Assistant"&gt;423299d7dd1f03107f44143a6accf8fb&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_one_extend_resource_attribute_mapping_fcd7e02055a303107f4429801dee3e15&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-22 05:03:01&lt;/sys_updated_on&gt;&lt;truncate&gt;false&lt;/truncate&gt;&lt;type&gt;input&lt;/type&gt;&lt;/sys_one_extend_resource_attribute_mapping&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1562265707</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>6f2d16f3615703107f44f4898ccc4c88</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-22 05:03:01</sys_created_on>
+        <sys_id>78d7e02055a303107f4429801dee3e24</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a0c77ef5da0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-22 05:03:01</sys_updated_on>
+        <type>OneExtend Resource Attribute Mapping</type>
+        <update_guid>7cd7e020c4a303108d2fe5bfe2bb4023</update_guid>
+        <update_guid_history>7cd7e020c4a303108d2fe5bfe2bb4023:1562265707</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-22 05:22:40</sys_created_on>
+        <sys_db_object display_value="" name="sys_one_extend_resource_attribute_mapping">sys_one_extend_resource_attribute_mapping</sys_db_object>
+        <sys_id>0a49789d83954e1b8082702e8f3c2f29</sys_id>
+        <sys_metadata>fcd7e02055a303107f4429801dee3e15</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_scope_delete display_value="">00ca93000f1045668006564f73c0b4e4</sys_scope_delete>
+        <sys_update_name>sys_one_extend_resource_attribute_mapping_fcd7e02055a303107f4429801dee3e15</sys_update_name>
+        <sys_update_version display_value="sys_one_extend_resource_attribute_mapping_fcd7e02055a303107f4429801dee3e15">78d7e02055a303107f4429801dee3e24</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-22 05:22:40</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

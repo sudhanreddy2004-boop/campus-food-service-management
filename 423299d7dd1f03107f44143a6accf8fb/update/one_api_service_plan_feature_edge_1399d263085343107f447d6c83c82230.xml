@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="one_api_service_plan_feature_edge">
+    <one_api_service_plan_feature_edge action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applicability_condition_expression/>
+        <applicability_failed_policy/>
+        <applicability_script><![CDATA[(function(currentInputs, context) {  
+	/* @param {Object} currentInputs - Inputs provided for the current step.*/  
+	/* @param {Object} context - Execution context, which may include:*/     
+	/*         - Previous tool outputs/inputs (e.g., context['ToolName.attributeName'] or context.getValue('ToolName.attributeName')).*/     
+	/*         - Additional context information (e.g., context.getAllValues()).*/  
+	/* @returns {Boolean} - Return 'true' if the condition is met; otherwise 'false'.*/  
+	return true;
+  })(currentInputs, context);]]></applicability_script>
+        <applicability_type/>
+        <error_handler_script><![CDATA[(function handleError() {  
+	// customize condition logic here,  
+	return ;
+})();]]></error_handler_script>
+        <error_policy/>
+        <from_service_plan_feature display_value="___$y$t3m_bu1163r___-542203de7fe81210a01c7d8b7d86658c, d143c483ff68e2101dbaffffffffff23-default: 542203de7fe81210a01c7d8b7d86658c-1">9f99d263085343107f447d6c83c8222d</from_service_plan_feature>
+        <internal_name>UsecaseSearch__AIA and Usecase Redundancy Check</internal_name>
+        <name>edge</name>
+        <order>0</order>
+        <sys_class_name>one_api_service_plan_feature_edge</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-19 10:46:14</sys_created_on>
+        <sys_id>1399d263085343107f447d6c83c82230</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>edge</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>one_api_service_plan_feature_edge_1399d263085343107f447d6c83c82230</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-19 10:46:14</sys_updated_on>
+        <to_service_plan_feature display_value="___$y$t3m_bu1163r___-542203de7fe81210a01c7d8b7d86658c, d143c483ff68e2101dbaffffffffff23-default: d143c483ff68e2101dbaffffffffff23">db99d263085343107f447d6c83c8222e</to_service_plan_feature>
+    </one_api_service_plan_feature_edge>
+</record_update>

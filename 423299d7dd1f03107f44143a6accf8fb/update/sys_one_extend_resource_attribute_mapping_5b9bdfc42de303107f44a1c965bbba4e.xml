@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_one_extend_resource_attribute_mapping">
+    <sys_one_extend_resource_attribute_mapping action="INSERT_OR_UPDATE">
+        <attribute_value_script><![CDATA[(function execute(currentInputs, context) {
+ return new global.OneExtendEvaluationServiceUtil().getSkillContext(currentInputs); 
+})(currentInputs, context);]]></attribute_value_script>
+        <attribute_value_template/>
+        <attribute_value_type>script</attribute_value_type>
+        <from_resource_mapping/>
+        <resource_attribute_name display_value="context">7d61dfba7f82d21071cab6257d86653e</resource_attribute_name>
+        <resource_mapping display_value="Faithfulness Metric">5f9bdfc42de303107f44a1c965bbba36</resource_mapping>
+        <sys_class_name>sys_one_extend_resource_attribute_mapping</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2026-09-21 04:51:33</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>5b9bdfc42de303107f44a1c965bbba4e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_one_extend_resource_attribute_mapping_5b9bdfc42de303107f44a1c965bbba4e</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2026-09-21 04:51:33</sys_updated_on>
+        <truncate>false</truncate>
+        <type>input</type>
+    </sys_one_extend_resource_attribute_mapping>
+</record_update>

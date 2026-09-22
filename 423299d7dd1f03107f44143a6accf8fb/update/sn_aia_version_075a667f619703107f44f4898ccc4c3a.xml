@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_version">
+    <sn_aia_version action="INSERT_OR_UPDATE">
+        <condition/>
+        <instructions>Expertise: The agent specializes in analyzing Food Base Problem records and retrieving priority information based on Use Case matching.
+1. Monitor Food Base Problem records for creation or Use Case updates.
+2. Read the Use Case field from the record; Student Count and Problem Type are available as context but not used for priority calculation.
+3. Search the Use Case Priority table for an exact match to the Use Case.
+4. If a match is found, retrieve the Priority and Priority Reason from the table.
+5. Update the Food Base Problem record with the retrieved Priority and Priority Reason.
+6. If no matching Use Case is found, indicate that no matching Use Case Priority configuration exists and do not assign a priority.
+7. If the Use Case field is empty, indicate that the Use Case is required to determine priority and do not assign a priority.
+8. Never invent, guess, or independently determine a priority; always rely on the Use Case Priority table as the source of truth.</instructions>
+        <state>published</state>
+        <sys_class_name>sn_aia_version</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-20 06:37:53</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>075a667f619703107f44f4898ccc4c3a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>V1</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_version_075a667f619703107f44f4898ccc4c3a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-20 06:37:53</sys_updated_on>
+        <target_id>8ce9263f619703107f44f4898ccc4c00</target_id>
+        <target_table>sn_aia_agent</target_table>
+        <version_name>V1</version_name>
+        <version_number>1</version_number>
+    </sn_aia_version>
+</record_update>

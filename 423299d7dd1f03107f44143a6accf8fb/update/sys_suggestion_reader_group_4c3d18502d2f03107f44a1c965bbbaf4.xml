@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_suggestion_reader_group">
+    <sys_suggestion_reader_group action="INSERT_OR_UPDATE">
+        <click_in_mode>false</click_in_mode>
+        <context_config_id/>
+        <limit>5</limit>
+        <order>400</order>
+        <section_header>Suggested results</section_header>
+        <suggestion_type>Suggested Result Reader Group for Service Portal Default Search Application</suggestion_type>
+        <sys_class_name>sys_suggestion_reader_group</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 09:38:03</sys_created_on>
+        <sys_id>4c3d18502d2f03107f44a1c965bbbaf4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Suggested Result Reader Group for Service Portal Default Search Application</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_suggestion_reader_group_4c3d18502d2f03107f44a1c965bbbaf4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 09:38:03</sys_updated_on>
+    </sys_suggestion_reader_group>
+</record_update>

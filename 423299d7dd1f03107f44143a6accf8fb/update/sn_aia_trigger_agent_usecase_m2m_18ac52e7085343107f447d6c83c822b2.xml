@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_trigger_agent_usecase_m2m">
+    <sn_aia_trigger_agent_usecase_m2m action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <objective_template><![CDATA[Calculate and update the priority of a Food Base Problem based on its Use Case, Student Count, Total Student Count, and the matching Use Case Priority configuration.]]></objective_template>
+        <related_resource_record>6e1492a7081343107f447d6c83c82261</related_resource_record>
+        <related_resource_table>sn_aia_agent</related_resource_table>
+        <sys_class_name>sn_aia_trigger_agent_usecase_m2m</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-19 10:59:25</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>18ac52e7085343107f447d6c83c822b2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_trigger_agent_usecase_m2m_18ac52e7085343107f447d6c83c822b2</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-19 10:59:25</sys_updated_on>
+        <trigger_configuration display_value="x_snc_campus_foo_1_food_base_problem">d0ac9ea7085343107f447d6c83c822f5</trigger_configuration>
+    </sn_aia_trigger_agent_usecase_m2m>
+</record_update>

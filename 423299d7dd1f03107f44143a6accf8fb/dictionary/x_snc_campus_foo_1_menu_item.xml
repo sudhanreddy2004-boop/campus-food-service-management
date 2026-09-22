@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="c9111e17dd1743107f44143a6accf881" label="Menu Item" max_length="40" name="x_snc_campus_foo_1_menu_item" type="collection">
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Mess Hall" mandatory="true" max_length="32" name="mess_hall" reference="x_snc_campus_foo_1_mess_hall" type="reference"/>
+        <element choice="1" label="Meal Type" mandatory="true" max_length="40" name="meal_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="BreakFast" value="breakfast"/>
+                <element inactive_on_update="false" label="Lunch" value="lunch"/>
+                <element inactive_on_update="false" label="Dinner" value="dinner"/>
+            </choice>
+        </element>
+        <element label="Description" max_length="255" name="description" type="string_full_utf8"/>
+        <element choice="1" label="Diet Type" mandatory="true" max_length="40" name="diet_type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Non Veg" value="non veg"/>
+                <element inactive_on_update="false" label="Veg" value="veg"/>
+            </choice>
+        </element>
+        <element label="Name" mandatory="true" max_length="100" name="name" type="string_full_utf8"/>
+        <element default="True&#13;&#10;" label="Active" max_length="40" name="active" type="boolean"/>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <index name="index">
+            <element name="sys_class_name"/>
+        </index>
+        <index name="index2">
+            <element name="mess_hall"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="6ac45d5fdd1f03107f44143a6accf871" label="Mess Hall" max_length="40" name="x_snc_campus_foo_1_mess_hall" type="collection">
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <element default="0" label="Capacity" max_length="40" name="capacity" type="integer"/>
+        <element label="Location" mandatory="true" max_length="100" name="location" type="string"/>
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Supervisor" mandatory="true" max_length="32" name="supervisor" reference="sys_user" type="reference"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Name" mandatory="true" max_length="100" name="name" type="string"/>
+        <index name="index">
+            <element name="sys_class_name"/>
+        </index>
+        <index name="index2">
+            <element name="supervisor"/>
+        </index>
+    </element>
+</database>

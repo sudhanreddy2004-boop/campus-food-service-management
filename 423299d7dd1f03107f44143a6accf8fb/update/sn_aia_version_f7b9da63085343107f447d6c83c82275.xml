@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_version">
+    <sn_aia_version action="INSERT_OR_UPDATE">
+        <condition/>
+        <instructions>1. Retrieve the Food Base Problem record and read the Use Case, Student Count, Total Student Count, Current Priority, and other priority-related fields.
+
+2. Find the active Use Case Priority record that matches the Food Base Problem Use Case. Read the Base Priority, Affected Threshold, Priority Level, Safety Critical, and Active values.
+
+3. Calculate the affected student percentage using: Affected Percentage = (Student Count / Total Student Count) × 100. If Total Student Count is missing or zero, do not calculate the priority and report that the total student count is unavailable.
+
+4. If Safety Critical is true, set the final priority to Critical.
+
+5. If Safety Critical is false, compare the Affected Percentage with the configured Affected Threshold. If the Affected Percentage is greater than or equal to the threshold, increase the Base Priority by one level. Otherwise, keep the Base Priority unchanged.
+
+6. Use only these priority levels: Low = 1, Medium = 2, High = 3, and Critical = 4. Do not allow the final priority to exceed Critical.
+
+7. Update the Food Base Problem Current Priority with the calculated final priority.
+
+8. Update the AI Risk Score using the priority value: Low = 1, Medium = 2, High = 3, Critical = 4.
+
+9. Update Priority Reason with a concise explanation containing the Use Case, Student Count, Total Student Count, affected percentage, configured threshold, and the reason for the final priority.
+
+10. Update AI Summary with a short explanation of the calculation. Do not modify Student Count, Total Student Count, Use Case Priority configuration, Assignment Group, Assigned To, Status, or SLA fields.</instructions>
+        <state>published</state>
+        <sys_class_name>sn_aia_version</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-19 10:46:49</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>f7b9da63085343107f447d6c83c82275</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>V1</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_version_f7b9da63085343107f447d6c83c82275</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-19 10:46:49</sys_updated_on>
+        <target_id>6e1492a7081343107f447d6c83c82261</target_id>
+        <target_table>sn_aia_agent</target_table>
+        <version_name>V1</version_name>
+        <version_number>1</version_number>
+    </sn_aia_version>
+</record_update>

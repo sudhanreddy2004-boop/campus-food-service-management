@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_generative_ai_config">
+    <sys_generative_ai_config action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <additional_configurations>{"skill_config_id":"f38b1fc42de303107f44a1c965bbba3a"}</additional_configurations>
+        <ai_suggested>false</ai_suggested>
+        <definition>2b8bdbc42de303107f44a1c965bbbae5</definition>
+        <definition_table>sys_one_extend_capability_definition</definition_table>
+        <documentation/>
+        <max_tokens>500</max_tokens>
+        <min_word_count>-1</min_word_count>
+        <model>llm_generic_small</model>
+        <name>Food Complaint Classification</name>
+        <parent/>
+        <prompt>You are the AI Priority Analysis component of the Campus Food Services Assistant.
+
+Your task is to analyze the Food Base Problem record and determine:
+
+1. Problem Type Normalized
+2. Priority
+3. Priority Reason
+
+The Food Base Problem record is the primary input.
+
+FOOD BASE PROBLEM RECORD
+
+Use Case:
+{{food_base_problem.use_case}}
+
+Problem Type:
+{{food_base_problem.problem_type}}
+
+Student Count:
+{{food_base_problem.student_count}}
+
+Created At:
+{{food_base_problem.sys_created_on}}
+
+
+IMPORTANT:
+The following Use Case Priority Configuration is the authoritative configuration for priority calculation.
+
+USE CASE PRIORITY CONFIGURATION
+
+| Use Case | Default Problem Type | Default Priority | Risk Level | Keywords | Low Max Students | Medium Max Students | High Max Students | Critical Max Students | Priority Reason |
+| Food Quality Complaint | Food Quality | Medium | Medium | stale, bad smell, taste, undercooked | 2 | 4 | 7 | 10 | Food quality issues escalate as more students are affected. |
+| Meal Not Available | Meal Availability | Medium | Medium | unavailable, missing, no meal, not served | 2 | 4 | 7 | 10 | Meal availability issues escalate as more students are affected. |
+| Food Hygiene Issue | Food Hygiene | High | High | dirty, unhygienic, contamination, foreign material | 0 | 0 | 4 | 10 | Hygiene issues start at High because even a small affected population requires prompt attention. |
+| Special Diet Request | Dietary Requirement | Medium | Medium | vegetarian, vegan, special diet, dietary | 2 | 4 | 7 | 10 | Dietary requests escalate as more students are affected. |
+| Allergy Management Request | Allergy | High | High | allergy, allergen, allergic reaction | 0 | 0 | 4 | 10 | Allergy-related issues start at High because incorrect food handling can create a safety concern. |
+| Food Menu Feedback | Menu Feedback | Low | Low | feedback, suggestion, menu, preference | 4 | 7 | 10 | 10 | Menu feedback remains Low unless a significant portion of students are affected. |
+| Meal Reservation / Pre-Booking | Meal Reservation | Low | Low | reservation, booking, reserve | 4 | 7 | 10 | 10 | Reservation issues normally remain Low and escalate when more students are affected. |
+| Missed Meal Request | Missed Meal | Medium | Medium | missed meal, missed lunch, missed dinner | 2 | 4 | 7 | 10 | Missed meal issues escalate as more students are affected. |
+| Food Wastage Reporting | Food Wastage | Medium | Medium | wastage, waste, leftover, excess food | 2 | 4 | 7 | 10 | Food wastage issues escalate as more students are affected. |
+| Emergency Food Assistance | Emergency Food Assistance | Critical | Critical | emergency, urgent, no food, immediate assistance | 0 | 0 | 0 | 10 | Emergency food assistance is Critical regardless of the number of affected students. |
+| Hostel Mess Billing Issue | Billing Issue | Medium | Low | bill, billing, payment, charge, amount | 2 | 4 | 7 | 10 | Billing issues escalate as the number of affected students increases. |
+| Smart Menu Recommendation | Menu Recommendation | Low | Low | recommendation, recommend, suitable menu | 4 | 7 | 10 | 10 | Menu recommendations are normally Low and increase only when more students are affected. |
+
+
+PRIORITY CALCULATION RULES
+
+First, identify the configuration row whose Use Case exactly matches the Food Base Problem Use Case.
+
+Then use that row's student-count thresholds.
+
+For normal use cases:
+
+- If Student Count &lt;= Low Max Students, Priority = Low.
+- If Student Count &gt; Low Max Students AND Student Count &lt;= Medium Max Students, Priority = Medium.
+- If Student Count &gt; Medium Max Students AND Student Count &lt;= High Max Students, Priority = High.
+- If Student Count &gt; High Max Students, Priority = Critical.
+
+Special rule:
+
+For Emergency Food Assistance, Priority must always be Critical regardless of Student Count.
+
+For Food Hygiene Issue and Allergy Management Request, the configuration starts at High because their Low and Medium thresholds are 0.
+
+Never assign a priority above Critical.
+
+Do not use Open Ticket Count, Ticket Count, or any other field.
+
+Do not invent values.
+
+Do not use Created At to calculate priority. Created At is provided only as record context.
+
+PROBLEM TYPE NORMALIZATION
+
+Normalize the Food Base Problem Problem Type using:
+
+- The matching configuration's Default Problem Type.
+- The keywords in the matching configuration.
+- The actual Problem Type provided in the Food Base Problem record.
+
+If the Problem Type clearly matches a keyword or the configured problem type, return the corresponding normalized problem type.
+
+Do not invent a problem type that is not supported by the record or configuration.
+
+PRIORITY REASON
+
+Use the Priority Reason from the matching configuration.
+
+Also include the actual Student Count and the threshold that caused the selected priority.
+
+Example:
+
+"6 students are affected. This exceeds the Medium threshold of 4 and is within the High threshold of 7, so the priority is High. Food quality issues escalate as more students are affected."
+
+IMPORTANT RULES
+
+- The embedded configuration table is authoritative.
+- Always match the Food Base Problem Use Case to the correct configuration row.
+- Calculate priority from Student Count and the matching thresholds.
+- Do not guess priority.
+- Do not use general assumptions outside the provided configuration.
+- Priority must be exactly one of:
+  Low, Medium, High, Critical.
+- Problem Type Normalized must be concise.
+- Priority Reason must be concise.
+- Return only the requested three outputs.
+
+RETURN EXACTLY THIS FORMAT:
+
+Problem Type Normalized: [normalized problem type]
+
+Priority: [Low/Medium/High/Critical]
+
+Priority Reason: [concise explanation including student count and applicable threshold]
+RETURN ONLY VALID JSON.
+
+{
+  "problem_type_normalized": "[normalized problem type]",
+  "priority": "[Low, Medium, High, or Critical]",
+  "priority_reason": "[concise explanation including student count and applicable threshold]"
+}
+
+Do not add markdown.
+Do not add ```json.
+Do not add any text before or after the JSON.</prompt>
+        <prompt_template_role>user</prompt_template_role>
+        <provider_company/>
+        <request_tokens>32018</request_tokens>
+        <show_in_prompt_library>true</show_in_prompt_library>
+        <state>archived</state>
+        <structured_output_enabled>false</structured_output_enabled>
+        <structured_output_schema/>
+        <sys_class_name>sys_generative_ai_config</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-21 04:51:19</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>3f8b1fc42de303107f44a1c965bbba0f</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>2b8bdbc42de303107f44a1c965bbbae5</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_generative_ai_config_3f8b1fc42de303107f44a1c965bbba0f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-21 12:25:19</sys_updated_on>
+        <temperature>0.2</temperature>
+        <thinking_tokens>0</thinking_tokens>
+        <version>1</version>
+    </sys_generative_ai_config>
+</record_update>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_gen_ai_skill">
+    <sys_gen_ai_skill action="INSERT_OR_UPDATE">
+        <skill_description>This AI agent calculates the priority of a Food Base Problem using the problem's Use Case, Student Count, Total Student Count, and the matching Use Case Priority configuration. It calculates the affected student percentage, applies the configured priority rules and safety-critical conditions, and updates the Current Priority, AI Risk Score, Priority Reason, and AI Summary fields. The agent is used only for priority calculation when a new Food Base Problem is created or when its affected student count changes.</skill_description>
+        <skill_document>fecc16e7085343107f447d6c83c82289</skill_document>
+        <skill_name>Campus Food Priority Analyzer</skill_name>
+        <skill_table>sn_aia_skill_metadata</skill_table>
+        <sys_class_name>sys_gen_ai_skill</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-19 11:00:15</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>4fcc16e7085343107f447d6c83c8228e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_gen_ai_skill_4fcc16e7085343107f447d6c83c8228e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-19 11:00:15</sys_updated_on>
+    </sys_gen_ai_skill>
+    <sys_translated_text action="delete_multiple" query="documentkey=4fcc16e7085343107f447d6c83c8228e"/>
+</record_update>

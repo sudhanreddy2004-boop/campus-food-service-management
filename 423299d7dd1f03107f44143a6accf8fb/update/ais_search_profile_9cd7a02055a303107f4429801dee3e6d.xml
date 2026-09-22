@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="ais_search_profile">
+    <ais_search_profile action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <creator_source>NASK</creator_source>
+        <description/>
+        <exclude_from_evaluation>false</exclude_from_evaluation>
+        <genius_result_assembly/>
+        <label>Classify Food Complaint FindFoodKnowledge NASK Created</label>
+        <name>x_snc_campus_foo_1_classify_food_complaint_findfoodknowledge_nask_created</name>
+        <publish_id/>
+        <qna_model_id>bert-qa-model-1.1.6</qna_model_id>
+        <state>NEW</state>
+        <sys_class_name>ais_search_profile</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-22 05:02:59</sys_created_on>
+        <sys_id>9cd7a02055a303107f4429801dee3e6d</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Classify Food Complaint FindFoodKnowledge NASK Created</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>ais_search_profile_9cd7a02055a303107f4429801dee3e6d</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2026-09-22 05:13:03</sys_updated_on>
+    </ais_search_profile>
+</record_update>
