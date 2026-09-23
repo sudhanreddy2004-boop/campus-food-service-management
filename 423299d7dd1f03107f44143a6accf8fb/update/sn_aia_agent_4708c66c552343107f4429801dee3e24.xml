@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_agent">
+    <sn_aia_agent action="INSERT_OR_UPDATE">
+        <advanced_mode>false</advanced_mode>
+        <agent_type>internal</agent_type>
+        <applicability_script><![CDATA[/** 
+ * Function to process inputs related to ServiceNow change request operations 
+ * 
+ * @param {Object} inputs - The input parameters object 
+ * @param {string} inputs.objective - The purpose or goal of the operation 
+ * @param {string} inputs.execution_plan_id - Unique identifier for the execution plan 
+ * @param {Object} inputs.context - Context information about the ServiceNow change request 
+ * @param {string} inputs.context.url - The URL of the change request in Service Operations Workspace 
+ * @param {string} inputs.context.table - The ServiceNow table name (e.g., 'change_request') 
+ * @param {string} inputs.context.record_sys_id - The sys ID of the record 
+ * @param {string} inputs.context.route - The route type (e.g., 'record') 
+ * @param {string} inputs.context.additional_context - Additional contextual information in JSON format 
+ * @param {string} inputs.context.experience - The UI experience name (e.g., 'Service Operations Workspace') 
+ * @param {string} inputs.context.number - The request number 
+ * @param {string} inputs.context.portal - The portal ID 
+ * @param {string} inputs.context.device_type - The device type from which the experience is accessed, e.g.'mweb' 
+ * @param {string} inputs.context.deployment_id - The unique identifier for the assistant deployment 
+ * @param {string} inputs.context.assistant_type - The type of assistant, e.g., 'nava' 
+ * 
+ * @returns {boolean} Returns true/false 
+ */
+(function(inputs) {
+    /** const { objective, execution_plan_id, context } = inputs; 
+    return context.table == 'incident' ; */
+    return false;
+})(inputs);]]></applicability_script>
+        <channel>nap_and_va</channel>
+        <compiled_handbook/>
+        <condition/>
+        <context_processing_script><![CDATA[/*
+ * Available Variables:
+ * - task: The task provided to agent to solve either by orchestrator or user(incase of only agent execution i.e agent is invoked as seperate entity instead from a workflow).
+ * - user_utterance: The user utterance provided. and task = user_utterance in case of individual agent execution.
+ * - agent_id: The agent id.
+ * - context: An object that carries additional contextual information for the agent.
+ *          It always includes a "pageContext" and may include a "triggerContext",
+ *          depending on how and from where the agent is invoked.
+ *
+ *          Behavior by invocation type:
+ *          ---------------------------------
+ *          - When invoked via the startAiAgentConversation API:
+ *                If a "contextMemory" parameter is provided in the API request,
+ *                it will be available here as the "triggerContext".
+ *                The "pageContext" is always present in this call, regardless
+ *                of whether the agent is executed individually or as part of a use case.
+ *                Example:
+ *                    {
+ *                        pageContext: { ... },
+ *                        triggerContext: { ... } // Derived from contextMemory (if passed)
+ *                    }
+ *
+ *          - When invoked as part of a use case or workflow:
+ *                The "pageContext" and "triggerContext" objects available here
+ *                may have been *modified* by the use case’s context processing script.
+ *                This means the use case may alter, extend, or overwrite values
+ *                from the original "pageContext" or "triggerContext"
+ *                before the context reaches the agent.
+ *                If the use case was originally triggered via the API,
+ *                the initial "triggerContext" is still derived from the
+ *                "contextMemory" parameter, but its contents may have been updated
+ *                by the use case logic.
+ *
+ *          - When executed directly (standalone agent execution):
+ *                The "pageContext" will always be present (default or empty),
+ *                and the "triggerContext" will only be populated if explicitly
+ *                passed through the API call.
+ * Return an modified context like: { pageContext : {},triggerContext:{} }
+ */
+(function(task, user_utterance, agent_id, context) {
+    return {
+        pageContext : context?.pageContext,
+		triggerContext : context?.triggerContext
+    };
+})(task,user_utterance, agent_id, context);]]></context_processing_script>
+        <description>AI assistant that analyzes a Food Base Problem record and automatically determines and updates six operational fields: normalized problem type, current priority, priority reason, AI summary, knowledge insights, and recommended action. It should analyze the food problem description, use the configured campus food-service priority rules, retrieve relevant campus food knowledge, and write the results back to the Food Base Problem record. The AI must use the available Food Base Problem data and configured rules without inventing unsupported information.</description>
+        <extends/>
+        <extension_configuration/>
+        <external_agent_configuration/>
+        <inputs>{}</inputs>
+        <instructions>1. Read the available Food Base Problem record and the student's complaint.
+
+2. Use the Food Base Problem record and student complaint as the inputs for the analysis.
+
+3. Call the Classify Food Complaint skill to analyze the campus food-service problem.
+
+4. Treat the Classify Food Complaint skill results as the authoritative analysis results.
+
+5. Use the six outputs returned by the Classify Food Complaint skill:
+   - Problem Type Normalized
+   - Priority
+   - Priority Reason
+   - Knowledge Insights
+   - Recommended Action
+   - Related Knowledge Articles
+
+6. Do not independently recalculate, reinterpret, rename, or override the Priority returned by the Classify Food Complaint skill.
+
+7. Do not use a Knowledge Base article title as Problem Type Normalized.
+
+8. Do not use Knowledge Base content to change or override Priority.
+
+9. Update the same Food Base Problem record with the six results returned by the Classify Food Complaint skill.
+
+10. Return the six Classify Food Complaint results to the user exactly as generated by the skill.
+
+11. Do not generate a separate or alternative analysis after the Classify Food Complaint skill returns its results.</instructions>
+        <internal_name>global.x_snc_campus_foo_1.Campus Food Complaint AI Agent</internal_name>
+        <name>Campus Food Complaint AI Agent</name>
+        <outputs>""</outputs>
+        <parent/>
+        <post_processing_message>Food problem analyzed, priority determined, and recommended action prepared.</post_processing_message>
+        <processing_message>Analyzing the food problem, priority, and relevant campus food guidance...</processing_message>
+        <proficiency>- Expertly analyzes campus food-service problems submitted by students, leveraging structured complaint records and student input to identify, classify, and address issues in campus food services. The agent is proficient in interpreting student complaints, ensuring that each problem is processed according to established campus food-service protocols and standards.
+- Utilizes the 'Analyze Campus Food Problem' TOOL to process Food Base Problem records and student complaints, applying campus food-service priority rules and relevant knowledge. The agent is capable of calling the Classify Food Complaint skill, which returns six authoritative outputs: Problem Type Normalized, Priority, Priority Reason, Knowledge Insights, Recommended Action, and Related Knowledge Articles. These outputs are used to update the Food Base Problem record and are returned to the user exactly as provided by the skill.
+- Strictly follows the ACTION PLAN by treating the Classify Food Complaint skill's six outputs as authoritative, ensuring that the agent does not independently alter, reinterpret, or override the results. The agent updates the Food Base Problem record with these outputs and returns them to the user exactly as generated, maintaining integrity and consistency in campus food-service problem analysis.</proficiency>
+        <record_type>custom</record_type>
+        <required_translations>[]</required_translations>
+        <research>false</research>
+        <role>Analyze campus food-service problems submitted by students.
+
+Use the available Food Base Problem record and student complaint as inputs.
+
+The Classify Food Complaint skill is the authoritative component for determining:
+- Problem Type Normalized
+- Priority
+- Priority Reason
+- Knowledge Insights
+- Recommended Action
+- Related Knowledge Articles
+
+Call the Classify Food Complaint skill and use its returned six outputs exactly as provided.
+
+Do not independently reinterpret, recalculate, rename, or override the Skill results.
+
+Update the same Food Base Problem record with the six Skill outputs and return those results to the user.</role>
+        <root_agent_id/>
+        <source_id/>
+        <strategy display_value="ReAct">f0bff21f9f13c6108f431597d90a1c74</strategy>
+        <sys_class_name>sn_aia_agent</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-22 12:08:13</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>4708c66c552343107f4429801dee3e24</sys_id>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>Campus Food Complaint AI Agent</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_agent_4708c66c552343107f4429801dee3e24</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 13:04:46</sys_updated_on>
+    </sn_aia_agent>
+</record_update>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_portal">
+    <sp_portal action="DELETE">
+        <alternate_portal/>
+        <communication_channels/>
+        <css_variables/>
+        <dark_theme/>
+        <default>false</default>
+        <embeddable_macroponents/>
+        <enable_ais>true</enable_ais>
+        <enable_certificate_based_authentication>false</enable_certificate_based_authentication>
+        <enable_embeddables>false</enable_embeddables>
+        <enable_favorites>false</enable_favorites>
+        <hide_portal_name>false</hide_portal_name>
+        <homepage display_value="cfms_home">5fab60a855a303107f4429801dee3e30</homepage>
+        <icon/>
+        <inactive>false</inactive>
+        <kb_knowledge_base/>
+        <kb_knowledge_page/>
+        <login_page display_value="login">6995a144cb11120000f8d856634c9c25</login_page>
+        <logo/>
+        <logo_alt_text>CFMS Portal</logo_alt_text>
+        <notfound_page/>
+        <quick_start_config/>
+        <rtl_enabled>false</rtl_enabled>
+        <sc_catalog/>
+        <sc_catalog_page/>
+        <sc_category_page/>
+        <search_application display_value="Service Portal Default Search Application">00731b9d5b231010d9a5ce1a8581c7dd</search_application>
+        <search_results_configuration display_value="Service Portal Search">80eb579d53671010968addeeff7b1215</search_results_configuration>
+        <sp_chat_queue/>
+        <sp_rectangle_menu/>
+        <sys_class_name>sp_portal</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-22 05:14:13</sys_created_on>
+        <sys_id>290a2c2455a303107f4429801dee3e5e</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>CFMS Portal</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_portal_290a2c2455a303107f4429801dee3e5e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 05:26:57</sys_updated_on>
+        <theme/>
+        <title>CFMS Portal</title>
+        <ts_index_group/>
+        <url_suffix>cfms</url_suffix>
+    </sp_portal>
+    <sys_translated_text action="DELETE" query="documentkey=290a2c2455a303107f4429801dee3e5e"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</application>
+        <file_path/>
+        <instance_id>8ed1cdc7c38fcf94a03197af05013150</instance_id>
+        <instance_name>ltm-hck-2876-0046</instance_name>
+        <name>sp_portal_290a2c2455a303107f4429801dee3e5e</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_portal"><sp_portal action="INSERT_OR_UPDATE"><alternate_portal/><communication_channels/><css_variables/><dark_theme/><default>false</default><embeddable_macroponents/><enable_ais>true</enable_ais><enable_certificate_based_authentication>false</enable_certificate_based_authentication><enable_embeddables>false</enable_embeddables><enable_favorites>false</enable_favorites><hide_portal_name>false</hide_portal_name><homepage display_value="cfms_home">5fab60a855a303107f4429801dee3e30</homepage><icon/><inactive>false</inactive><kb_knowledge_base/><kb_knowledge_page/><login_page display_value="login">6995a144cb11120000f8d856634c9c25</login_page><logo/><logo_alt_text>CFMS Portal</logo_alt_text><notfound_page/><quick_start_config/><rtl_enabled>false</rtl_enabled><sc_catalog/><sc_catalog_page/><sc_category_page/><search_application display_value="Service Portal Default Search Application">00731b9d5b231010d9a5ce1a8581c7dd</search_application><search_results_configuration display_value="Service Portal Search">80eb579d53671010968addeeff7b1215</search_results_configuration><sp_chat_queue/><sp_rectangle_menu/><sys_class_name>sp_portal</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-22 05:14:13</sys_created_on><sys_id>290a2c2455a303107f4429801dee3e5e</sys_id><sys_mod_count>3</sys_mod_count><sys_name>CFMS Portal</sys_name><sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package><sys_policy/><sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope><sys_update_name>sp_portal_290a2c2455a303107f4429801dee3e5e</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-23 05:26:57</sys_updated_on><theme/><title>CFMS Portal</title><ts_index_group/><url_suffix>cfms</url_suffix></sp_portal><sys_translated_text action="delete_multiple" query="documentkey=290a2c2455a303107f4429801dee3e5e"/></record_update>]]></payload>
+        <payload_hash>-110024538</payload_hash>
+        <record_name>CFMS Portal</record_name>
+        <reverted_from/>
+        <source>6f2d16f3615703107f44f4898ccc4c88</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 05:26:57</sys_created_on>
+        <sys_id>59e6f134496703107f44f280a62db5a7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a0ccbb3bb80000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 05:26:57</sys_updated_on>
+        <type>Service Portal</type>
+        <update_guid>5de6f134b66703104ec0a0ba702638a6</update_guid>
+        <update_guid_history>5de6f134b66703104ec0a0ba702638a6:-110024538,b0ad61e4ba6f0310b1f2db35911e3710:1735280465,817d2d64a86f031014070ec59ca90319:-1482558297,416a6864cea30310fee252fb1a484a9e:714831489</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="CFMS Portal">18bcf1b049a703107f44f280a62db583</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 05:52:17</sys_created_on>
+        <sys_db_object display_value="" name="sp_portal">sp_portal</sys_db_object>
+        <sys_id>22450d935d5a4f1abdaa1f6610b34404</sys_id>
+        <sys_metadata>290a2c2455a303107f4429801dee3e5e</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CFMS Portal</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_scope_delete display_value="">00ca93000f1045668006564f73c0b4e4</sys_scope_delete>
+        <sys_update_name>sp_portal_290a2c2455a303107f4429801dee3e5e</sys_update_name>
+        <sys_update_version display_value="sp_portal_290a2c2455a303107f4429801dee3e5e">59e6f134496703107f44f280a62db5a7</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 05:52:17</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

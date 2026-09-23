@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($scope) {
+
+    var c = this;
+
+
+    c.ratingText = "";
+
+    c.loading = false;
+
+    c.successMessage = "";
+
+    c.errorMessage = "";
+
+
+    c.selectRating = function(rating) {
+
+        c.data.rating = rating;
+
+
+        if (rating == 1) {
+
+            c.ratingText = "Very Poor";
+
+        } else if (rating == 2) {
+
+            c.ratingText = "Poor";
+
+        } else if (rating == 3) {
+
+            c.ratingText = "Average";
+
+        } else if (rating == 4) {
+
+            c.ratingText = "Good";
+
+        } else {
+
+            c.ratingText = "Excellent";
+
+        }
+
+    };
+
+
+    c.submitFeedback = function() {
+
+        c.successMessage = "";
+
+        c.errorMessage = "";
+
+
+        if (!c.data.rating) {
+
+            c.errorMessage =
+                "Please select a star rating.";
+
+            return;
+        }
+
+
+        if (!c.data.comment) {
+
+            c.errorMessage =
+                "Please enter your feedback.";
+
+            return;
+        }
+
+
+        c.loading = true;
+
+
+        c.server.get({
+
+            action: "submit_feedback",
+
+            rating: c.data.rating,
+
+            comment: c.data.comment
+
+        }).then(function(response) {
+
+            c.loading = false;
+
+
+            if (response.data.success) {
+
+                c.successMessage =
+                    response.data.message;
+
+
+                c.data.rating = 0;
+
+                c.data.comment = "";
+
+                c.ratingText = "";
+
+            } else {
+
+                c.errorMessage =
+                    response.data.message;
+
+            }
+
+        });
+
+    };
+
+
+    c.goBack = function() {
+
+        window.location.href =
+            "?id=student_welcome";
+
+    };
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.feedback-page {&#13;
+    min-height: 100vh;&#13;
+&#13;
+    background: #f3f6fa;&#13;
+&#13;
+    padding: 35px;&#13;
+&#13;
+    font-family: "Segoe UI", Arial, sans-serif;&#13;
+&#13;
+    color: #102235;&#13;
+}&#13;
+&#13;
+&#13;
+.feedback-header {&#13;
+    background: white;&#13;
+&#13;
+    border: 1px solid #dce4eb;&#13;
+&#13;
+    border-radius: 16px;&#13;
+&#13;
+    padding: 25px 30px;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    justify-content: space-between;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    margin-bottom: 25px;&#13;
+}&#13;
+&#13;
+&#13;
+.feedback-header h1 {&#13;
+    margin: 0 0 7px;&#13;
+&#13;
+    font-size: 29px;&#13;
+}&#13;
+&#13;
+&#13;
+.feedback-header p {&#13;
+    margin: 0;&#13;
+&#13;
+    color: #63768a;&#13;
+}&#13;
+&#13;
+&#13;
+.back-btn {&#13;
+    background: white;&#13;
+&#13;
+    border: 1px solid #ccd7e0;&#13;
+&#13;
+    padding: 10px 18px;&#13;
+&#13;
+    border-radius: 8px;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.feedback-card {&#13;
+    background: white;&#13;
+&#13;
+    max-width: 750px;&#13;
+&#13;
+    margin: auto;&#13;
+&#13;
+    padding: 40px;&#13;
+&#13;
+    border-radius: 18px;&#13;
+&#13;
+    border: 1px solid #dce4eb;&#13;
+&#13;
+    text-align: center;&#13;
+}&#13;
+&#13;
+&#13;
+.feedback-card h2 {&#13;
+    margin: 0;&#13;
+&#13;
+    font-size: 26px;&#13;
+}&#13;
+&#13;
+&#13;
+.feedback-subtitle {&#13;
+    color: #718397;&#13;
+&#13;
+    margin-top: 8px;&#13;
+&#13;
+    margin-bottom: 25px;&#13;
+}&#13;
+&#13;
+&#13;
+/* STARS */&#13;
+&#13;
+.stars {&#13;
+    display: flex;&#13;
+&#13;
+    justify-content: center;&#13;
+&#13;
+    gap: 10px;&#13;
+&#13;
+    margin: 20px 0 10px;&#13;
+}&#13;
+&#13;
+&#13;
+.star {&#13;
+    font-size: 45px;&#13;
+&#13;
+    color: #d5dce2;&#13;
+&#13;
+    cursor: pointer;&#13;
+&#13;
+    transition: .15s;&#13;
+}&#13;
+&#13;
+&#13;
+.star:hover {&#13;
+    transform: scale(1.15);&#13;
+}&#13;
+&#13;
+&#13;
+.star.selected {&#13;
+    color: #f4b400;&#13;
+}&#13;
+&#13;
+&#13;
+.rating-text {&#13;
+    height: 25px;&#13;
+&#13;
+    color: #66798d;&#13;
+&#13;
+    font-weight: 600;&#13;
+&#13;
+    margin-bottom: 25px;&#13;
+}&#13;
+&#13;
+&#13;
+.form-group {&#13;
+    text-align: left;&#13;
+&#13;
+    margin-bottom: 22px;&#13;
+}&#13;
+&#13;
+&#13;
+.form-group label {&#13;
+    display: block;&#13;
+&#13;
+    font-weight: 700;&#13;
+&#13;
+    margin-bottom: 9px;&#13;
+}&#13;
+&#13;
+&#13;
+.feedback-input {&#13;
+    width: 100%;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+&#13;
+    border: 1px solid #ccd7e0;&#13;
+&#13;
+    border-radius: 9px;&#13;
+&#13;
+    padding: 14px;&#13;
+&#13;
+    font-size: 15px;&#13;
+&#13;
+    resize: vertical;&#13;
+&#13;
+    outline: none;&#13;
+}&#13;
+&#13;
+&#13;
+.feedback-input:focus {&#13;
+    border-color: #117f75;&#13;
+&#13;
+    box-shadow:&#13;
+        0 0 0 3px rgba(17,127,117,.10);&#13;
+}&#13;
+&#13;
+&#13;
+.submit-feedback {&#13;
+    width: 100%;&#13;
+&#13;
+    height: 52px;&#13;
+&#13;
+    border: none;&#13;
+&#13;
+    border-radius: 9px;&#13;
+&#13;
+    background: #117f75;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    font-size: 17px;&#13;
+&#13;
+    font-weight: 700;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.submit-feedback:hover {&#13;
+    background: #096b62;&#13;
+}&#13;
+&#13;
+&#13;
+.submit-feedback:disabled {&#13;
+    opacity: .6;&#13;
+}&#13;
+&#13;
+&#13;
+.success-message {&#13;
+    margin-top: 20px;&#13;
+&#13;
+    padding: 14px;&#13;
+&#13;
+    border-radius: 8px;&#13;
+&#13;
+    background: #e7f7ee;&#13;
+&#13;
+    color: #137442;&#13;
+}&#13;
+&#13;
+&#13;
+.error-message {&#13;
+    margin-top: 20px;&#13;
+&#13;
+    padding: 14px;&#13;
+&#13;
+    border-radius: 8px;&#13;
+&#13;
+    background: #fff0f0;&#13;
+&#13;
+    color: #c62828;&#13;
+}&#13;
+&#13;
+&#13;
+@media(max-width:600px) {&#13;
+&#13;
+    .feedback-page {&#13;
+        padding: 18px;&#13;
+    }&#13;
+&#13;
+    .feedback-header {&#13;
+        flex-direction: column;&#13;
+&#13;
+        align-items: flex-start;&#13;
+&#13;
+        gap: 18px;&#13;
+    }&#13;
+&#13;
+    .feedback-card {&#13;
+        padding: 25px 20px;&#13;
+    }&#13;
+&#13;
+    .star {&#13;
+        font-size: 36px;&#13;
+    }&#13;
+&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>cfms_student_feedback</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>CFMS Student Feedback</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+    data.success = false;
+
+    data.message = "";
+
+
+    if (input &&
+        input.action == "submit_feedback") {
+
+
+        if (!input.rating) {
+
+            data.message =
+                "Please select a rating.";
+
+            return;
+        }
+
+
+        if (!input.comment) {
+
+            data.message =
+                "Please enter your feedback.";
+
+            return;
+        }
+
+
+        var feedback =
+            new GlideRecord("u_cfms_feedback");
+
+
+        feedback.initialize();
+
+
+        feedback.u_student =
+            gs.getUserID();
+
+
+        feedback.u_rating =
+            input.rating;
+
+
+        feedback.u_comments =
+            input.comment;
+
+
+        var result =
+            feedback.insert();
+
+
+        if (result) {
+
+            data.success = true;
+
+            data.message =
+                "Thank you! Your feedback has been submitted.";
+
+        } else {
+
+            data.message =
+                "Unable to submit feedback.";
+
+        }
+
+    }
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 09:43:19</sys_created_on>
+        <sys_id>32517abc496f03107f44f280a62db550</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CFMS Student Feedback</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_widget_32517abc496f03107f44f280a62db550</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 09:43:19</sys_updated_on>
+        <template><![CDATA[<div class="feedback-page">
+
+    <div class="feedback-header">
+
+        <div>
+
+            <h1>⭐ Student Feedback</h1>
+
+            <p>
+                Tell us about your campus food service experience.
+            </p>
+
+        </div>
+
+
+        <button
+            class="back-btn"
+            ng-click="c.goBack()">
+
+            ← Back
+
+        </button>
+
+    </div>
+
+
+    <div class="feedback-card">
+
+        <h2>
+            How was your experience?
+        </h2>
+
+        <p class="feedback-subtitle">
+            Your feedback helps us improve the mess service.
+        </p>
+
+
+        <!-- STAR RATING -->
+
+        <div class="stars">
+
+            <span
+                ng-repeat="star in [1,2,3,4,5]"
+                class="star"
+                ng-class="{'selected': star <= c.data.rating}"
+                ng-click="c.selectRating(star)">
+
+                ★
+
+            </span>
+
+        </div>
+
+
+        <div class="rating-text">
+
+            {{c.ratingText}}
+
+        </div>
+
+
+        <!-- COMMENT -->
+
+        <div class="form-group">
+
+            <label>
+                Your Feedback
+            </label>
+
+            <textarea
+                class="feedback-input"
+                ng-model="c.data.comment"
+                rows="6"
+                placeholder="Tell us what you liked or what we can improve...">
+            </textarea>
+
+        </div>
+
+
+        <button
+            class="submit-feedback"
+            ng-click="c.submitFeedback()"
+            ng-disabled="c.loading">
+
+            <span ng-if="!c.loading">
+                Submit Feedback →
+            </span>
+
+            <span ng-if="c.loading">
+                Submitting...
+            </span>
+
+        </button>
+
+
+        <div
+            class="success-message"
+            ng-if="c.successMessage">
+
+            ✓ {{c.successMessage}}
+
+        </div>
+
+
+        <div
+            class="error-message"
+            ng-if="c.errorMessage">
+
+            {{c.errorMessage}}
+
+        </div>
+
+    </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

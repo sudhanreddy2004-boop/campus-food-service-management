@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section action="DELETE" caption="" section_id="46bec62f089f03107f447d6c83c82284" sys_domain="global" table="x_snc_campus_foo_1_use_case_priority" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.begin_split</element>
+            <position>0</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-19 09:58:38</sys_created_on>
+            <sys_id>c2be0a2f089f03107f447d6c83c8223b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_use_case_priority" sys_domain="global" view="Default view">46bec62f089f03107f447d6c83c82284</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-19 09:58:38</sys_updated_on>
+            <sys_user/>
+            <type>.begin_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>use_case</element>
+            <position>1</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-19 09:58:38</sys_created_on>
+            <sys_id>06be0a2f089f03107f447d6c83c8223c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_use_case_priority" sys_domain="global" view="Default view">46bec62f089f03107f447d6c83c82284</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-19 09:58:38</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>base_priority</element>
+            <position>2</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-19 09:58:38</sys_created_on>
+            <sys_id>02be0a2f089f03107f447d6c83c8223d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_use_case_priority" sys_domain="global" view="Default view">46bec62f089f03107f447d6c83c82284</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-19 09:58:38</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>affected_threshold</element>
+            <position>3</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-19 09:58:39</sys_created_on>
+            <sys_id>0ebe0a2f089f03107f447d6c83c8223d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_use_case_priority" sys_domain="global" view="Default view">46bec62f089f03107f447d6c83c82284</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-19 09:58:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>4</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-19 09:58:39</sys_created_on>
+            <sys_id>0abe0a2f089f03107f447d6c83c8223e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_use_case_priority" sys_domain="global" view="Default view">46bec62f089f03107f447d6c83c82284</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-19 09:58:39</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>priority_level</element>
+            <position>5</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-19 09:58:39</sys_created_on>
+            <sys_id>06be0a2f089f03107f447d6c83c8223f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_use_case_priority" sys_domain="global" view="Default view">46bec62f089f03107f447d6c83c82284</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-19 09:58:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>safety_critical</element>
+            <position>6</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-19 09:58:39</sys_created_on>
+            <sys_id>02be0a2f089f03107f447d6c83c82240</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_use_case_priority" sys_domain="global" view="Default view">46bec62f089f03107f447d6c83c82284</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-19 09:58:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>active</element>
+            <position>7</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-19 09:58:39</sys_created_on>
+            <sys_id>0ebe0a2f089f03107f447d6c83c82240</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_use_case_priority" sys_domain="global" view="Default view">46bec62f089f03107f447d6c83c82284</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-19 09:58:39</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>8</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-19 09:58:39</sys_created_on>
+            <sys_id>0abe0a2f089f03107f447d6c83c82241</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_use_case_priority" sys_domain="global" view="Default view">46bec62f089f03107f447d6c83c82284</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-19 09:58:39</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_section action="DELETE">
+            <caption/>
+            <header>false</header>
+            <name>x_snc_campus_foo_1_use_case_priority</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-19 09:58:38</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>46bec62f089f03107f447d6c83c82284</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_snc_campus_foo_1_use_case_priority</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+            <sys_update_name>sys_ui_section_46bec62f089f03107f447d6c83c82284</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-19 09:58:38</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</application>
+        <file_path/>
+        <instance_id>8ed1cdc7c38fcf94a03197af05013150</instance_id>
+        <instance_name>ltm-hck-2876-0046</instance_name>
+        <name>sys_ui_section_46bec62f089f03107f447d6c83c82284</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_ui_section caption="" section_id="46bec62f089f03107f447d6c83c82284" sys_domain="global" table="x_snc_campus_foo_1_use_case_priority" version="3" view=""><sys_ui_element action="INSERT_OR_UPDATE"><element>.begin_split</element><position>0</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-19 09:58:38</sys_created_on><sys_id>c2be0a2f089f03107f447d6c83c8223b</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_use_case_priority" sys_domain="global" view="Default view">46bec62f089f03107f447d6c83c82284</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-19 09:58:38</sys_updated_on><sys_user/><type>.begin_split</type></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>use_case</element><position>1</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-19 09:58:38</sys_created_on><sys_id>06be0a2f089f03107f447d6c83c8223c</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_use_case_priority" sys_domain="global" view="Default view">46bec62f089f03107f447d6c83c82284</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-19 09:58:38</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>base_priority</element><position>2</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-19 09:58:38</sys_created_on><sys_id>02be0a2f089f03107f447d6c83c8223d</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_use_case_priority" sys_domain="global" view="Default view">46bec62f089f03107f447d6c83c82284</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-19 09:58:38</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>affected_threshold</element><position>3</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-19 09:58:39</sys_created_on><sys_id>0ebe0a2f089f03107f447d6c83c8223d</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_use_case_priority" sys_domain="global" view="Default view">46bec62f089f03107f447d6c83c82284</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-19 09:58:39</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>.split</element><position>4</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-19 09:58:39</sys_created_on><sys_id>0abe0a2f089f03107f447d6c83c8223e</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_use_case_priority" sys_domain="global" view="Default view">46bec62f089f03107f447d6c83c82284</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-19 09:58:39</sys_updated_on><sys_user/><type>.split</type></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>priority_level</element><position>5</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-19 09:58:39</sys_created_on><sys_id>06be0a2f089f03107f447d6c83c8223f</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_use_case_priority" sys_domain="global" view="Default view">46bec62f089f03107f447d6c83c82284</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-19 09:58:39</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>safety_critical</element><position>6</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-19 09:58:39</sys_created_on><sys_id>02be0a2f089f03107f447d6c83c82240</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_use_case_priority" sys_domain="global" view="Default view">46bec62f089f03107f447d6c83c82284</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-19 09:58:39</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>active</element><position>7</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-19 09:58:39</sys_created_on><sys_id>0ebe0a2f089f03107f447d6c83c82240</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_use_case_priority" sys_domain="global" view="Default view">46bec62f089f03107f447d6c83c82284</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-19 09:58:39</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>.end_split</element><position>8</position><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-19 09:58:39</sys_created_on><sys_id>0abe0a2f089f03107f447d6c83c82241</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_use_case_priority" sys_domain="global" view="Default view">46bec62f089f03107f447d6c83c82284</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-19 09:58:39</sys_updated_on><sys_user/><type>.end_split</type></sys_ui_element><sys_ui_section action="INSERT_OR_UPDATE"><caption/><header>false</header><name>x_snc_campus_foo_1_use_case_priority</name><roles/><sys_class_name>sys_ui_section</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-19 09:58:38</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>46bec62f089f03107f447d6c83c82284</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_snc_campus_foo_1_use_case_priority</sys_name><sys_overrides/><sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package><sys_policy/><sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope><sys_update_name>sys_ui_section_46bec62f089f03107f447d6c83c82284</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-19 09:58:38</sys_updated_on><sys_user/><title>true</title><view display_value="Default view" name="NULL">Default view</view><view_name/></sys_ui_section></sys_ui_section></record_update>]]></payload>
+        <payload_hash>97141469</payload_hash>
+        <record_name>Use Case Priority</record_name>
+        <reverted_from/>
+        <source>023299d7dd1f03107f44143a6accf8ff</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-19 09:58:39</sys_created_on>
+        <sys_id>86be0a2f089f03107f447d6c83c82244</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a0b91a88e40000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-19 09:58:39</sys_updated_on>
+        <type>Form Layout</type>
+        <update_guid>0ebe0a2fd29f0310ebf20bfd0434e543</update_guid>
+        <update_guid_history>0ebe0a2fd29f0310ebf20bfd0434e543:97141469,02be0a2f439f0310be635a96760efe36:276244032</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 09:52:15</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_section">sys_ui_section</sys_db_object>
+        <sys_id>43eff02a174a47c0b78b52aab5396400</sys_id>
+        <sys_metadata>46bec62f089f03107f447d6c83c82284</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_campus_foo_1_use_case_priority</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_parent display_value="">da5aceaf085f03107f447d6c83c82286</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_scope_delete display_value="">00ca93000f1045668006564f73c0b4e4</sys_scope_delete>
+        <sys_update_name>sys_ui_section_46bec62f089f03107f447d6c83c82284</sys_update_name>
+        <sys_update_version display_value="sys_ui_section_46bec62f089f03107f447d6c83c82284">86be0a2f089f03107f447d6c83c82244</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 09:52:15</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

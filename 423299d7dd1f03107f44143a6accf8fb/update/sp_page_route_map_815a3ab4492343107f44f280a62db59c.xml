@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page_route_map">
+    <sp_page_route_map action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <order>40</order>
+        <portals/>
+        <roles/>
+        <route_from_page display_value="student_welcome_dashboard">3b3e4abc492b03107f44f280a62db570</route_from_page>
+        <route_to_page display_value="student_feedback">cb9f6238496f03107f44f280a62db5c5</route_to_page>
+        <short_description>Student Welcome to Feedback</short_description>
+        <sys_class_name>sp_page_route_map</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 10:21:55</sys_created_on>
+        <sys_id>815a3ab4492343107f44f280a62db59c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>3b3e4abc492b03107f44f280a62db570</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_page_route_map_815a3ab4492343107f44f280a62db59c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 10:21:55</sys_updated_on>
+    </sp_page_route_map>
+</record_update>

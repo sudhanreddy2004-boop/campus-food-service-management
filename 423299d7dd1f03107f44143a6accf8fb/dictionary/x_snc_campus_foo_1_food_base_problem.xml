@@ -7,6 +7,8 @@
         <element label="Missed Meal Request" max_length="40" name="missed_meal_request" type="string"/>
         <element label="Latest Ticket" max_length="32" name="latest_ticket" reference="x_snc_campus_foo_1_food_complaint" type="reference"/>
         <element label="Assigned to" max_length="32" name="assigned_to" reference="sys_user" type="reference"/>
+        <element default="False" label="Feedback Available" max_length="40" name="feedback_available" type="boolean"/>
+        <element label="Notes" max_length="255" name="notes" type="string_full_utf8"/>
         <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element label="Assignment Group" max_length="32" name="assignment_group" reference="sys_user_group" type="reference"/>
@@ -18,7 +20,7 @@
         <element label="Open Ticket Count" max_length="40" name="open_ticket_count" type="integer"/>
         <element label="Latest Reported At" max_length="40" name="latest_reported_at" type="glide_date_time"/>
         <element label="Food Hygiene Issue" max_length="40" name="food_hygiene_issue" type="string"/>
-        <element choice="1" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+        <element choice="1" label="State" mandatory="true" max_length="40" name="status" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Active" value="active"/>
                 <element inactive_on_update="false" label="Resolved" value="resolved"/>

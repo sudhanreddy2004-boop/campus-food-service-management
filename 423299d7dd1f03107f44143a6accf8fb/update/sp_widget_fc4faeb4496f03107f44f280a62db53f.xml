@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($scope) {
+
+    var c = this;
+
+
+    c.loading = false;
+
+    c.successMessage = "";
+
+    c.errorMessage = "";
+
+
+    c.submitTicket = function() {
+
+        c.successMessage = "";
+        c.errorMessage = "";
+
+
+        if (!c.data.category) {
+
+            c.errorMessage =
+                "Please select an issue category.";
+
+            return;
+        }
+
+
+        if (!c.data.subject) {
+
+            c.errorMessage =
+                "Please enter the subject.";
+
+            return;
+        }
+
+
+        if (!c.data.description) {
+
+            c.errorMessage =
+                "Please describe your issue.";
+
+            return;
+        }
+
+
+        c.loading = true;
+
+
+        c.server.get({
+
+            action: "create_ticket",
+
+            category: c.data.category,
+
+            subject: c.data.subject,
+
+            description: c.data.description
+
+        }).then(function(response) {
+
+            c.loading = false;
+
+
+            if (response.data.success) {
+
+                c.successMessage =
+                    response.data.message;
+
+
+                c.data.category = "";
+
+                c.data.subject = "";
+
+                c.data.description = "";
+
+            } else {
+
+                c.errorMessage =
+                    response.data.message;
+
+            }
+
+        });
+
+    };
+
+
+    c.goBack = function() {
+
+        window.location.href =
+            "?id=student_welcome";
+
+    };
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.cfms-ticket-page {&#13;
+    min-height: 100vh;&#13;
+    background: #f3f6fa;&#13;
+    padding: 35px;&#13;
+    font-family: "Segoe UI", Arial, sans-serif;&#13;
+    color: #102235;&#13;
+}&#13;
+&#13;
+&#13;
+.ticket-header {&#13;
+    background: white;&#13;
+    border-radius: 16px;&#13;
+    padding: 25px 30px;&#13;
+    margin-bottom: 25px;&#13;
+&#13;
+    display: flex;&#13;
+    justify-content: space-between;&#13;
+    align-items: center;&#13;
+&#13;
+    border: 1px solid #dce4eb;&#13;
+}&#13;
+&#13;
+&#13;
+.ticket-header h1 {&#13;
+    margin: 0 0 7px;&#13;
+    font-size: 29px;&#13;
+    font-weight: 750;&#13;
+}&#13;
+&#13;
+&#13;
+.ticket-header p {&#13;
+    margin: 0;&#13;
+    color: #63768a;&#13;
+    font-size: 16px;&#13;
+}&#13;
+&#13;
+&#13;
+.back-btn {&#13;
+    border: 1px solid #cfd9e2;&#13;
+    background: white;&#13;
+    color: #34506a;&#13;
+    padding: 10px 18px;&#13;
+    border-radius: 8px;&#13;
+    cursor: pointer;&#13;
+    font-size: 15px;&#13;
+}&#13;
+&#13;
+&#13;
+.ticket-card {&#13;
+    background: white;&#13;
+    max-width: 850px;&#13;
+    margin: auto;&#13;
+&#13;
+    padding: 35px;&#13;
+&#13;
+    border-radius: 18px;&#13;
+&#13;
+    border: 1px solid #dce4eb;&#13;
+&#13;
+    box-shadow:&#13;
+        0 8px 25px rgba(30, 50, 70, .06);&#13;
+}&#13;
+&#13;
+&#13;
+.form-group {&#13;
+    margin-bottom: 24px;&#13;
+}&#13;
+&#13;
+&#13;
+.form-group label {&#13;
+    display: block;&#13;
+    font-size: 16px;&#13;
+    font-weight: 700;&#13;
+    margin-bottom: 9px;&#13;
+}&#13;
+&#13;
+&#13;
+.form-control {&#13;
+    width: 100%;&#13;
+    box-sizing: border-box;&#13;
+&#13;
+    border: 1px solid #ccd7e0;&#13;
+&#13;
+    border-radius: 9px;&#13;
+&#13;
+    padding: 13px 15px;&#13;
+&#13;
+    font-size: 15px;&#13;
+&#13;
+    background: #ffffff;&#13;
+&#13;
+    outline: none;&#13;
+}&#13;
+&#13;
+&#13;
+.form-control:focus {&#13;
+    border-color: #159c91;&#13;
+&#13;
+    box-shadow:&#13;
+        0 0 0 3px rgba(21,156,145,.10);&#13;
+}&#13;
+&#13;
+&#13;
+.description {&#13;
+    resize: vertical;&#13;
+}&#13;
+&#13;
+&#13;
+.submit-btn {&#13;
+    width: 100%;&#13;
+    height: 52px;&#13;
+&#13;
+    border: none;&#13;
+    border-radius: 9px;&#13;
+&#13;
+    background: #117f75;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    font-size: 17px;&#13;
+    font-weight: 700;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.submit-btn:hover {&#13;
+    background: #096b62;&#13;
+}&#13;
+&#13;
+&#13;
+.submit-btn:disabled {&#13;
+    opacity: .6;&#13;
+    cursor: not-allowed;&#13;
+}&#13;
+&#13;
+&#13;
+.success-message {&#13;
+    margin-top: 20px;&#13;
+    padding: 14px;&#13;
+&#13;
+    border-radius: 8px;&#13;
+&#13;
+    background: #e7f7ee;&#13;
+    color: #137442;&#13;
+&#13;
+    text-align: center;&#13;
+}&#13;
+&#13;
+&#13;
+.error-message {&#13;
+    margin-top: 20px;&#13;
+    padding: 14px;&#13;
+&#13;
+    border-radius: 8px;&#13;
+&#13;
+    background: #fff0f0;&#13;
+    color: #c62828;&#13;
+&#13;
+    text-align: center;&#13;
+}&#13;
+&#13;
+&#13;
+@media(max-width:600px) {&#13;
+&#13;
+    .cfms-ticket-page {&#13;
+        padding: 18px;&#13;
+    }&#13;
+&#13;
+    .ticket-header {&#13;
+        align-items: flex-start;&#13;
+        gap: 15px;&#13;
+    }&#13;
+&#13;
+    .ticket-header h1 {&#13;
+        font-size: 23px;&#13;
+    }&#13;
+&#13;
+    .ticket-card {&#13;
+        padding: 22px;&#13;
+    }&#13;
+&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>cfms_raise_ticket</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>CFMS Raise Ticket</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+    data.success = false;
+    data.message = "";
+
+
+    if (input && input.action == "create_ticket") {
+
+        if (!input.category ||
+            !input.subject ||
+            !input.description) {
+
+            data.success = false;
+            data.message =
+                "Please fill all required fields.";
+
+            return;
+        }
+
+
+        var ticket = new GlideRecord("incident");
+
+        ticket.initialize();
+
+
+        ticket.caller_id = gs.getUserID();
+
+        ticket.short_description =
+            "[CFMS] " + input.subject;
+
+        ticket.description =
+            "Category: " + input.category +
+            "\n\n" +
+            input.description;
+
+        ticket.contact_type = "self-service";
+
+        ticket.urgency = 3;
+        ticket.impact = 3;
+
+
+        var ticketNumber = ticket.insert();
+
+
+        if (ticketNumber) {
+
+            data.success = true;
+
+            data.number =
+                ticket.getValue("number");
+
+            data.message =
+                "Ticket " +
+                ticket.getValue("number") +
+                " has been raised successfully.";
+
+        } else {
+
+            data.success = false;
+
+            data.message =
+                "Unable to create the ticket.";
+
+        }
+
+    }
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 09:37:18</sys_created_on>
+        <sys_id>fc4faeb4496f03107f44f280a62db53f</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>CFMS Raise Ticket</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_widget_fc4faeb4496f03107f44f280a62db53f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 09:39:10</sys_updated_on>
+        <template><![CDATA[<div class="cfms-ticket-page">
+
+    <div class="ticket-header">
+        <div>
+            <h1>]]>🎫<![CDATA[ Raise a Ticket</h1>
+            <p>Report any campus food or mess-related issue.</p>
+        </div>
+
+        <button class="back-btn" ng-click="c.goBack()">
+            ← Back
+        </button>
+    </div>
+
+
+    <div class="ticket-card">
+
+        <div class="form-group">
+            <label>Issue Category</label>
+
+            <select
+                ng-model="c.data.category"
+                class="form-control">
+
+                <option value="">Select an issue</option>
+                <option value="Food Quality">Food Quality</option>
+                <option value="Hygiene">Hygiene</option>
+                <option value="Billing">Billing</option>
+                <option value="Diet">Diet</option>
+                <option value="Mess Service">Mess Service</option>
+                <option value="Other">Other</option>
+
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label>Subject</label>
+
+            <input
+                type="text"
+                class="form-control"
+                ng-model="c.data.subject"
+                placeholder="Enter your issue title">
+        </div>
+
+
+        <div class="form-group">
+            <label>Describe Your Issue</label>
+
+            <textarea
+                class="form-control description"
+                ng-model="c.data.description"
+                placeholder="Explain your issue clearly..."
+                rows="6">
+            </textarea>
+        </div>
+
+
+        <button
+            class="submit-btn"
+            ng-click="c.submitTicket()"
+            ng-disabled="c.loading">
+
+            <span ng-if="!c.loading">
+                Submit Ticket →
+            </span>
+
+            <span ng-if="c.loading">
+                Submitting...
+            </span>
+
+        </button>
+
+
+        <div
+            class="success-message"
+            ng-if="c.successMessage">
+
+            ✓ {{c.successMessage}}
+
+        </div>
+
+
+        <div
+            class="error-message"
+            ng-if="c.errorMessage">
+
+            {{c.errorMessage}}
+
+        </div>
+
+    </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

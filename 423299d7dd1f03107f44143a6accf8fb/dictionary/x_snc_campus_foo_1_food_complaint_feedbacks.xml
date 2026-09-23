@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="5b0ad26055e343107f4429801dee3eb3" label="Food Complaint feedbacks" max_length="40" name="x_snc_campus_foo_1_food_complaint_feedbacks" type="collection">
+        <element label="Student" max_length="32" name="student" reference="sys_user" type="reference"/>
+        <element choice="1" choice_field="use_case" choice_table="x_snc_campus_foo_1_food_base_problem" label="Use Case" max_length="40" name="use_case" type="choice">
+            <choice/>
+        </element>
+        <element choice="3" default="3" label="Resolution Satisfaction" max_length="40" name="resolution_satisfaction" type="integer">
+            <choice>
+                <element inactive_on_update="false" label="Very Dissatisfied" value="1"/>
+                <element inactive_on_update="false" label="Neutral" value="3"/>
+                <element inactive_on_update="false" label="Very Satisfied" value="5"/>
+                <element inactive_on_update="false" label="Satisfied" value="4"/>
+                <element inactive_on_update="false" label="Dissatisfied" value="2"/>
+            </choice>
+        </element>
+        <element label="Problem Type" max_length="255" name="problem_type" type="string_full_utf8"/>
+        <element choice="1" choice_table="x_snc_campus_foo_1_food_base_problem" label="Mess Hall" max_length="32" name="mess_hall" reference="x_snc_campus_foo_1_mess_hall" type="reference">
+            <choice/>
+        </element>
+        <element label="Feedback Comments" max_length="255" name="feedback_comments" type="string_full_utf8"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element choice="1" choice_field="meal_type" choice_table="x_snc_campus_foo_1_food_complaint" label="Meal Type" max_length="40" name="meal_type" type="choice">
+            <choice/>
+        </element>
+        <element choice="1" choice_field="state" choice_table="x_snc_campus_foo_1_food_complaint" label="State" max_length="40" name="status" type="choice">
+            <choice/>
+        </element>
+        <element choice="3" default="3" label="Overall Rating" max_length="40" name="overall_rating" type="integer">
+            <choice>
+                <element inactive_on_update="false" label="1 - Very Poor" value="1"/>
+                <element inactive_on_update="false" label="3 - Average" value="3"/>
+                <element inactive_on_update="false" label="4 - Good" value="4"/>
+                <element inactive_on_update="false" label="2 - Poor" value="2"/>
+                <element inactive_on_update="false" label="5 - Excellent" value="5"/>
+            </choice>
+        </element>
+        <element label="Base Problem" max_length="32" name="base_problem" reference="x_snc_campus_foo_1_food_base_problem" type="reference"/>
+        <element label="Submitted At" max_length="40" name="submitted_at" type="glide_date_time"/>
+        <element label="Food Complaint" max_length="32" name="food_complaint" reference="x_snc_campus_foo_1_food_complaint" type="reference"/>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <index name="index">
+            <element name="sys_class_name"/>
+        </index>
+        <index name="index2">
+            <element name="food_complaint"/>
+        </index>
+        <index name="index3">
+            <element name="student"/>
+        </index>
+        <index name="index4">
+            <element name="mess_hall"/>
+        </index>
+        <index name="index5">
+            <element name="base_problem"/>
+        </index>
+    </element>
+</database>

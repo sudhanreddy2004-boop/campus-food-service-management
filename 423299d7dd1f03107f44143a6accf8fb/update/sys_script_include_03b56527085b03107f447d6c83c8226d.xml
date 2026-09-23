@@ -9,308 +9,125 @@
         <mobile_callable>false</mobile_callable>
         <name>FoodBaseProblemMatcherUtil</name>
         <sandbox_callable>false</sandbox_callable>
-        <script><![CDATA[//3.
-var FoodBaseProblemMatcherUtil = Class.create();
+        <script><![CDATA[var FoodBaseProblemMatcherUtil = Class.create();
 
 FoodBaseProblemMatcherUtil.prototype = {
 
     initialize: function() {},
 
-    // Main function
+    // Main function — call this with a Food Complaint sys_id
     matchOrCreate: function(complaintSysId) {
 
-        // Get Food Complaint
-        var complaint = new GlideRecord(
-            'x_snc_campus_foo_1_food_complaint'
-        );
+        var complaint = new GlideRecord('x_snc_campus_foo_1_food_complaint');
 
         if (!complaint.get(complaintSysId)) {
-            gs.error(
-                'FoodBaseProblemMatcherUtil: Complaint not found ' +
-                complaintSysId
-            );
+            gs.error('FoodBaseProblemMatcherUtil: Complaint not found ' + complaintSysId);
             return;
         }
 
-        // Find Base Problem using ONLY Use Case + Mess Hall
         var baseProblem = this._findExisting(complaint);
 
         if (baseProblem) {
-
-            // Existing Base Problem found
             this._updateExisting(complaint, baseProblem);
-
         } else {
-
-            // No Base Problem found
             this._createNew(complaint);
         }
     },
 
-
-    // Find Base Problem using ONLY:
-    // Use Case + Mess Hall
+    // Find Base Problem using Use Case + Problem Type (Normalized) + Mess Hall
+    // Excludes Resolved and Closed — a fixed problem should not silently reopen
     _findExisting: function(complaint) {
 
-        var bp = new GlideRecord(
-            'x_snc_campus_foo_1_food_base_problem'
-        );
+    var bp = new GlideRecord('x_snc_campus_foo_1_food_base_problem');
 
-        bp.addQuery('use_case', complaint.use_case);
-        bp.addQuery('mess_hall', complaint.mess_hall);
+    bp.addQuery('use_case', complaint.use_case);
+    bp.addQuery('problem_type_normalized', complaint.problem_type_normalized);
+    bp.addQuery('mess_hall', complaint.mess_hall);
+    bp.addQuery('status', '!=', 'closed');
+    bp.query();
 
-        bp.query();
+    if (bp.next()) {
+        return bp;
+    }
 
-        if (bp.next()) {
-            return bp;
-        }
+    return null;
+},
 
-        return null;
-    },
-
-
-    // Existing Base Problem found
+    // Existing Base Problem found — link and update counts
     _updateExisting: function(complaint, bp) {
 
-        // Assign Base Problem to Food Complaint
         complaint.base_problem = bp.getUniqueValue();
         complaint.update();
 
-        // Increase student count
-        bp.student_count =
-            parseInt(bp.student_count || 0, 10) + 1;
+        bp.ticket_count = parseInt(bp.ticket_count || 0, 10) + 1;
+        bp.open_ticket_count = parseInt(bp.open_ticket_count || 0, 10) + 1;
+        bp.latest_ticket = complaint.getUniqueValue();
+        bp.latest_reported_at = complaint.opened_at;
+        bp.student_count = this._countDistinctStudents(bp.getUniqueValue());
 
         bp.update();
 
-        gs.info(
-            'Food Complaint ' + complaint.number +
-            ' linked to existing Base Problem ' + bp.number
-        );
+        gs.info('Food Complaint ' + complaint.number + ' linked to existing Base Problem ' + bp.number);
     },
 
-
-    // No Base Problem found
+    // No Base Problem found — create a new one
     _createNew: function(complaint) {
 
-        var bp = new GlideRecord(
-            'x_snc_campus_foo_1_food_base_problem'
-        );
-
+        var bp = new GlideRecord('x_snc_campus_foo_1_food_base_problem');
         bp.initialize();
 
-        // Matching fields
         bp.use_case = complaint.use_case;
         bp.mess_hall = complaint.mess_hall;
-
-        // Optional information copied from complaint
         bp.meal_type = complaint.meal_type;
         bp.problem_type = complaint.problem_type;
-        bp.problem_type_normalized =
-            complaint.problem_type_normalized;
+        bp.problem_type_normalized = complaint.problem_type_normalized;
 
-        // First complaint/student
+        bp.first_ticket = complaint.getUniqueValue();
+        bp.latest_ticket = complaint.getUniqueValue();
+        bp.first_reported_at = complaint.opened_at;
+        bp.latest_reported_at = complaint.opened_at;
+
         bp.student_count = 1;
+        bp.ticket_count = 1;
+        bp.open_ticket_count = 1;
+        bp.resolved_ticket_count = 0;
+        bp.status = 'active';
 
-        // Create Base Problem
         var bpSysId = bp.insert();
 
-        // Assign new Base Problem to Food Complaint
         complaint.base_problem = bpSysId;
         complaint.update();
 
-        gs.info(
-            'Food Complaint ' + complaint.number +
-            ' created new Base Problem ' + bp.number
-        );
+        gs.info('Food Complaint ' + complaint.number + ' created new Base Problem ' + bp.number);
     },
 
+    // Real distinct student count, not a naive increment
+    _countDistinctStudents: function(baseProblemSysId) {
+        var ga = new GlideAggregate('x_snc_campus_foo_1_food_complaint');
+        ga.addQuery('base_problem', baseProblemSysId);
+        ga.groupBy('student');
+        ga.query();
+
+        var count = 0;
+        while (ga.next()) {
+            count++;
+        }
+        return count;
+    },
 
     type: 'FoodBaseProblemMatcherUtil'
-};
-
-//2. var FoodBaseProblemMatcherUtil = Class.create();
-
-// FoodBaseProblemMatcherUtil.prototype = {
-
-//     initialize: function() {},
-
-//     // Main entry point - call this with a Food Complaint sys_id
-//     matchOrCreate: function(complaintSysId) {
-
-//         var complaint = new GlideRecord('x_snc_campus_foo_1_food_complaint');
-
-//         if (!complaint.get(complaintSysId)) {
-//             gs.error(
-//                 'FoodBaseProblemMatcherUtil: complaint not found ' +
-//                 complaintSysId
-//             );
-//             return;
-//         }
-
-//         var existing = this._findExisting(complaint);
-
-//         if (existing) {
-//             this._updateExisting(complaint, existing);
-//         } else {
-//             this._createNew(complaint);
-//         }
-//     },
-
-//     // Find Base Problem using ONLY Use Case + Mess Hall
-//     _findExisting: function(complaint) {
-
-//         var bp = new GlideRecord(
-//             'x_snc_campus_foo_1_food_base_problem'
-//         );
-
-//         bp.addQuery('use_case', complaint.use_case);
-//         bp.addQuery('mess_hall', complaint.mess_hall);
-//         bp.query();
-
-//         if (bp.next()) {
-//             return bp;
-//         }
-
-//         return null;
-//     },
-
-//     // If Base Problem exists, increase student count
-//     _updateExisting: function(complaint, bp) {
-
-//         bp.student_count =
-//             parseInt(bp.student_count || 0, 10) + 1;
-
-//         bp.update();
-//     },
-
-//     // If Base Problem does not exist, create it
-//     _createNew: function(complaint) {
-
-//         var bp = new GlideRecord(
-//             'x_snc_campus_foo_1_food_base_problem'
-//         );
-
-//         bp.initialize();
-
-//         // Matching fields
-//         bp.use_case = complaint.use_case;
-//         bp.mess_hall = complaint.mess_hall;
-
-//         // Copy complaint information
-//         bp.meal_type = complaint.meal_type;
-//         bp.problem_type = complaint.problem_type;
-//         bp.problem_type_normalized =
-//             complaint.problem_type_normalized;
-
-//         // First student
-//         bp.student_count = 1;
-
-//         bp.insert();
-//     },
-
-//     type: 'FoodBaseProblemMatcherUtil'
-// };
-
-// 1.var FoodBaseProblemMatcherUtil = Class.create();
-// FoodBaseProblemMatcherUtil.prototype = {
-//     initialize: function() {},
-
-//     // Main entry point — call this with a Food Complaint sys_id
-//     matchOrCreate: function(complaintSysId) {
-
-//         var complaint = new GlideRecord('x_snc_campus_foo_1_food_complaint');
-//         if (!complaint.get(complaintSysId)) {
-//             gs.error('FoodBaseProblemMatcherUtil: complaint not found ' + complaintSysId);
-//             return;
-//         }
-
-//         var existing = this._findExisting(complaint);
-
-//         if (existing) {
-//             this._linkToExisting(complaint, existing);
-//         } else {
-//             this._createNew(complaint);
-//         }
-//     },
-
-//     _findExisting: function(complaint) {
-//         var bp = new GlideRecord('x_snc_campus_foo_1_food_base_problem');
-//         bp.addQuery('use_case', complaint.use_case);
-//         bp.addQuery('problem_type_normalized', complaint.problem_type_normalized);
-//         bp.addQuery('mess_hall', complaint.mess_hall);
-//         bp.addQuery('status', '!=', 'closed');   // don't reopen a closed problem
-//         bp.query();
-
-//         if (bp.next()) {
-//             return bp;
-//         }
-//         return null;
-//     },
-
-//     _linkToExisting: function(complaint, bp) {
-//         complaint.base_problem = bp.getUniqueValue();
-//         complaint.update();
-
-//         bp.ticket_count = parseInt(bp.ticket_count, 10) + 1;
-//         bp.open_ticket_count = parseInt(bp.open_ticket_count, 10) + 1;
-//         bp.latest_ticket = complaint.getUniqueValue();
-//         bp.latest_reported_at = complaint.opened_at;
-
-//         bp.student_count = this._countDistinctStudents(bp.getUniqueValue());
-
-//         bp.update();
-//     },
-
-//     _createNew: function(complaint) {
-//         var bp = new GlideRecord('x_snc_campus_foo_1_food_base_problem');
-//         bp.initialize();
-
-//         bp.use_case = complaint.use_case;
-//         bp.problem_type = complaint.problem_type;
-//         bp.problem_type_normalized = complaint.problem_type_normalized;
-//         bp.mess_hall = complaint.mess_hall;
-//         bp.first_ticket = complaint.getUniqueValue();
-//         bp.latest_ticket = complaint.getUniqueValue();
-//         bp.first_reported_at = complaint.opened_at;
-//         bp.latest_reported_at = complaint.opened_at;
-//         bp.student_count = 1;
-//         bp.ticket_count = 1;
-//         bp.open_ticket_count = 1;
-//         bp.resolved_ticket_count = 0;
-//         bp.status = 'active';
-
-//         var bpSysId = bp.insert();
-
-//         complaint.base_problem = bpSysId;
-//         complaint.update();
-//     },
-
-//     _countDistinctStudents: function(baseProblemSysId) {
-//         var ga = new GlideAggregate('x_snc_campus_foo_1_food_complaint');
-//         ga.addQuery('base_problem', baseProblemSysId);
-//         ga.groupBy('student');
-//         ga.query();
-
-//         var count = 0;
-//         while (ga.next()) {
-//             count++;
-//         }
-//         return count;
-//     },
-
-//     type: 'FoodBaseProblemMatcherUtil'
-// };]]></script>
+};]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-19 07:00:47</sys_created_on>
         <sys_id>03b56527085b03107f447d6c83c8226d</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>FoodBaseProblemMatcherUtil</sys_name>
         <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
         <sys_policy>read</sys_policy>
         <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
         <sys_update_name>sys_script_include_03b56527085b03107f447d6c83c8226d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-22 04:57:11</sys_updated_on>
+        <sys_updated_on>2026-09-23 10:26:30</sys_updated_on>
     </sys_script_include>
 </record_update>

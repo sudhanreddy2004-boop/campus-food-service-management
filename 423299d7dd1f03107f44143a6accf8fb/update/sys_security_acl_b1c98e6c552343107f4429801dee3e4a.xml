@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>false</advanced>
+        <applies_to/>
+        <condition/>
+        <controlled_by_refs/>
+        <decision_type>allow</decision_type>
+        <description/>
+        <local_or_existing>Local</local_or_existing>
+        <name>global.x_snc_campus_foo_1.Campus Food Complaint AI Agent</name>
+        <operation display_value="execute">execute</operation>
+        <script/>
+        <security_attribute/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-22 12:10:59</sys_created_on>
+        <sys_id>b1c98e6c552343107f4429801dee3e4a</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>global.x_snc_campus_foo_1.Campus Food Complaint AI Agent</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_security_acl_b1c98e6c552343107f4429801dee3e4a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-22 14:50:29</sys_updated_on>
+        <type display_value="gen_ai_agent">fc55e9f79f8222109570e67e8a0a1c34</type>
+    </sys_security_acl>
+</record_update>

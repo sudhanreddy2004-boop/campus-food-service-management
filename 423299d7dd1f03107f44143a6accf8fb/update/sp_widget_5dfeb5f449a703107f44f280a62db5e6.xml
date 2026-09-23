@@ -1,0 +1,1215 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script/>
+        <controller_as>c</controller_as>
+        <css>/* ==============================&#13;
+   CFMS GLOBAL&#13;
+================================ */&#13;
+&#13;
+.cfms-home {&#13;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;&#13;
+  color: #102b3a;&#13;
+  background: #ffffff;&#13;
+  margin: 0;&#13;
+}&#13;
+&#13;
+&#13;
+/* ==============================&#13;
+   HEADER&#13;
+================================ */&#13;
+&#13;
+.cfms-header {&#13;
+  height: 76px;&#13;
+  background: #ffffff;&#13;
+&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+  justify-content: space-between;&#13;
+&#13;
+  padding: 0 5.5%;&#13;
+&#13;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.08);&#13;
+&#13;
+  position: relative;&#13;
+  z-index: 10;&#13;
+}&#13;
+&#13;
+&#13;
+.cfms-logo-area {&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+  gap: 14px;&#13;
+}&#13;
+&#13;
+&#13;
+.cfms-logo-icon {&#13;
+  font-size: 38px;&#13;
+  color: #008f83;&#13;
+}&#13;
+&#13;
+&#13;
+.cfms-logo {&#13;
+  font-size: 29px;&#13;
+  font-weight: 800;&#13;
+  color: #102b3a;&#13;
+  line-height: 1;&#13;
+}&#13;
+&#13;
+&#13;
+.cfms-subtitle {&#13;
+  font-size: 14px;&#13;
+  font-weight: 600;&#13;
+  color: #102b3a;&#13;
+  margin-top: 3px;&#13;
+}&#13;
+&#13;
+&#13;
+.cfms-nav {&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+  gap: 38px;&#13;
+}&#13;
+&#13;
+&#13;
+.cfms-nav a {&#13;
+  text-decoration: none;&#13;
+  color: #243746;&#13;
+  font-size: 15px;&#13;
+  font-weight: 500;&#13;
+&#13;
+  position: relative;&#13;
+&#13;
+  padding: 28px 0;&#13;
+}&#13;
+&#13;
+&#13;
+.cfms-nav a.active {&#13;
+  color: #008f83;&#13;
+}&#13;
+&#13;
+&#13;
+.cfms-nav a.active::after {&#13;
+  content: "";&#13;
+&#13;
+  position: absolute;&#13;
+&#13;
+  bottom: 12px;&#13;
+  left: 0;&#13;
+  right: 0;&#13;
+&#13;
+  height: 2px;&#13;
+&#13;
+  background: #008f83;&#13;
+}&#13;
+&#13;
+&#13;
+.login-button {&#13;
+  background: #078b80 !important;&#13;
+  color: white !important;&#13;
+&#13;
+  padding: 12px 28px !important;&#13;
+&#13;
+  border-radius: 8px;&#13;
+&#13;
+  font-weight: 700 !important;&#13;
+}&#13;
+&#13;
+&#13;
+/* ==============================&#13;
+   HERO&#13;
+================================ */&#13;
+&#13;
+.cfms-hero {&#13;
+  min-height: 375px;&#13;
+&#13;
+  position: relative;&#13;
+&#13;
+  background-image:&#13;
+    url("/cfms-cafeteria.jpg");&#13;
+&#13;
+  background-size: cover;&#13;
+  background-position: center;&#13;
+}&#13;
+&#13;
+&#13;
+.hero-overlay {&#13;
+  position: absolute;&#13;
+&#13;
+  inset: 0;&#13;
+&#13;
+  background:&#13;
+    linear-gradient(&#13;
+      90deg,&#13;
+      rgba(4, 25, 35, 0.90),&#13;
+      rgba(4, 25, 35, 0.68),&#13;
+      rgba(4, 25, 35, 0.45)&#13;
+    );&#13;
+}&#13;
+&#13;
+&#13;
+.hero-content {&#13;
+  position: relative;&#13;
+  z-index: 2;&#13;
+&#13;
+  display: flex;&#13;
+  justify-content: space-between;&#13;
+  align-items: center;&#13;
+&#13;
+  padding: 32px 5.7% 26px;&#13;
+&#13;
+  gap: 50px;&#13;
+}&#13;
+&#13;
+&#13;
+.hero-left {&#13;
+  max-width: 700px;&#13;
+}&#13;
+&#13;
+&#13;
+.hero-left h1 {&#13;
+  color: #ffffff;&#13;
+&#13;
+  font-size: 52px;&#13;
+  line-height: 1.08;&#13;
+&#13;
+  margin: 25px 0 18px;&#13;
+&#13;
+  font-weight: 800;&#13;
+}&#13;
+&#13;
+&#13;
+.hero-left p {&#13;
+  color: #ffffff;&#13;
+&#13;
+  font-size: 18px;&#13;
+  line-height: 1.55;&#13;
+&#13;
+  max-width: 650px;&#13;
+&#13;
+  margin-bottom: 25px;&#13;
+}&#13;
+&#13;
+&#13;
+.get-started {&#13;
+  display: inline-flex;&#13;
+&#13;
+  align-items: center;&#13;
+  gap: 20px;&#13;
+&#13;
+  background: #08b5a5;&#13;
+&#13;
+  color: #ffffff;&#13;
+&#13;
+  text-decoration: none;&#13;
+&#13;
+  padding: 14px 27px;&#13;
+&#13;
+  border-radius: 28px;&#13;
+&#13;
+  font-size: 16px;&#13;
+  font-weight: 700;&#13;
+}&#13;
+&#13;
+&#13;
+.get-started span {&#13;
+  font-size: 25px;&#13;
+}&#13;
+&#13;
+&#13;
+/* ==============================&#13;
+   LOGIN PANEL&#13;
+================================ */&#13;
+&#13;
+.login-panel {&#13;
+  background: #ffffff;&#13;
+&#13;
+  width: 380px;&#13;
+&#13;
+  padding: 25px;&#13;
+&#13;
+  border-radius: 9px;&#13;
+&#13;
+  box-shadow:&#13;
+    0 10px 35px rgba(0,0,0,0.25);&#13;
+}&#13;
+&#13;
+&#13;
+.login-panel h2 {&#13;
+  margin: 0;&#13;
+&#13;
+  font-size: 22px;&#13;
+}&#13;
+&#13;
+&#13;
+.login-description {&#13;
+  margin: 6px 0 14px;&#13;
+&#13;
+  color: #607180;&#13;
+&#13;
+  font-size: 14px;&#13;
+}&#13;
+&#13;
+&#13;
+.login-card {&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  gap: 13px;&#13;
+&#13;
+  text-decoration: none;&#13;
+&#13;
+  color: #102b3a;&#13;
+&#13;
+  border: 1px solid #d8e0e5;&#13;
+&#13;
+  border-radius: 8px;&#13;
+&#13;
+  padding: 10px;&#13;
+&#13;
+  margin-top: 9px;&#13;
+&#13;
+  transition: 0.2s;&#13;
+}&#13;
+&#13;
+&#13;
+.login-card:hover {&#13;
+  transform: translateX(3px);&#13;
+&#13;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);&#13;
+}&#13;
+&#13;
+&#13;
+.login-icon {&#13;
+  width: 40px;&#13;
+  height: 40px;&#13;
+&#13;
+  border-radius: 8px;&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+  justify-content: center;&#13;
+&#13;
+  font-size: 20px;&#13;
+}&#13;
+&#13;
+&#13;
+.login-icon.student {&#13;
+  background: #4169e1;&#13;
+}&#13;
+&#13;
+&#13;
+.login-icon.officer {&#13;
+  background: #079228;&#13;
+}&#13;
+&#13;
+&#13;
+.login-icon.admin {&#13;
+  background: #8051d9;&#13;
+}&#13;
+&#13;
+&#13;
+.login-info {&#13;
+  display: flex;&#13;
+&#13;
+  flex-direction: column;&#13;
+&#13;
+  flex: 1;&#13;
+}&#13;
+&#13;
+&#13;
+.login-info strong {&#13;
+  font-size: 15px;&#13;
+}&#13;
+&#13;
+&#13;
+.login-info span {&#13;
+  color: #647481;&#13;
+&#13;
+  font-size: 12px;&#13;
+&#13;
+  margin-top: 3px;&#13;
+}&#13;
+&#13;
+&#13;
+.arrow {&#13;
+  font-size: 27px;&#13;
+&#13;
+  color: #008f83;&#13;
+}&#13;
+&#13;
+&#13;
+/* ==============================&#13;
+   FEATURE CARDS&#13;
+================================ */&#13;
+&#13;
+.feature-section {&#13;
+  display: grid;&#13;
+&#13;
+  grid-template-columns:&#13;
+    repeat(4, 1fr);&#13;
+&#13;
+  gap: 20px;&#13;
+&#13;
+  padding: 22px 5.7%;&#13;
+}&#13;
+&#13;
+&#13;
+.feature-card {&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  gap: 17px;&#13;
+&#13;
+  background: #ffffff;&#13;
+&#13;
+  padding: 18px;&#13;
+&#13;
+  border-radius: 9px;&#13;
+&#13;
+  box-shadow:&#13;
+    0 3px 15px rgba(0,0,0,0.08);&#13;
+}&#13;
+&#13;
+&#13;
+.feature-icon {&#13;
+  min-width: 55px;&#13;
+  height: 55px;&#13;
+&#13;
+  border-radius: 50%;&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+  justify-content: center;&#13;
+&#13;
+  color: white;&#13;
+&#13;
+  font-size: 24px;&#13;
+}&#13;
+&#13;
+&#13;
+.feature-icon.green {&#13;
+  background: #0fa48d;&#13;
+}&#13;
+&#13;
+&#13;
+.feature-icon.blue {&#13;
+  background: #2588cf;&#13;
+}&#13;
+&#13;
+&#13;
+.feature-icon.orange {&#13;
+  background: #f2a400;&#13;
+}&#13;
+&#13;
+&#13;
+.feature-icon.red {&#13;
+  background: #e94b50;&#13;
+}&#13;
+&#13;
+&#13;
+.feature-card h3 {&#13;
+  margin: 0 0 7px;&#13;
+&#13;
+  font-size: 16px;&#13;
+}&#13;
+&#13;
+&#13;
+.feature-card p {&#13;
+  margin: 0;&#13;
+&#13;
+  color: #526474;&#13;
+&#13;
+  font-size: 13px;&#13;
+&#13;
+  line-height: 1.5;&#13;
+}&#13;
+&#13;
+&#13;
+/* ==============================&#13;
+   ABOUT&#13;
+================================ */&#13;
+&#13;
+.about-section {&#13;
+  display: grid;&#13;
+&#13;
+  grid-template-columns: 1fr 1.15fr;&#13;
+&#13;
+  gap: 50px;&#13;
+&#13;
+  padding: 25px 5.7% 30px;&#13;
+}&#13;
+&#13;
+&#13;
+.about-left {&#13;
+  border-right: 1px solid #dce5e9;&#13;
+&#13;
+  padding-right: 45px;&#13;
+}&#13;
+&#13;
+&#13;
+.section-label {&#13;
+  color: #008f83;&#13;
+&#13;
+  font-size: 14px;&#13;
+&#13;
+  font-weight: 700;&#13;
+&#13;
+  margin-bottom: 12px;&#13;
+}&#13;
+&#13;
+&#13;
+.about-left h2 {&#13;
+  font-size: 30px;&#13;
+&#13;
+  line-height: 1.15;&#13;
+&#13;
+  margin: 0 0 18px;&#13;
+}&#13;
+&#13;
+&#13;
+.about-left p {&#13;
+  color: #526474;&#13;
+&#13;
+  font-size: 15px;&#13;
+&#13;
+  line-height: 1.6;&#13;
+}&#13;
+&#13;
+&#13;
+.learn-button {&#13;
+  display: inline-flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  gap: 15px;&#13;
+&#13;
+  border: 1px solid #008f83;&#13;
+&#13;
+  color: #008f83;&#13;
+&#13;
+  text-decoration: none;&#13;
+&#13;
+  padding: 10px 24px;&#13;
+&#13;
+  border-radius: 6px;&#13;
+&#13;
+  font-weight: 700;&#13;
+}&#13;
+&#13;
+&#13;
+/* ==============================&#13;
+   STATS&#13;
+================================ */&#13;
+&#13;
+.stats {&#13;
+  display: grid;&#13;
+&#13;
+  grid-template-columns:&#13;
+    repeat(4, 1fr);&#13;
+&#13;
+  text-align: center;&#13;
+&#13;
+  gap: 15px;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-icon {&#13;
+  font-size: 27px;&#13;
+&#13;
+  color: #008f83;&#13;
+&#13;
+  margin-bottom: 8px;&#13;
+}&#13;
+&#13;
+&#13;
+.stat strong {&#13;
+  display: block;&#13;
+&#13;
+  font-size: 20px;&#13;
+&#13;
+  margin-bottom: 5px;&#13;
+}&#13;
+&#13;
+&#13;
+.stat span {&#13;
+  display: block;&#13;
+&#13;
+  color: #526474;&#13;
+&#13;
+  font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+/* ==============================&#13;
+   QUOTE&#13;
+================================ */&#13;
+&#13;
+.quote {&#13;
+  margin-top: 25px;&#13;
+&#13;
+  background: #e4f7f2;&#13;
+&#13;
+  border-radius: 10px;&#13;
+&#13;
+  padding: 20px;&#13;
+&#13;
+  text-align: center;&#13;
+}&#13;
+&#13;
+&#13;
+.quote-mark {&#13;
+  color: #009b8d;&#13;
+&#13;
+  font-size: 38px;&#13;
+&#13;
+  height: 20px;&#13;
+}&#13;
+&#13;
+&#13;
+.quote p {&#13;
+  font-size: 17px;&#13;
+&#13;
+  font-style: italic;&#13;
+&#13;
+  margin: 5px 0 15px;&#13;
+&#13;
+  color: #36525d;&#13;
+}&#13;
+&#13;
+&#13;
+.quote span {&#13;
+  font-size: 14px;&#13;
+}&#13;
+&#13;
+&#13;
+/* ==============================&#13;
+   FOOTER&#13;
+================================ */&#13;
+&#13;
+.cfms-footer {&#13;
+  background: #002f3e;&#13;
+&#13;
+  color: white;&#13;
+&#13;
+  display: grid;&#13;
+&#13;
+  grid-template-columns:&#13;
+    1.5fr 1fr 1.3fr 1fr;&#13;
+&#13;
+  gap: 40px;&#13;
+&#13;
+  padding: 35px 5.7%;&#13;
+}&#13;
+&#13;
+&#13;
+.footer-logo {&#13;
+  font-size: 27px;&#13;
+&#13;
+  font-weight: 800;&#13;
+}&#13;
+&#13;
+&#13;
+.footer-brand p {&#13;
+  margin-top: 5px;&#13;
+&#13;
+  font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+.footer-column {&#13;
+  display: flex;&#13;
+&#13;
+  flex-direction: column;&#13;
+&#13;
+  gap: 9px;&#13;
+}&#13;
+&#13;
+&#13;
+.footer-column h4 {&#13;
+  margin: 0 0 7px;&#13;
+&#13;
+  font-size: 15px;&#13;
+}&#13;
+&#13;
+&#13;
+.footer-column a {&#13;
+  color: #ffffff;&#13;
+&#13;
+  text-decoration: none;&#13;
+&#13;
+  font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+.footer-column p {&#13;
+  margin: 0;&#13;
+&#13;
+  font-size: 13px;&#13;
+&#13;
+  color: #e4eef1;&#13;
+}&#13;
+&#13;
+&#13;
+.social-icons {&#13;
+  font-size: 18px;&#13;
+&#13;
+  margin-bottom: 10px;&#13;
+}&#13;
+&#13;
+&#13;
+/* ==============================&#13;
+   RESPONSIVE&#13;
+================================ */&#13;
+&#13;
+@media (max-width: 1000px) {&#13;
+&#13;
+  .cfms-nav {&#13;
+    gap: 15px;&#13;
+  }&#13;
+&#13;
+  .hero-content {&#13;
+    flex-direction: column;&#13;
+&#13;
+    align-items: stretch;&#13;
+  }&#13;
+&#13;
+  .login-panel {&#13;
+    width: auto;&#13;
+  }&#13;
+&#13;
+  .feature-section {&#13;
+    grid-template-columns:&#13;
+      repeat(2, 1fr);&#13;
+  }&#13;
+&#13;
+  .about-section {&#13;
+    grid-template-columns: 1fr;&#13;
+  }&#13;
+&#13;
+  .about-left {&#13;
+    border-right: none;&#13;
+&#13;
+    border-bottom: 1px solid #ddd;&#13;
+&#13;
+    padding-right: 0;&#13;
+&#13;
+    padding-bottom: 25px;&#13;
+  }&#13;
+&#13;
+}&#13;
+&#13;
+&#13;
+@media (max-width: 650px) {&#13;
+&#13;
+  .cfms-header {&#13;
+    height: auto;&#13;
+&#13;
+    padding: 15px;&#13;
+&#13;
+    flex-direction: column;&#13;
+&#13;
+    gap: 15px;&#13;
+  }&#13;
+&#13;
+  .cfms-nav {&#13;
+    flex-wrap: wrap;&#13;
+&#13;
+    justify-content: center;&#13;
+  }&#13;
+&#13;
+  .hero-left h1 {&#13;
+    font-size: 38px;&#13;
+  }&#13;
+&#13;
+  .feature-section {&#13;
+    grid-template-columns: 1fr;&#13;
+  }&#13;
+&#13;
+  .stats {&#13;
+    grid-template-columns:&#13;
+      repeat(2, 1fr);&#13;
+  }&#13;
+&#13;
+  .cfms-footer {&#13;
+    grid-template-columns: 1fr;&#13;
+  }&#13;
+&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>cfms_home_page</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>CFMS Home Page</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+    data.title = "Campus Food Management System";
+    data.studentsServed = "1000+";
+    data.menuUpdates = "Daily";
+    data.issueResolution = "Quick";
+    data.community = "Healthier";
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 06:03:19</sys_created_on>
+        <sys_id>5dfeb5f449a703107f44f280a62db5e6</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>CFMS Home Page</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_widget_5dfeb5f449a703107f44f280a62db5e6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 06:06:08</sys_updated_on>
+        <template><![CDATA[<div class="cfms-home">
+
+  <!-- ================= HEADER ================= -->
+
+  <header class="cfms-header">
+
+    <div class="cfms-logo-area">
+
+      <div class="cfms-logo-icon">
+        ]]>🍴
+<![CDATA[      </div>
+
+      <div>
+        <div class="cfms-logo">CFMS</div>
+        <div class="cfms-subtitle">
+          Campus Food Management System
+        </div>
+      </div>
+
+    </div>
+
+    <nav class="cfms-nav">
+
+      <a href="?id=cfms_home" class="active">
+        Home
+      </a>
+
+      <a href="?id=cfms_about">
+        About
+      </a>
+
+      <a href="?id=cfms_features">
+        Features
+      </a>
+
+      <a href="?id=cfms_help">
+        Help
+      </a>
+
+      <a href="/login.do" class="login-button">
+        ]]>👤<![CDATA[ &nbsp; Login
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <!-- ================= HERO ================= -->
+
+  <section class="cfms-hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+      <div class="hero-left">
+
+        <h1>
+          Good Food<br>
+          Better Campus
+        </h1>
+
+        <p>
+          Report food issues, check menus, and help us serve you better.
+          Together for a healthier, happier campus.
+        </p>
+
+        <a href="?id=cfms_complaint"
+           class="get-started">
+
+          Get Started
+          <span>→</span>
+
+        </a>
+
+      </div>
+
+
+      <!-- LOGIN PANEL -->
+
+      <div class="login-panel">
+
+        <h2>Login to CFMS</h2>
+
+        <p class="login-description">
+          Access your account to continue
+        </p>
+
+
+        <!-- STUDENT -->
+
+        <a href="?id=cfms_student_login"
+           class="login-card">
+
+          <div class="login-icon student">
+            ]]>🎓
+<![CDATA[          </div>
+
+          <div class="login-info">
+
+            <strong>
+              Student Login
+            </strong>
+
+            <span>
+              Report Complaints, View Menu
+            </span>
+
+          </div>
+
+          <div class="arrow">
+            ›
+          </div>
+
+        </a>
+
+
+        <!-- FOOD OFFICER -->
+
+        <a href="?id=cfms_officer_login"
+           class="login-card">
+
+          <div class="login-icon officer">
+            ]]>👥
+<![CDATA[          </div>
+
+          <div class="login-info">
+
+            <strong>
+              Food Officer Login
+            </strong>
+
+            <span>
+              Manage Complaints, Take Action
+            </span>
+
+          </div>
+
+          <div class="arrow">
+            ›
+          </div>
+
+        </a>
+
+
+        <!-- ADMIN -->
+
+        <a href="?id=cfms_admin_login"
+           class="login-card">
+
+          <div class="login-icon admin">
+            ⚙
+          </div>
+
+          <div class="login-info">
+
+            <strong>
+              Admin Login
+            </strong>
+
+            <span>
+              Manage System, View Reports
+            </span>
+
+          </div>
+
+          <div class="arrow">
+            ›
+          </div>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FEATURE CARDS ================= -->
+
+  <section class="feature-section">
+
+    <div class="feature-card">
+
+      <div class="feature-icon green">
+        ]]>📄
+<![CDATA[      </div>
+
+      <div>
+        <h3>Report a Complaint</h3>
+
+        <p>
+          Facing food quality or hygiene issues?
+          Let us know.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="feature-card">
+
+      <div class="feature-icon blue">
+        ]]>🍴
+<![CDATA[      </div>
+
+      <div>
+        <h3>View Mess Menu</h3>
+
+        <p>
+          Check daily menu and meal information.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="feature-card">
+
+      <div class="feature-icon orange">
+        ]]>🔍
+<![CDATA[      </div>
+
+      <div>
+        <h3>Track Your Complaint</h3>
+
+        <p>
+          Stay updated on the status of your complaints.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="feature-card">
+
+      <div class="feature-icon red">
+        ]]>📊
+<![CDATA[      </div>
+
+      <div>
+        <h3>Improve Together</h3>
+
+        <p>
+          Your feedback helps us serve better food
+          for a healthier campus.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= ABOUT ================= -->
+
+  <section class="about-section">
+
+    <div class="about-left">
+
+      <div class="section-label">
+        ABOUT CFMS
+      </div>
+
+      <h2>
+        A Better Food Experience<br>
+        for a Better Tomorrow
+      </h2>
+
+      <p>
+        The Campus Food Management System (CFMS) is a
+        digital platform designed to bridge the gap between
+        students and food service teams. It enables transparent
+        communication, quick issue resolution, and continuous
+        improvement in campus food services.
+      </p>
+
+      <a href="?id=cfms_about"
+         class="learn-button">
+
+        Learn More
+        <span>→</span>
+
+      </a>
+
+    </div>
+
+
+    <div class="about-right">
+
+      <div class="stats">
+
+        <div class="stat">
+
+          <div class="stat-icon">
+            ]]>👥
+<![CDATA[          </div>
+
+          <strong>1000+</strong>
+
+          <span>
+            Students Served
+          </span>
+
+        </div>
+
+
+        <div class="stat">
+
+          <div class="stat-icon">
+            ]]>🍴
+<![CDATA[          </div>
+
+          <strong>Daily</strong>
+
+          <span>
+            Menu Updates
+          </span>
+
+        </div>
+
+
+        <div class="stat">
+
+          <div class="stat-icon">
+            ]]>🛡
+<![CDATA[          </div>
+
+          <strong>Quick</strong>
+
+          <span>
+            Issue Resolution
+          </span>
+
+        </div>
+
+
+        <div class="stat">
+
+          <div class="stat-icon">
+            ♥
+          </div>
+
+          <strong>Healthier</strong>
+
+          <span>
+            Campus Community
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div class="quote">
+
+        <div class="quote-mark">
+          “
+        </div>
+
+        <p>
+          Food is not just fuel, it's the foundation
+          of a brighter future.
+        </p>
+
+        <span>
+          – CFMS Team
+        </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer class="cfms-footer">
+
+    <div class="footer-brand">
+
+      <div class="footer-logo">
+        ]]>🍴<![CDATA[ CFMS
+      </div>
+
+      <p>
+        Campus Food Management System
+      </p>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>Quick Links</h4>
+
+      <a href="?id=cfms_home">Home</a>
+      <a href="?id=cfms_about">About</a>
+      <a href="?id=cfms_features">Features</a>
+      <a href="?id=cfms_help">Help</a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>Support</h4>
+
+      <p>✉ cfms-support@campus.edu</p>
+      <p>☎ +91 1800 123 4567</p>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>Follow Us</h4>
+
+      <div class="social-icons">
+        ◎ &nbsp; in &nbsp; ▶
+      </div>
+
+      <p>
+        © 2026 CFMS. All rights reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

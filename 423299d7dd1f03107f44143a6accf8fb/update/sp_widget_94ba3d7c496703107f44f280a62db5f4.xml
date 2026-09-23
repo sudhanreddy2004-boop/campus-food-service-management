@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function() {
+
+    var c = this;
+
+    c.submitComplaint = function() {
+
+        if (!c.data.complaint_type ||
+            !c.data.mess_hall ||
+            !c.data.meal ||
+            !c.data.description) {
+
+            alert("Please fill all required fields.");
+            return;
+        }
+
+        c.server.update().then(function(response) {
+
+            if (response.data.message) {
+                c.data.message = response.data.message;
+            }
+
+        });
+    };
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.cfsa-complaint {&#13;
+    max-width: 650px;&#13;
+    margin: 20px auto;&#13;
+    background: #ffffff;&#13;
+    border-radius: 12px;&#13;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);&#13;
+    overflow: hidden;&#13;
+}&#13;
+&#13;
+.complaint-header {&#13;
+    background: #337ab7;&#13;
+    color: white;&#13;
+    padding: 22px;&#13;
+    text-align: center;&#13;
+}&#13;
+&#13;
+.complaint-header h2 {&#13;
+    margin: 0 0 8px;&#13;
+    font-size: 24px;&#13;
+}&#13;
+&#13;
+.complaint-header p {&#13;
+    margin: 0;&#13;
+    font-size: 14px;&#13;
+}&#13;
+&#13;
+.complaint-body {&#13;
+    padding: 25px;&#13;
+}&#13;
+&#13;
+.form-group {&#13;
+    margin-bottom: 18px;&#13;
+}&#13;
+&#13;
+.form-group label {&#13;
+    display: block;&#13;
+    font-weight: bold;&#13;
+    margin-bottom: 7px;&#13;
+}&#13;
+&#13;
+.form-control {&#13;
+    width: 100%;&#13;
+    border: 1px solid #cccccc;&#13;
+    border-radius: 6px;&#13;
+    padding: 10px;&#13;
+}&#13;
+&#13;
+textarea.form-control {&#13;
+    resize: vertical;&#13;
+}&#13;
+&#13;
+.btn-primary {&#13;
+    width: 100%;&#13;
+    padding: 12px;&#13;
+    border: none;&#13;
+    border-radius: 6px;&#13;
+    background: #337ab7;&#13;
+    color: white;&#13;
+    font-size: 16px;&#13;
+    font-weight: bold;&#13;
+}&#13;
+&#13;
+.btn-primary:hover {&#13;
+    background: #286090;&#13;
+}&#13;
+&#13;
+.alert {&#13;
+    margin-top: 15px;&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description>Widget for reporting campus food complaints</description>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>campus_food_complaint</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>Campus Food Complaint</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+    if (input && input.action == "submit") {
+
+        var gr = new GlideRecord("u_food_complaint");
+
+        gr.initialize();
+
+        gr.u_complaint_type = input.complaint_type;
+        gr.u_mess_hall = input.mess_hall;
+        gr.u_meal = input.meal;
+        gr.u_description = input.description;
+
+        gr.insert();
+
+        data.message = "Complaint submitted successfully!";
+
+    }
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 05:44:30</sys_created_on>
+        <sys_id>94ba3d7c496703107f44f280a62db5f4</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Campus Food Complaint</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_widget_94ba3d7c496703107f44f280a62db5f4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 05:49:54</sys_updated_on>
+        <template><![CDATA[<div class="cfsa-complaint">
+
+  <div class="complaint-header">
+    <h2>]]>🍽<![CDATA[️ Campus Food Complaint</h2>
+    <p>Report any food-related issue</p>
+  </div>
+
+  <div class="complaint-body">
+
+    <div class="form-group">
+      <label>Complaint Type</label>
+      <select class="form-control"
+              ng-model="c.data.complaint_type">
+        <option value="">Select Complaint Type</option>
+        <option value="Stale Food">Stale Food</option>
+        <option value="Poor Food Quality">Poor Food Quality</option>
+        <option value="Bad Taste">Bad Taste</option>
+        <option value="Food Hygiene Issue">Food Hygiene Issue</option>
+        <option value="Food Quantity Issue">Food Quantity Issue</option>
+        <option value="Late Food Service">Late Food Service</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Mess Hall</label>
+      <select class="form-control"
+              ng-model="c.data.mess_hall">
+        <option value="">Select Mess Hall</option>
+        <option value="Mess Hall A">Mess Hall A</option>
+        <option value="Mess Hall B">Mess Hall B</option>
+        <option value="Mess Hall C">Mess Hall C</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Meal</label>
+      <select class="form-control"
+              ng-model="c.data.meal">
+        <option value="">Select Meal</option>
+        <option value="Breakfast">Breakfast</option>
+        <option value="Lunch">Lunch</option>
+        <option value="Snacks">Snacks</option>
+        <option value="Dinner">Dinner</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Complaint Description</label>
+      <textarea class="form-control"
+                rows="4"
+                ng-model="c.data.description"
+                placeholder="Describe your complaint">
+      </textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Food Photo</label>
+      <input type="file"
+             class="form-control"
+             accept="image/*">
+      <small>Upload a photo of the food issue</small>
+    </div>
+
+    <button class="btn btn-primary"
+            ng-click="c.submitComplaint()">
+      Submit Complaint
+    </button>
+
+    <div class="alert alert-success"
+         ng-if="c.data.message">
+      {{c.data.message}}
+    </div>
+
+  </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

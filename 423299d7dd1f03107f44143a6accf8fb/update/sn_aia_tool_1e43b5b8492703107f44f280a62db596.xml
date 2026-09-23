@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_tool">
+    <sn_aia_tool action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description>Analyze student food-service complaints and identify the type and priority of the issue, including food quality, food safety, hygiene, meal availability, dietary, allergy, menu feedback, or billing concerns. Assess the risk based on the complaint details and provide a concise summary and recommended action to support case routing and faster resolution.</description>
+        <input_schema>[]</input_schema>
+        <name>Classify Food Complaint</name>
+        <record_type>custom</record_type>
+        <script><![CDATA[undefined]]></script>
+        <sys_class_name>sn_aia_tool</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 05:11:11</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>1e43b5b8492703107f44f280a62db596</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Classify Food Complaint</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_tool_1e43b5b8492703107f44f280a62db596</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 05:11:11</sys_updated_on>
+        <target_document>f38b1fc42de303107f44a1c965bbba3a</target_document>
+        <target_document_table>sn_nowassist_skill_config</target_document_table>
+        <type>capability</type>
+    </sn_aia_tool>
+</record_update>

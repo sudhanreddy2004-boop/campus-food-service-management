@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($scope) {
+
+    var c = this;
+
+
+    c.raiseTicket = function() {
+
+        window.location.href =
+            "?id=raise_ticket";
+
+    };
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.history-page {&#13;
+    min-height: 100vh;&#13;
+    background: #f3f6fa;&#13;
+&#13;
+    padding: 35px;&#13;
+&#13;
+    font-family: "Segoe UI", Arial, sans-serif;&#13;
+&#13;
+    color: #102235;&#13;
+}&#13;
+&#13;
+&#13;
+.history-header {&#13;
+    background: white;&#13;
+&#13;
+    padding: 25px 30px;&#13;
+&#13;
+    border-radius: 16px;&#13;
+&#13;
+    border: 1px solid #dce4eb;&#13;
+&#13;
+    margin-bottom: 25px;&#13;
+&#13;
+    display: flex;&#13;
+    justify-content: space-between;&#13;
+    align-items: center;&#13;
+}&#13;
+&#13;
+&#13;
+.history-header h1 {&#13;
+    margin: 0 0 7px;&#13;
+&#13;
+    font-size: 29px;&#13;
+}&#13;
+&#13;
+&#13;
+.history-header p {&#13;
+    margin: 0;&#13;
+&#13;
+    color: #63768a;&#13;
+}&#13;
+&#13;
+&#13;
+.history-card {&#13;
+    background: white;&#13;
+&#13;
+    border-radius: 18px;&#13;
+&#13;
+    border: 1px solid #dce4eb;&#13;
+&#13;
+    padding: 20px;&#13;
+}&#13;
+&#13;
+&#13;
+.new-ticket-btn {&#13;
+    border: none;&#13;
+&#13;
+    background: #117f75;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    padding: 11px 18px;&#13;
+&#13;
+    border-radius: 8px;&#13;
+&#13;
+    font-weight: 700;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.ticket-item {&#13;
+    display: flex;&#13;
+&#13;
+    justify-content: space-between;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    padding: 20px;&#13;
+&#13;
+    border-bottom: 1px solid #e5ebf0;&#13;
+}&#13;
+&#13;
+&#13;
+.ticket-item:last-child {&#13;
+    border-bottom: none;&#13;
+}&#13;
+&#13;
+&#13;
+.ticket-number {&#13;
+    font-size: 14px;&#13;
+&#13;
+    color: #117f75;&#13;
+&#13;
+    font-weight: 700;&#13;
+&#13;
+    margin-bottom: 5px;&#13;
+}&#13;
+&#13;
+&#13;
+.ticket-subject {&#13;
+    font-size: 17px;&#13;
+&#13;
+    font-weight: 650;&#13;
+&#13;
+    margin-bottom: 5px;&#13;
+}&#13;
+&#13;
+&#13;
+.ticket-date {&#13;
+    font-size: 13px;&#13;
+&#13;
+    color: #73869a;&#13;
+}&#13;
+&#13;
+&#13;
+.status {&#13;
+    padding: 7px 13px;&#13;
+&#13;
+    border-radius: 20px;&#13;
+&#13;
+    font-size: 13px;&#13;
+&#13;
+    font-weight: 700;&#13;
+}&#13;
+&#13;
+&#13;
+.status-open {&#13;
+    background: #e7f1ff;&#13;
+    color: #2767df;&#13;
+}&#13;
+&#13;
+&#13;
+.status-progress {&#13;
+    background: #fff3d8;&#13;
+    color: #a56a00;&#13;
+}&#13;
+&#13;
+&#13;
+.status-closed {&#13;
+    background: #e5f7ed;&#13;
+    color: #137442;&#13;
+}&#13;
+&#13;
+&#13;
+.empty-state {&#13;
+    text-align: center;&#13;
+&#13;
+    padding: 70px 20px;&#13;
+}&#13;
+&#13;
+&#13;
+.empty-icon {&#13;
+    font-size: 45px;&#13;
+}&#13;
+&#13;
+&#13;
+.empty-state h2 {&#13;
+    margin: 15px 0 8px;&#13;
+}&#13;
+&#13;
+&#13;
+.empty-state p {&#13;
+    color: #708296;&#13;
+&#13;
+    margin-bottom: 22px;&#13;
+}&#13;
+&#13;
+&#13;
+@media(max-width:600px) {&#13;
+&#13;
+    .history-page {&#13;
+        padding: 18px;&#13;
+    }&#13;
+&#13;
+    .history-header {&#13;
+        flex-direction: column;&#13;
+&#13;
+        align-items: flex-start;&#13;
+&#13;
+        gap: 18px;&#13;
+    }&#13;
+&#13;
+    .ticket-item {&#13;
+        align-items: flex-start;&#13;
+&#13;
+        gap: 15px;&#13;
+&#13;
+        flex-direction: column;&#13;
+    }&#13;
+&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>cfms_ticket_history</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>CFMS Ticket History</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+    data.tickets = [];
+
+
+    var gr = new GlideRecord("incident");
+
+
+    gr.addQuery(
+        "caller_id",
+        gs.getUserID()
+    );
+
+
+    gr.orderByDesc("sys_created_on");
+
+    gr.query();
+
+
+    while (gr.next()) {
+
+        var ticket = {};
+
+
+        ticket.number =
+            gr.getValue("number");
+
+
+        ticket.subject =
+            gr.getValue("short_description");
+
+
+        ticket.date =
+            gr.getDisplayValue("sys_created_on");
+
+
+        var state =
+            gr.getValue("state");
+
+
+        if (state == "1") {
+
+            ticket.status = "Open";
+
+        } else if (state == "2") {
+
+            ticket.status = "In Progress";
+
+        } else {
+
+            ticket.status = "Closed";
+
+        }
+
+
+        data.tickets.push(ticket);
+
+    }
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 09:42:08</sys_created_on>
+        <sys_id>bd11367c496f03107f44f280a62db5ab</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CFMS Ticket History</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_widget_bd11367c496f03107f44f280a62db5ab</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 09:42:08</sys_updated_on>
+        <template><![CDATA[<div class="history-page">
+
+    <div class="history-header">
+
+        <div>
+            <h1>]]>📋<![CDATA[ Ticket History</h1>
+
+            <p>
+                View your previous complaints and their status.
+            </p>
+        </div>
+
+        <button
+            class="new-ticket-btn"
+            ng-click="c.raiseTicket()">
+
+            + Raise Ticket
+
+        </button>
+
+    </div>
+
+
+    <div class="history-card">
+
+        <div
+            class="empty-state"
+            ng-if="c.data.tickets.length == 0">
+
+            <div class="empty-icon">
+                ]]>📭
+<![CDATA[            </div>
+
+            <h2>No tickets found</h2>
+
+            <p>
+                You haven't raised any tickets yet.
+            </p>
+
+            <button
+                class="new-ticket-btn"
+                ng-click="c.raiseTicket()">
+
+                Raise Your First Ticket
+
+            </button>
+
+        </div>
+
+
+        <div
+            class="ticket-list"
+            ng-if="c.data.tickets.length > 0">
+
+            <div
+                class="ticket-item"
+                ng-repeat="ticket in c.data.tickets">
+
+                <div class="ticket-main">
+
+                    <div class="ticket-number">
+                        {{ticket.number}}
+                    </div>
+
+                    <div class="ticket-subject">
+                        {{ticket.subject}}
+                    </div>
+
+                    <div class="ticket-date">
+                        {{ticket.date}}
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="status"
+                    ng-class="{
+                        'status-open': ticket.status == 'Open',
+                        'status-progress': ticket.status == 'In Progress',
+                        'status-closed': ticket.status == 'Closed'
+                    }">
+
+                    {{ticket.status}}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

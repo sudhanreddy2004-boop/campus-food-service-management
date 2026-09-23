@@ -39,7 +39,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>bbfabf0c2de703107f44a1c965bbba9a</sys_id>
-        <sys_mod_count>37</sys_mod_count>
+        <sys_mod_count>38</sys_mod_count>
         <sys_name>Food Base Problem AI Priority Analysis</sys_name>
         <sys_overrides/>
         <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
@@ -47,11 +47,11 @@
         <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
         <sys_update_name>sys_hub_flow_bbfabf0c2de703107f44a1c965bbba9a</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-21 17:22:41</sys_updated_on>
+        <sys_updated_on>2026-09-23 11:18:06</sys_updated_on>
         <type>flow</type>
         <updation_source/>
         <version>2</version>
-        <version_record>b77746582dab43107f44a1c965bbba97</version_record>
+        <version_record>ba37473049e343107f44f280a62db56a</version_record>
     </sys_hub_flow>
     <sys_translated_text action="delete_multiple" query="documentkey=bbfabf0c2de703107f44a1c965bbba9a"/>
     <sys_variable_value action="delete_multiple" query="document_key=bbfabf0c2de703107f44a1c965bbba9a"/>
@@ -365,13 +365,13 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-21 17:00:23</sys_created_on>
         <sys_id>6b628edc2d6b43107f44a1c965bbba07</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-21 17:04:53</sys_updated_on>
+        <sys_updated_on>2026-09-23 11:17:56</sys_updated_on>
         <ui_id>5883c3d5-8643-49e9-981f-11a214d79652</ui_id>
         <updation_source/>
-        <values>H4sIAAAAAAAA/42SzW7bMBCEXyXgWTYkWZYV35oEBgq0TdC0uQSBsCRXNgGKUvjj2DXy7l1aqmsETZEjd2d3Pg75eGBKsiXLy0UmyrnIZcmLWZYumqKATFyWc845pJIlzECLpGy6TtYcHNa97bjGllpb0CH2sBCLPAOeVnOejlsWshTVTFR5fjknqVSu17B/GCdWV3dpmmZpuqCe2CgtLRq2fHxKWA+WHD1atjy8aX0UWQNHHV2I+eKKmC/uTsz/uY7f97FlsUGyFDiWvozbvp/VOysjYJYw3Hk0EomsAe0wYS0YCb6ze7b0NlDBIshbo/cnxUYZT/tY1O6c+kWmszw5812yXe2MqAW0fXA1sdZZ/S/i00g95vvOpZsb8HBPOMIHi4O32HRKoBuSldhA0P76vDYIbnuvOjOMeKB9H6cTnQ6t+TYEzk4mf/4AVQLpJfYxwBjJmE9zv+leTmmvlDlmPTZ1J0CfSRGs2KwU6vg3TGg5aRMG3lvFg493ObCgfrzzjkikZF230PfKrCP8Vh3tiL6drjUdpo3uXgjTqbWZgohxTOmFYbqi+s2x/ABWxWy+0pqj/+D45jMF9dOo54CfI2omKlxILCdFzotJIav5pKqKciKzvLlMy2ImCsleE+b27lqDc39jpJX1c4ghDKGO8dXDK8URYVXvPxHpFsekXp9+A/jarFjyAwAA</values>
+        <values>H4sIAAAAAAAA/42SX2/aMBTFv0rl54BICCHwtrZCmrSt07r1paqia/sGLDlO6j8Uhvrdd00yhqq14tH3Ht9z7s9+PDAl2ZJlxTwVxUxksuD5NJ3M6zyHVCyKGeccJpIlzECDpKzbVlYcHFadbbnGhlpb0CH2MBfzLAU+KWd8MkyZy0KUU1Fm2WJGUqlcp2H/cPkNsVFaWjRs+fiUsA4s5fBo2fLwpnXpIho4apKuaJOra9rk6vtpkw+W9PsutizWSJYCh9KXYdqPs3prZQyYJgx3Ho1ESlaDdpiwBowE39o9W3obqGAR5J3R+5Nio4yneSxqd079JtNplpz5LtmuckZUApouuIqyVmn1v8SnK9VA/Z2l61vwcE9xhA8We2+xaZVA15OVWEPQ/ua81gvuOq9a01/xQPMuTydaHRrzrQfOTiZ/fwZVAukldhFgRDLwqe837cuJ9kqZI+uhqVsB+kyKYMVmpVDHv2FCw0mbMPDeKh583OXAgvr5zjsiJSXrqoGuU2Ydw2/V0Y7SN+O1psO41u0LxXRqbcYgIo4xvTCMV1S/PZYfwKrI5iuNOfr3jm8+U1C/jHoO+DlGTUWJc4nFKM94PsplORuVZV6MZJrVi0mRT0Uu2WvC3N7daHDuH0YaWT2HCKGHOuCr+leKV4RVnf9ESbc4kHp9+gNxvM6pCAQAAA==</values>
     </sys_hub_action_instance_v2>
     <sys_hub_alias_mapping action="delete_multiple" query="source_id=6b628edc2d6b43107f44a1c965bbba07"/>
     <sys_hub_action_instance_v2 action="INSERT_OR_UPDATE">
@@ -389,17 +389,44 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-21 17:06:42</sys_created_on>
         <sys_id>88e38a902dab43107f44a1c965bbba4d</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-21 17:22:31</sys_updated_on>
+        <sys_updated_on>2026-09-23 11:17:56</sys_updated_on>
         <ui_id>b9f059a6-749a-47df-b505-710a3f08f4ad</ui_id>
         <updation_source/>
-        <values>H4sIAAAAAAAA/+1WUU/bMBD+K5GfQOqipAUE5WkrqrSJwQSIF8osN760lhw7sx2gK/3vuyROaAsUkNA0pPXNd/ed7/t8l+vVnAhO+mQHeBQfxHtJL+71ulHU3d+Jx3u9cdzlPQYQkw5RLAOMNJBow/F8w2RRGubzgQHmgNM4TApjQLnFAv1c2Fyy2aUPQ0syFZKjn/SvrjskZwYzOjCkP19zvbYkycYgMfSsqWm9RjfLyzPXSZFhXVQ0xmOPPPKe4OsRehBUlhNHHQJ3DhQHLCRl0kKHZExx5rSZkb4zBRqQND9VctZGTIVyNdGM3VnxG2/eicq4FJBZ4kVoj9QLVJvTI+bYOWZOXGFavbRIwNaacEhZId1g2VYHnOZOaFVDHBvLBq1lkamTWhHSJlh6j8JiEZCXPMvKa1rp+VTfnjVFDoWqJPEUpU6YbE/MOSPGhSvLmROQUGmcsTwXakJzo29EBcZSsnAi8RCmUt/inVZMVMiSsu4QVWXhEO1HlfmSGVGS+I5pELzoEDuzA8msfaCCGtJfRVlJTcxToJUKlQS06oQSnBiRu8941Q34whcd3/RRd2OHwUNDVb1ul5oeyeEtGS17iSptMibxwfmoiKIeT/mn+lrgP/1EoBpCG+FmjyMaD8WGslo9Cng8Sn/38rdN7Ss0baZ2KEBy+4TIfmodZMjaAa1FXx3cC+8MLr2znd13G954L6p+/0f4XxrhmmJtK2t+ZhhK1yYgdpsJDNhcKwtB3ffBt/PTkxA73MJWymnFisaUJizLC0tTrXk7SpSJkAkcG4sPsn04Uj4fnp7I1lwUZpqDpLpweVGhRsoAdovy0PAZNsH9fTAiI3JY6rE2sx+W6QqLFYbr360PQ7HENUkb5NYa4Ybpduj0sb4FM2CYFE9GZFt1GpEGW2tpfLIRQcpO4AhjgsArOiIxCrcZNhWT6Qqk+yIkAy6KbAXUexGEH4EVxE6FaB/fP/Gi3cHj3U37Ijl4WA9LH4WHPXxHrUqW3hRfuHrZMWpK/TA9XqBDDAm+YEjwow1525p7RdnNmruovudP02g23brteBkbnNQOv+F2323B7X+k1eZpfPjd9tyf0us/KqoSi4sNAAA=</values>
+        <values>H4sIAAAAAAAA/+1WUU/bMBD+K5GfQOqipC0IytPWqtImBhMgXiiz3NhpLTl2ZjtAV/rfd4md0JZSQELTKq1vvrvvfN/5u1xv5ohT1ENdRqP4OD5MOnGn046i9lE3Hh92xnGbdghjMWohSTIGkZolSlM43xFRlIb5vK8ZsYziOEwKrZm0iwX4KTe5ILNrHwaWZMoFBT/q3dy2UE40ZLRMo958zfXWkgQZMwGhF3VN6zXaWV6eqUqKDOrCvDaeeuTAe4KvA/AAqCwnjlqIPVgmKYNCUiIMa6GMSEqs0jPUs7oAA5Cm51LMmogpl9YRzciD4b/h5m5UxqUMmCW+Cc0R+wY5czogllxC5sQWuumX4gkzrieUpaQQtr9scwHnueVKOoglY1GjlSgyeeY6gpoES+9RGCiC5SXPsnJHK72cqvuLusghl1VLPEWhEiKaE7FW83Fhy3LmiAlW9Tgjec7lBOda3fEKDKVk4UTAIUyFuoc7DZ/IkCRl3SF0lYRDsA8q8zXRvCTxHdIAeNFCZmb6ghjzRAV6iH8VZSWOmKeAqy5ULcCVEkpwonluP8NVd8wXvmh50UftrQpjT4KqtG6WRA/k4JYMl1rCUumMCHhwOiqiqENT+sldy+hPPxHQDa40t7PnEbUHg6CMks8Cno/S3738fVP7hp7WUzvkTFCzocl+ai3LgLVl2DV9dXCvvDO49s5mdj9seOPDqPr9H+F/aYQdRWerNLim8dK2DQEy04FmJlfSsMAJPvh2eX4WgrQN20sprujgGOOEZHlhcKoUbfJjwkPCYV4MvMT+yUj6fHDakK2+KMwUZQKrwuZFhXK4OmmN3HOJwsb++BiM0Ajth1adqnum+wSSwknzbM+l4Wmwt5bGJxshoGw5PDckgBJBlRKM8QidbIdN+WS6Amm/CskY5UW2Auq8CgLBrCC6FWIkGwOcSwG88L3bmZf2fJq33cimfmrPeOWzvLNMV1gsMVw0O3h8sG1fJMdP62Hpo/C0hx+wkckSJ2BYMRvDnGDf6ecLdAghwRcICX40Ie9bc28ou15zV9X3fDONetOt206XscGZc/gNd/BhC+5ol1abp7Hzu+2lP6W3fwDt0pIJiw0AAA==</values>
     </sys_hub_action_instance_v2>
     <sys_hub_alias_mapping action="delete_multiple" query="source_id=88e38a902dab43107f44a1c965bbba4d"/>
     <sys_hub_sub_flow_instance_v2 action="delete_multiple" query="flow=bbfabf0c2de703107f44a1c965bbba9a"/>
-    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=bbfabf0c2de703107f44a1c965bbba9a"/>
+    <sys_hub_flow_logic_instance_v2 action="delete_multiple" query="flow=bbfabf0c2de703107f44a1c965bbba9a^sys_idNOT INe237473049e343107f44f280a62db540"/>
+    <sys_hub_flow_logic_instance_v2 action="INSERT_OR_UPDATE">
+        <attributes/>
+        <block display_value="">2a37473049e343107f44f280a62db53f</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <display_text/>
+        <flow display_value="Food Base Problem AI Priority Analysis">bbfabf0c2de703107f44a1c965bbba9a</flow>
+        <flow_variables_assigned/>
+        <generation_source/>
+        <logic_definition display_value="If">af4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>3</order>
+        <outputs_assigned/>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic_instance_v2</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 11:17:56</sys_created_on>
+        <sys_id>e237473049e343107f44f280a62db540</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 11:17:56</sys_updated_on>
+        <ui_id>932f9b2b-45e5-405a-8837-41ed04c326a2</ui_id>
+        <updation_source/>
+        <values>H4sIAAAAAAAA/+VVXWvbMBT9K0PPxvijDmveSkphsK2wlr6MYq5lORGTJU8fSb2Q/74rW3ZCl7EMuqe9WUe6955zfGTviXK2c9Y8qhtj+FqS5dfniHDpMXzeE16TJbmGoinSpKB5tsizJMneX6XVIq/SrM6BXS1IRCS0DE9SJWtuuZIIbUE4j+FjzU0noH86InTDRa1ZGNiBxnrLNFnuX21dSkBAxQQeXZ0wOEPK9p2HjNVcrsP6Yyh9mECla08lSyLCXiyTNUMSDQjDItKCrMEq3ZOl1Q4BzaC+l6KfT2y4tKPIFl4M/8F8pyTxJxuGumiwYF6WwZ4Rbm7BAlJx1Do9u6U4ZWZ0pGYNOGFXp9h44L4bVA4lFioxVSvhWvl5NIPMDU7ehjNIgnVeqecehDQPG7X7MrG843JwJWwKRUHMK7DoXeWs57MnTLAWG5UtdB06WnZabflQjFzaeC1wETdC7XCoT10M1BOP0ViI7xC/HeAn0Nyr+IRtsBizYEpDNe8mbcNwcoiI6c1KgDFHjWhu+d15hqPioK0c7fElQ6MbHLxlQcYhCnlvEmjSa5qejxvkZ6JVDsCbhv4CFr+E/t2Y5d/z+5v8p3/If0AuugBF8R/l37erwHBaDl9SnOE/FTjn31yMt7sAzz7AY+/ZbMoNUnj02Ifpv+A3ekwUp6fQTulvnvwRO/wEUclMn2EGAAA=</values>
+        <workflow_reference/>
+    </sys_hub_flow_logic_instance_v2>
     <sys_hub_pill_compound action="delete_multiple" query="attached_to=bbfabf0c2de703107f44a1c965bbba9a"/>
     <sys_hub_flow_variable action="delete_multiple" query="model=bbfabf0c2de703107f44a1c965bbba9a"/>
     <sys_documentation action="INSERT_OR_UPDATE">

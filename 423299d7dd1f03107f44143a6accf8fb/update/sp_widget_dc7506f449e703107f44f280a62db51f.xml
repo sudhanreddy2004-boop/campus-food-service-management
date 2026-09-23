@@ -1,0 +1,1303 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($scope) {
+
+    var c = this;
+
+    c.showPassword = false;
+    c.loading = false;
+    c.errorMessage = "";
+
+    c.togglePassword = function() {
+        c.showPassword = !c.showPassword;
+    };
+
+    c.login = function() {
+
+        c.errorMessage = "";
+
+        if (!c.data.student_id) {
+            c.errorMessage = "Please enter your Student ID.";
+            return;
+        }
+
+        if (!c.data.password) {
+            c.errorMessage = "Please enter your password.";
+            return;
+        }
+
+        c.loading = true;
+
+        c.server.get({
+            action: "login",
+            student_id: c.data.student_id,
+            password: c.data.password,
+            remember: c.data.remember
+        }).then(function(response) {
+
+            c.loading = false;
+
+            if (response.data.success) {
+                window.location.href = "?id=cfms_home";
+            } else {
+                c.errorMessage =
+                    response.data.message ||
+                    "Invalid Student ID or password.";
+            }
+
+        }, function() {
+
+            c.loading = false;
+            c.errorMessage = "Unable to connect to the server.";
+
+        });
+    };
+
+    c.forgotPassword = function() {
+        window.location.href = "?id=forgot_password";
+    };
+
+    c.microsoftLogin = function() {
+        alert("Microsoft Sign-In will be configured later.");
+    };
+
+    c.contactAdmin = function() {
+        alert("Please contact your CFMS administrator.");
+    };
+
+    c.needHelp = function() {
+        alert("Please contact the CFMS support team.");
+    };
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>/* ================================&#13;
+   CFMS LOGIN PAGE&#13;
+================================ */&#13;
+&#13;
+.cfms-login-page {&#13;
+  min-height: 100vh;&#13;
+  width: 100%;&#13;
+  background: #ffffff;&#13;
+  color: #10222d;&#13;
+  font-family: "Segoe UI", Arial, sans-serif;&#13;
+  overflow: hidden;&#13;
+}&#13;
+&#13;
+&#13;
+/* ================================&#13;
+   HEADER&#13;
+================================ */&#13;
+&#13;
+.cfms-header {&#13;
+  height: 95px;&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+  justify-content: space-between;&#13;
+  padding: 0 4.2%;&#13;
+  background: #ffffff;&#13;
+}&#13;
+&#13;
+&#13;
+.cfms-logo-section {&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+  gap: 15px;&#13;
+}&#13;
+&#13;
+&#13;
+.cfms-logo {&#13;
+  width: 64px;&#13;
+  height: 64px;&#13;
+  border-radius: 50%;&#13;
+  background: #1d9b4b;&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+  justify-content: center;&#13;
+  color: white;&#13;
+  font-size: 27px;&#13;
+  box-shadow: 0 5px 15px rgba(0,0,0,.12);&#13;
+}&#13;
+&#13;
+&#13;
+.logo-fork {&#13;
+  margin-right: -4px;&#13;
+}&#13;
+&#13;
+&#13;
+.logo-spoon {&#13;
+  margin-left: -4px;&#13;
+}&#13;
+&#13;
+&#13;
+.cfms-title {&#13;
+  font-size: 42px;&#13;
+  font-weight: 800;&#13;
+  line-height: 40px;&#13;
+  color: #10222d;&#13;
+}&#13;
+&#13;
+&#13;
+.cfms-subtitle {&#13;
+  font-size: 18px;&#13;
+  margin-top: 4px;&#13;
+  color: #10222d;&#13;
+}&#13;
+&#13;
+&#13;
+.help-link {&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+  gap: 10px;&#13;
+  color: #006c3d;&#13;
+  font-size: 17px;&#13;
+  cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.help-icon {&#13;
+  width: 24px;&#13;
+  height: 24px;&#13;
+  border: 2px solid #50616a;&#13;
+  border-radius: 50%;&#13;
+  display: flex;&#13;
+  justify-content: center;&#13;
+  align-items: center;&#13;
+  font-weight: bold;&#13;
+}&#13;
+&#13;
+&#13;
+/* ================================&#13;
+   MAIN&#13;
+================================ */&#13;
+&#13;
+.cfms-main {&#13;
+  display: flex;&#13;
+  min-height: calc(100vh - 155px);&#13;
+}&#13;
+&#13;
+&#13;
+/* ================================&#13;
+   HERO SECTION&#13;
+================================ */&#13;
+&#13;
+.hero-section {&#13;
+  width: 55%;&#13;
+  position: relative;&#13;
+  overflow: hidden;&#13;
+  background:&#13;
+    linear-gradient(&#13;
+      120deg,&#13;
+      #ffffff 0%,&#13;
+      #f8fcff 35%,&#13;
+      #d9edfb 100%&#13;
+    );&#13;
+}&#13;
+&#13;
+&#13;
+.hero-content {&#13;
+  position: relative;&#13;
+  z-index: 3;&#13;
+  padding: 55px 8%;&#13;
+}&#13;
+&#13;
+&#13;
+.hero-tagline {&#13;
+  position: absolute;&#13;
+  top: -20px;&#13;
+  right: 5%;&#13;
+  color: #13783d;&#13;
+  font-size: 27px;&#13;
+  font-weight: 600;&#13;
+  font-style: italic;&#13;
+  line-height: 1.1;&#13;
+}&#13;
+&#13;
+&#13;
+.tagline-line {&#13;
+  width: 105px;&#13;
+  height: 3px;&#13;
+  background: #168349;&#13;
+  margin-left: 70px;&#13;
+  margin-top: 6px;&#13;
+}&#13;
+&#13;
+&#13;
+.hero-content h1 {&#13;
+  margin-top: 65px;&#13;
+  font-size: 54px;&#13;
+  line-height: 1.05;&#13;
+  font-weight: 800;&#13;
+  color: #102932;&#13;
+  margin-bottom: 20px;&#13;
+}&#13;
+&#13;
+&#13;
+.hero-description {&#13;
+  max-width: 520px;&#13;
+  font-size: 23px;&#13;
+  line-height: 1.4;&#13;
+  color: #4d5960;&#13;
+}&#13;
+&#13;
+&#13;
+/* ================================&#13;
+   FEATURES&#13;
+================================ */&#13;
+&#13;
+.feature-container {&#13;
+  display: flex;&#13;
+  justify-content: space-between;&#13;
+  max-width: 600px;&#13;
+  margin-top: 40px;&#13;
+}&#13;
+&#13;
+&#13;
+.feature {&#13;
+  text-align: center;&#13;
+  min-width: 105px;&#13;
+}&#13;
+&#13;
+&#13;
+.feature-icon {&#13;
+  width: 70px;&#13;
+  height: 70px;&#13;
+  border-radius: 50%;&#13;
+  background: #e7f7ed;&#13;
+  color: #08743e;&#13;
+  margin: auto;&#13;
+  display: flex;&#13;
+  justify-content: center;&#13;
+  align-items: center;&#13;
+  font-size: 31px;&#13;
+}&#13;
+&#13;
+&#13;
+.feature-text {&#13;
+  margin-top: 12px;&#13;
+  font-size: 16px;&#13;
+  font-weight: 600;&#13;
+  line-height: 1.3;&#13;
+  color: #10222d;&#13;
+}&#13;
+&#13;
+&#13;
+/* ================================&#13;
+   HERO IMAGE EFFECT&#13;
+================================ */&#13;
+&#13;
+.hero-image {&#13;
+  position: absolute;&#13;
+  bottom: 0;&#13;
+  left: 0;&#13;
+  right: 0;&#13;
+  height: 47%;&#13;
+  background:&#13;
+    linear-gradient(&#13;
+      to bottom,&#13;
+      rgba(255,255,255,0),&#13;
+      rgba(120,160,120,.20)&#13;
+    );&#13;
+}&#13;
+&#13;
+&#13;
+.hero-image:after {&#13;
+  content: "";&#13;
+  position: absolute;&#13;
+  inset: 0;&#13;
+  background:&#13;
+    radial-gradient(&#13;
+      circle at 50% 90%,&#13;
+      rgba(55,120,70,.35),&#13;
+      transparent 55%&#13;
+    );&#13;
+}&#13;
+&#13;
+&#13;
+/* building text */&#13;
+&#13;
+.building-text {&#13;
+  position: absolute;&#13;
+  right: 12%;&#13;
+  top: 25%;&#13;
+  z-index: 2;&#13;
+  font-size: 21px;&#13;
+  font-weight: 600;&#13;
+  color: #555e61;&#13;
+  line-height: 1.4;&#13;
+}&#13;
+&#13;
+&#13;
+/* books */&#13;
+&#13;
+.books {&#13;
+  position: absolute;&#13;
+  left: 8%;&#13;
+  bottom: 8%;&#13;
+  z-index: 4;&#13;
+}&#13;
+&#13;
+&#13;
+.books div {&#13;
+  width: 200px;&#13;
+  height: 30px;&#13;
+  padding: 6px 12px;&#13;
+  background: #ded7c5;&#13;
+  border-bottom: 2px solid #a9a18e;&#13;
+  font-size: 15px;&#13;
+  font-weight: 600;&#13;
+}&#13;
+&#13;
+&#13;
+/* food quote */&#13;
+&#13;
+.food-quote {&#13;
+  position: absolute;&#13;
+  left: 8%;&#13;
+  bottom: 2%;&#13;
+  z-index: 5;&#13;
+  color: white;&#13;
+  font-size: 23px;&#13;
+  font-style: italic;&#13;
+  font-family: Georgia, serif;&#13;
+}&#13;
+&#13;
+&#13;
+.food-quote div {&#13;
+  width: 75px;&#13;
+  height: 2px;&#13;
+  background: white;&#13;
+  margin-top: 5px;&#13;
+}&#13;
+&#13;
+&#13;
+/* ================================&#13;
+   LOGIN SIDE&#13;
+================================ */&#13;
+&#13;
+.login-section {&#13;
+  width: 45%;&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+  justify-content: center;&#13;
+  padding: 35px 6%;&#13;
+  background:&#13;
+    radial-gradient(&#13;
+      circle at 0% 50%,&#13;
+      #e7f5ff,&#13;
+      #ffffff 55%&#13;
+    );&#13;
+}&#13;
+&#13;
+&#13;
+.login-card {&#13;
+  width: 100%;&#13;
+  max-width: 560px;&#13;
+  background: rgba(255,255,255,.92);&#13;
+  border-radius: 25px;&#13;
+  padding: 34px 48px;&#13;
+  box-shadow:&#13;
+    0 15px 50px rgba(0,0,0,.08);&#13;
+}&#13;
+&#13;
+&#13;
+/* ================================&#13;
+   LOGIN ICON&#13;
+================================ */&#13;
+&#13;
+.login-icon {&#13;
+  width: 105px;&#13;
+  height: 105px;&#13;
+  margin: 0 auto 12px;&#13;
+  border-radius: 50%;&#13;
+  background: #08743e;&#13;
+  color: white;&#13;
+  display: flex;&#13;
+  justify-content: center;&#13;
+  align-items: center;&#13;
+  font-size: 47px;&#13;
+  box-shadow: 0 10px 25px rgba(0,110,60,.25);&#13;
+}&#13;
+&#13;
+&#13;
+.login-card h2 {&#13;
+  text-align: center;&#13;
+  margin: 0;&#13;
+  font-size: 32px;&#13;
+  font-weight: 800;&#13;
+  color: #0d1826;&#13;
+}&#13;
+&#13;
+&#13;
+.login-description {&#13;
+  text-align: center;&#13;
+  font-size: 17px;&#13;
+  color: #4f5964;&#13;
+  margin: 8px 0 30px;&#13;
+}&#13;
+&#13;
+&#13;
+/* ================================&#13;
+   FORM&#13;
+================================ */&#13;
+&#13;
+.form-group {&#13;
+  margin-bottom: 24px;&#13;
+}&#13;
+&#13;
+&#13;
+.form-group label {&#13;
+  display: block;&#13;
+  font-size: 17px;&#13;
+  font-weight: 700;&#13;
+  margin-bottom: 10px;&#13;
+  color: #111c28;&#13;
+}&#13;
+&#13;
+&#13;
+.input-wrapper {&#13;
+  position: relative;&#13;
+}&#13;
+&#13;
+&#13;
+.form-input {&#13;
+  width: 100%;&#13;
+  height: 56px;&#13;
+  padding: 0 48px 0 61px;&#13;
+  border: 1px solid #d2d9de;&#13;
+  border-radius: 10px;&#13;
+  background: white;&#13;
+  font-size: 16px;&#13;
+  outline: none;&#13;
+  box-sizing: border-box;&#13;
+  transition: .2s;&#13;
+}&#13;
+&#13;
+&#13;
+.form-input:focus {&#13;
+  border-color: #08743e;&#13;
+  box-shadow: 0 0 0 3px rgba(8,116,62,.10);&#13;
+}&#13;
+&#13;
+&#13;
+.input-icon {&#13;
+  position: absolute;&#13;
+  left: 18px;&#13;
+  top: 50%;&#13;
+  transform: translateY(-50%);&#13;
+  font-size: 20px;&#13;
+  z-index: 2;&#13;
+}&#13;
+&#13;
+&#13;
+.password-toggle {&#13;
+  position: absolute;&#13;
+  right: 15px;&#13;
+  top: 50%;&#13;
+  transform: translateY(-50%);&#13;
+  border: none;&#13;
+  background: transparent;&#13;
+  font-size: 21px;&#13;
+  color: #6b747a;&#13;
+  cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+/* ================================&#13;
+   OPTIONS&#13;
+================================ */&#13;
+&#13;
+.login-options {&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+  justify-content: space-between;&#13;
+  margin: 4px 0 22px;&#13;
+}&#13;
+&#13;
+&#13;
+.remember {&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+  gap: 9px;&#13;
+  font-size: 16px;&#13;
+  color: #37414a;&#13;
+  cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.remember input {&#13;
+  width: 22px;&#13;
+  height: 22px;&#13;
+  accent-color: #08743e;&#13;
+}&#13;
+&#13;
+&#13;
+.forgot-password {&#13;
+  color: #006d3c;&#13;
+  font-size: 16px;&#13;
+  text-decoration: underline;&#13;
+  cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+/* ================================&#13;
+   LOGIN BUTTON&#13;
+================================ */&#13;
+&#13;
+.login-button {&#13;
+  width: 100%;&#13;
+  height: 58px;&#13;
+  border: none;&#13;
+  border-radius: 10px;&#13;
+  background: #08743e;&#13;
+  color: white;&#13;
+  font-size: 19px;&#13;
+  font-weight: 700;&#13;
+  cursor: pointer;&#13;
+  transition: .2s;&#13;
+}&#13;
+&#13;
+&#13;
+.login-button:hover {&#13;
+  background: #065f32;&#13;
+}&#13;
+&#13;
+&#13;
+.login-button:disabled {&#13;
+  opacity: .65;&#13;
+  cursor: not-allowed;&#13;
+}&#13;
+&#13;
+&#13;
+.arrow {&#13;
+  margin-left: 15px;&#13;
+  font-size: 25px;&#13;
+}&#13;
+&#13;
+&#13;
+/* ================================&#13;
+   ERROR&#13;
+================================ */&#13;
+&#13;
+.error-message {&#13;
+  margin-top: 12px;&#13;
+  padding: 10px;&#13;
+  background: #fff0f0;&#13;
+  color: #c62828;&#13;
+  border-radius: 7px;&#13;
+  text-align: center;&#13;
+}&#13;
+&#13;
+&#13;
+/* ================================&#13;
+   DIVIDER&#13;
+================================ */&#13;
+&#13;
+.divider {&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+  gap: 14px;&#13;
+  margin: 25px 0;&#13;
+}&#13;
+&#13;
+&#13;
+.divider span {&#13;
+  flex: 1;&#13;
+  height: 1px;&#13;
+  background: #dce1e5;&#13;
+}&#13;
+&#13;
+&#13;
+.divider label {&#13;
+  color: #879098;&#13;
+  font-size: 15px;&#13;
+}&#13;
+&#13;
+&#13;
+/* ================================&#13;
+   MICROSOFT&#13;
+================================ */&#13;
+&#13;
+.microsoft-button {&#13;
+  width: 100%;&#13;
+  height: 57px;&#13;
+  border: 1px solid #d2d8dd;&#13;
+  background: white;&#13;
+  border-radius: 10px;&#13;
+  display: flex;&#13;
+  justify-content: center;&#13;
+  align-items: center;&#13;
+  gap: 13px;&#13;
+  font-size: 17px;&#13;
+  font-weight: 600;&#13;
+  color: #17222b;&#13;
+  cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.microsoft-logo {&#13;
+  display: grid;&#13;
+  grid-template-columns: 9px 9px;&#13;
+  grid-template-rows: 9px 9px;&#13;
+  gap: 2px;&#13;
+}&#13;
+&#13;
+&#13;
+.microsoft-logo span:nth-child(1) {&#13;
+  background: #f25022;&#13;
+}&#13;
+&#13;
+&#13;
+.microsoft-logo span:nth-child(2) {&#13;
+  background: #7fba00;&#13;
+}&#13;
+&#13;
+&#13;
+.microsoft-logo span:nth-child(3) {&#13;
+  background: #00a4ef;&#13;
+}&#13;
+&#13;
+&#13;
+.microsoft-logo span:nth-child(4) {&#13;
+  background: #ffb900;&#13;
+}&#13;
+&#13;
+&#13;
+/* ================================&#13;
+   ADMIN&#13;
+================================ */&#13;
+&#13;
+.admin-text {&#13;
+  text-align: center;&#13;
+  margin-top: 30px;&#13;
+  color: #4d5660;&#13;
+  font-size: 16px;&#13;
+}&#13;
+&#13;
+&#13;
+.admin-text a {&#13;
+  color: #006d3c;&#13;
+  text-decoration: underline;&#13;
+  margin-left: 5px;&#13;
+}&#13;
+&#13;
+&#13;
+/* ================================&#13;
+   FOOTER&#13;
+================================ */&#13;
+&#13;
+.cfms-footer {&#13;
+  height: 60px;&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+  justify-content: space-between;&#13;
+  padding: 0 4%;&#13;
+  border-top: 1px solid #e6e9eb;&#13;
+  background: white;&#13;
+  color: #4f5962;&#13;
+  font-size: 14px;&#13;
+}&#13;
+&#13;
+&#13;
+.footer-left,&#13;
+.footer-middle,&#13;
+.footer-right {&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+  gap: 10px;&#13;
+}&#13;
+&#13;
+&#13;
+.footer-left strong {&#13;
+  font-size: 18px;&#13;
+  color: #10222d;&#13;
+}&#13;
+&#13;
+&#13;
+.leaf {&#13;
+  font-size: 23px;&#13;
+}&#13;
+&#13;
+&#13;
+/* ================================&#13;
+   RESPONSIVE&#13;
+================================ */&#13;
+&#13;
+@media screen and (max-width: 1100px) {&#13;
+&#13;
+  .hero-content h1 {&#13;
+    font-size: 42px;&#13;
+  }&#13;
+&#13;
+  .hero-description {&#13;
+    font-size: 19px;&#13;
+  }&#13;
+&#13;
+  .login-card {&#13;
+    padding: 30px;&#13;
+  }&#13;
+&#13;
+}&#13;
+&#13;
+&#13;
+@media screen and (max-width: 850px) {&#13;
+&#13;
+  .cfms-main {&#13;
+    flex-direction: column;&#13;
+  }&#13;
+&#13;
+  .hero-section,&#13;
+  .login-section {&#13;
+    width: 100%;&#13;
+  }&#13;
+&#13;
+  .hero-section {&#13;
+    min-height: 620px;&#13;
+  }&#13;
+&#13;
+  .login-section {&#13;
+    padding: 40px 20px;&#13;
+  }&#13;
+&#13;
+  .cfms-footer {&#13;
+    height: auto;&#13;
+    padding: 20px;&#13;
+    flex-direction: column;&#13;
+    gap: 12px;&#13;
+  }&#13;
+&#13;
+}&#13;
+&#13;
+&#13;
+@media screen and (max-width: 600px) {&#13;
+&#13;
+  .cfms-header {&#13;
+    height: 75px;&#13;
+    padding: 0 20px;&#13;
+  }&#13;
+&#13;
+  .cfms-title {&#13;
+    font-size: 27px;&#13;
+  }&#13;
+&#13;
+  .cfms-subtitle {&#13;
+    font-size: 12px;&#13;
+  }&#13;
+&#13;
+  .cfms-logo {&#13;
+    width: 48px;&#13;
+    height: 48px;&#13;
+  }&#13;
+&#13;
+  .help-link {&#13;
+    display: none;&#13;
+  }&#13;
+&#13;
+  .hero-content {&#13;
+    padding: 35px 25px;&#13;
+  }&#13;
+&#13;
+  .hero-content h1 {&#13;
+    font-size: 36px;&#13;
+  }&#13;
+&#13;
+  .hero-description {&#13;
+    font-size: 17px;&#13;
+  }&#13;
+&#13;
+  .feature-container {&#13;
+    flex-wrap: wrap;&#13;
+    gap: 20px;&#13;
+  }&#13;
+&#13;
+  .login-card {&#13;
+    padding: 25px 20px;&#13;
+  }&#13;
+&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>cfms-student-login</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>CFMS Student Login</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+    data.success = false;
+    data.message = "";
+
+    if (input && input.action == "login") {
+
+        var studentId = input.student_id;
+        var password = input.password;
+
+        if (!studentId || !password) {
+
+            data.success = false;
+            data.message = "Student ID and password are required.";
+
+            return;
+        }
+
+
+        /*
+         * IMPORTANT:
+         *
+         * Do not store or compare plain-text passwords here.
+         *
+         * Connect this section to your actual
+         * ServiceNow authentication / SSO mechanism.
+         */
+
+
+        // DEMO ONLY
+        //
+        // Remove this section when connecting
+        // to real authentication.
+
+        if (studentId == "STU1001" &&
+            password == "Student@123") {
+
+            data.success = true;
+            data.message = "Login successful.";
+
+        } else {
+
+            data.success = false;
+            data.message =
+                "Invalid Student ID or password.";
+
+        }
+
+    }
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 06:32:27</sys_created_on>
+        <sys_id>dc7506f449e703107f44f280a62db51f</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>CFMS Student Login</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_widget_dc7506f449e703107f44f280a62db51f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 06:48:39</sys_updated_on>
+        <template><![CDATA[<div class="cfms-login-page">
+
+  <!-- TOP HEADER -->
+  <header class="cfms-header">
+
+    <div class="cfms-logo-section">
+      <div class="cfms-logo">
+        <span class="logo-fork">]]>🍴<![CDATA[</span>
+        <span class="logo-spoon">]]>🥄<![CDATA[</span>
+      </div>
+
+      <div>
+        <div class="cfms-title">CFMS</div>
+        <div class="cfms-subtitle">
+          Campus Food Management System
+        </div>
+      </div>
+    </div>
+
+    <div class="help-link" ng-click="c.needHelp()">
+      <span class="help-icon">?</span>
+      <span>Need Help?</span>
+    </div>
+
+  </header>
+
+
+  <!-- MAIN CONTENT -->
+
+  <main class="cfms-main">
+
+    <!-- LEFT SIDE -->
+
+    <section class="hero-section">
+
+      <div class="hero-content">
+
+        <div class="hero-tagline">
+          Good Food<br>
+          Brighter Tomorrow
+          <div class="tagline-line"></div>
+        </div>
+
+        <h1>
+          Healthy Meals<br>
+          Happier Minds
+        </h1>
+
+        <p class="hero-description">
+          A cleaner, smarter and more connected
+          campus food experience for a better
+          tomorrow.
+        </p>
+
+
+        <!-- QUICK FEATURES -->
+
+        <div class="feature-container">
+
+          <div class="feature">
+
+            <div class="feature-icon">
+              ]]>🍴
+<![CDATA[            </div>
+
+            <div class="feature-text">
+              View<br>
+              Mess Menu
+            </div>
+
+          </div>
+
+
+          <div class="feature">
+
+            <div class="feature-icon">
+              ]]>💬
+<![CDATA[            </div>
+
+            <div class="feature-text">
+              Raise<br>
+              Complaints
+            </div>
+
+          </div>
+
+
+          <div class="feature">
+
+            <div class="feature-icon">
+              ]]>📄
+<![CDATA[            </div>
+
+            <div class="feature-text">
+              Track<br>
+              Your Requests
+            </div>
+
+          </div>
+
+
+          <div class="feature">
+
+            <div class="feature-icon">
+              ☆
+            </div>
+
+            <div class="feature-text">
+              Give<br>
+              Feedback
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- BACKGROUND IMAGE AREA -->
+
+      <div class="hero-image">
+
+        <div class="building-text">
+          BETTER<br>
+          FOOD<br>
+          BRIGHTER<br>
+          FUTURES
+        </div>
+
+        <div class="books">
+
+          <div>Good Food</div>
+          <div>Good Health</div>
+          <div>Great Learning</div>
+
+        </div>
+
+        <div class="food-quote">
+          Food fuels<br>
+          Future
+          <div></div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- RIGHT LOGIN SECTION -->
+
+    <section class="login-section">
+
+      <div class="login-card">
+
+        <!-- LOGIN ICON -->
+
+        <div class="login-icon">
+          ]]>🎓
+<![CDATA[        </div>
+
+
+        <h2>
+          Student Login
+        </h2>
+
+        <p class="login-description">
+          Access your campus food services
+        </p>
+
+
+        <!-- STUDENT ID -->
+
+        <div class="form-group">
+
+          <label>
+            Student ID
+          </label>
+
+          <div class="input-wrapper">
+
+            <span class="input-icon">
+              ]]>👤
+<![CDATA[            </span>
+
+            <input
+              type="text"
+              class="form-input"
+              placeholder="Enter your Student ID"
+              ng-model="c.data.student_id"
+              autocomplete="username"
+            />
+
+          </div>
+
+        </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="form-group">
+
+          <label>
+            Password
+          </label>
+
+          <div class="input-wrapper">
+
+            <span class="input-icon">
+              ]]>🔒
+<![CDATA[            </span>
+
+            <input
+              ng-attr-type="{{c.showPassword ? 'text' : 'password'}}"
+              class="form-input password-input"
+              placeholder="Enter your password"
+              ng-model="c.data.password"
+              autocomplete="current-password"
+            />
+
+            <button
+              type="button"
+              class="password-toggle"
+              ng-click="c.togglePassword()">
+
+              {{c.showPassword ? '◉' : '◌'}}
+
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- REMEMBER + FORGOT -->
+
+        <div class="login-options">
+
+          <label class="remember">
+
+            <input
+              type="checkbox"
+              ng-model="c.data.remember">
+
+            <span class="checkmark"></span>
+
+            <span>
+              Remember me
+            </span>
+
+          </label>
+
+
+          <a
+            href="javascript:void(0)"
+            class="forgot-password"
+            ng-click="c.forgotPassword()">
+
+            Forgot Password?
+
+          </a>
+
+        </div>
+
+
+        <!-- LOGIN BUTTON -->
+
+        <button
+          type="button"
+          class="login-button"
+          ng-click="c.login()"
+          ng-disabled="c.loading">
+
+          <span ng-if="!c.loading">
+            Login
+            <span class="arrow">→</span>
+          </span>
+
+          <span ng-if="c.loading">
+            Logging in...
+          </span>
+
+        </button>
+
+
+        <!-- ERROR -->
+
+        <div
+          class="error-message"
+          ng-if="c.errorMessage">
+
+          {{c.errorMessage}}
+
+        </div>
+
+
+        <!-- OR -->
+
+        <div class="divider">
+
+          <span></span>
+
+          <label>OR</label>
+
+          <span></span>
+
+        </div>
+
+
+        <!-- MICROSOFT LOGIN -->
+
+        <button
+          type="button"
+          class="microsoft-button"
+          ng-click="c.microsoftLogin()">
+
+          <span class="microsoft-logo">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+          </span>
+
+          <span>
+            Sign in with Microsoft
+          </span>
+
+        </button>
+
+
+        <!-- ADMIN -->
+
+        <div class="admin-text">
+
+          New to CFMS?
+
+          <a
+            href="javascript:void(0)"
+            ng-click="c.contactAdmin()">
+
+            Contact your admin
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer class="cfms-footer">
+
+    <div class="footer-left">
+
+      <strong>CFMS</strong>
+
+      <span>|</span>
+
+      <span>
+        Campus Food Management System
+      </span>
+
+    </div>
+
+
+    <div class="footer-middle">
+
+      <span>|</span>
+
+      <span>
+        Nutritious Campus
+      </span>
+
+      <span>|</span>
+
+      <span>
+        Sustainable Tomorrow
+      </span>
+
+    </div>
+
+
+    <div class="footer-right">
+
+      <span class="leaf">
+        ]]>🍃
+<![CDATA[      </span>
+
+      <span>
+        A Better Campus. A Healthier You.
+      </span>
+
+    </div>
+
+  </footer>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

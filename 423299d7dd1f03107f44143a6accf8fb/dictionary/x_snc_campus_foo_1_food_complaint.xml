@@ -3,6 +3,7 @@
         <element label="Not Resolved At" max_length="40" name="not_resolved_at" type="glide_date_time"/>
         <element label="Description" mandatory="true" max_length="255" name="description" type="string_full_utf8"/>
         <element label="AI Confidence" max_length="40" name="ai_confidence" type="integer"/>
+        <element label="Feedback Id" max_length="32" name="feedback_id" reference="x_snc_campus_foo_1_food_complaint_feedbacks" type="reference"/>
         <element label="Feedback Eligible" max_length="40" name="feedback_eligible" type="boolean"/>
         <element choice="1" label="Meal Type" mandatory="true" max_length="40" name="meal_type" type="choice">
             <choice>
@@ -71,6 +72,9 @@
         </index>
         <index name="index4">
             <element name="mess_hall"/>
+        </index>
+        <index name="index5">
+            <element name="feedback_id"/>
         </index>
     </element>
 </database>

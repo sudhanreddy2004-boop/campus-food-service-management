@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_agent_tool_m2m">
+    <sn_aia_agent_tool_m2m action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <agent display_value="Campus Food Complaint AI Agent">4708c66c552343107f4429801dee3e24</agent>
+        <description>Analyzes a Food Base Problem using the configured campus food-service priority rules and relevant knowledge. Returns the normalized problem type, priority, priority reason, AI summary, knowledge insights, and recommended action.</description>
+        <display_mode>inline</display_mode>
+        <display_output>true</display_output>
+        <document_status/>
+        <entity>sn_aia_agent</entity>
+        <entity_id>4708c66c552343107f4429801dee3e24</entity_id>
+        <execution_mode>copilot</execution_mode>
+        <inputs>[]</inputs>
+        <max_auto_executions>10</max_auto_executions>
+        <name>Analyze Campus Food Problem</name>
+        <output_transformation_strategy>none</output_transformation_strategy>
+        <post_message>Analyzed campus food</post_message>
+        <post_processing_script/>
+        <pre_message>Analyzing campus food</pre_message>
+        <pre_run>false</pre_run>
+        <requires_text_refined_message>false</requires_text_refined_message>
+        <requires_widget_transformation>true</requires_widget_transformation>
+        <should_display_refined_message>false</should_display_refined_message>
+        <sys_class_name>sn_aia_agent_tool_m2m</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-22 14:48:06</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>dfbdeae8556743107f4429801dee3ed3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Analyze Campus Food Problem</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_agent_tool_m2m_dfbdeae8556743107f4429801dee3ed3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-22 14:48:06</sys_updated_on>
+        <timeout/>
+        <tool display_value="Campus Food Priority AI">93bdeae8556743107f4429801dee3ecd</tool>
+        <tool_attributes>{}</tool_attributes>
+        <transformation_instructions/>
+        <widgets>db0e858eff62b210f465ffffffffff2c</widgets>
+    </sn_aia_agent_tool_m2m>
+</record_update>

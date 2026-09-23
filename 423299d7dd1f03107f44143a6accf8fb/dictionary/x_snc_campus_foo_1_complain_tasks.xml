@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="3374fbb7615343107f44f4898ccc4c28" extends="task" label="food Complaint Tasks" max_length="40" name="x_snc_campus_foo_1_complain_tasks" type="collection">
+        <element choice="1" choice_field="current_priority" choice_table="x_snc_campus_foo_1_food_base_problem" label="Current priority" max_length="40" name="current_priority" type="choice">
+            <choice/>
+        </element>
+        <element label="Recomended Actions" max_length="255" name="recomended_actions" type="string_full_utf8"/>
+        <element label="Ai summary" max_length="255" name="ai_summary" type="string_full_utf8"/>
+        <element label="Priority reason" max_length="255" name="priority_reason" type="string_full_utf8"/>
         <element choice="1" choice_field="meal_type" choice_table="x_snc_campus_foo_1_food_complaint" label="Meal Type" mandatory="true" max_length="40" name="meal_type" type="choice">
             <choice/>
         </element>
@@ -13,8 +19,12 @@
         <element label="notes" max_length="255" name="notes" type="string_full_utf8"/>
         <element label="Use Case Number" mandatory="true" max_length="10" name="use_case_number" type="string"/>
         <element label="student Count" max_length="40" name="student_count" type="integer"/>
-        <element choice="2" choice_field="resolution_status" choice_table="x_snc_campus_foo_1_complain_tasks" label="Manager status" max_length="40" name="manager_status" type="choice">
-            <choice/>
+        <element choice="3" default="aprooved" label="Mnager Response" max_length="40" name="mnager_response" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Not Aprooved" value="not_aprooved"/>
+                <element inactive_on_update="false" label="Aprooved" value="aprooved"/>
+                <element inactive_on_update="false" label="Requested" value="reuested"/>
+            </choice>
         </element>
         <element label="Problem Type" mandatory="true" max_length="255" name="problem_type" type="string_full_utf8"/>
         <element label="Mess Hall" mandatory="true" max_length="32" name="mess_hall" reference="x_snc_campus_foo_1_mess_hall" type="reference"/>

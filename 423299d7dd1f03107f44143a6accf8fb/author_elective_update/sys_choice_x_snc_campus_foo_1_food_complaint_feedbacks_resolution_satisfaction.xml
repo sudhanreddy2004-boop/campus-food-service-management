@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="resolution_satisfaction" table="x_snc_campus_foo_1_food_complaint_feedbacks" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>resolution_satisfaction</element>
+            <name>x_snc_campus_foo_1_food_complaint_feedbacks</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-22 13:49:13</sys_created_on>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>resolution_satisfaction</sys_name>
+            <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+            <sys_update_name>sys_choice_x_snc_campus_foo_1_food_complaint_feedbacks_resolution_satisfaction</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-22 13:49:13</sys_updated_on>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>resolution_satisfaction</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Very Dissatisfied</label>
+            <language>en</language>
+            <name>x_snc_campus_foo_1_food_complaint_feedbacks</name>
+            <sequence/>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-22 13:51:54</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-22 13:51:57</sys_updated_on>
+            <value>1</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>resolution_satisfaction</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Dissatisfied</label>
+            <language>en</language>
+            <name>x_snc_campus_foo_1_food_complaint_feedbacks</name>
+            <sequence/>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-22 13:51:44</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-22 13:51:48</sys_updated_on>
+            <value>2</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>resolution_satisfaction</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Neutral</label>
+            <language>en</language>
+            <name>x_snc_campus_foo_1_food_complaint_feedbacks</name>
+            <sequence/>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-22 13:50:28</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-22 13:51:37</sys_updated_on>
+            <value>3</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>resolution_satisfaction</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Satisfied</label>
+            <language>en</language>
+            <name>x_snc_campus_foo_1_food_complaint_feedbacks</name>
+            <sequence/>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-22 13:49:26</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-22 13:51:30</sys_updated_on>
+            <value>4</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>resolution_satisfaction</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Very Satisfied</label>
+            <language>en</language>
+            <name>x_snc_campus_foo_1_food_complaint_feedbacks</name>
+            <sequence/>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-22 13:49:13</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_mod_count>4</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-22 13:51:26</sys_updated_on>
+            <value>5</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

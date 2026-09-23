@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($scope) {
+
+    var c = this;
+
+
+    // =====================================
+    // RAISE TICKET
+    // =====================================
+
+    c.raiseTicket = function() {
+
+        window.location.href =
+            "?id=raise_ticket";
+
+    };
+
+
+    // =====================================
+    // TICKET HISTORY
+    // =====================================
+
+    c.viewHistory = function() {
+
+        window.location.href =
+            "?id=ticket_history";
+
+    };
+
+
+    // =====================================
+    // FEEDBACK
+    // =====================================
+
+    c.feedback = function() {
+
+        window.location.href =
+            "?id=student_feedback";
+
+    };
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>/* =========================================&#13;
+   STUDENT DASHBOARD&#13;
+========================================= */&#13;
+&#13;
+.student-dashboard {&#13;
+    width: 100%;&#13;
+    min-height: 100vh;&#13;
+    background: #f3f6fa;&#13;
+    color: #07182c;&#13;
+    font-family: "Segoe UI", Arial, sans-serif;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   HEADER&#13;
+========================================= */&#13;
+&#13;
+.dashboard-header {&#13;
+    height: 68px;&#13;
+    background: #ffffff;&#13;
+    border-bottom: 1px solid #dce3ea;&#13;
+&#13;
+    display: flex;&#13;
+    align-items: center;&#13;
+    justify-content: space-between;&#13;
+&#13;
+    padding: 0 36px;&#13;
+}&#13;
+&#13;
+&#13;
+.welcome-title {&#13;
+    font-size: 25px;&#13;
+    font-weight: 700;&#13;
+    color: #07182c;&#13;
+}&#13;
+&#13;
+&#13;
+.student-profile {&#13;
+    display: flex;&#13;
+    align-items: center;&#13;
+    gap: 12px;&#13;
+}&#13;
+&#13;
+&#13;
+.student-name {&#13;
+    font-size: 16px;&#13;
+    color: #53677d;&#13;
+}&#13;
+&#13;
+&#13;
+.student-badge {&#13;
+    background: #2767df;&#13;
+    color: #ffffff;&#13;
+&#13;
+    padding: 7px 14px;&#13;
+&#13;
+    border-radius: 18px;&#13;
+&#13;
+    font-size: 12px;&#13;
+    font-weight: 700;&#13;
+    letter-spacing: .4px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   MAIN CONTENT&#13;
+========================================= */&#13;
+&#13;
+.dashboard-content {&#13;
+    padding: 30px 36px 60px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   WELCOME BANNER&#13;
+========================================= */&#13;
+&#13;
+.welcome-banner {&#13;
+&#13;
+    min-height: 170px;&#13;
+&#13;
+    background:&#13;
+        linear-gradient(&#13;
+            110deg,&#13;
+            #159c91,&#13;
+            #117a73&#13;
+        );&#13;
+&#13;
+    border-radius: 18px;&#13;
+&#13;
+    padding: 28px 36px;&#13;
+&#13;
+    color: #ffffff;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+&#13;
+    margin-bottom: 25px;&#13;
+&#13;
+    box-shadow:&#13;
+        0 8px 22px rgba(0, 90, 90, .12);&#13;
+}&#13;
+&#13;
+&#13;
+.welcome-banner h1 {&#13;
+&#13;
+    margin: 0 0 8px;&#13;
+&#13;
+    font-size: 30px;&#13;
+    font-weight: 750;&#13;
+}&#13;
+&#13;
+&#13;
+.welcome-banner p {&#13;
+&#13;
+    margin: 0 0 5px;&#13;
+&#13;
+    font-size: 17px;&#13;
+&#13;
+    line-height: 1.6;&#13;
+}&#13;
+&#13;
+&#13;
+.activity-count {&#13;
+&#13;
+    font-size: 17px;&#13;
+&#13;
+    margin-top: 2px;&#13;
+}&#13;
+&#13;
+&#13;
+.activity-count strong {&#13;
+    font-weight: 800;&#13;
+}&#13;
+&#13;
+&#13;
+.separator {&#13;
+&#13;
+    margin: 0 8px;&#13;
+&#13;
+    opacity: .9;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   THREE COMPONENT GRID&#13;
+========================================= */&#13;
+&#13;
+.component-grid {&#13;
+&#13;
+    display: grid;&#13;
+&#13;
+    grid-template-columns:&#13;
+        repeat(3, 1fr);&#13;
+&#13;
+    gap: 20px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   CARDS&#13;
+========================================= */&#13;
+&#13;
+.dashboard-card {&#13;
+&#13;
+    background: #ffffff;&#13;
+&#13;
+    border: 1px solid #dbe3eb;&#13;
+&#13;
+    border-radius: 18px;&#13;
+&#13;
+    min-height: 150px;&#13;
+&#13;
+    padding: 27px;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+&#13;
+    cursor: pointer;&#13;
+&#13;
+    position: relative;&#13;
+&#13;
+    transition:&#13;
+        transform .2s ease,&#13;
+        box-shadow .2s ease,&#13;
+        border-color .2s ease;&#13;
+}&#13;
+&#13;
+&#13;
+.dashboard-card:hover {&#13;
+&#13;
+    transform: translateY(-4px);&#13;
+&#13;
+    box-shadow:&#13;
+        0 10px 25px rgba(23, 45, 70, .10);&#13;
+&#13;
+    border-color: #b8c8d9;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   CARD TITLE&#13;
+========================================= */&#13;
+&#13;
+.card-title {&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 10px;&#13;
+&#13;
+    font-size: 21px;&#13;
+&#13;
+    font-weight: 750;&#13;
+&#13;
+    color: #07182c;&#13;
+&#13;
+    margin-bottom: 18px;&#13;
+}&#13;
+&#13;
+&#13;
+.card-icon {&#13;
+&#13;
+    font-size: 22px;&#13;
+&#13;
+    width: 27px;&#13;
+&#13;
+    display: inline-flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   CARD DESCRIPTION&#13;
+========================================= */&#13;
+&#13;
+.dashboard-card p {&#13;
+&#13;
+    margin: 0;&#13;
+&#13;
+    color: #59708a;&#13;
+&#13;
+    font-size: 16px;&#13;
+&#13;
+    line-height: 1.65;&#13;
+&#13;
+    max-width: 480px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   CARD ACTION&#13;
+========================================= */&#13;
+&#13;
+.card-action {&#13;
+&#13;
+    margin-top: 18px;&#13;
+&#13;
+    font-size: 14px;&#13;
+&#13;
+    font-weight: 700;&#13;
+&#13;
+    color: #087e72;&#13;
+&#13;
+    opacity: 0;&#13;
+&#13;
+    transform: translateY(4px);&#13;
+&#13;
+    transition: .2s;&#13;
+}&#13;
+&#13;
+&#13;
+.dashboard-card:hover .card-action {&#13;
+&#13;
+    opacity: 1;&#13;
+&#13;
+    transform: translateY(0);&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   INDIVIDUAL CARD ACCENTS&#13;
+========================================= */&#13;
+&#13;
+.ticket-card:hover {&#13;
+    border-top: 3px solid #159c91;&#13;
+}&#13;
+&#13;
+&#13;
+.history-card:hover {&#13;
+    border-top: 3px solid #2767df;&#13;
+}&#13;
+&#13;
+&#13;
+.feedback-card:hover {&#13;
+    border-top: 3px solid #f1b400;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   MESSAGE&#13;
+========================================= */&#13;
+&#13;
+.dashboard-message {&#13;
+&#13;
+    margin-top: 20px;&#13;
+&#13;
+    padding: 13px 18px;&#13;
+&#13;
+    background: #ffffff;&#13;
+&#13;
+    border: 1px solid #dce4eb;&#13;
+&#13;
+    border-radius: 10px;&#13;
+&#13;
+    color: #52687d;&#13;
+&#13;
+    text-align: center;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   RESPONSIVE&#13;
+========================================= */&#13;
+&#13;
+@media screen and (max-width: 900px) {&#13;
+&#13;
+    .component-grid {&#13;
+&#13;
+        grid-template-columns:&#13;
+            1fr;&#13;
+&#13;
+    }&#13;
+&#13;
+}&#13;
+&#13;
+&#13;
+@media screen and (max-width: 600px) {&#13;
+&#13;
+    .dashboard-header {&#13;
+&#13;
+        padding: 0 18px;&#13;
+&#13;
+    }&#13;
+&#13;
+&#13;
+    .dashboard-content {&#13;
+&#13;
+        padding: 20px 18px 40px;&#13;
+&#13;
+    }&#13;
+&#13;
+&#13;
+    .welcome-banner {&#13;
+&#13;
+        padding: 24px;&#13;
+&#13;
+    }&#13;
+&#13;
+&#13;
+    .welcome-banner h1 {&#13;
+&#13;
+        font-size: 25px;&#13;
+&#13;
+    }&#13;
+&#13;
+&#13;
+    .welcome-banner p {&#13;
+&#13;
+        font-size: 15px;&#13;
+&#13;
+    }&#13;
+&#13;
+&#13;
+    .student-name {&#13;
+&#13;
+        display: none;&#13;
+&#13;
+    }&#13;
+&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>student_welcome_dashboard</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>Student Welcome Dashboard</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+    /*
+     * Default values
+     */
+
+    data.student_name = "Rahul Sharma";
+
+    data.ticket_count = 0;
+
+    data.feedback_count = 0;
+
+
+    /*
+     * Get logged-in user
+     */
+
+    if (gs.getUserID()) {
+
+        var userGR = new GlideRecord("sys_user");
+
+        if (userGR.get(gs.getUserID())) {
+
+            data.student_name =
+                userGR.getDisplayValue("name");
+
+        }
+
+    }
+
+
+    /*
+     * -----------------------------------
+     * TICKET COUNT
+     * -----------------------------------
+     *
+     * Change the table name and field
+     * according to your ticket table.
+     */
+
+    var ticketGR = new GlideRecord("incident");
+
+    ticketGR.addQuery("caller_id", gs.getUserID());
+
+    ticketGR.query();
+
+    data.ticket_count = ticketGR.getRowCount();
+
+
+    /*
+     * -----------------------------------
+     * FEEDBACK COUNT
+     * -----------------------------------
+     *
+     * Replace this table with your
+     * actual feedback table.
+     */
+
+    var feedbackGR =
+        new GlideRecord("u_cfms_feedback");
+
+    if (feedbackGR.isValid()) {
+
+        feedbackGR.addQuery(
+            "u_student",
+            gs.getUserID()
+        );
+
+        feedbackGR.query();
+
+        data.feedback_count =
+            feedbackGR.getRowCount();
+
+    }
+
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 07:11:20</sys_created_on>
+        <sys_id>2a6ecebc492b03107f44f280a62db54b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Student Welcome Dashboard</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_widget_2a6ecebc492b03107f44f280a62db54b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 07:11:20</sys_updated_on>
+        <template><![CDATA[<div class="student-dashboard">
+
+    <!-- ================= HEADER ================= -->
+
+    <div class="dashboard-header">
+
+        <div class="welcome-title">
+            Welcome
+        </div>
+
+        <div class="student-profile">
+
+            <span class="student-name">
+                {{c.data.student_name}}
+            </span>
+
+            <span class="student-badge">
+                STUDENT
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="dashboard-content">
+
+
+        <!-- ================= WELCOME BANNER ================= -->
+
+        <div class="welcome-banner">
+
+            <h1>
+                Welcome, {{c.data.student_name}} ]]>👋
+<![CDATA[            </h1>
+
+            <p>
+                Campus Food Services Assistant —
+                AI-Powered Smart Hostel Food Management.
+            </p>
+
+            <div class="activity-count">
+
+                <strong>
+                    {{c.data.ticket_count}}
+                </strong>
+
+                ticket(s) raised
+
+                <span class="separator">•</span>
+
+                <strong>
+                    {{c.data.feedback_count}}
+                </strong>
+
+                feedback(s) given
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= THREE COMPONENTS ================= -->
+
+        <div class="component-grid">
+
+
+            <!-- RAISE TICKET -->
+
+            <div
+                class="dashboard-card ticket-card"
+                ng-click="c.raiseTicket()">
+
+                <div class="card-title">
+
+                    <span class="card-icon">
+                        ]]>🎫
+<![CDATA[                    </span>
+
+                    <span>
+                        Raise a Ticket
+                    </span>
+
+                </div>
+
+                <p>
+                    Report food quality, hygiene, diet,
+                    billing or any mess issue in one place.
+                </p>
+
+                <div class="card-action">
+                    Raise Ticket →
+                </div>
+
+            </div>
+
+
+
+            <!-- HISTORY -->
+
+            <div
+                class="dashboard-card history-card"
+                ng-click="c.viewHistory()">
+
+                <div class="card-title">
+
+                    <span class="card-icon">
+                        ]]>📋
+<![CDATA[                    </span>
+
+                    <span>
+                        Ticket History
+                    </span>
+
+                </div>
+
+                <p>
+                    View your previous complaints,
+                    ticket status, updates and resolutions.
+                </p>
+
+                <div class="card-action">
+                    View History →
+                </div>
+
+            </div>
+
+
+
+            <!-- FEEDBACK -->
+
+            <div
+                class="dashboard-card feedback-card"
+                ng-click="c.feedback()">
+
+                <div class="card-title">
+
+                    <span class="card-icon">
+                        ⭐
+                    </span>
+
+                    <span>
+                        Feedback
+                    </span>
+
+                </div>
+
+                <p>
+                    Rate your complaint resolution and
+                    help improve the campus mess service.
+                </p>
+
+                <div class="card-action">
+                    Give Feedback →
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ================= STATUS MESSAGE ================= -->
+
+        <div
+            class="dashboard-message"
+            ng-if="c.message">
+
+            {{c.message}}
+
+        </div>
+
+
+    </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

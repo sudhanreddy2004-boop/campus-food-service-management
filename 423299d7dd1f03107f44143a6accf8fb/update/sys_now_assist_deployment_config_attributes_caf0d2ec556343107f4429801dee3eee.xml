@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_now_assist_deployment_config_attributes">
+    <sys_now_assist_deployment_config_attributes action="INSERT_OR_UPDATE">
+        <deployment_config display_value="Now Assist Panel - Developer (default)">59fa2247b7c422102d71c5e1de11a92e</deployment_config>
+        <name>persona_tone</name>
+        <sys_class_name>sys_now_assist_deployment_config_attributes</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-22 12:42:24</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>caf0d2ec556343107f4429801dee3eee</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>persona_tone</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_now_assist_deployment_config_attributes_caf0d2ec556343107f4429801dee3eee</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-22 12:42:24</sys_updated_on>
+        <value>2db219edff9e36104a7cffffffffff5f</value>
+    </sys_now_assist_deployment_config_attributes>
+</record_update>

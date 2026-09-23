@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_one_extend_eval_strategy_metric">
+    <sys_one_extend_eval_strategy_metric action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <definition display_value="Execution Latency">9768468fff3ba210b474fffffffffff6</definition>
+        <eval_strategy display_value="AutoEval-admin-2026-09-23-06:50:02">c14a8e70492b03107f44f280a62db5d4</eval_strategy>
+        <gen_ai_config/>
+        <metric_name>Execution Latency</metric_name>
+        <sys_class_name>sys_one_extend_eval_strategy_metric</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-23 06:51:36</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>094a8e70492b03107f44f280a62db5db</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Execution Latency</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_one_extend_eval_strategy_metric_094a8e70492b03107f44f280a62db5db</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-23 06:51:36</sys_updated_on>
+    </sys_one_extend_eval_strategy_metric>
+</record_update>

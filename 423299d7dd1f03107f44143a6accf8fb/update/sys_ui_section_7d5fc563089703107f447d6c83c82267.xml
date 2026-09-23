@@ -4,13 +4,13 @@
             <element>.begin_split</element>
             <position>0</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:21:45</sys_created_on>
-            <sys_id>8a5fc563089703107f447d6c83c8226b</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>6f7cc33c49e343107f44f280a62db57d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:21:45</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type>.begin_split</type>
         </sys_ui_element>
@@ -18,13 +18,13 @@
             <element>number</element>
             <position>1</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:21:45</sys_created_on>
-            <sys_id>825fc563089703107f447d6c83c8226c</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>2f7cc33c49e343107f44f280a62db57e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:21:45</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -32,13 +32,13 @@
             <element>use_case</element>
             <position>2</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:21:45</sys_created_on>
-            <sys_id>8a5fc563089703107f447d6c83c8226c</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>e77cc33c49e343107f44f280a62db57f</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:21:45</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -46,97 +46,97 @@
             <element>.split</element>
             <position>3</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:21:45</sys_created_on>
-            <sys_id>825fc563089703107f447d6c83c8226d</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>a37cc33c49e343107f44f280a62db580</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:21:45</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>category</element>
+            <element>.end_split</element>
             <position>4</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:21:45</sys_created_on>
-            <sys_id>8a5fc563089703107f447d6c83c8226d</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>6f7cc33c49e343107f44f280a62db580</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:21:45</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>.end_split</element>
-            <position>5</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:21:45</sys_created_on>
-            <sys_id>825fc563089703107f447d6c83c8226e</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:21:45</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type>.end_split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>problem_type</element>
-            <position>6</position>
+            <position>5</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:21:45</sys_created_on>
-            <sys_id>8a5fc563089703107f447d6c83c8226e</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>2b7cc33c49e343107f44f280a62db581</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:21:45</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>problem_type_normalized</element>
-            <position>7</position>
+            <position>6</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:21:45</sys_created_on>
-            <sys_id>825fc563089703107f447d6c83c8226f</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>e37cc33c49e343107f44f280a62db582</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:21:45</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.begin_split</element>
-            <position>8</position>
+            <position>7</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:21:45</sys_created_on>
-            <sys_id>8a5fc563089703107f447d6c83c8226f</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>af7cc33c49e343107f44f280a62db582</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:21:45</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type>.begin_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>meal_type</element>
+            <position>8</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>6b7cc33c49e343107f44f280a62db583</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
+            <sys_user/>
+            <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>mess_hall</element>
             <position>9</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:21:45</sys_created_on>
-            <sys_id>825fc563089703107f447d6c83c82270</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>277cc33c49e343107f44f280a62db584</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:21:45</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -144,461 +144,167 @@
             <element>student_count</element>
             <position>10</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:21:45</sys_created_on>
-            <sys_id>8a5fc563089703107f447d6c83c82270</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>ef7cc33c49e343107f44f280a62db584</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:21:45</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>ticket_count</element>
-            <position>11</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:21:45</sys_created_on>
-            <sys_id>825fc563089703107f447d6c83c82271</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:21:45</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
-            <position>12</position>
+            <position>11</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:21:45</sys_created_on>
-            <sys_id>8a5fc563089703107f447d6c83c82271</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>ab7cc33c49e343107f44f280a62db585</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:21:45</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>open_ticket_count</element>
-            <position>13</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:21:45</sys_created_on>
-            <sys_id>825fc563089703107f447d6c83c82272</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:21:45</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>resolved_ticket_count</element>
-            <position>14</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:21:45</sys_created_on>
-            <sys_id>8a5fc563089703107f447d6c83c82272</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:21:45</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>first_ticket</element>
-            <position>15</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:21:45</sys_created_on>
-            <sys_id>0e5fc563089703107f447d6c83c822bd</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:21:45</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.end_split</element>
-            <position>16</position>
+            <position>12</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:21:45</sys_created_on>
-            <sys_id>165fc563089703107f447d6c83c822be</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>677cc33c49e343107f44f280a62db586</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:21:45</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type>.end_split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>latest_ticket</element>
-            <position>17</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:22:36</sys_created_on>
-            <sys_id>e68f41a3089703107f447d6c83c8225e</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:22:36</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>first_reported_at</element>
-            <position>18</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:23:15</sys_created_on>
-            <sys_id>c8bf89a3089703107f447d6c83c82203</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:23:15</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>latest_reported_at</element>
-            <position>19</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:24:42</sys_created_on>
-            <sys_id>590055e3089703107f447d6c83c82299</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:24:42</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
             <element>current_priority</element>
-            <position>20</position>
+            <position>13</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:25:15</sys_created_on>
-            <sys_id>11201de3089703107f447d6c83c8225c</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>237cc33c49e343107f44f280a62db587</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:25:15</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>priority_reason</element>
-            <position>21</position>
+            <position>14</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:25:43</sys_created_on>
-            <sys_id>9c409127089703107f447d6c83c822a4</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>eb7cc33c49e343107f44f280a62db587</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:25:43</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>ai_risk_score</element>
-            <position>22</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:26:14</sys_created_on>
-            <sys_id>f3501927089703107f447d6c83c82219</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:26:14</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>ai_summary</element>
-            <position>23</position>
+            <position>15</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:26:43</sys_created_on>
-            <sys_id>f6709d27089703107f447d6c83c822eb</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>a77cc33c49e343107f44f280a62db588</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:26:43</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>knowledge_insights</element>
-            <position>24</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:27:58</sys_created_on>
-            <sys_id>c9c09967089703107f447d6c83c822a5</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:27:58</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>recommended_action</element>
-            <position>25</position>
+            <position>16</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:28:35</sys_created_on>
-            <sys_id>46e055a7089703107f447d6c83c8223f</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>637cc33c49e343107f44f280a62db589</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:28:35</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>knowledge_insights</element>
+            <position>17</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>ab7cc33c49e343107f44f280a62db5a2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>status</element>
-            <position>26</position>
+            <position>18</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 05:32:09</sys_created_on>
-            <sys_id>aeb1912b089703107f447d6c83c8229c</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>677cc33c49e343107f44f280a62db5a3</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 05:32:09</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>food_quality_complaint</element>
-            <position>27</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 06:17:04</sys_created_on>
-            <sys_id>500cd9af08d703107f447d6c83c82246</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 06:17:04</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>meal_not_available</element>
-            <position>28</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 06:17:04</sys_created_on>
-            <sys_id>1c0cd9af08d703107f447d6c83c82254</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 06:17:04</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>food_hygiene_issue</element>
-            <position>29</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 06:17:04</sys_created_on>
-            <sys_id>540cd9af08d703107f447d6c83c82261</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 06:17:04</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>special_diet_request</element>
-            <position>30</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 06:17:04</sys_created_on>
-            <sys_id>940cd9af08d703107f447d6c83c8227a</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 06:17:04</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>allergy_management_request</element>
-            <position>31</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 06:17:04</sys_created_on>
-            <sys_id>280cd9af08d703107f447d6c83c82293</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 06:17:04</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>food_menu_feedback</element>
-            <position>32</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 06:17:05</sys_created_on>
-            <sys_id>a00cd9af08d703107f447d6c83c822a0</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 06:17:05</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>meal_reservation_pre_booking</element>
-            <position>33</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 06:17:05</sys_created_on>
-            <sys_id>2c0cd9af08d703107f447d6c83c822ac</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 06:17:05</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>missed_meal_request</element>
-            <position>34</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 06:17:05</sys_created_on>
-            <sys_id>280cd9af08d703107f447d6c83c822b9</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 06:17:05</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>food_wastage_reporting</element>
-            <position>35</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 06:17:05</sys_created_on>
-            <sys_id>640cd9af08d703107f447d6c83c822c6</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 06:17:05</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>emergency_food_assistance</element>
-            <position>36</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 06:17:05</sys_created_on>
-            <sys_id>f00cd9af08d703107f447d6c83c822d3</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 06:17:05</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>hostel_mess_billing_issue</element>
-            <position>37</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 06:17:06</sys_created_on>
-            <sys_id>b80cd9af08d703107f447d6c83c822f8</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 06:17:06</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>smart_menu_recommendation</element>
-            <position>38</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 06:17:06</sys_created_on>
-            <sys_id>3c0c1daf08d703107f447d6c83c82204</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 06:17:06</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>assignment_group</element>
-            <position>39</position>
+            <position>19</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 10:27:25</sys_created_on>
-            <sys_id>a745de2b081343107f447d6c83c8228f</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>237cc33c49e343107f44f280a62db5a4</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 10:27:25</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>assigned_to</element>
-            <position>40</position>
+            <element>notes</element>
+            <position>20</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 10:28:14</sys_created_on>
-            <sys_id>6775966b081343107f447d6c83c82293</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>eb7cc33c49e343107f44f280a62db5a4</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 10:28:14</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>proposed_priority</element>
-            <position>41</position>
+            <element>feedback_available</element>
+            <position>21</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-19 13:04:49</sys_created_on>
-            <sys_id>9159feef081743107f447d6c83c82241</sys_id>
+            <sys_created_on>2026-09-23 11:40:56</sys_created_on>
+            <sys_id>a77cc33c49e343107f44f280a62db5a5</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-19 13:04:49</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>meal_type</element>
-            <position>42</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2026-09-21 05:12:28</sys_created_on>
-            <sys_id>a960a3c02d2703107f44a1c965bbba85</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_snc_campus_foo_1_food_base_problem" sys_domain="global" view="Default view">7d5fc563089703107f447d6c83c82267</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2026-09-21 05:12:28</sys_updated_on>
+            <sys_updated_on>2026-09-23 11:40:56</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
