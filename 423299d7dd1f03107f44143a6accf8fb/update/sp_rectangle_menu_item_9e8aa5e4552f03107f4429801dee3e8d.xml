@@ -12,13 +12,13 @@
         <kb_article/>
         <kb_category/>
         <kb_topic/>
-        <label>Features</label>
+        <label>My Requests</label>
         <order>300</order>
         <record_script/>
         <sc_cat_item/>
         <sc_category/>
         <short_description/>
-        <sp_page display_value="cfms_features">f44a65e4552f03107f4429801dee3e79</sp_page>
+        <sp_page display_value="cfms_requests">57f8c4d5a06f03107f4432329b8a156b</sp_page>
         <sp_rectangle_menu display_value="CFMS Main Menu">252621a855eb03107f4429801dee3eb5</sp_rectangle_menu>
         <sp_rectangle_menu_item/>
         <sys_class_name>sp_rectangle_menu_item</sys_class_name>

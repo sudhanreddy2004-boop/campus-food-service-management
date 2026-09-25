@@ -12,13 +12,13 @@
         <kb_article/>
         <kb_category/>
         <kb_topic/>
-        <label>Help</label>
+        <label>Feedback</label>
         <order>400</order>
         <record_script/>
         <sc_cat_item/>
         <sc_category/>
         <short_description/>
-        <sp_page display_value="cfms_help">a61ba1a8552f03107f4429801dee3e70</sp_page>
+        <sp_page display_value="cfms_feedback">8fdd0c51a0af03107f4432329b8a15f5</sp_page>
         <sp_rectangle_menu display_value="CFMS Main Menu">252621a855eb03107f4429801dee3eb5</sp_rectangle_menu>
         <sp_rectangle_menu_item/>
         <sys_class_name>sp_rectangle_menu_item</sys_class_name>
