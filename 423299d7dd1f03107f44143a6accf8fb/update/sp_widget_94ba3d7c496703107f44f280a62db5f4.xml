@@ -7,21 +7,29 @@
 
     c.submitComplaint = function() {
 
-        if (!c.data.complaint_type ||
+        if (c.submitting ||
+            !c.data.use_case ||
             !c.data.mess_hall ||
-            !c.data.meal ||
+            !c.data.meal_type ||
             !c.data.description) {
 
-            alert("Please fill all required fields.");
+            c.data.message = "Please fill all required fields.";
             return;
         }
 
+        c.submitting = true;
+        c.data.action = "submit";
         c.server.update().then(function(response) {
 
-            if (response.data.message) {
-                c.data.message = response.data.message;
+            c.data.message = response.data.message;
+            if (response.data.success) {
+                c.data.use_case = "";
+                c.data.mess_hall = "";
+                c.data.meal_type = "";
+                c.data.description = "";
             }
-
+        }).finally(function() {
+            c.submitting = false;
         });
     };
 
@@ -113,20 +121,46 @@ textarea.form-control {&#13;
         <roles/>
         <script><![CDATA[(function() {
 
+    data.mess_halls = [];
+    var halls = new GlideRecord("x_snc_campus_foo_1_mess_hall");
+    halls.addQuery("active", true);
+    halls.orderBy("name");
+    halls.query();
+    while (halls.next()) {
+        data.mess_halls.push({
+            sys_id: halls.getUniqueValue(),
+            name: halls.getDisplayValue("name")
+        });
+    }
+
     if (input && input.action == "submit") {
 
-        var gr = new GlideRecord("u_food_complaint");
+        var student = new GlideRecord("x_snc_campus_foo_1_student");
+        student.addQuery("user", gs.getUserID());
+        student.addQuery("active", true);
+        student.setLimit(1);
+        student.query();
+
+        if (!student.next()) {
+            data.message = "Your student profile could not be found.";
+            data.success = false;
+            return;
+        }
+
+        var gr = new GlideRecord("x_snc_campus_foo_1_food_complaint");
 
         gr.initialize();
 
-        gr.u_complaint_type = input.complaint_type;
-        gr.u_mess_hall = input.mess_hall;
-        gr.u_meal = input.meal;
-        gr.u_description = input.description;
+        gr.student = student.getUniqueValue();
+        gr.use_case = input.use_case;
+        gr.mess_hall = input.mess_hall;
+        gr.meal_type = input.meal_type;
+        gr.description = input.description;
 
-        gr.insert();
+        var complaintId = gr.insert();
 
-        data.message = "Complaint submitted successfully!";
+        data.success = !!complaintId;
+        data.message = data.success ? "Complaint submitted successfully." : "The complaint could not be submitted.";
 
     }
 
@@ -154,16 +188,14 @@ textarea.form-control {&#13;
   <div class="complaint-body">
 
     <div class="form-group">
-      <label>Complaint Type</label>
+    <label>Use Case</label>
       <select class="form-control"
-              ng-model="c.data.complaint_type">
-        <option value="">Select Complaint Type</option>
-        <option value="Stale Food">Stale Food</option>
-        <option value="Poor Food Quality">Poor Food Quality</option>
-        <option value="Bad Taste">Bad Taste</option>
-        <option value="Food Hygiene Issue">Food Hygiene Issue</option>
-        <option value="Food Quantity Issue">Food Quantity Issue</option>
-        <option value="Late Food Service">Late Food Service</option>
+          ng-model="c.data.use_case">
+      <option value="">Select Use Case</option>
+      <option value="Food Quality">Food Quality</option>
+      <option value="Food Hygiene">Food Hygiene</option>
+      <option value="Food Quantity">Food Quantity</option>
+      <option value="Food Service">Food Service</option>
         <option value="Other">Other</option>
       </select>
     </div>
@@ -172,17 +204,17 @@ textarea.form-control {&#13;
       <label>Mess Hall</label>
       <select class="form-control"
               ng-model="c.data.mess_hall">
-        <option value="">Select Mess Hall</option>
-        <option value="Mess Hall A">Mess Hall A</option>
-        <option value="Mess Hall B">Mess Hall B</option>
-        <option value="Mess Hall C">Mess Hall C</option>
+                <option value="">Select Mess Hall</option>
+                <option ng-repeat="hall in c.data.mess_halls" value="{{hall.sys_id}}">
+                    {{hall.name}}
+                </option>
       </select>
     </div>
 
     <div class="form-group">
-      <label>Meal</label>
+          <label>Meal Type</label>
       <select class="form-control"
-              ng-model="c.data.meal">
+              ng-model="c.data.meal_type">
         <option value="">Select Meal</option>
         <option value="Breakfast">Breakfast</option>
         <option value="Lunch">Lunch</option>

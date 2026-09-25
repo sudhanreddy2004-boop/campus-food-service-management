@@ -11,7 +11,7 @@
         <enable_embeddables>false</enable_embeddables>
         <enable_favorites>false</enable_favorites>
         <hide_portal_name>false</hide_portal_name>
-        <homepage display_value="cfms_home">88ddf93449a703107f44f280a62db554</homepage>
+        <homepage display_value="cfms_home">68263301a0ab03107f4432329b8a1530</homepage>
         <icon/>
         <inactive>false</inactive>
         <kb_knowledge_base/>
@@ -28,7 +28,7 @@
         <search_application/>
         <search_results_configuration/>
         <sp_chat_queue/>
-        <sp_rectangle_menu/>
+        <sp_rectangle_menu display_value="CFMS Main Menu">252621a855eb03107f4429801dee3eb5</sp_rectangle_menu>
         <sys_class_name>sp_portal</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-23 05:08:25</sys_created_on>
