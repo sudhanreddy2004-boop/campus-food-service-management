@@ -1,0 +1,2026 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function() {
+
+    var c = this;
+
+
+    /* =========================================
+       FILTER VALUES
+       ========================================= */
+
+    c.searchText = "";
+
+    c.statusFilter = "all";
+
+    c.priorityFilter = "all";
+
+    c.groupFilter = "all";
+
+
+    /* =========================================
+       FILTER RECORDS
+       ========================================= */
+
+    c.filteredRecords = function() {
+
+        var records =
+            c.data.records || [];
+
+        var result = [];
+
+
+        var search =
+            (
+                c.searchText ||
+                ""
+            ).toLowerCase();
+
+
+        for (
+            var i = 0;
+            i < records.length;
+            i++
+        ) {
+
+            var record =
+                records[i];
+
+
+            /* -------------------------------------
+               SEARCH
+               ------------------------------------- */
+
+            var number =
+                (
+                    record.number ||
+                    ""
+                ).toLowerCase();
+
+
+            var caller =
+                (
+                    record.caller ||
+                    ""
+                ).toLowerCase();
+
+
+            var description =
+                (
+                    record.short_description ||
+                    ""
+                ).toLowerCase();
+
+
+            var meal =
+                (
+                    record.meal_type ||
+                    ""
+                ).toLowerCase();
+
+
+            var mess =
+                (
+                    record.mess_hall ||
+                    ""
+                ).toLowerCase();
+
+
+            if (search) {
+
+                var matches =
+                    number.indexOf(search) !== -1 ||
+                    caller.indexOf(search) !== -1 ||
+                    description.indexOf(search) !== -1 ||
+                    meal.indexOf(search) !== -1 ||
+                    mess.indexOf(search) !== -1;
+
+
+                if (!matches) {
+
+                    continue;
+
+                }
+
+            }
+
+
+            /* -------------------------------------
+               STATUS
+               ------------------------------------- */
+
+            if (
+                c.statusFilter !== "all" &&
+                record.stateValue !=
+                c.statusFilter
+            ) {
+
+                continue;
+
+            }
+
+
+            /* -------------------------------------
+               PRIORITY
+               ------------------------------------- */
+
+            if (
+                c.priorityFilter !== "all" &&
+                record.priorityValue !=
+                c.priorityFilter
+            ) {
+
+                continue;
+
+            }
+
+
+            /* -------------------------------------
+               GROUP
+               ------------------------------------- */
+
+            if (
+                c.groupFilter !== "all" &&
+                record.assignment_group_id !=
+                c.groupFilter
+            ) {
+
+                continue;
+
+            }
+
+
+            result.push(record);
+
+        }
+
+
+        return result;
+
+    };
+
+
+    /* =========================================
+       CLEAR FILTERS
+       ========================================= */
+
+    c.clearFilters = function() {
+
+        c.searchText = "";
+
+        c.statusFilter = "all";
+
+        c.priorityFilter = "all";
+
+        c.groupFilter = "all";
+
+    };
+
+
+    /* =========================================
+       REFRESH
+       ========================================= */
+
+    c.refresh = function() {
+
+        c.server.get({}).then(
+            function(response) {
+
+                c.data =
+                    response.data;
+
+            }
+        );
+
+    };
+
+
+    /* =========================================
+       GO BACK
+       ========================================= */
+
+    c.goBack = function() {
+
+        /*
+         * Send Manager to Manager Home.
+         * Send Admin to Admin Home.
+         */
+
+        if (
+            c.data.isAdmin
+        ) {
+
+            window.location.href =
+                "?id=cfms_admin";
+
+        } else {
+
+            window.location.href =
+                "?id=cfms_manager";
+
+        }
+
+    };
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>/* =========================================&#13;
+   CFMS RECORDS&#13;
+   ========================================= */&#13;
+&#13;
+.cfms-records {&#13;
+&#13;
+  min-height: 100vh;&#13;
+&#13;
+  background: #f0fbfc;&#13;
+&#13;
+  padding: 30px;&#13;
+&#13;
+  font-family:&#13;
+    'Segoe UI',&#13;
+    Tahoma,&#13;
+    Geneva,&#13;
+    Verdana,&#13;
+    sans-serif;&#13;
+&#13;
+  color: #263238;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   HEADER&#13;
+   ========================================= */&#13;
+&#13;
+.records-header {&#13;
+&#13;
+  background:&#13;
+    linear-gradient(&#13;
+      135deg,&#13;
+      #00acc1,&#13;
+      #4dd0e1&#13;
+    );&#13;
+&#13;
+  color: white;&#13;
+&#13;
+  border-radius: 20px;&#13;
+&#13;
+  padding: 27px 32px;&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  justify-content: space-between;&#13;
+&#13;
+  margin-bottom: 25px;&#13;
+&#13;
+  box-shadow:&#13;
+    0 8px 25px&#13;
+    rgba(0,172,193,0.18);&#13;
+}&#13;
+&#13;
+&#13;
+.header-left {&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  gap: 17px;&#13;
+}&#13;
+&#13;
+&#13;
+.records-icon {&#13;
+&#13;
+  width: 58px;&#13;
+&#13;
+  height: 58px;&#13;
+&#13;
+  border-radius: 15px;&#13;
+&#13;
+  background:&#13;
+    rgba(255,255,255,0.18);&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  justify-content: center;&#13;
+&#13;
+  font-size: 27px;&#13;
+}&#13;
+&#13;
+&#13;
+.records-header h1 {&#13;
+&#13;
+  margin: 0 0 6px;&#13;
+&#13;
+  font-size: 29px;&#13;
+&#13;
+  font-weight: 700;&#13;
+}&#13;
+&#13;
+&#13;
+.records-header p {&#13;
+&#13;
+  margin: 0;&#13;
+&#13;
+  font-size: 14px;&#13;
+&#13;
+  opacity: 0.95;&#13;
+}&#13;
+&#13;
+&#13;
+/* Header buttons */&#13;
+&#13;
+.header-actions {&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  gap: 10px;&#13;
+}&#13;
+&#13;
+&#13;
+.header-btn,&#13;
+.refresh-btn {&#13;
+&#13;
+  border: none;&#13;
+&#13;
+  padding: 11px 17px;&#13;
+&#13;
+  border-radius: 10px;&#13;
+&#13;
+  font-weight: 600;&#13;
+&#13;
+  cursor: pointer;&#13;
+&#13;
+  transition: 0.2s;&#13;
+}&#13;
+&#13;
+&#13;
+.header-btn {&#13;
+&#13;
+  background: white;&#13;
+&#13;
+  color: #008c9e;&#13;
+}&#13;
+&#13;
+&#13;
+.refresh-btn {&#13;
+&#13;
+  background:&#13;
+    rgba(255,255,255,0.18);&#13;
+&#13;
+  color: white;&#13;
+&#13;
+  border:&#13;
+    1px solid&#13;
+    rgba(255,255,255,0.4);&#13;
+}&#13;
+&#13;
+&#13;
+.header-btn:hover,&#13;
+.refresh-btn:hover {&#13;
+&#13;
+  transform: translateY(-2px);&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   ALERT&#13;
+   ========================================= */&#13;
+&#13;
+.alert {&#13;
+&#13;
+  padding: 14px 18px;&#13;
+&#13;
+  border-radius: 10px;&#13;
+&#13;
+  margin-bottom: 20px;&#13;
+&#13;
+  font-weight: 600;&#13;
+}&#13;
+&#13;
+&#13;
+.error-alert {&#13;
+&#13;
+  background: #ffebee;&#13;
+&#13;
+  color: #c62828;&#13;
+&#13;
+  border: 1px solid #ef9a9a;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   SUMMARY&#13;
+   ========================================= */&#13;
+&#13;
+.summary-grid {&#13;
+&#13;
+  display: grid;&#13;
+&#13;
+  grid-template-columns:&#13;
+    repeat(4, 1fr);&#13;
+&#13;
+  gap: 18px;&#13;
+&#13;
+  margin-bottom: 22px;&#13;
+}&#13;
+&#13;
+&#13;
+.summary-card {&#13;
+&#13;
+  background: white;&#13;
+&#13;
+  border-radius: 15px;&#13;
+&#13;
+  padding: 21px;&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  gap: 15px;&#13;
+&#13;
+  border:&#13;
+    1px solid&#13;
+    #e3f2f4;&#13;
+&#13;
+  box-shadow:&#13;
+    0 4px 15px&#13;
+    rgba(38,50,56,0.06);&#13;
+}&#13;
+&#13;
+&#13;
+.summary-icon {&#13;
+&#13;
+  width: 50px;&#13;
+&#13;
+  height: 50px;&#13;
+&#13;
+  border-radius: 12px;&#13;
+&#13;
+  background: #e0f7fa;&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  justify-content: center;&#13;
+&#13;
+  font-size: 22px;&#13;
+}&#13;
+&#13;
+&#13;
+.summary-card span {&#13;
+&#13;
+  display: block;&#13;
+&#13;
+  color: #78909c;&#13;
+&#13;
+  font-size: 12px;&#13;
+&#13;
+  margin-bottom: 5px;&#13;
+}&#13;
+&#13;
+&#13;
+.summary-card strong {&#13;
+&#13;
+  display: block;&#13;
+&#13;
+  font-size: 26px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   FILTER&#13;
+   ========================================= */&#13;
+&#13;
+.filter-card {&#13;
+&#13;
+  background: white;&#13;
+&#13;
+  border-radius: 16px;&#13;
+&#13;
+  padding: 22px;&#13;
+&#13;
+  margin-bottom: 22px;&#13;
+&#13;
+  box-shadow:&#13;
+    0 4px 15px&#13;
+    rgba(38,50,56,0.06);&#13;
+}&#13;
+&#13;
+&#13;
+.filter-title {&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  justify-content: space-between;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  margin-bottom: 17px;&#13;
+}&#13;
+&#13;
+&#13;
+.filter-title h2 {&#13;
+&#13;
+  margin: 0;&#13;
+&#13;
+  font-size: 18px;&#13;
+}&#13;
+&#13;
+&#13;
+.filter-title span {&#13;
+&#13;
+  background: #e0f7fa;&#13;
+&#13;
+  color: #008c9e;&#13;
+&#13;
+  padding: 6px 12px;&#13;
+&#13;
+  border-radius: 20px;&#13;
+&#13;
+  font-size: 11px;&#13;
+&#13;
+  font-weight: 700;&#13;
+}&#13;
+&#13;
+&#13;
+.filter-row {&#13;
+&#13;
+  display: grid;&#13;
+&#13;
+  grid-template-columns:&#13;
+    1fr&#13;
+    180px&#13;
+    180px&#13;
+    200px&#13;
+    auto;&#13;
+&#13;
+  gap: 11px;&#13;
+}&#13;
+&#13;
+&#13;
+.search-box {&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  gap: 9px;&#13;
+&#13;
+  background: #f7fcfd;&#13;
+&#13;
+  border:&#13;
+    1px solid&#13;
+    #dceff1;&#13;
+&#13;
+  border-radius: 10px;&#13;
+&#13;
+  padding: 0 13px;&#13;
+}&#13;
+&#13;
+&#13;
+.search-box input {&#13;
+&#13;
+  width: 100%;&#13;
+&#13;
+  border: none;&#13;
+&#13;
+  outline: none;&#13;
+&#13;
+  background: transparent;&#13;
+&#13;
+  padding: 11px 0;&#13;
+&#13;
+  font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+.filter-row select {&#13;
+&#13;
+  border:&#13;
+    1px solid&#13;
+    #dceff1;&#13;
+&#13;
+  background: #f7fcfd;&#13;
+&#13;
+  border-radius: 10px;&#13;
+&#13;
+  padding: 11px 12px;&#13;
+&#13;
+  color: #455a64;&#13;
+&#13;
+  outline: none;&#13;
+&#13;
+  font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+.clear-btn {&#13;
+&#13;
+  border: none;&#13;
+&#13;
+  background: #eceff1;&#13;
+&#13;
+  color: #455a64;&#13;
+&#13;
+  border-radius: 10px;&#13;
+&#13;
+  padding: 0 17px;&#13;
+&#13;
+  font-weight: 600;&#13;
+&#13;
+  cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.clear-btn:hover {&#13;
+&#13;
+  background: #cfd8dc;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   RECORDS CARD&#13;
+   ========================================= */&#13;
+&#13;
+.records-card {&#13;
+&#13;
+  background: white;&#13;
+&#13;
+  border-radius: 17px;&#13;
+&#13;
+  padding: 25px;&#13;
+&#13;
+  box-shadow:&#13;
+    0 5px 20px&#13;
+    rgba(38,50,56,0.06);&#13;
+}&#13;
+&#13;
+&#13;
+.records-title {&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  justify-content: space-between;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  padding-bottom: 19px;&#13;
+&#13;
+  border-bottom:&#13;
+    1px solid&#13;
+    #edf5f6;&#13;
+&#13;
+  margin-bottom: 10px;&#13;
+}&#13;
+&#13;
+&#13;
+.records-title h2 {&#13;
+&#13;
+  margin: 0 0 5px;&#13;
+&#13;
+  font-size: 20px;&#13;
+}&#13;
+&#13;
+&#13;
+.records-title p {&#13;
+&#13;
+  margin: 0;&#13;
+&#13;
+  color: #78909c;&#13;
+&#13;
+  font-size: 12px;&#13;
+}&#13;
+&#13;
+&#13;
+.record-count {&#13;
+&#13;
+  background: #e0f7fa;&#13;
+&#13;
+  color: #008c9e;&#13;
+&#13;
+  padding: 7px 13px;&#13;
+&#13;
+  border-radius: 20px;&#13;
+&#13;
+  font-size: 11px;&#13;
+&#13;
+  font-weight: 700;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   TABLE&#13;
+   ========================================= */&#13;
+&#13;
+.table-wrapper {&#13;
+&#13;
+  width: 100%;&#13;
+&#13;
+  overflow-x: auto;&#13;
+}&#13;
+&#13;
+&#13;
+.records-table {&#13;
+&#13;
+  width: 100%;&#13;
+&#13;
+  border-collapse: collapse;&#13;
+&#13;
+  min-width: 1100px;&#13;
+}&#13;
+&#13;
+&#13;
+.records-table thead th {&#13;
+&#13;
+  background: #f7fcfd;&#13;
+&#13;
+  color: #607d8b;&#13;
+&#13;
+  font-size: 11px;&#13;
+&#13;
+  font-weight: 700;&#13;
+&#13;
+  text-align: left;&#13;
+&#13;
+  padding: 13px 12px;&#13;
+&#13;
+  border-bottom:&#13;
+    1px solid&#13;
+    #e4eff1;&#13;
+&#13;
+  white-space: nowrap;&#13;
+}&#13;
+&#13;
+&#13;
+.records-table tbody td {&#13;
+&#13;
+  padding: 15px 12px;&#13;
+&#13;
+  border-bottom:&#13;
+    1px solid&#13;
+    #edf5f6;&#13;
+&#13;
+  vertical-align: middle;&#13;
+&#13;
+  font-size: 12px;&#13;
+}&#13;
+&#13;
+&#13;
+.records-table tbody tr:hover {&#13;
+&#13;
+  background: #f9fdfe;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   TICKET&#13;
+   ========================================= */&#13;
+&#13;
+.ticket-number {&#13;
+&#13;
+  color: #008c9e;&#13;
+&#13;
+  font-weight: 700;&#13;
+&#13;
+  white-space: nowrap;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   STUDENT&#13;
+   ========================================= */&#13;
+&#13;
+.student-cell {&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  gap: 9px;&#13;
+&#13;
+  min-width: 140px;&#13;
+}&#13;
+&#13;
+&#13;
+.student-avatar {&#13;
+&#13;
+  width: 32px;&#13;
+&#13;
+  height: 32px;&#13;
+&#13;
+  border-radius: 9px;&#13;
+&#13;
+  background: #e0f7fa;&#13;
+&#13;
+  color: #008c9e;&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  justify-content: center;&#13;
+&#13;
+  font-size: 12px;&#13;
+&#13;
+  font-weight: 700;&#13;
+}&#13;
+&#13;
+&#13;
+.student-cell strong {&#13;
+&#13;
+  display: block;&#13;
+&#13;
+  font-size: 12px;&#13;
+&#13;
+  max-width: 120px;&#13;
+&#13;
+  overflow: hidden;&#13;
+&#13;
+  text-overflow: ellipsis;&#13;
+&#13;
+  white-space: nowrap;&#13;
+}&#13;
+&#13;
+&#13;
+.student-cell span {&#13;
+&#13;
+  display: block;&#13;
+&#13;
+  color: #90a4ae;&#13;
+&#13;
+  font-size: 10px;&#13;
+&#13;
+  margin-top: 3px;&#13;
+&#13;
+  max-width: 120px;&#13;
+&#13;
+  overflow: hidden;&#13;
+&#13;
+  text-overflow: ellipsis;&#13;
+&#13;
+  white-space: nowrap;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   REQUEST&#13;
+   ========================================= */&#13;
+&#13;
+.request-cell {&#13;
+&#13;
+  max-width: 230px;&#13;
+}&#13;
+&#13;
+&#13;
+.request-cell strong {&#13;
+&#13;
+  display: block;&#13;
+&#13;
+  font-size: 12px;&#13;
+&#13;
+  margin-bottom: 4px;&#13;
+}&#13;
+&#13;
+&#13;
+.request-cell span {&#13;
+&#13;
+  display: block;&#13;
+&#13;
+  color: #90a4ae;&#13;
+&#13;
+  font-size: 10px;&#13;
+&#13;
+  overflow: hidden;&#13;
+&#13;
+  text-overflow: ellipsis;&#13;
+&#13;
+  white-space: nowrap;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   NORMAL TEXT&#13;
+   ========================================= */&#13;
+&#13;
+.normal-text {&#13;
+&#13;
+  color: #546e7a;&#13;
+&#13;
+  white-space: nowrap;&#13;
+}&#13;
+&#13;
+&#13;
+.group-text {&#13;
+&#13;
+  color: #546e7a;&#13;
+&#13;
+  font-size: 11px;&#13;
+&#13;
+  white-space: nowrap;&#13;
+}&#13;
+&#13;
+&#13;
+.date-text {&#13;
+&#13;
+  color: #78909c;&#13;
+&#13;
+  font-size: 10px;&#13;
+&#13;
+  white-space: nowrap;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   BADGES&#13;
+   ========================================= */&#13;
+&#13;
+.priority-badge,&#13;
+.status-badge {&#13;
+&#13;
+  display: inline-block;&#13;
+&#13;
+  padding: 6px 9px;&#13;
+&#13;
+  border-radius: 20px;&#13;
+&#13;
+  font-size: 10px;&#13;
+&#13;
+  font-weight: 700;&#13;
+&#13;
+  white-space: nowrap;&#13;
+}&#13;
+&#13;
+&#13;
+/* Priority */&#13;
+&#13;
+.priority-critical {&#13;
+&#13;
+  background: #ffebee;&#13;
+&#13;
+  color: #c62828;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-high {&#13;
+&#13;
+  background: #fff3e0;&#13;
+&#13;
+  color: #ef6c00;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-medium {&#13;
+&#13;
+  background: #fffde7;&#13;
+&#13;
+  color: #827717;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-low {&#13;
+&#13;
+  background: #e8f5e9;&#13;
+&#13;
+  color: #2e7d32;&#13;
+}&#13;
+&#13;
+&#13;
+/* Status */&#13;
+&#13;
+.status-open {&#13;
+&#13;
+  background: #fff3e0;&#13;
+&#13;
+  color: #ef6c00;&#13;
+}&#13;
+&#13;
+&#13;
+.status-progress {&#13;
+&#13;
+  background: #e3f2fd;&#13;
+&#13;
+  color: #1565c0;&#13;
+}&#13;
+&#13;
+&#13;
+.status-resolved {&#13;
+&#13;
+  background: #e8f5e9;&#13;
+&#13;
+  color: #2e7d32;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   EMPTY&#13;
+   ========================================= */&#13;
+&#13;
+.empty-state {&#13;
+&#13;
+  text-align: center;&#13;
+&#13;
+  padding: 70px 20px;&#13;
+}&#13;
+&#13;
+&#13;
+.empty-icon {&#13;
+&#13;
+  font-size: 50px;&#13;
+&#13;
+  margin-bottom: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+.empty-state h3 {&#13;
+&#13;
+  margin: 0 0 7px;&#13;
+&#13;
+  font-size: 19px;&#13;
+}&#13;
+&#13;
+&#13;
+.empty-state p {&#13;
+&#13;
+  margin: 0;&#13;
+&#13;
+  color: #90a4ae;&#13;
+&#13;
+  font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   RESPONSIVE&#13;
+   ========================================= */&#13;
+&#13;
+@media (max-width: 1100px) {&#13;
+&#13;
+  .summary-grid {&#13;
+&#13;
+    grid-template-columns:&#13;
+      repeat(2, 1fr);&#13;
+  }&#13;
+&#13;
+&#13;
+  .filter-row {&#13;
+&#13;
+    grid-template-columns:&#13;
+      1fr 1fr;&#13;
+  }&#13;
+&#13;
+&#13;
+  .search-box {&#13;
+&#13;
+    grid-column:&#13;
+      span 2;&#13;
+  }&#13;
+&#13;
+}&#13;
+&#13;
+&#13;
+@media (max-width: 700px) {&#13;
+&#13;
+  .cfms-records {&#13;
+&#13;
+    padding: 15px;&#13;
+  }&#13;
+&#13;
+&#13;
+  .records-header {&#13;
+&#13;
+    flex-direction: column;&#13;
+&#13;
+    align-items: flex-start;&#13;
+&#13;
+    gap: 15px;&#13;
+  }&#13;
+&#13;
+&#13;
+  .header-actions {&#13;
+&#13;
+    width: 100%;&#13;
+  }&#13;
+&#13;
+&#13;
+  .header-btn,&#13;
+  .refresh-btn {&#13;
+&#13;
+    flex: 1;&#13;
+  }&#13;
+&#13;
+&#13;
+  .summary-grid {&#13;
+&#13;
+    grid-template-columns: 1fr;&#13;
+  }&#13;
+&#13;
+&#13;
+  .filter-row {&#13;
+&#13;
+    grid-template-columns: 1fr;&#13;
+  }&#13;
+&#13;
+&#13;
+  .search-box {&#13;
+&#13;
+    grid-column: auto;&#13;
+  }&#13;
+&#13;
+&#13;
+  .records-title {&#13;
+&#13;
+    align-items: flex-start;&#13;
+&#13;
+    gap: 10px;&#13;
+&#13;
+    flex-direction: column;&#13;
+  }&#13;
+&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>cfms_records_widget</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>CFMS Records Dashboard</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+    data.total = 0;
+    data.active = 0;
+    data.resolved = 0;
+    data.critical = 0;
+
+    data.records = [];
+    data.groups = [];
+
+    data.error = "";
+
+
+    /* =========================================
+       SECURITY
+       ========================================= */
+
+    if (!gs.isLoggedIn()) {
+
+        data.redirect = "cfms_login";
+
+        return;
+    }
+
+
+    /*
+     * Allow Admin or Manager.
+     */
+
+    if (
+        !gs.hasRole("admin") &&
+        !gs.hasRole("cfms_manager")
+    ) {
+
+        data.error =
+            "You are not authorized to access CFMS Records.";
+
+        data.redirect =
+            "cfms_home";
+
+        return;
+    }
+
+
+    /* =========================================
+       GET ASSIGNMENT GROUPS
+       ========================================= */
+
+    var groupGR =
+        new GlideRecord("sys_user_group");
+
+    groupGR.addActiveQuery();
+
+    groupGR.orderBy("name");
+
+    groupGR.query();
+
+
+    while (groupGR.next()) {
+
+        data.groups.push({
+
+            id:
+                groupGR.getUniqueValue(),
+
+            name:
+                groupGR.getValue("name")
+
+        });
+
+    }
+
+
+    /* =========================================
+       INCIDENT RECORDS
+       ========================================= */
+
+    var gr =
+        new GlideRecord("incident");
+
+    gr.orderByDesc("sys_created_on");
+
+    gr.query();
+
+
+    while (gr.next()) {
+
+        data.total++;
+
+
+        var state =
+            gr.getValue("state");
+
+
+        /* -----------------------------------------
+           ACTIVE
+           ----------------------------------------- */
+
+        if (
+            state != "6" &&
+            state != "7"
+        ) {
+
+            data.active++;
+
+        } else {
+
+            data.resolved++;
+
+        }
+
+
+        /* -----------------------------------------
+           PRIORITY
+           ----------------------------------------- */
+
+        var priority =
+            gr.getValue("priority");
+
+
+        var priorityText =
+            gr.getDisplayValue("priority");
+
+
+        var priorityClass =
+            "priority-medium";
+
+
+        if (priority == "1") {
+
+            data.critical++;
+
+            priorityText =
+                "Critical";
+
+            priorityClass =
+                "priority-critical";
+
+        } else if (priority == "2") {
+
+            priorityText =
+                "High";
+
+            priorityClass =
+                "priority-high";
+
+        } else if (priority == "3") {
+
+            priorityText =
+                "Medium";
+
+            priorityClass =
+                "priority-medium";
+
+        } else if (priority == "4") {
+
+            priorityText =
+                "Low";
+
+            priorityClass =
+                "priority-low";
+
+        }
+
+
+        /* -----------------------------------------
+           STATUS
+           ----------------------------------------- */
+
+        var stateText =
+            gr.getDisplayValue("state");
+
+
+        var statusClass =
+            "status-open";
+
+
+        if (state == "2") {
+
+            statusClass =
+                "status-progress";
+
+        } else if (
+            state == "6" ||
+            state == "7"
+        ) {
+
+            statusClass =
+                "status-resolved";
+
+        }
+
+
+        /* -----------------------------------------
+           CALLER
+           ----------------------------------------- */
+
+        var caller =
+            gr.getDisplayValue("caller_id");
+
+
+        var initial = "U";
+
+
+        if (caller) {
+
+            initial =
+                caller
+                .substring(0, 1)
+                .toUpperCase();
+
+        }
+
+
+        /* -----------------------------------------
+           CUSTOM CFMS FIELDS
+           ----------------------------------------- */
+
+        var mealType = "";
+        var messHall = "";
+        var useCase = "";
+
+
+        if (
+            gr.isValidField(
+                "u_cfms_meal_type"
+            )
+        ) {
+
+            mealType =
+                gr.getDisplayValue(
+                    "u_cfms_meal_type"
+                );
+
+        }
+
+
+        if (
+            gr.isValidField(
+                "u_cfms_mess_hall"
+            )
+        ) {
+
+            messHall =
+                gr.getDisplayValue(
+                    "u_cfms_mess_hall"
+                );
+
+        }
+
+
+        if (
+            gr.isValidField(
+                "u_cfms_use_case"
+            )
+        ) {
+
+            useCase =
+                gr.getDisplayValue(
+                    "u_cfms_use_case"
+                );
+
+        }
+
+
+        /* -----------------------------------------
+           RECORD
+           ----------------------------------------- */
+
+        data.records.push({
+
+            sys_id:
+                gr.getUniqueValue(),
+
+            number:
+                gr.getValue("number"),
+
+            caller:
+                caller,
+
+            initial:
+                initial,
+
+            short_description:
+                gr.getValue(
+                    "short_description"
+                ),
+
+            description:
+                gr.getValue(
+                    "description"
+                ) || "",
+
+            use_case:
+                useCase,
+
+            meal_type:
+                mealType,
+
+            mess_hall:
+                messHall,
+
+            assignment_group:
+                gr.getDisplayValue(
+                    "assignment_group"
+                ),
+
+            assignment_group_id:
+                gr.getValue(
+                    "assignment_group"
+                ),
+
+            assigned_to:
+                gr.getDisplayValue(
+                    "assigned_to"
+                ),
+
+            state:
+                stateText,
+
+            stateValue:
+                state,
+
+            statusClass:
+                statusClass,
+
+            priority:
+                priorityText,
+
+            priorityValue:
+                priority,
+
+            priorityClass:
+                priorityClass,
+
+            created:
+                gr.getDisplayValue(
+                    "sys_created_on"
+                )
+
+        });
+
+    }
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 14:10:39</sys_created_on>
+        <sys_id>bf35b4dda0a343107f4432329b8a15df</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CFMS Records Dashboard</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_widget_bf35b4dda0a343107f4432329b8a15df</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 14:10:39</sys_updated_on>
+        <template><![CDATA[<div class="cfms-records">
+
+  <!-- =========================================
+       HEADER
+       ========================================= -->
+
+  <div class="records-header">
+
+    <div class="header-left">
+
+      <div class="records-icon">
+        ]]>📋
+<![CDATA[      </div>
+
+      <div>
+
+        <h1>CFMS Records</h1>
+
+        <p>
+          View and monitor all campus food service requests.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="header-actions">
+
+      <button
+        class="header-btn"
+        ng-click="c.goBack()">
+
+        ← Dashboard
+
+      </button>
+
+
+      <button
+        class="refresh-btn"
+        ng-click="c.refresh()">
+
+        ↻ Refresh
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       ERROR
+       ========================================= -->
+
+  <div
+    class="alert error-alert"
+    ng-if="c.data.error">
+
+    {{c.data.error}}
+
+  </div>
+
+
+  <!-- =========================================
+       SUMMARY
+       ========================================= -->
+
+  <div class="summary-grid">
+
+    <div class="summary-card">
+
+      <div class="summary-icon">
+        ]]>🎫
+<![CDATA[      </div>
+
+      <div>
+
+        <span>Total Records</span>
+
+        <strong>
+          {{c.data.total}}
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-icon">
+        ]]>🔄
+<![CDATA[      </div>
+
+      <div>
+
+        <span>Active</span>
+
+        <strong>
+          {{c.data.active}}
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-icon">
+        ✓
+      </div>
+
+      <div>
+
+        <span>Resolved</span>
+
+        <strong>
+          {{c.data.resolved}}
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div class="summary-card">
+
+      <div class="summary-icon">
+        ⚠️
+      </div>
+
+      <div>
+
+        <span>Critical</span>
+
+        <strong>
+          {{c.data.critical}}
+        </strong>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       FILTER AREA
+       ========================================= -->
+
+  <div class="filter-card">
+
+    <div class="filter-title">
+
+      <h2>Search & Filter</h2>
+
+      <span>
+        {{c.filteredRecords().length}} records
+      </span>
+
+    </div>
+
+
+    <div class="filter-row">
+
+
+      <!-- Search -->
+
+      <div class="search-box">
+
+        <span>]]>🔍<![CDATA[</span>
+
+        <input
+          type="text"
+          ng-model="c.searchText"
+          placeholder="Search ticket, student or description..."
+        />
+
+      </div>
+
+
+      <!-- Status -->
+
+      <select
+        ng-model="c.statusFilter">
+
+        <option value="all">
+          All Status
+        </option>
+
+        <option value="1">
+          Open
+        </option>
+
+        <option value="2">
+          In Progress
+        </option>
+
+        <option value="6">
+          Resolved
+        </option>
+
+        <option value="7">
+          Closed
+        </option>
+
+      </select>
+
+
+      <!-- Priority -->
+
+      <select
+        ng-model="c.priorityFilter">
+
+        <option value="all">
+          All Priority
+        </option>
+
+        <option value="1">
+          Critical
+        </option>
+
+        <option value="2">
+          High
+        </option>
+
+        <option value="3">
+          Medium
+        </option>
+
+        <option value="4">
+          Low
+        </option>
+
+      </select>
+
+
+      <!-- Group -->
+
+      <select
+        ng-model="c.groupFilter">
+
+        <option value="all">
+          All Groups
+        </option>
+
+        <option
+          ng-repeat="group in c.data.groups"
+          value="{{group.id}}">
+
+          {{group.name}}
+
+        </option>
+
+      </select>
+
+
+      <button
+        class="clear-btn"
+        ng-click="c.clearFilters()">
+
+        Clear
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       RECORDS TABLE
+       ========================================= -->
+
+  <div class="records-card">
+
+
+    <div class="records-title">
+
+      <div>
+
+        <h2>Request Records</h2>
+
+        <p>
+          Campus food management service requests
+        </p>
+
+      </div>
+
+      <span class="record-count">
+        {{c.filteredRecords().length}} Records
+      </span>
+
+    </div>
+
+
+    <!-- =======================================
+         EMPTY STATE
+         ======================================= -->
+
+    <div
+      class="empty-state"
+      ng-if="c.filteredRecords().length === 0">
+
+      <div class="empty-icon">
+        ]]>📭
+<![CDATA[      </div>
+
+      <h3>
+        No records found
+      </h3>
+
+      <p>
+        Try changing your search or filter options.
+      </p>
+
+    </div>
+
+
+    <!-- =======================================
+         DESKTOP TABLE
+         ======================================= -->
+
+    <div
+      class="table-wrapper"
+      ng-if="c.filteredRecords().length > 0">
+
+      <table class="records-table">
+
+        <thead>
+
+          <tr>
+
+            <th>Ticket</th>
+
+            <th>Student</th>
+
+            <th>Request</th>
+
+            <th>Meal</th>
+
+            <th>Mess Hall</th>
+
+            <th>Priority</th>
+
+            <th>Status</th>
+
+            <th>Assignment Group</th>
+
+            <th>Created</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr
+            ng-repeat="record in c.filteredRecords() track by record.sys_id">
+
+
+            <!-- Ticket -->
+
+            <td>
+
+              <span class="ticket-number">
+                {{record.number}}
+              </span>
+
+            </td>
+
+
+            <!-- Student -->
+
+            <td>
+
+              <div class="student-cell">
+
+                <div class="student-avatar">
+                  {{record.initial}}
+                </div>
+
+                <div>
+
+                  <strong>
+                    {{record.caller}}
+                  </strong>
+
+                  <span>
+                    {{record.assigned_to}}
+                  </span>
+
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <!-- Request -->
+
+            <td>
+
+              <div class="request-cell">
+
+                <strong>
+                  {{record.short_description}}
+                </strong>
+
+                <span>
+                  {{record.description}}
+                </span>
+
+              </div>
+
+            </td>
+
+
+            <!-- Meal -->
+
+            <td>
+
+              <span class="normal-text">
+                {{record.meal_type || '—'}}
+              </span>
+
+            </td>
+
+
+            <!-- Mess -->
+
+            <td>
+
+              <span class="normal-text">
+                {{record.mess_hall || '—'}}
+              </span>
+
+            </td>
+
+
+            <!-- Priority -->
+
+            <td>
+
+              <span
+                class="priority-badge"
+                ng-class="record.priorityClass">
+
+                {{record.priority}}
+
+              </span>
+
+            </td>
+
+
+            <!-- Status -->
+
+            <td>
+
+              <span
+                class="status-badge"
+                ng-class="record.statusClass">
+
+                {{record.state}}
+
+              </span>
+
+            </td>
+
+
+            <!-- Group -->
+
+            <td>
+
+              <span class="group-text">
+                {{record.assignment_group || 'Unassigned'}}
+              </span>
+
+            </td>
+
+
+            <!-- Date -->
+
+            <td>
+
+              <span class="date-text">
+                {{record.created}}
+              </span>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

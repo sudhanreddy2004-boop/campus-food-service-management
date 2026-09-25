@@ -1,0 +1,1789 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function() {
+
+    var c = this;
+
+
+    /*
+     * =========================================
+     * DASHBOARD
+     * =========================================
+     */
+
+    c.dashboard = function() {
+
+        window.location.href =
+            "?id=cfms_student";
+
+    };
+
+
+    /*
+     * =========================================
+     * RAISE REQUEST
+     * =========================================
+     */
+
+    c.raiseRequest = function() {
+
+        window.location.href =
+            "?id=cfms_raise";
+
+    };
+
+
+    /*
+     * =========================================
+     * MY REQUESTS
+     * =========================================
+     */
+
+    c.myRequests = function() {
+
+        window.location.href =
+            "?id=cfms_requests";
+
+    };
+
+
+    /*
+     * =========================================
+     * FEEDBACK
+     * =========================================
+     */
+
+    c.feedback = function() {
+
+        window.location.href =
+            "?id=cfms_feedback";
+
+    };
+
+
+    /*
+     * =========================================
+     * LOGOUT
+     * =========================================
+     */
+
+    c.logout = function() {
+
+        window.location.href =
+            "/logout.do";
+
+    };
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>/* =========================================&#13;
+   CFMS STUDENT DASHBOARD&#13;
+   ========================================= */&#13;
+&#13;
+.cfms-student-page {&#13;
+    min-height: 100vh;&#13;
+&#13;
+    background: #f0fbfc;&#13;
+&#13;
+    color: #263238;&#13;
+&#13;
+    font-family:&#13;
+        "Segoe UI",&#13;
+        Tahoma,&#13;
+        Geneva,&#13;
+        Verdana,&#13;
+        sans-serif;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   HEADER&#13;
+   ========================================= */&#13;
+&#13;
+.student-header {&#13;
+    height: 72px;&#13;
+&#13;
+    background: #00acc1;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: space-between;&#13;
+&#13;
+    padding: 0 35px;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+}&#13;
+&#13;
+&#13;
+.student-brand {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 12px;&#13;
+}&#13;
+&#13;
+&#13;
+.brand-icon {&#13;
+    width: 43px;&#13;
+    height: 43px;&#13;
+&#13;
+    border-radius: 9px;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+&#13;
+    font-size: 22px;&#13;
+}&#13;
+&#13;
+&#13;
+.student-brand h2 {&#13;
+    margin: 0;&#13;
+&#13;
+    font-size: 23px;&#13;
+&#13;
+    line-height: 1.1;&#13;
+}&#13;
+&#13;
+&#13;
+.student-brand span {&#13;
+    font-size: 11px;&#13;
+&#13;
+    opacity: 0.9;&#13;
+}&#13;
+&#13;
+&#13;
+/* USER */&#13;
+&#13;
+.student-user {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 10px;&#13;
+}&#13;
+&#13;
+&#13;
+.user-avatar {&#13;
+    width: 38px;&#13;
+    height: 38px;&#13;
+&#13;
+    border-radius: 50%;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+}&#13;
+&#13;
+&#13;
+.user-info {&#13;
+    display: flex;&#13;
+&#13;
+    flex-direction: column;&#13;
+}&#13;
+&#13;
+&#13;
+.user-info strong {&#13;
+    font-size: 14px;&#13;
+}&#13;
+&#13;
+&#13;
+.user-info span {&#13;
+    font-size: 11px;&#13;
+&#13;
+    opacity: 0.85;&#13;
+}&#13;
+&#13;
+&#13;
+.logout-btn {&#13;
+    margin-left: 15px;&#13;
+&#13;
+    padding: 8px 13px;&#13;
+&#13;
+    border: 1px solid rgba(255,255,255,0.7);&#13;
+&#13;
+    background: transparent;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    border-radius: 6px;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.logout-btn:hover {&#13;
+    background: white;&#13;
+&#13;
+    color: #00acc1;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   LAYOUT&#13;
+   ========================================= */&#13;
+&#13;
+.student-layout {&#13;
+    display: flex;&#13;
+&#13;
+    min-height: calc(100vh - 72px);&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   SIDEBAR&#13;
+   ========================================= */&#13;
+&#13;
+.student-sidebar {&#13;
+    width: 235px;&#13;
+&#13;
+    flex-shrink: 0;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    border-right: 1px solid #dceff1;&#13;
+&#13;
+    padding: 25px 15px;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+}&#13;
+&#13;
+&#13;
+.sidebar-title {&#13;
+    padding: 0 12px 15px;&#13;
+&#13;
+    color: #78909c;&#13;
+&#13;
+    font-size: 11px;&#13;
+&#13;
+    font-weight: 700;&#13;
+&#13;
+    letter-spacing: 1px;&#13;
+}&#13;
+&#13;
+&#13;
+.sidebar-item {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 13px;&#13;
+&#13;
+    padding: 13px 14px;&#13;
+&#13;
+    margin-bottom: 5px;&#13;
+&#13;
+    border-radius: 8px;&#13;
+&#13;
+    color: #546e7a !important;&#13;
+&#13;
+    text-decoration: none !important;&#13;
+&#13;
+    cursor: pointer;&#13;
+&#13;
+    transition: 0.2s ease;&#13;
+}&#13;
+&#13;
+&#13;
+.sidebar-item i {&#13;
+    width: 20px;&#13;
+&#13;
+    text-align: center;&#13;
+&#13;
+    font-size: 17px;&#13;
+}&#13;
+&#13;
+&#13;
+.sidebar-item:hover {&#13;
+    background: #e0f7fa;&#13;
+&#13;
+    color: #00acc1 !important;&#13;
+}&#13;
+&#13;
+&#13;
+.sidebar-item.active {&#13;
+    background: #e0f7fa;&#13;
+&#13;
+    color: #00acc1 !important;&#13;
+&#13;
+    font-weight: 600;&#13;
+}&#13;
+&#13;
+&#13;
+.sidebar-divider {&#13;
+    height: 1px;&#13;
+&#13;
+    background: #e5eeee;&#13;
+&#13;
+    margin: 20px 10px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   MAIN CONTENT&#13;
+   ========================================= */&#13;
+&#13;
+.student-content {&#13;
+    flex: 1;&#13;
+&#13;
+    padding: 35px 45px;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+&#13;
+    max-width: 1400px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   WELCOME&#13;
+   ========================================= */&#13;
+&#13;
+.welcome-section {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: space-between;&#13;
+&#13;
+    margin-bottom: 30px;&#13;
+}&#13;
+&#13;
+&#13;
+.page-label {&#13;
+    color: #00acc1;&#13;
+&#13;
+    font-size: 11px;&#13;
+&#13;
+    font-weight: 700;&#13;
+&#13;
+    letter-spacing: 1px;&#13;
+}&#13;
+&#13;
+&#13;
+.welcome-section h1 {&#13;
+    margin: 7px 0;&#13;
+&#13;
+    font-size: 31px;&#13;
+&#13;
+    color: #263238;&#13;
+}&#13;
+&#13;
+&#13;
+.welcome-section p {&#13;
+    margin: 0;&#13;
+&#13;
+    color: #607d8b;&#13;
+&#13;
+    font-size: 14px;&#13;
+}&#13;
+&#13;
+&#13;
+.quick-request-btn {&#13;
+    background: #00acc1;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    border: none;&#13;
+&#13;
+    border-radius: 8px;&#13;
+&#13;
+    padding: 13px 20px;&#13;
+&#13;
+    font-size: 14px;&#13;
+&#13;
+    font-weight: 600;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.quick-request-btn:hover {&#13;
+    background: #008fa1;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   STATISTICS&#13;
+   ========================================= */&#13;
+&#13;
+.stats-container {&#13;
+    display: grid;&#13;
+&#13;
+    grid-template-columns:&#13;
+        repeat(4, 1fr);&#13;
+&#13;
+    gap: 18px;&#13;
+&#13;
+    margin-bottom: 35px;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-card {&#13;
+    background: white;&#13;
+&#13;
+    border-radius: 12px;&#13;
+&#13;
+    padding: 20px;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 15px;&#13;
+&#13;
+    box-shadow:&#13;
+        0 3px 15px rgba(0,0,0,0.05);&#13;
+&#13;
+    border: 1px solid #e3f1f3;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-icon {&#13;
+    width: 50px;&#13;
+    height: 50px;&#13;
+&#13;
+    border-radius: 10px;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+&#13;
+    font-size: 21px;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-icon.teal {&#13;
+    background: #e0f7fa;&#13;
+&#13;
+    color: #00acc1;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-icon.blue {&#13;
+    background: #e3f2fd;&#13;
+&#13;
+    color: #1976d2;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-icon.green {&#13;
+    background: #e8f5e9;&#13;
+&#13;
+    color: #43a047;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-icon.orange {&#13;
+    background: #fff3e0;&#13;
+&#13;
+    color: #fb8c00;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-details {&#13;
+    display: flex;&#13;
+&#13;
+    flex-direction: column;&#13;
+&#13;
+    gap: 4px;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-details span {&#13;
+    color: #78909c;&#13;
+&#13;
+    font-size: 12px;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-details strong {&#13;
+    color: #263238;&#13;
+&#13;
+    font-size: 25px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   DASHBOARD SECTIONS&#13;
+   ========================================= */&#13;
+&#13;
+.dashboard-section {&#13;
+    margin-bottom: 35px;&#13;
+}&#13;
+&#13;
+&#13;
+.section-heading {&#13;
+    display: flex;&#13;
+&#13;
+    justify-content: space-between;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    margin-bottom: 18px;&#13;
+}&#13;
+&#13;
+&#13;
+.section-heading h2 {&#13;
+    margin: 0 0 5px;&#13;
+&#13;
+    font-size: 21px;&#13;
+&#13;
+    color: #263238;&#13;
+}&#13;
+&#13;
+&#13;
+.section-heading p {&#13;
+    margin: 0;&#13;
+&#13;
+    color: #78909c;&#13;
+&#13;
+    font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   ACTION CARDS&#13;
+   ========================================= */&#13;
+&#13;
+.action-grid {&#13;
+    display: grid;&#13;
+&#13;
+    grid-template-columns:&#13;
+        repeat(3, 1fr);&#13;
+&#13;
+    gap: 20px;&#13;
+}&#13;
+&#13;
+&#13;
+.action-card {&#13;
+    background: white;&#13;
+&#13;
+    padding: 25px;&#13;
+&#13;
+    border-radius: 13px;&#13;
+&#13;
+    border: 1px solid #e1eff1;&#13;
+&#13;
+    cursor: pointer;&#13;
+&#13;
+    transition: all 0.25s ease;&#13;
+}&#13;
+&#13;
+&#13;
+.action-card:hover {&#13;
+    transform: translateY(-5px);&#13;
+&#13;
+    box-shadow:&#13;
+        0 10px 25px rgba(0,0,0,0.08);&#13;
+&#13;
+    border-color: #b2ebf2;&#13;
+}&#13;
+&#13;
+&#13;
+.action-icon {&#13;
+    width: 48px;&#13;
+    height: 48px;&#13;
+&#13;
+    border-radius: 10px;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+&#13;
+    font-size: 20px;&#13;
+&#13;
+    margin-bottom: 15px;&#13;
+}&#13;
+&#13;
+&#13;
+.teal-bg {&#13;
+    background: #e0f7fa;&#13;
+&#13;
+    color: #00acc1;&#13;
+}&#13;
+&#13;
+&#13;
+.blue-bg {&#13;
+    background: #e3f2fd;&#13;
+&#13;
+    color: #1976d2;&#13;
+}&#13;
+&#13;
+&#13;
+.orange-bg {&#13;
+    background: #fff3e0;&#13;
+&#13;
+    color: #fb8c00;&#13;
+}&#13;
+&#13;
+&#13;
+.action-card h3 {&#13;
+    margin: 0 0 8px;&#13;
+&#13;
+    color: #263238;&#13;
+&#13;
+    font-size: 17px;&#13;
+}&#13;
+&#13;
+&#13;
+.action-card p {&#13;
+    margin: 0 0 17px;&#13;
+&#13;
+    color: #607d8b;&#13;
+&#13;
+    font-size: 13px;&#13;
+&#13;
+    line-height: 1.6;&#13;
+}&#13;
+&#13;
+&#13;
+.action-link {&#13;
+    color: #00acc1;&#13;
+&#13;
+    font-size: 13px;&#13;
+&#13;
+    font-weight: 600;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   VIEW ALL&#13;
+   ========================================= */&#13;
+&#13;
+.view-all-btn {&#13;
+    border: none;&#13;
+&#13;
+    background: transparent;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    font-size: 13px;&#13;
+&#13;
+    font-weight: 600;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   EMPTY STATE&#13;
+   ========================================= */&#13;
+&#13;
+.empty-state {&#13;
+    background: white;&#13;
+&#13;
+    border-radius: 13px;&#13;
+&#13;
+    padding: 45px 20px;&#13;
+&#13;
+    text-align: center;&#13;
+&#13;
+    border: 1px solid #e1eff1;&#13;
+}&#13;
+&#13;
+&#13;
+.empty-icon {&#13;
+    width: 60px;&#13;
+    height: 60px;&#13;
+&#13;
+    margin: 0 auto 15px;&#13;
+&#13;
+    border-radius: 50%;&#13;
+&#13;
+    background: #e0f7fa;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+&#13;
+    font-size: 25px;&#13;
+}&#13;
+&#13;
+&#13;
+.empty-state h3 {&#13;
+    margin: 0 0 7px;&#13;
+&#13;
+    color: #263238;&#13;
+}&#13;
+&#13;
+&#13;
+.empty-state p {&#13;
+    color: #78909c;&#13;
+&#13;
+    font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+.empty-btn {&#13;
+    margin-top: 10px;&#13;
+&#13;
+    padding: 10px 17px;&#13;
+&#13;
+    border: none;&#13;
+&#13;
+    border-radius: 7px;&#13;
+&#13;
+    background: #00acc1;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   REQUEST LIST&#13;
+   ========================================= */&#13;
+&#13;
+.request-list {&#13;
+    background: white;&#13;
+&#13;
+    border-radius: 13px;&#13;
+&#13;
+    border: 1px solid #e1eff1;&#13;
+&#13;
+    overflow: hidden;&#13;
+}&#13;
+&#13;
+&#13;
+.request-row {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: space-between;&#13;
+&#13;
+    padding: 17px 20px;&#13;
+&#13;
+    border-bottom: 1px solid #edf4f5;&#13;
+}&#13;
+&#13;
+&#13;
+.request-row:last-child {&#13;
+    border-bottom: none;&#13;
+}&#13;
+&#13;
+&#13;
+.request-main {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+.request-icon {&#13;
+    width: 40px;&#13;
+    height: 40px;&#13;
+&#13;
+    border-radius: 8px;&#13;
+&#13;
+    background: #e0f7fa;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+}&#13;
+&#13;
+&#13;
+.request-main h4 {&#13;
+    margin: 0 0 3px;&#13;
+&#13;
+    font-size: 14px;&#13;
+&#13;
+    color: #263238;&#13;
+}&#13;
+&#13;
+&#13;
+.request-main p {&#13;
+    margin: 0;&#13;
+&#13;
+    font-size: 12px;&#13;
+&#13;
+    color: #78909c;&#13;
+}&#13;
+&#13;
+&#13;
+.status-badge {&#13;
+    padding: 6px 10px;&#13;
+&#13;
+    border-radius: 20px;&#13;
+&#13;
+    font-size: 11px;&#13;
+&#13;
+    background: #e0f7fa;&#13;
+&#13;
+    color: #008fa1;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   HELP&#13;
+   ========================================= */&#13;
+&#13;
+.help-card {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 20px;&#13;
+&#13;
+    padding: 22px;&#13;
+&#13;
+    border-radius: 12px;&#13;
+&#13;
+    background: #4dd0e1;&#13;
+&#13;
+    margin-bottom: 20px;&#13;
+}&#13;
+&#13;
+&#13;
+.help-icon {&#13;
+    width: 45px;&#13;
+    height: 45px;&#13;
+&#13;
+    border-radius: 50%;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+&#13;
+    flex-shrink: 0;&#13;
+}&#13;
+&#13;
+&#13;
+.help-content {&#13;
+    flex: 1;&#13;
+}&#13;
+&#13;
+&#13;
+.help-content h3 {&#13;
+    margin: 0 0 5px;&#13;
+&#13;
+    color: #263238;&#13;
+}&#13;
+&#13;
+&#13;
+.help-content p {&#13;
+    margin: 0;&#13;
+&#13;
+    color: #37474f;&#13;
+&#13;
+    font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+.help-btn {&#13;
+    background: #00acc1;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    border: none;&#13;
+&#13;
+    padding: 10px 17px;&#13;
+&#13;
+    border-radius: 7px;&#13;
+&#13;
+    cursor: pointer;&#13;
+&#13;
+    font-weight: 600;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   RESPONSIVE&#13;
+   ========================================= */&#13;
+&#13;
+@media (max-width: 1100px) {&#13;
+&#13;
+    .stats-container {&#13;
+        grid-template-columns:&#13;
+            repeat(2, 1fr);&#13;
+    }&#13;
+&#13;
+    .action-grid {&#13;
+        grid-template-columns:&#13;
+            repeat(2, 1fr);&#13;
+    }&#13;
+&#13;
+}&#13;
+&#13;
+&#13;
+@media (max-width: 800px) {&#13;
+&#13;
+    .student-sidebar {&#13;
+        width: 70px;&#13;
+&#13;
+        padding: 20px 8px;&#13;
+    }&#13;
+&#13;
+    .sidebar-title,&#13;
+    .sidebar-item span {&#13;
+        display: none;&#13;
+    }&#13;
+&#13;
+    .sidebar-item {&#13;
+        justify-content: center;&#13;
+    }&#13;
+&#13;
+    .student-content {&#13;
+        padding: 25px;&#13;
+    }&#13;
+&#13;
+}&#13;
+&#13;
+&#13;
+@media (max-width: 600px) {&#13;
+&#13;
+    .student-header {&#13;
+        height: auto;&#13;
+&#13;
+        padding: 15px 18px;&#13;
+    }&#13;
+&#13;
+    .student-brand span,&#13;
+    .user-info {&#13;
+        display: none;&#13;
+    }&#13;
+&#13;
+    .logout-btn {&#13;
+        margin-left: 5px;&#13;
+    }&#13;
+&#13;
+    .welcome-section {&#13;
+        flex-direction: column;&#13;
+&#13;
+        align-items: flex-start;&#13;
+&#13;
+        gap: 20px;&#13;
+    }&#13;
+&#13;
+    .stats-container,&#13;
+    .action-grid {&#13;
+        grid-template-columns: 1fr;&#13;
+    }&#13;
+&#13;
+    .student-content {&#13;
+        padding: 20px 15px;&#13;
+    }&#13;
+&#13;
+    .help-card {&#13;
+        flex-direction: column;&#13;
+&#13;
+        text-align: center;&#13;
+    }&#13;
+&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>cfms_student_dashboard</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>CFMS Student Dashboard</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+    /*
+     * =========================================
+     * DEFAULT DATA
+     * =========================================
+     */
+
+    data.userName = gs.getUserDisplayName();
+
+    data.totalRequests = 0;
+
+    data.activeRequests = 0;
+
+    data.resolvedRequests = 0;
+
+    data.feedbackCount = 0;
+
+    data.recentRequests = [];
+
+
+    /*
+     * =========================================
+     * SECURITY CHECK
+     * =========================================
+     */
+
+    if (!gs.isLoggedIn()) {
+
+        data.redirect = "cfms_login";
+
+        return;
+
+    }
+
+
+    /*
+     * =========================================
+     * STUDENT ROLE CHECK
+     * =========================================
+     */
+
+    if (!gs.hasRole("cfms_student") &&
+        !gs.hasRole("admin")) {
+
+        data.redirect = "cfms_home";
+
+        return;
+
+    }
+
+
+    /*
+     * =========================================
+     * STUDENT REQUESTS
+     *
+     * Recommended table:
+     * incident
+     *
+     * caller_id = logged-in student
+     * =========================================
+     */
+
+    var requestGR = new GlideRecord("incident");
+
+    requestGR.addQuery(
+        "caller_id",
+        gs.getUserID()
+    );
+
+    requestGR.orderByDesc("sys_created_on");
+
+    requestGR.query();
+
+
+    while (requestGR.next()) {
+
+        data.totalRequests++;
+
+
+        /*
+         * Resolved
+         */
+
+        if (requestGR.state == 6 ||
+            requestGR.state == 7) {
+
+            data.resolvedRequests++;
+
+        } else {
+
+            data.activeRequests++;
+
+        }
+
+
+        /*
+         * Recent 5 requests
+         */
+
+        if (data.recentRequests.length < 5) {
+
+            var stateText =
+                requestGR.getDisplayValue("state");
+
+            var statusClass =
+                "status-active";
+
+
+            if (requestGR.state == 6 ||
+                requestGR.state == 7) {
+
+                statusClass =
+                    "status-resolved";
+
+            }
+
+
+            data.recentRequests.push({
+
+                number:
+                    requestGR.getValue("number"),
+
+                short_description:
+                    requestGR.getValue(
+                        "short_description"
+                    ),
+
+                state:
+                    stateText,
+
+                statusClass:
+                    statusClass
+
+            });
+
+        }
+
+    }
+
+
+    /*
+     * =========================================
+     * FEEDBACK COUNT
+     *
+     * Recommended custom table:
+     * u_cfms_feedback
+     * =========================================
+     */
+
+    if (GlideTableDescriptor
+        .isValid("u_cfms_feedback")) {
+
+        var feedbackGR =
+            new GlideRecord(
+                "u_cfms_feedback"
+            );
+
+        feedbackGR.addQuery(
+            "u_student",
+            gs.getUserID()
+        );
+
+        feedbackGR.query();
+
+        data.feedbackCount =
+            feedbackGR.getRowCount();
+
+    }
+
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 10:11:37</sys_created_on>
+        <sys_id>c9a14459a02f03107f4432329b8a15b6</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>CFMS Student Dashboard</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_widget_c9a14459a02f03107f4432329b8a15b6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 10:22:03</sys_updated_on>
+        <template><![CDATA[<div class="cfms-student-page">
+
+    <!-- =====================================
+         TOP HEADER
+         ===================================== -->
+
+    <header class="student-header">
+
+        <div class="student-brand">
+
+            <div class="brand-icon">
+                <i class="fa fa-cutlery"></i>
+            </div>
+
+            <div>
+                <h2>CFMS</h2>
+                <span>Campus Food Management System</span>
+            </div>
+
+        </div>
+
+
+        <div class="student-user">
+
+            <div class="user-avatar">
+                <i class="fa fa-user"></i>
+            </div>
+
+            <div class="user-info">
+
+                <strong>
+                    {{c.data.userName}}
+                </strong>
+
+                <span>
+                    Student
+                </span>
+
+            </div>
+
+            <button
+                class="logout-btn"
+                ng-click="c.logout()">
+
+                <i class="fa fa-sign-out"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================
+         MAIN LAYOUT
+         ===================================== -->
+
+    <div class="student-layout">
+
+
+        <!-- =================================
+             SIDEBAR
+             ================================= -->
+
+        <aside class="student-sidebar">
+
+            <div class="sidebar-title">
+                STUDENT MENU
+            </div>
+
+
+            <!-- Dashboard -->
+
+            <a
+                class="sidebar-item active"
+                ng-click="c.dashboard()">
+
+                <i class="fa fa-dashboard"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <!-- Raise Request -->
+
+            <a
+                class="sidebar-item"
+                ng-click="c.raiseRequest()">
+
+                <i class="fa fa-plus-circle"></i>
+
+                <span>
+                    Raise a Request
+                </span>
+
+            </a>
+
+
+            <!-- My Requests -->
+
+            <a
+                class="sidebar-item"
+                ng-click="c.myRequests()">
+
+                <i class="fa fa-list-alt"></i>
+
+                <span>
+                    My Requests
+                </span>
+
+            </a>
+
+
+            <!-- Feedback -->
+
+            <a
+                class="sidebar-item"
+                ng-click="c.feedback()">
+
+                <i class="fa fa-comment"></i>
+
+                <span>
+                    Feedback
+                </span>
+
+            </a>
+
+
+            <div class="sidebar-divider"></div>
+
+
+            <!-- Help -->
+
+            <a
+                class="sidebar-item"
+                href="#help">
+
+                <i class="fa fa-question-circle"></i>
+
+                <span>
+                    Help
+                </span>
+
+            </a>
+
+        </aside>
+
+
+        <!-- =================================
+             MAIN CONTENT
+             ================================= -->
+
+        <main class="student-content">
+
+
+            <!-- PAGE TITLE -->
+
+            <div class="welcome-section">
+
+                <div>
+
+                    <span class="page-label">
+                        STUDENT DASHBOARD
+                    </span>
+
+                    <h1>
+                        Welcome,
+                        {{c.data.userName}}
+                    </h1>
+
+                    <p>
+                        Manage your campus food requests
+                        and track your dining experience.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="quick-request-btn"
+                    ng-click="c.raiseRequest()">
+
+                    <i class="fa fa-plus"></i>
+
+                    Raise Request
+
+                </button>
+
+            </div>
+
+
+            <!-- =================================
+                 STATISTICS
+                 ================================= -->
+
+            <div class="stats-container">
+
+
+                <!-- TOTAL REQUESTS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon teal">
+                        <i class="fa fa-file-text"></i>
+                    </div>
+
+                    <div class="stat-details">
+
+                        <span>
+                            Total Requests
+                        </span>
+
+                        <strong>
+                            {{c.data.totalRequests}}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTIVE REQUESTS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+
+                    <div class="stat-details">
+
+                        <span>
+                            Active Requests
+                        </span>
+
+                        <strong>
+                            {{c.data.activeRequests}}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RESOLVED -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        <i class="fa fa-check-circle"></i>
+                    </div>
+
+                    <div class="stat-details">
+
+                        <span>
+                            Resolved
+                        </span>
+
+                        <strong>
+                            {{c.data.resolvedRequests}}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FEEDBACK -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        <i class="fa fa-star"></i>
+                    </div>
+
+                    <div class="stat-details">
+
+                        <span>
+                            Feedback Given
+                        </span>
+
+                        <strong>
+                            {{c.data.feedbackCount}}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 QUICK ACTIONS
+                 ================================= -->
+
+            <section class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            Quick Actions
+                        </h2>
+
+                        <p>
+                            Frequently used student services
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="action-grid">
+
+
+                    <!-- RAISE REQUEST -->
+
+                    <div
+                        class="action-card"
+                        ng-click="c.raiseRequest()">
+
+                        <div class="action-icon teal-bg">
+
+                            <i class="fa fa-plus"></i>
+
+                        </div>
+
+                        <h3>
+                            Raise a Request
+                        </h3>
+
+                        <p>
+                            Report food quality,
+                            hygiene or dining issues.
+                        </p>
+
+                        <span class="action-link">
+                            Create Request
+                            <i class="fa fa-arrow-right"></i>
+                        </span>
+
+                    </div>
+
+
+                    <!-- MY REQUESTS -->
+
+                    <div
+                        class="action-card"
+                        ng-click="c.myRequests()">
+
+                        <div class="action-icon blue-bg">
+
+                            <i class="fa fa-list"></i>
+
+                        </div>
+
+                        <h3>
+                            My Requests
+                        </h3>
+
+                        <p>
+                            View and track all your
+                            submitted requests.
+                        </p>
+
+                        <span class="action-link">
+                            View Requests
+                            <i class="fa fa-arrow-right"></i>
+                        </span>
+
+                    </div>
+
+
+                    <!-- FEEDBACK -->
+
+                    <div
+                        class="action-card"
+                        ng-click="c.feedback()">
+
+                        <div class="action-icon orange-bg">
+
+                            <i class="fa fa-star"></i>
+
+                        </div>
+
+                        <h3>
+                            Give Feedback
+                        </h3>
+
+                        <p>
+                            Share your experience
+                            and help improve food services.
+                        </p>
+
+                        <span class="action-link">
+                            Give Feedback
+                            <i class="fa fa-arrow-right"></i>
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 RECENT REQUESTS
+                 ================================= -->
+
+            <section class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            Recent Requests
+                        </h2>
+
+                        <p>
+                            Your latest food service requests
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="view-all-btn"
+                        ng-click="c.myRequests()">
+
+                        View All
+
+                        <i class="fa fa-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+
+                <!-- EMPTY -->
+
+                <div
+                    class="empty-state"
+                    ng-if="!c.data.recentRequests.length">
+
+                    <div class="empty-icon">
+
+                        <i class="fa fa-inbox"></i>
+
+                    </div>
+
+                    <h3>
+                        No requests yet
+                    </h3>
+
+                    <p>
+                        You haven't raised any food-related
+                        requests yet.
+                    </p>
+
+                    <button
+                        class="empty-btn"
+                        ng-click="c.raiseRequest()">
+
+                        Raise Your First Request
+
+                    </button>
+
+                </div>
+
+
+                <!-- REQUEST LIST -->
+
+                <div
+                    class="request-list"
+                    ng-if="c.data.recentRequests.length">
+
+                    <div
+                        class="request-row"
+                        ng-repeat="request in c.data.recentRequests">
+
+                        <div class="request-main">
+
+                            <div class="request-icon">
+
+                                <i class="fa fa-file-text"></i>
+
+                            </div>
+
+                            <div>
+
+                                <h4>
+                                    {{request.number}}
+                                </h4>
+
+                                <p>
+                                    {{request.short_description}}
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="request-status">
+
+                            <span
+                                class="status-badge"
+                                ng-class="request.statusClass">
+
+                                {{request.state}}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 HELP
+                 ================================= -->
+
+            <section
+                id="help"
+                class="help-card">
+
+                <div class="help-icon">
+
+                    <i class="fa fa-question"></i>
+
+                </div>
+
+                <div class="help-content">
+
+                    <h3>
+                        Need Help?
+                    </h3>
+
+                    <p>
+                        If you have an issue with your
+                        campus food service, raise a request
+                        and our team will assist you.
+                    </p>
+
+                </div>
+
+                <button
+                    ng-click="c.raiseRequest()"
+                    class="help-btn">
+
+                    Raise Request
+
+                </button>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

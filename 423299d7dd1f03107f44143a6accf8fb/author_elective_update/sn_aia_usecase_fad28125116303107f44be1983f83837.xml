@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_usecase">
+    <sn_aia_usecase action="DELETE">
+        <advanced_mode>false</advanced_mode>
+        <applicability_script><![CDATA[/** 
+ * Function to process inputs related to ServiceNow change request operations 
+ * 
+ * @param {Object} inputs - The input parameters object 
+ * @param {string} inputs.objective - The purpose or goal of the operation 
+ * @param {string} inputs.execution_plan_id - Unique identifier for the execution plan 
+ * @param {Object} inputs.context - Context information about the ServiceNow change request 
+ * @param {string} inputs.context.url - The URL of the change request in Service Operations Workspace 
+ * @param {string} inputs.context.table - The ServiceNow table name (e.g., 'change_request') 
+ * @param {string} inputs.context.record_sys_id - The sys ID of the record 
+ * @param {string} inputs.context.route - The route type (e.g., 'record') 
+ * @param {string} inputs.context.additional_context - Additional contextual information in JSON format 
+ * @param {string} inputs.context.experience - The UI experience name (e.g., 'Service Operations Workspace') 
+ * @param {string} inputs.context.number - The request number 
+ * @param {string} inputs.context.portal - The portal ID 
+ * @param {string} inputs.context.device_type - The device type from which the experience is accessed, e.g.'mweb' 
+ * @param {string} inputs.context.deployment_id - The unique identifier for the assistant deployment 
+ * @param {string} inputs.context.assistant_type - The type of assistant, e.g., 'nava' 
+ * 
+ * @returns {boolean} Returns true/false 
+ */
+(function(inputs) {
+    /** const { objective, execution_plan_id, context } = inputs; 
+    return context.table == 'incident' ; */
+    return false;
+})(inputs);]]></applicability_script>
+        <base_plan>Expertise: The agent specializes in handling campus food service complaints and requests using real Food Base Problem data and campus knowledge articles.
+1. Retrieve the Food Base Problem record submitted by the student.
+2. Analyze the Description field to understand the student's food-service complaint.
+3. Identify the applicable campus food-service use case from the provided list.
+4. Determine the normalized problem type and priority using campus food priority rules and Student Count.
+5. Retrieve relevant Campus Food Services knowledge articles based on the problem type.
+6. Provide a concise recommended action for the responsible food-service staff.
+7. Ensure all information used is based on actual data and knowledge articles; do not invent information or use articles to calculate priority.</base_plan>
+        <condition/>
+        <context_processing_script><![CDATA[/*
+ * Available Variables:
+ *
+ * - user_utterance: The user input or message that initiated the use case.
+ *          This represents the user's natural language query or command
+ *          received during the conversation.
+ *
+ * - usecase_id: The unique identifier of the use case being executed.
+ *          Can be used to reference use case configurations, metadata,
+ *          or to apply specific context-handling logic.
+ *
+ * - context: An object containing contextual information for the use case.
+ *          It always includes a "pageContext" and may include a "triggerContext",
+ *          depending on how and from where the use case was invoked.
+ *
+ *          Behavior by invocation type:
+ *          ---------------------------------
+ *          - When invoked via the startAiAgentConversation API:
+ *                If a "contextMemory" parameter is passed in the API request,
+ *                it will be available as the "triggerContext".
+ *                The "pageContext" is always present in this call,
+ *                regardless of the invocation type (standalone or workflow-based).
+ *                Example:
+ *                    {
+ *                        pageContext: { ... },
+ *                        triggerContext: { ... } // Derived from contextMemory (if passed)
+ *                    }
+ *
+ *          - When invoked as part of a workflow or chained use case:
+ *                The "pageContext" and "triggerContext" available here may represent
+ *                the state carried forward from a previous execution step.
+ *                This script can modify, enrich, or restructure these contexts
+ *                before passing them to the downstream agent(s).
+ *
+ *          - When executed directly (standalone use case execution):
+ *                The "pageContext" will always be available (even if empty),
+ *                and "triggerContext" will only be populated if explicitly
+ *                provided through the API call.
+ *
+ * Return Format:
+ * ----------------
+ * This script must return an updated context object to be passed to
+ * the next stage (typically the agent or workflow step):
+ *    { pageContext: {}, triggerContext: {} }
+ *
+ * Example:
+ * ----------------
+ * return {
+ *     pageContext: {
+ *         ...context.pageContext,
+ *         usecaseProcessed: true
+ *     },
+ *     triggerContext: {
+ *         ...context.triggerContext,
+ *         lastModifiedBy: "usecase_context_script"
+ *     }
+ * };
+ */
+(function(user_utterance, usecase_id, context) {
+    return {
+        pageContext: context?.pageContext,
+        triggerContext: context?.triggerContext
+    };
+})(user_utterance, usecase_id, context);
+]]></context_processing_script>
+        <description>This workflow empowers an AI agent to analyze student-submitted food service complaints, identify relevant use cases, determine problem type and priority, retrieve knowledge articles, and recommend actions for campus food-service staff. It is designed for campus food service teams seeking efficient resolution of student issues.</description>
+        <execution_mode>copilot</execution_mode>
+        <internal_name>global.x_snc_campus_foo_1.Test Agent 1</internal_name>
+        <name>Test Agent 1</name>
+        <parent/>
+        <record_type>custom</record_type>
+        <root_usecase_id/>
+        <source_id/>
+        <strategy display_value="ReActive Planner">b264c470ff1022106c36ffffffffff67</strategy>
+        <sys_class_name>sn_aia_usecase</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-25 09:44:05</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>fad28125116303107f44be1983f83837</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Test Agent 1</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_usecase_fad28125116303107f44be1983f83837</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-25 09:44:05</sys_updated_on>
+        <team display_value="Test Agent 1">dfe405e9116303107f44be1983f8386b</team>
+    </sn_aia_usecase>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</application>
+        <file_path/>
+        <instance_id>8ed1cdc7c38fcf94a03197af05013150</instance_id>
+        <instance_name>ltm-hck-2876-0046</instance_name>
+        <name>sn_aia_usecase_fad28125116303107f44be1983f83837</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sn_aia_usecase"&gt;&lt;sn_aia_usecase action="INSERT_OR_UPDATE"&gt;&lt;advanced_mode&gt;false&lt;/advanced_mode&gt;&lt;applicability_script&gt;&lt;![CDATA[/** 
+ * Function to process inputs related to ServiceNow change request operations 
+ * 
+ * @param {Object} inputs - The input parameters object 
+ * @param {string} inputs.objective - The purpose or goal of the operation 
+ * @param {string} inputs.execution_plan_id - Unique identifier for the execution plan 
+ * @param {Object} inputs.context - Context information about the ServiceNow change request 
+ * @param {string} inputs.context.url - The URL of the change request in Service Operations Workspace 
+ * @param {string} inputs.context.table - The ServiceNow table name (e.g., 'change_request') 
+ * @param {string} inputs.context.record_sys_id - The sys ID of the record 
+ * @param {string} inputs.context.route - The route type (e.g., 'record') 
+ * @param {string} inputs.context.additional_context - Additional contextual information in JSON format 
+ * @param {string} inputs.context.experience - The UI experience name (e.g., 'Service Operations Workspace') 
+ * @param {string} inputs.context.number - The request number 
+ * @param {string} inputs.context.portal - The portal ID 
+ * @param {string} inputs.context.device_type - The device type from which the experience is accessed, e.g.'mweb' 
+ * @param {string} inputs.context.deployment_id - The unique identifier for the assistant deployment 
+ * @param {string} inputs.context.assistant_type - The type of assistant, e.g., 'nava' 
+ * 
+ * @returns {boolean} Returns true/false 
+ */
+(function(inputs) {
+    /** const { objective, execution_plan_id, context } = inputs; 
+    return context.table == 'incident' ; */
+    return false;
+})(inputs);]]&gt;&lt;/applicability_script&gt;&lt;base_plan&gt;Expertise: The agent specializes in handling campus food service complaints and requests using real Food Base Problem data and campus knowledge articles.
+1. Retrieve the Food Base Problem record submitted by the student.
+2. Analyze the Description field to understand the student's food-service complaint.
+3. Identify the applicable campus food-service use case from the provided list.
+4. Determine the normalized problem type and priority using campus food priority rules and Student Count.
+5. Retrieve relevant Campus Food Services knowledge articles based on the problem type.
+6. Provide a concise recommended action for the responsible food-service staff.
+7. Ensure all information used is based on actual data and knowledge articles; do not invent information or use articles to calculate priority.&lt;/base_plan&gt;&lt;condition/&gt;&lt;context_processing_script&gt;&lt;![CDATA[/*
+ * Available Variables:
+ *
+ * - user_utterance: The user input or message that initiated the use case.
+ *          This represents the user's natural language query or command
+ *          received during the conversation.
+ *
+ * - usecase_id: The unique identifier of the use case being executed.
+ *          Can be used to reference use case configurations, metadata,
+ *          or to apply specific context-handling logic.
+ *
+ * - context: An object containing contextual information for the use case.
+ *          It always includes a "pageContext" and may include a "triggerContext",
+ *          depending on how and from where the use case was invoked.
+ *
+ *          Behavior by invocation type:
+ *          ---------------------------------
+ *          - When invoked via the startAiAgentConversation API:
+ *                If a "contextMemory" parameter is passed in the API request,
+ *                it will be available as the "triggerContext".
+ *                The "pageContext" is always present in this call,
+ *                regardless of the invocation type (standalone or workflow-based).
+ *                Example:
+ *                    {
+ *                        pageContext: { ... },
+ *                        triggerContext: { ... } // Derived from contextMemory (if passed)
+ *                    }
+ *
+ *          - When invoked as part of a workflow or chained use case:
+ *                The "pageContext" and "triggerContext" available here may represent
+ *                the state carried forward from a previous execution step.
+ *                This script can modify, enrich, or restructure these contexts
+ *                before passing them to the downstream agent(s).
+ *
+ *          - When executed directly (standalone use case execution):
+ *                The "pageContext" will always be available (even if empty),
+ *                and "triggerContext" will only be populated if explicitly
+ *                provided through the API call.
+ *
+ * Return Format:
+ * ----------------
+ * This script must return an updated context object to be passed to
+ * the next stage (typically the agent or workflow step):
+ *    { pageContext: {}, triggerContext: {} }
+ *
+ * Example:
+ * ----------------
+ * return {
+ *     pageContext: {
+ *         ...context.pageContext,
+ *         usecaseProcessed: true
+ *     },
+ *     triggerContext: {
+ *         ...context.triggerContext,
+ *         lastModifiedBy: "usecase_context_script"
+ *     }
+ * };
+ */
+(function(user_utterance, usecase_id, context) {
+    return {
+        pageContext: context?.pageContext,
+        triggerContext: context?.triggerContext
+    };
+})(user_utterance, usecase_id, context);
+]]&gt;&lt;/context_processing_script&gt;&lt;description&gt;This workflow empowers an AI agent to analyze student-submitted food service complaints, identify relevant use cases, determine problem type and priority, retrieve knowledge articles, and recommend actions for campus food-service staff. It is designed for campus food service teams seeking efficient resolution of student issues.&lt;/description&gt;&lt;execution_mode&gt;copilot&lt;/execution_mode&gt;&lt;internal_name&gt;global.x_snc_campus_foo_1.Test Agent 1&lt;/internal_name&gt;&lt;name&gt;Test Agent 1&lt;/name&gt;&lt;parent/&gt;&lt;record_type&gt;custom&lt;/record_type&gt;&lt;root_usecase_id/&gt;&lt;source_id/&gt;&lt;strategy display_value="ReActive Planner"&gt;b264c470ff1022106c36ffffffffff67&lt;/strategy&gt;&lt;sys_class_name&gt;sn_aia_usecase&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-25 09:44:05&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_id&gt;fad28125116303107f44be1983f83837&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;Test Agent 1&lt;/sys_name&gt;&lt;sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1"&gt;423299d7dd1f03107f44143a6accf8fb&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Campus Food Services Assistant"&gt;423299d7dd1f03107f44143a6accf8fb&lt;/sys_scope&gt;&lt;sys_update_name&gt;sn_aia_usecase_fad28125116303107f44be1983f83837&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-25 09:44:05&lt;/sys_updated_on&gt;&lt;team display_value="Test Agent 1"&gt;dfe405e9116303107f44be1983f8386b&lt;/team&gt;&lt;/sn_aia_usecase&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-2079872150</payload_hash>
+        <record_name>Test Agent 1</record_name>
+        <reverted_from/>
+        <source>6f2d16f3615703107f44f4898ccc4c88</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-25 09:44:05</sys_created_on>
+        <sys_id>e3e405e9116303107f44be1983f838f6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a0d7f35d110000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-25 09:44:05</sys_updated_on>
+        <type>Use case</type>
+        <update_guid>a3e405e9986303105676283a34fda9f5</update_guid>
+        <update_guid_history>a3e405e9986303105676283a34fda9f5:-2079872150</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Test Agent 1">daeec92d11e303107f44be1983f8380c</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-25 10:27:42</sys_created_on>
+        <sys_db_object display_value="" name="sn_aia_usecase">sn_aia_usecase</sys_db_object>
+        <sys_id>2114a409e03a44b484a85295c9417861</sys_id>
+        <sys_metadata>fad28125116303107f44be1983f83837</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Test Agent 1</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_scope_delete display_value="">00ca93000f1045668006564f73c0b4e4</sys_scope_delete>
+        <sys_update_name>sn_aia_usecase_fad28125116303107f44be1983f83837</sys_update_name>
+        <sys_update_version display_value="sn_aia_usecase_fad28125116303107f44be1983f83837">e3e405e9116303107f44be1983f838f6</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-25 10:27:42</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element attributes="enforce_dot_walk_cross_scope_access=true" db_object_id="1075c1ab081703107f447d6c83c8224e" label="Food Base Problem" max_length="40" name="x_snc_campus_foo_1_food_base_problem" type="collection">
+        <element label="Description" max_length="255" name="description" type="string_full_utf8"/>
         <element label="AI Risk Score" max_length="40" name="ai_risk_score" type="integer"/>
         <element label="Special Diet Request" max_length="40" name="special_diet_request" type="string"/>
         <element label="Proposed Priority" max_length="255" name="proposed_priority" type="string_full_utf8"/>

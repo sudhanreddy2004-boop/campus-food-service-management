@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_version">
+    <sn_aia_version action="INSERT_OR_UPDATE">
+        <condition/>
+        <instructions>1. Retrieve and review the Food Base Problem record and the student's complaint. Review available information including Food Base Problem Number, Use Case, Problem Type, Student Count, Meal Type, Mess Hall, Description, State, and other relevant fields.
+
+2. Identify the applicable campus food-service use case using the Food Base Problem information and the student's complaint.
+
+3. Determine the normalized problem type based on the available Food Base Problem information and complaint.
+
+4. Determine the priority using the configured Campus Food Services Assistant priority rules and Student Count. The priority must be based on the applicable final use case and configured Student Count thresholds.
+
+5. Do not use knowledge articles to calculate priority. Do not infer priority from words such as serious, dangerous, urgent, safety, concern, undercooked, or hygiene unless the configured priority rules explicitly require that information.
+
+6. Retrieve relevant campus food-service knowledge articles related to the complaint and identified problem type.
+
+7. Generate the required analysis with exactly these outputs: Problem Type Normalized, Priority, Priority Reason, Knowledge Insights, Recommended Action, and Related Knowledge Articles.
+
+8. Ensure that Priority Reason explains the Student Count and the configured priority range that produced the selected priority.
+
+9. Generate Knowledge Insights using only the retrieved campus food-service knowledge.
+
+10. Generate Recommended Action using the student complaint, Food Base Problem information, configured process, and retrieved knowledge. Do not invent unsupported actions.
+
+11. Include relevant knowledge article numbers, titles, and their relevance in Related Knowledge Articles. If no relevant article is retrieved, state that no relevant knowledge article was found.
+
+12. If required information is unavailable, do not invent it. Clearly indicate the missing information.
+
+13. Return the completed analysis in a clear format for the responsible campus food-service staff.</instructions>
+        <state>published</state>
+        <sys_class_name>sn_aia_version</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-25 10:38:58</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>9b7195a1112703107f44be1983f83857</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>V1</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_version_9b7195a1112703107f44be1983f83857</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-25 10:38:58</sys_updated_on>
+        <target_id>be219d21112703107f44be1983f83811</target_id>
+        <target_table>sn_aia_agent</target_table>
+        <version_name>V1</version_name>
+        <version_number>1</version_number>
+    </sn_aia_version>
+</record_update>

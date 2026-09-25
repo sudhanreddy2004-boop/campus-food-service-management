@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_agent_tool_m2m">
+    <sn_aia_agent_tool_m2m action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <agent display_value="Incident Resolution Agent">3c62d499a0af03107f4432329b8a15bc</agent>
+        <description>get relevent knowledge article</description>
+        <display_mode>inline</display_mode>
+        <display_output>true</display_output>
+        <document_status/>
+        <entity>sn_aia_agent</entity>
+        <entity_id>3c62d499a0af03107f4432329b8a15bc</entity_id>
+        <execution_mode>copilot</execution_mode>
+        <inputs>[{"name":"search_type","description":"Search type","value":"hybrid"},{"name":"query","description":"search query for retrieving relevant information from Knowledge Table"},{"name":"search_profile","value":"quick_action_kb_search_profile","label":"Quick Action - KB Search Profile","description":"Search profile"},{"name":"sources","label":["Knowledge Table"],"value":["kb_knowledge"],"description":"Search sources"},{"name":"fields","label":["Number [kb_knowledge]","Short description [kb_knowledge]","Active [kb_knowledge]","Article body [kb_knowledge]"],"value":["kb_knowledge.number","kb_knowledge.short_description","kb_knowledge.active","kb_knowledge.text"],"description":"Fields to be returned"},{"name":"document_match_threshold","value":"0.71","description":"Document matching threshold"},{"name":"semantic_index_names","label":["body","title"],"value":["body","title"],"description":"Semantic indexed fields"},{"name":"chunking_mode","value":"SMALL_TO_BIG"},{"name":"chunk_unit","value":"WORDS"},{"name":"chunk_size","value":"750"},{"name":"expanded_snippet_size","value":"750"}]</inputs>
+        <max_auto_executions>10</max_auto_executions>
+        <name>get relevent knowledge article</name>
+        <output_transformation_strategy>summary_for_search_results</output_transformation_strategy>
+        <post_message/>
+        <post_processing_script/>
+        <pre_message/>
+        <pre_run>false</pre_run>
+        <requires_text_refined_message>false</requires_text_refined_message>
+        <requires_widget_transformation>true</requires_widget_transformation>
+        <should_display_refined_message>false</should_display_refined_message>
+        <sys_class_name>sn_aia_agent_tool_m2m</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 11:52:37</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>a8c898d5a0ef03107f4432329b8a1510</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>get relevent knowledge article</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_agent_tool_m2m_a8c898d5a0ef03107f4432329b8a1510</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 11:52:37</sys_updated_on>
+        <timeout/>
+        <tool display_value="AIA RAG Retriever">8021ddea2b0d52101d72fb466e91bfd1</tool>
+        <tool_attributes>{}</tool_attributes>
+        <transformation_instructions/>
+        <widgets>db0e858eff62b210f465ffffffffff2c</widgets>
+    </sn_aia_agent_tool_m2m>
+</record_update>

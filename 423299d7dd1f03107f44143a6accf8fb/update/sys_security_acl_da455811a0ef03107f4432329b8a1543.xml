@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>false</advanced>
+        <applies_to/>
+        <condition/>
+        <controlled_by_refs/>
+        <decision_type>allow</decision_type>
+        <description/>
+        <local_or_existing>Existing</local_or_existing>
+        <name>global.x_snc_campus_foo_1.Incident Resolution Agent</name>
+        <operation display_value="execute">execute</operation>
+        <script/>
+        <security_attribute display_value="UserIsAuthenticated">239bdf0c47d23110ba46ff58936d4330</security_attribute>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 11:37:27</sys_created_on>
+        <sys_id>da455811a0ef03107f4432329b8a1543</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>global.x_snc_campus_foo_1.Incident Resolution Agent</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_security_acl_da455811a0ef03107f4432329b8a1543</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 11:53:00</sys_updated_on>
+        <type display_value="gen_ai_agent">fc55e9f79f8222109570e67e8a0a1c34</type>
+    </sys_security_acl>
+</record_update>

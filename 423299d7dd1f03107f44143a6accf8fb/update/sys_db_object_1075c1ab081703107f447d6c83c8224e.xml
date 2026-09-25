@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_db_object">
     <sys_db_object action="INSERT_OR_UPDATE">
         <access>public</access>
-        <actions_access>false</actions_access>
-        <alter_access>false</alter_access>
+        <actions_access>true</actions_access>
+        <alter_access>true</alter_access>
         <caller_access/>
-        <client_scripts_access>false</client_scripts_access>
-        <configuration_access>false</configuration_access>
+        <client_scripts_access>true</client_scripts_access>
+        <configuration_access>true</configuration_access>
         <create_access>true</create_access>
         <create_access_controls>true</create_access_controls>
         <delete_access>true</delete_access>
@@ -25,14 +25,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2026-09-19 04:39:10</sys_created_on>
         <sys_id>1075c1ab081703107f447d6c83c8224e</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>Food Base Problem</sys_name>
         <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
         <sys_policy/>
         <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
         <sys_update_name>sys_db_object_1075c1ab081703107f447d6c83c8224e</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-19 04:39:13</sys_updated_on>
+        <sys_updated_on>2026-09-25 11:51:23</sys_updated_on>
         <update_access>true</update_access>
         <user_role display_value="x_snc_campus_foo_1.food_base_problem_user" name="x_snc_campus_foo_1.food_base_problem_user">c29509ab081703107f447d6c83c8222b</user_role>
         <ws_access>true</ws_access>

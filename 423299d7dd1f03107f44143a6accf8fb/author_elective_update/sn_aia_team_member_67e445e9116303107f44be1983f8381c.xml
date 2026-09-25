@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_team_member">
+    <sn_aia_team_member action="DELETE">
+        <agent display_value="Campus Food Complaint AI Agent">4708c66c552343107f4429801dee3e24</agent>
+        <memory_scope>global</memory_scope>
+        <sys_class_name>sn_aia_team_member</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-25 09:44:05</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>67e445e9116303107f44be1983f8381c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_team_member_67e445e9116303107f44be1983f8381c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-25 09:44:05</sys_updated_on>
+        <team display_value="Test Agent 1">dfe405e9116303107f44be1983f8386b</team>
+    </sn_aia_team_member>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</application>
+        <file_path/>
+        <instance_id>8ed1cdc7c38fcf94a03197af05013150</instance_id>
+        <instance_name>ltm-hck-2876-0046</instance_name>
+        <name>sn_aia_team_member_67e445e9116303107f44be1983f8381c</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_team_member"><sn_aia_team_member action="INSERT_OR_UPDATE"><agent display_value="Campus Food Complaint AI Agent">4708c66c552343107f4429801dee3e24</agent><memory_scope>global</memory_scope><sys_class_name>sn_aia_team_member</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-25 09:44:05</sys_created_on><sys_domain>global</sys_domain><sys_id>67e445e9116303107f44be1983f8381c</sys_id><sys_mod_count>0</sys_mod_count><sys_name/><sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package><sys_policy/><sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope><sys_update_name>sn_aia_team_member_67e445e9116303107f44be1983f8381c</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-25 09:44:05</sys_updated_on><team display_value="Test Agent 1">dfe405e9116303107f44be1983f8386b</team></sn_aia_team_member></record_update>]]></payload>
+        <payload_hash>-860106220</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>6f2d16f3615703107f44f4898ccc4c88</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-25 09:44:05</sys_created_on>
+        <sys_id>ebe445e9116303107f44be1983f8381f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a0d7f35e110000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-25 09:44:05</sys_updated_on>
+        <type>Team Member</type>
+        <update_guid>ebe445e9dc6303101f03ead2aa89c41e</update_guid>
+        <update_guid_history>ebe445e9dc6303101f03ead2aa89c41e:-860106220</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">26eec92d11e303107f44be1983f838a3</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-25 10:27:42</sys_created_on>
+        <sys_db_object display_value="" name="sn_aia_team_member">sn_aia_team_member</sys_db_object>
+        <sys_id>74b5dd5de555409183a925ed67e33789</sys_id>
+        <sys_metadata>67e445e9116303107f44be1983f8381c</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_scope_delete display_value="">00ca93000f1045668006564f73c0b4e4</sys_scope_delete>
+        <sys_update_name>sn_aia_team_member_67e445e9116303107f44be1983f8381c</sys_update_name>
+        <sys_update_version display_value="sn_aia_team_member_67e445e9116303107f44be1983f8381c">ebe445e9116303107f44be1983f8381f</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-25 10:27:42</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

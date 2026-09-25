@@ -1,0 +1,900 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_action_type_definition">
+    <sys_hub_action_type_definition action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <action_status/>
+        <action_template/>
+        <active>true</active>
+        <annotation/>
+        <attributes>{labelCacheCleanUpExecuted=true}</attributes>
+        <authored_on_release_version>29000</authored_on_release_version>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <compiler_build/>
+        <copied_from/>
+        <copied_from_name/>
+        <description/>
+        <flow_priority/>
+        <ih_action>false</ih_action>
+        <internal_name>get_record_details</internal_name>
+        <label_cache>[{"name":"{{action.sysid}}","label":"action➛sysid","type":"action","ref":"","reference_display":"","base_type":"GUID","parent_table_name":"","column_name":"","choices":null,"attributes":{}}]</label_cache>
+        <latest_snapshot/>
+        <master_snapshot/>
+        <master_snapshot_digest/>
+        <name>get record details</name>
+        <natlang/>
+        <outputs/>
+        <pre_compiled>false</pre_compiled>
+        <state>draft</state>
+        <sys_class_name>sys_hub_action_type_definition</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 12:17:11</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>506e54d1a02343107f4432329b8a1572</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>get record details</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_hub_action_type_definition_506e54d1a02343107f4432329b8a1572</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 12:21:38</sys_updated_on>
+        <system_level>false</system_level>
+        <type/>
+    </sys_hub_action_type_definition>
+    <sys_translated_text action="delete_multiple" query="documentkey=506e54d1a02343107f4432329b8a1572"/>
+    <sys_variable_value action="delete_multiple" query="document_key=506e54d1a02343107f4432329b8a1572"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_type_definition</document>
+        <document_key>506e54d1a02343107f4432329b8a1572</document_key>
+        <order>2</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 12:17:41</sys_created_on>
+        <sys_id>277e58d1a02343107f4432329b8a15b3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 12:17:41</sys_updated_on>
+        <value>0</value>
+        <variable display_value="Don't Treat as Error">237e58d1a02343107f4432329b8a158b</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_type_definition</document>
+        <document_key>506e54d1a02343107f4432329b8a1572</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 12:17:41</sys_created_on>
+        <sys_id>237e58d1a02343107f4432329b8a15b4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 12:17:41</sys_updated_on>
+        <value>{"version":"1.0","complexObject":{"code":{"$cv":{"$c":"java.lang.String","$v":""}},"message":{"$cv":{"$c":"java.lang.String","$v":""}}},"complexObjectSchema":{"FlowDesigner:FDACTIONSTATUS":{"code":"Integer","code.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"Integer\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"integer\",\"default_value\":\"\",\"label\":\"Code\",\"action_error_output\":\"true\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"40\"}"},"message":"String","message.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"default_value\":\"\",\"label\":\"Message\",\"action_error_output\":\"true\",\"mandatory\":\"false\",\"order\":\"2\",\"max_length\":\"4000\"}"}},"FlowDesigner:FDACTIONSTATUS.$type_facets":{"SimpleMapFacet":"{\"default_value\":\"\",\"label\":\"Action Status\",\"action_error_output\":\"true\",\"mandatory\":\"false\",\"uiUniqueId\":\"794bc342-9c9d-444b-a3f2-dd4b6a5a0173\",\"uiTypeLabel\":\"Object\",\"co_type_name\":\"FDACTIONSTATUS\",\"element_mapping_provider\":\"com.glide.flow_design.action.data.FlowDesignVariableMapper\",\"read_only\":\"false\",\"hint\":null,\"uiType\":\"object\",\"order\":\"1\",\"max_length\":\"65000\"}"}},"serializationFormat":"JSON"}</value>
+        <variable display_value="Action Status">277e58d1a02343107f4432329b8a1583</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572^id=506e54d1a02343107f4432329b8a1572"/>
+    <sys_hub_step_instance action="delete_multiple" query="action=506e54d1a02343107f4432329b8a1572^sys_idNOT IN82ee9415a02343107f4432329b8a1594,d56fd455a02343107f4432329b8a15a4"/>
+    <sys_hub_step_instance action="INSERT_OR_UPDATE">
+        <action display_value="get record details">506e54d1a02343107f4432329b8a1572</action>
+        <cid>74d61ba1-d9c7-406c-a7fa-4183ba8b6db6</cid>
+        <error_handling_type>1</error_handling_type>
+        <extended_inputs/>
+        <extended_outputs/>
+        <icon/>
+        <inputs/>
+        <inputs/>
+        <label>Look Up Record step</label>
+        <order>1</order>
+        <outputs/>
+        <section/>
+        <step_type display_value="Look Up Record">dc9c26043b23220057a4a2e334efc447</step_type>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 12:19:29</sys_created_on>
+        <sys_id>82ee9415a02343107f4432329b8a1594</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 12:19:29</sys_updated_on>
+    </sys_hub_step_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=82ee9415a02343107f4432329b8a1594"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>82ee9415a02343107f4432329b8a1594</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 12:19:29</sys_created_on>
+        <sys_id>c6ee9415a02343107f4432329b8a15ac</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 12:19:29</sys_updated_on>
+        <value>x_snc_campus_foo_1_food_base_problem</value>
+        <variable display_value="Table">f9cc66043b23220057a4a2e334efc42f</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=82ee9415a02343107f4432329b8a1594"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>conditions</field>
+        <id>82ee9415a02343107f4432329b8a1594</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 12:19:29</sys_created_on>
+        <sys_id>06ee9415a02343107f4432329b8a15ac</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 12:19:29</sys_updated_on>
+        <table>var__m_sys_flow_step_definition_input_dc9c26043b23220057a4a2e334efc447</table>
+        <value>sys_id={{action.sysid}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>lookup_table_name</field>
+        <id>82ee9415a02343107f4432329b8a1594</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 12:19:29</sys_created_on>
+        <sys_id>02ee9415a02343107f4432329b8a15ac</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 12:19:29</sys_updated_on>
+        <table>var__m_sys_flow_step_definition_input_dc9c26043b23220057a4a2e334efc447</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_translated_text action="delete_multiple" query="documentkey=82ee9415a02343107f4432329b8a1594"/>
+    <sys_hub_step_ext_input action="delete_multiple" query="model=82ee9415a02343107f4432329b8a1594"/>
+    <sys_hub_step_ext_output action="delete_multiple" query="model=82ee9415a02343107f4432329b8a1594"/>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=82ee9415a02343107f4432329b8a1594"/>
+    <sys_hub_step_instance action="INSERT_OR_UPDATE">
+        <action display_value="get record details">506e54d1a02343107f4432329b8a1572</action>
+        <cid>66139993-7a10-48b2-b5c4-659a5bbab052</cid>
+        <error_handling_type>1</error_handling_type>
+        <extended_inputs/>
+        <extended_outputs/>
+        <icon/>
+        <inputs/>
+        <label>Use an AI agent step</label>
+        <order>2</order>
+        <outputs/>
+        <section/>
+        <step_type display_value="Use an AI agent">8fb06dd6fffb22100200ffffffffff13</step_type>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 12:21:37</sys_created_on>
+        <sys_id>d56fd455a02343107f4432329b8a15a4</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 12:21:37</sys_updated_on>
+    </sys_hub_step_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=d56fd455a02343107f4432329b8a15a4"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>d56fd455a02343107f4432329b8a15a4</document_key>
+        <order>500</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 12:21:37</sys_created_on>
+        <sys_id>d96fd455a02343107f4432329b8a15b0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 12:21:37</sys_updated_on>
+        <value>autonomous</value>
+        <variable display_value="Execution mode">31f36634ff2832100200ffffffffff66</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_step_instance</document>
+        <document_key>d56fd455a02343107f4432329b8a15a4</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 12:21:37</sys_created_on>
+        <sys_id>d16fd455a02343107f4432329b8a15b1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 12:21:37</sys_updated_on>
+        <value>0aa5d349a06703107f4432329b8a15c1</value>
+        <variable display_value="AI agent">118f165effb762100200ffffffffffa5</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_flow_step_definition_input_8fb06dd6fffb22100200ffffffffff13^id=d56fd455a02343107f4432329b8a15a4"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=d56fd455a02343107f4432329b8a15a4"/>
+    <sys_hub_step_ext_input action="delete_multiple" query="model=d56fd455a02343107f4432329b8a15a4"/>
+    <sys_hub_step_ext_output action="delete_multiple" query="model=d56fd455a02343107f4432329b8a15a4"/>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=d56fd455a02343107f4432329b8a15a4"/>
+    <sys_hub_action_input action="delete_multiple" query="model=506e54d1a02343107f4432329b8a1572^sys_idNOT INeb7e94d1a02343107f4432329b8a15cd"/>
+    <sys_hub_action_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=GUID,uiTypeLabel=Sys ID (GUID),uiUniqueId=06c15e9b-94c6-49f7-806a-716a763cbd97</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>sysid</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="">GUID</internal_type>
+        <label>sysid</label>
+        <mandatory>true</mandatory>
+        <max_length>32</max_length>
+        <model display_value="get record details">506e54d1a02343107f4432329b8a1572</model>
+        <model_id>506e54d1a02343107f4432329b8a1572</model_id>
+        <model_table>sys_hub_action_type_definition</model_table>
+        <name>var__m_sys_hub_action_input_506e54d1a02343107f4432329b8a1572</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_action_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 12:17:40</sys_created_on>
+        <sys_id>eb7e94d1a02343107f4432329b8a15cd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 12:17:40</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_action_input>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=eb7e94d1a02343107f4432329b8a15cd"/>
+    <sys_hub_action_output action="delete_multiple" query="model=506e54d1a02343107f4432329b8a1572^sys_idNOT IN0aee9415a02343107f4432329b8a15ae,237e58d1a02343107f4432329b8a158b,277e58d1a02343107f4432329b8a1583"/>
+    <sys_hub_action_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=choice,uiTypeLabel=Choice,uiUniqueId=9936d90c-fdda-4308-9c8a-3f7a1daa6438</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice>3</choice>
+        <choice_field>use_case</choice_field>
+        <choice_table>x_snc_campus_foo_1_food_base_problem</choice_table>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>use_case</element>
+        <element_prototype/>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="Choice">choice</internal_type>
+        <label>use_case</label>
+        <mandatory>true</mandatory>
+        <max_length>32</max_length>
+        <model display_value="get record details">506e54d1a02343107f4432329b8a1572</model>
+        <model_id>506e54d1a02343107f4432329b8a1572</model_id>
+        <model_table>sys_hub_action_type_definition</model_table>
+        <name>var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_action_output</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 12:19:30</sys_created_on>
+        <sys_id>0aee9415a02343107f4432329b8a15ae</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 12:19:30</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_action_output>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=0aee9415a02343107f4432329b8a15ae"/>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=0aee9415a02343107f4432329b8a15ae"/>
+    <sys_hub_action_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>action_error_output=true,element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=boolean,uiTypeLabel=True/False,uiUniqueId=eb7553e2-0657-4dd0-98cf-3f8ce9eb2863,visible_in_ui=false</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value>true</default_value>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>__dont_treat_as_error__</element>
+        <element_prototype/>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="">boolean</internal_type>
+        <label>Don't Treat as Error</label>
+        <mandatory>false</mandatory>
+        <max_length>40</max_length>
+        <model display_value="get record details">506e54d1a02343107f4432329b8a1572</model>
+        <model_id>506e54d1a02343107f4432329b8a1572</model_id>
+        <model_table>sys_hub_action_type_definition</model_table>
+        <name>var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572</name>
+        <next_element/>
+        <order>3</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_action_output</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 12:17:40</sys_created_on>
+        <sys_id>237e58d1a02343107f4432329b8a158b</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 12:21:38</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_action_output>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=237e58d1a02343107f4432329b8a158b"/>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=237e58d1a02343107f4432329b8a158b"/>
+    <sys_hub_action_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>action_error_output=true,co_type_name=FDACTIONSTATUS,element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=object,uiTypeLabel=Object,uiUniqueId=2f1464b9-ebd1-4a82-ba9d-91e88e57d4e2</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>__action_status__</element>
+        <element_prototype/>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_link/>
+        <internal_type display_value="String">string</internal_type>
+        <label>Action Status</label>
+        <mandatory>false</mandatory>
+        <max_length>65000</max_length>
+        <model display_value="get record details">506e54d1a02343107f4432329b8a1572</model>
+        <model_id>506e54d1a02343107f4432329b8a1572</model_id>
+        <model_table>sys_hub_action_type_definition</model_table>
+        <name>var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572</name>
+        <next_element/>
+        <order>2</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_only_option/>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_action_output</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 12:17:40</sys_created_on>
+        <sys_id>277e58d1a02343107f4432329b8a1583</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 12:19:30</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_action_output>
+    <sys_hub_action_input_action_instance action="delete_multiple" query="action_input=277e58d1a02343107f4432329b8a1583"/>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=277e58d1a02343107f4432329b8a1583"/>
+    <sys_hub_pill_compound action="delete_multiple" query="attached_to=506e54d1a02343107f4432329b8a1572"/>
+    <sys_hub_action_status_metadata action="delete_multiple" query="action_type_id=506e54d1a02343107f4432329b8a1572^sys_idNOT INe77e58d1a02343107f4432329b8a15b5"/>
+    <sys_hub_action_status_metadata action="INSERT_OR_UPDATE">
+        <action_type_id display_value="get record details">506e54d1a02343107f4432329b8a1572</action_type_id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 12:17:41</sys_created_on>
+        <sys_id>e77e58d1a02343107f4432329b8a15b5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 12:17:41</sys_updated_on>
+    </sys_hub_action_status_metadata>
+    <sys_hub_status_condition action="delete_multiple" query="action_status_metadata_id=e77e58d1a02343107f4432329b8a15b5"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>sysid</element>
+        <help/>
+        <hint/>
+        <label>sysid</label>
+        <language>en</language>
+        <name>var__m_sys_hub_action_input_506e54d1a02343107f4432329b8a1572</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 12:17:40</sys_created_on>
+        <sys_id>237e58d1a02343107f4432329b8a1573</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 12:17:40</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_action_input_506e54d1a02343107f4432329b8a1572"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>__action_status__</element>
+        <help/>
+        <hint/>
+        <label>Action Status</label>
+        <language>en</language>
+        <name>var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 12:17:40</sys_created_on>
+        <sys_id>637e58d1a02343107f4432329b8a1589</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 12:17:40</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>__dont_treat_as_error__</element>
+        <help/>
+        <hint/>
+        <label>Don't Treat as Error</label>
+        <language>en</language>
+        <name>var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 12:17:40</sys_created_on>
+        <sys_id>6b7e58d1a02343107f4432329b8a1593</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 12:17:40</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>use_case</element>
+        <help/>
+        <hint/>
+        <label>use_case</label>
+        <language>en</language>
+        <name>var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 12:19:30</sys_created_on>
+        <sys_id>92ee9415a02343107f4432329b8a15b7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 12:19:30</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572^sys_idNOT IN156fd455a02343107f4432329b8a15b6,156fd455a02343107f4432329b8a15b7,156fd455a02343107f4432329b8a15b8,156fd455a02343107f4432329b8a15b9,156fd455a02343107f4432329b8a15ba,256fd455a02343107f4432329b8a15bb,256fd455a02343107f4432329b8a15bc,256fd455a02343107f4432329b8a15bd,256fd455a02343107f4432329b8a15be,256fd455a02343107f4432329b8a15bf,256fd455a02343107f4432329b8a15c0,916fd455a02343107f4432329b8a15b4"/>
+    <sys_choice field="use_case" table="var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>use_case</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Emergency Food Assistance</label>
+            <language>en</language>
+            <name>var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-24 12:21:37</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>156fd455a02343107f4432329b8a15b6</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-24 12:21:37</sys_updated_on>
+            <value>emergency_food_assistance</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>use_case</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Food Hygiene Issue</label>
+            <language>en</language>
+            <name>var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-24 12:21:37</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>156fd455a02343107f4432329b8a15b7</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-24 12:21:37</sys_updated_on>
+            <value>food_hygiene_issue</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>use_case</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Food Menu Feedback</label>
+            <language>en</language>
+            <name>var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572</name>
+            <sequence>3</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-24 12:21:38</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>156fd455a02343107f4432329b8a15b8</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-24 12:21:38</sys_updated_on>
+            <value>food_menu_feedback</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>use_case</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Food Quality Complaint</label>
+            <language>en</language>
+            <name>var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572</name>
+            <sequence>4</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-24 12:21:38</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>156fd455a02343107f4432329b8a15b9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-24 12:21:38</sys_updated_on>
+            <value>food_quality_complaint</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>use_case</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Food Wastage Reporting</label>
+            <language>en</language>
+            <name>var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572</name>
+            <sequence>5</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-24 12:21:38</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>156fd455a02343107f4432329b8a15ba</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-24 12:21:38</sys_updated_on>
+            <value>food_wastage_reporting</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>use_case</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Hostel Mess Billing Issue</label>
+            <language>en</language>
+            <name>var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572</name>
+            <sequence>6</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-24 12:21:38</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>256fd455a02343107f4432329b8a15bb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-24 12:21:38</sys_updated_on>
+            <value>hostel_mess_billing_issue</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>use_case</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Meal Not Available</label>
+            <language>en</language>
+            <name>var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572</name>
+            <sequence>7</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-24 12:21:38</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>256fd455a02343107f4432329b8a15bc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-24 12:21:38</sys_updated_on>
+            <value>meal_not_available</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>use_case</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Meal Reservation / Pre-Booking</label>
+            <language>en</language>
+            <name>var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572</name>
+            <sequence>8</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-24 12:21:38</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>256fd455a02343107f4432329b8a15bd</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-24 12:21:38</sys_updated_on>
+            <value>meal_reservation_pre_booking</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>use_case</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Missed Meal Request</label>
+            <language>en</language>
+            <name>var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572</name>
+            <sequence>9</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-24 12:21:38</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>256fd455a02343107f4432329b8a15be</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-24 12:21:38</sys_updated_on>
+            <value>missed_meal_request</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>use_case</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Smart Menu Recommendation</label>
+            <language>en</language>
+            <name>var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572</name>
+            <sequence>10</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-24 12:21:38</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>256fd455a02343107f4432329b8a15bf</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-24 12:21:38</sys_updated_on>
+            <value>smart_menu_recommendation</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>use_case</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Special Diet Request</label>
+            <language>en</language>
+            <name>var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572</name>
+            <sequence>11</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-24 12:21:38</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>256fd455a02343107f4432329b8a15c0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-24 12:21:38</sys_updated_on>
+            <value>special_diet_request</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>use_case</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Allergy Management Request</label>
+            <language>en</language>
+            <name>var__m_sys_hub_action_output_506e54d1a02343107f4432329b8a1572</name>
+            <sequence>0</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-09-24 12:21:37</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>916fd455a02343107f4432329b8a15b4</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-09-24 12:21:37</sys_updated_on>
+            <value>allergy_management_request</value>
+        </sys_choice>
+    </sys_choice>
+    <sys_hub_action_plan action="delete_multiple" query="action_id=506e54d1a02343107f4432329b8a1572"/>
+</record_update>

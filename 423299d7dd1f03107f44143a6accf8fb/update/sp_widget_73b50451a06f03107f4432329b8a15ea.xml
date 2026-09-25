@@ -1,0 +1,1611 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function() {
+
+    var c = this;
+
+
+    /* =========================================
+       FORM MODEL
+       ========================================= */
+
+    c.form = {
+
+        useCase: "",
+
+        mealType: "",
+
+        messHall: "",
+
+        priority: "",
+
+        description: ""
+
+    };
+
+
+    c.submitting = false;
+
+
+    /* =========================================
+       SUBMIT REQUEST
+       ========================================= */
+
+    c.submitRequest = function() {
+
+        if (c.submitting) {
+
+            return;
+
+        }
+
+
+        /* Client-side validation */
+
+        if (!c.form.useCase ||
+            !c.form.mealType ||
+            !c.form.messHall ||
+            !c.form.priority ||
+            !c.form.description) {
+
+            c.data.error =
+                "Please fill in all required fields.";
+
+            return;
+
+        }
+
+
+        c.data.error = "";
+
+        c.submitting = true;
+
+
+        c.server.get({
+
+            action: "submit_request",
+
+            useCase:
+                c.form.useCase,
+
+            mealType:
+                c.form.mealType,
+
+            messHall:
+                c.form.messHall,
+
+            priority:
+                c.form.priority,
+
+            description:
+                c.form.description
+
+        }).then(function(response) {
+
+            c.data.success =
+                response.data.success;
+
+            c.data.error =
+                response.data.error;
+
+            c.data.requestNumber =
+                response.data.requestNumber;
+
+            c.submitting = false;
+
+
+            if (response.data.success) {
+
+                /* Clear form */
+
+                c.form = {
+
+                    useCase: "",
+
+                    mealType: "",
+
+                    messHall: "",
+
+                    priority: "",
+
+                    description: ""
+
+                };
+
+            }
+
+        }, function() {
+
+            c.submitting = false;
+
+            c.data.error =
+                "Something went wrong. Please try again.";
+
+        });
+
+    };
+
+
+    /* =========================================
+       BACK TO DASHBOARD
+       ========================================= */
+
+    c.backToDashboard = function() {
+
+        window.location.href =
+            "?id=cfms_student";
+
+    };
+
+
+    /* =========================================
+       VIEW MY REQUESTS
+       ========================================= */
+
+    c.viewRequests = function() {
+
+        window.location.href =
+            "?id=cfms_requests";
+
+    };
+
+
+    /* =========================================
+       RAISE ANOTHER
+       ========================================= */
+
+    c.raiseAnother = function() {
+
+        c.data.success = false;
+
+        c.data.requestNumber = "";
+
+        c.data.error = "";
+
+    };
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>/* =========================================&#13;
+   CFMS RAISE FOOD REQUEST&#13;
+   ========================================= */&#13;
+&#13;
+.cfms-request-page {&#13;
+    min-height: 100vh;&#13;
+&#13;
+    background: #f0fbfc;&#13;
+&#13;
+    font-family:&#13;
+        "Segoe UI",&#13;
+        Tahoma,&#13;
+        Geneva,&#13;
+        Verdana,&#13;
+        sans-serif;&#13;
+&#13;
+    color: #263238;&#13;
+&#13;
+    padding-bottom: 50px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   HEADER&#13;
+   ========================================= */&#13;
+&#13;
+.request-header {&#13;
+    min-height: 105px;&#13;
+&#13;
+    background: #00acc1;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    padding: 25px 7%;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+}&#13;
+&#13;
+&#13;
+.header-left {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 18px;&#13;
+}&#13;
+&#13;
+&#13;
+.header-left h1 {&#13;
+    margin: 0 0 5px;&#13;
+&#13;
+    font-size: 29px;&#13;
+&#13;
+    font-weight: 700;&#13;
+}&#13;
+&#13;
+&#13;
+.header-left p {&#13;
+    margin: 0;&#13;
+&#13;
+    font-size: 13px;&#13;
+&#13;
+    opacity: 0.9;&#13;
+}&#13;
+&#13;
+&#13;
+.back-btn {&#13;
+    width: 42px;&#13;
+    height: 42px;&#13;
+&#13;
+    border: 1px solid rgba(255,255,255,0.7);&#13;
+&#13;
+    background: transparent;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    border-radius: 8px;&#13;
+&#13;
+    cursor: pointer;&#13;
+&#13;
+    font-size: 17px;&#13;
+}&#13;
+&#13;
+&#13;
+.back-btn:hover {&#13;
+    background: white;&#13;
+&#13;
+    color: #00acc1;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   MAIN CONTAINER&#13;
+   ========================================= */&#13;
+&#13;
+.request-container {&#13;
+    max-width: 1100px;&#13;
+&#13;
+    margin: 35px auto;&#13;
+&#13;
+    padding: 0 25px;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+&#13;
+    display: grid;&#13;
+&#13;
+    grid-template-columns:&#13;
+        minmax(0, 1fr)&#13;
+        300px;&#13;
+&#13;
+    gap: 25px;&#13;
+&#13;
+    align-items: start;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   FORM CARD&#13;
+   ========================================= */&#13;
+&#13;
+.request-card {&#13;
+    background: white;&#13;
+&#13;
+    border-radius: 15px;&#13;
+&#13;
+    border: 1px solid #e1eff1;&#13;
+&#13;
+    box-shadow:&#13;
+        0 5px 20px rgba(0,0,0,0.06);&#13;
+&#13;
+    padding: 32px;&#13;
+}&#13;
+&#13;
+&#13;
+.card-title {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 15px;&#13;
+&#13;
+    margin-bottom: 30px;&#13;
+&#13;
+    padding-bottom: 22px;&#13;
+&#13;
+    border-bottom: 1px solid #e9f1f2;&#13;
+}&#13;
+&#13;
+&#13;
+.title-icon {&#13;
+    width: 52px;&#13;
+    height: 52px;&#13;
+&#13;
+    border-radius: 11px;&#13;
+&#13;
+    background: #e0f7fa;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+&#13;
+    font-size: 22px;&#13;
+}&#13;
+&#13;
+&#13;
+.card-title h2 {&#13;
+    margin: 0 0 5px;&#13;
+&#13;
+    color: #263238;&#13;
+&#13;
+    font-size: 21px;&#13;
+}&#13;
+&#13;
+&#13;
+.card-title p {&#13;
+    margin: 0;&#13;
+&#13;
+    color: #78909c;&#13;
+&#13;
+    font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   FORM&#13;
+   ========================================= */&#13;
+&#13;
+.form-group {&#13;
+    margin-bottom: 22px;&#13;
+}&#13;
+&#13;
+&#13;
+.form-group label {&#13;
+    display: block;&#13;
+&#13;
+    margin-bottom: 8px;&#13;
+&#13;
+    color: #37474f;&#13;
+&#13;
+    font-size: 14px;&#13;
+&#13;
+    font-weight: 600;&#13;
+}&#13;
+&#13;
+&#13;
+.required {&#13;
+    color: #e53935;&#13;
+}&#13;
+&#13;
+&#13;
+.form-control {&#13;
+    width: 100%;&#13;
+&#13;
+    min-height: 44px;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+&#13;
+    padding: 10px 13px;&#13;
+&#13;
+    border: 1px solid #cfdfe2;&#13;
+&#13;
+    border-radius: 7px;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    color: #263238;&#13;
+&#13;
+    font-family: inherit;&#13;
+&#13;
+    font-size: 14px;&#13;
+&#13;
+    outline: none;&#13;
+&#13;
+    transition: 0.2s ease;&#13;
+}&#13;
+&#13;
+&#13;
+.form-control:focus {&#13;
+    border-color: #00acc1;&#13;
+&#13;
+    box-shadow:&#13;
+        0 0 0 3px rgba(0,172,193,0.10);&#13;
+}&#13;
+&#13;
+&#13;
+select.form-control {&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.description-box {&#13;
+    resize: vertical;&#13;
+&#13;
+    min-height: 135px;&#13;
+&#13;
+    line-height: 1.6;&#13;
+}&#13;
+&#13;
+&#13;
+.character-help {&#13;
+    margin-top: 6px;&#13;
+&#13;
+    color: #90a4ae;&#13;
+&#13;
+    font-size: 11px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   STUDENT DISPLAY&#13;
+   ========================================= */&#13;
+&#13;
+.student-display {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 12px;&#13;
+&#13;
+    padding: 12px;&#13;
+&#13;
+    border-radius: 8px;&#13;
+&#13;
+    background: #f0fbfc;&#13;
+&#13;
+    border: 1px solid #d9eef0;&#13;
+}&#13;
+&#13;
+&#13;
+.student-icon {&#13;
+    width: 40px;&#13;
+    height: 40px;&#13;
+&#13;
+    border-radius: 50%;&#13;
+&#13;
+    background: #e0f7fa;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+}&#13;
+&#13;
+&#13;
+.student-display strong {&#13;
+    display: block;&#13;
+&#13;
+    color: #263238;&#13;
+&#13;
+    font-size: 14px;&#13;
+}&#13;
+&#13;
+&#13;
+.student-display span {&#13;
+    display: block;&#13;
+&#13;
+    margin-top: 2px;&#13;
+&#13;
+    color: #78909c;&#13;
+&#13;
+    font-size: 12px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   FORM BUTTONS&#13;
+   ========================================= */&#13;
+&#13;
+.form-actions {&#13;
+    display: flex;&#13;
+&#13;
+    justify-content: flex-end;&#13;
+&#13;
+    gap: 12px;&#13;
+&#13;
+    padding-top: 10px;&#13;
+&#13;
+    border-top: 1px solid #edf3f4;&#13;
+}&#13;
+&#13;
+&#13;
+.cancel-btn {&#13;
+    padding: 11px 22px;&#13;
+&#13;
+    border: 1px solid #cfdfe2;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    color: #546e7a;&#13;
+&#13;
+    border-radius: 7px;&#13;
+&#13;
+    font-size: 14px;&#13;
+&#13;
+    font-weight: 600;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.cancel-btn:hover {&#13;
+    background: #f5fafa;&#13;
+}&#13;
+&#13;
+&#13;
+.submit-btn {&#13;
+    padding: 11px 24px;&#13;
+&#13;
+    border: none;&#13;
+&#13;
+    background: #00acc1;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    border-radius: 7px;&#13;
+&#13;
+    font-size: 14px;&#13;
+&#13;
+    font-weight: 600;&#13;
+&#13;
+    cursor: pointer;&#13;
+&#13;
+    transition: 0.2s ease;&#13;
+}&#13;
+&#13;
+&#13;
+.submit-btn:hover {&#13;
+    background: #008fa1;&#13;
+&#13;
+    transform: translateY(-1px);&#13;
+}&#13;
+&#13;
+&#13;
+.submit-btn:disabled {&#13;
+    opacity: 0.7;&#13;
+&#13;
+    cursor: not-allowed;&#13;
+&#13;
+    transform: none;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   INFORMATION CARD&#13;
+   ========================================= */&#13;
+&#13;
+.request-info-card {&#13;
+    background: #4dd0e1;&#13;
+&#13;
+    border-radius: 15px;&#13;
+&#13;
+    padding: 27px;&#13;
+&#13;
+    color: #263238;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+}&#13;
+&#13;
+&#13;
+.info-icon {&#13;
+    width: 45px;&#13;
+    height: 45px;&#13;
+&#13;
+    border-radius: 50%;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+&#13;
+    font-size: 20px;&#13;
+&#13;
+    margin-bottom: 15px;&#13;
+}&#13;
+&#13;
+&#13;
+.request-info-card h3 {&#13;
+    margin: 0 0 18px;&#13;
+&#13;
+    font-size: 19px;&#13;
+}&#13;
+&#13;
+&#13;
+.request-info-card ul {&#13;
+    margin: 0;&#13;
+&#13;
+    padding-left: 20px;&#13;
+}&#13;
+&#13;
+&#13;
+.request-info-card li {&#13;
+    margin-bottom: 13px;&#13;
+&#13;
+    color: #37474f;&#13;
+&#13;
+    font-size: 13px;&#13;
+&#13;
+    line-height: 1.5;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   SUCCESS MESSAGE&#13;
+   ========================================= */&#13;
+&#13;
+.success-message {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 15px;&#13;
+&#13;
+    padding: 18px;&#13;
+&#13;
+    margin-bottom: 25px;&#13;
+&#13;
+    border-radius: 9px;&#13;
+&#13;
+    background: #e8f5e9;&#13;
+&#13;
+    border: 1px solid #c8e6c9;&#13;
+&#13;
+    color: #2e7d32;&#13;
+}&#13;
+&#13;
+&#13;
+.success-icon {&#13;
+    width: 42px;&#13;
+    height: 42px;&#13;
+&#13;
+    border-radius: 50%;&#13;
+&#13;
+    background: #43a047;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+}&#13;
+&#13;
+&#13;
+.success-message h3 {&#13;
+    margin: 0 0 4px;&#13;
+&#13;
+    font-size: 16px;&#13;
+}&#13;
+&#13;
+&#13;
+.success-message p {&#13;
+    margin: 0;&#13;
+&#13;
+    font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   ERROR MESSAGE&#13;
+   ========================================= */&#13;
+&#13;
+.error-message {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 10px;&#13;
+&#13;
+    padding: 13px 15px;&#13;
+&#13;
+    margin-bottom: 20px;&#13;
+&#13;
+    border-radius: 7px;&#13;
+&#13;
+    background: #ffebee;&#13;
+&#13;
+    border: 1px solid #ffcdd2;&#13;
+&#13;
+    color: #c62828;&#13;
+&#13;
+    font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   SUCCESS BUTTONS&#13;
+   ========================================= */&#13;
+&#13;
+.after-success {&#13;
+    display: flex;&#13;
+&#13;
+    justify-content: center;&#13;
+&#13;
+    gap: 12px;&#13;
+&#13;
+    margin-top: 20px;&#13;
+}&#13;
+&#13;
+&#13;
+.primary-btn {&#13;
+    padding: 11px 20px;&#13;
+&#13;
+    border: none;&#13;
+&#13;
+    border-radius: 7px;&#13;
+&#13;
+    background: #00acc1;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    font-weight: 600;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.secondary-btn {&#13;
+    padding: 11px 20px;&#13;
+&#13;
+    border: 1px solid #00acc1;&#13;
+&#13;
+    border-radius: 7px;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    font-weight: 600;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   RESPONSIVE&#13;
+   ========================================= */&#13;
+&#13;
+@media (max-width: 850px) {&#13;
+&#13;
+    .request-container {&#13;
+        grid-template-columns: 1fr;&#13;
+    }&#13;
+&#13;
+}&#13;
+&#13;
+&#13;
+@media (max-width: 600px) {&#13;
+&#13;
+    .request-header {&#13;
+        padding: 22px 20px;&#13;
+    }&#13;
+&#13;
+    .header-left h1 {&#13;
+        font-size: 23px;&#13;
+    }&#13;
+&#13;
+    .request-container {&#13;
+        margin: 20px auto;&#13;
+&#13;
+        padding: 0 15px;&#13;
+    }&#13;
+&#13;
+    .request-card {&#13;
+        padding: 22px;&#13;
+    }&#13;
+&#13;
+    .form-actions {&#13;
+        flex-direction: column-reverse;&#13;
+    }&#13;
+&#13;
+    .cancel-btn,&#13;
+    .submit-btn {&#13;
+        width: 100%;&#13;
+    }&#13;
+&#13;
+    .after-success {&#13;
+        flex-direction: column;&#13;
+    }&#13;
+&#13;
+    .primary-btn,&#13;
+    .secondary-btn {&#13;
+        width: 100%;&#13;
+    }&#13;
+&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description>Student</description>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>cfms_raise_request</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>CFMS Raise Request</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+    /* =========================================
+       DEFAULT DATA
+       ========================================= */
+
+    data.success = false;
+
+    data.error = "";
+
+    data.requestNumber = "";
+
+    data.userName = gs.getUserDisplayName();
+
+    data.userEmail = gs.getUser().getEmail();
+
+
+    /* =========================================
+       LOGIN CHECK
+       ========================================= */
+
+    if (!gs.isLoggedIn()) {
+
+        data.error = "Please login before raising a request.";
+
+        return;
+    }
+
+
+    /* =========================================
+       ROLE CHECK
+       ========================================= */
+
+    if (!gs.hasRole("cfms_student") &&
+        !gs.hasRole("admin")) {
+
+        data.error =
+            "You are not authorized to raise a food request.";
+
+        return;
+    }
+
+
+    /* =========================================
+       SUBMIT REQUEST
+       ========================================= */
+
+    if (input &&
+        input.action == "submit_request") {
+
+        var useCase =
+            input.useCase || "";
+
+        var mealType =
+            input.mealType || "";
+
+        var messHall =
+            input.messHall || "";
+
+        var priority =
+            input.priority || "3";
+
+        var description =
+            input.description || "";
+
+
+        /* -------------------------------------
+           VALIDATION
+           ------------------------------------- */
+
+        if (!useCase ||
+            !mealType ||
+            !messHall ||
+            !priority ||
+            !description) {
+
+            data.error =
+                "Please fill in all required fields.";
+
+            return;
+        }
+
+
+        /* -------------------------------------
+           CREATE INCIDENT
+           ------------------------------------- */
+
+        var incident =
+            new GlideRecord("incident");
+
+        incident.initialize();
+
+
+        /* Student */
+
+        incident.setValue(
+            "caller_id",
+            gs.getUserID()
+        );
+
+
+        /* Short description */
+
+        incident.setValue(
+            "short_description",
+            "CFMS - " +
+            useCase +
+            " - " +
+            mealType
+        );
+
+
+        /* Description */
+
+        var fullDescription =
+            "CFMS FOOD REQUEST\n\n" +
+
+            "Request Type: " +
+            useCase +
+
+            "\nMeal Type: " +
+            mealType +
+
+            "\nMess Hall: " +
+            messHall +
+
+            "\n\nStudent: " +
+            gs.getUserDisplayName() +
+
+            "\nEmail: " +
+            gs.getUser().getEmail() +
+
+            "\n\nDescription:\n" +
+            description;
+
+
+        incident.setValue(
+            "description",
+            fullDescription
+        );
+
+
+        /* -------------------------------------
+           PRIORITY
+           ------------------------------------- */
+
+        incident.setValue(
+            "priority",
+            priority
+        );
+
+
+        /* -------------------------------------
+           OPTIONAL CFMS CUSTOM FIELDS
+           
+           If you create these fields later,
+           the script will automatically use them.
+           ------------------------------------- */
+
+        if (incident.isValidField("u_cfms_use_case")) {
+
+            incident.setValue(
+                "u_cfms_use_case",
+                useCase
+            );
+
+        }
+
+
+        if (incident.isValidField("u_cfms_meal_type")) {
+
+            incident.setValue(
+                "u_cfms_meal_type",
+                mealType
+            );
+
+        }
+
+
+        if (incident.isValidField("u_cfms_mess_hall")) {
+
+            incident.setValue(
+                "u_cfms_mess_hall",
+                messHall
+            );
+
+        }
+
+
+        /* -------------------------------------
+           ASSIGNMENT GROUP
+           
+           Critical → Hostel Management Group
+           High     → Hostel Admin Group
+           Medium   → Mess Staff Group
+           Low      → Mess Staff Group
+           ------------------------------------- */
+
+        var groupName = "";
+
+
+        if (priority == "1") {
+
+            groupName =
+                "Hostel Management Group";
+
+        }
+
+        else if (priority == "2") {
+
+            groupName =
+                "Hostel Admin Group";
+
+        }
+
+        else {
+
+            groupName =
+                "Mess Staff Group";
+
+        }
+
+
+        /* Find assignment group */
+
+        var groupGR =
+            new GlideRecord("sys_user_group");
+
+        groupGR.addQuery(
+            "name",
+            groupName
+        );
+
+        groupGR.setLimit(1);
+
+        groupGR.query();
+
+
+        if (groupGR.next()) {
+
+            incident.setValue(
+                "assignment_group",
+                groupGR.getUniqueValue()
+            );
+
+        }
+
+
+        /* -------------------------------------
+           INSERT
+           ------------------------------------- */
+
+        var newSysId =
+            incident.insert();
+
+
+        if (!newSysId) {
+
+            data.error =
+                "Unable to create the request. Please try again.";
+
+            return;
+        }
+
+
+        /* -------------------------------------
+           SUCCESS
+           ------------------------------------- */
+
+        data.success = true;
+
+        data.requestNumber =
+            incident.getValue("number");
+
+    }
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 10:39:43</sys_created_on>
+        <sys_id>73b50451a06f03107f4432329b8a15ea</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CFMS Raise Request</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_widget_73b50451a06f03107f4432329b8a15ea</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 10:39:43</sys_updated_on>
+        <template><![CDATA[<div class="cfms-request-page">
+
+    <!-- HEADER -->
+    <div class="request-header">
+
+        <div class="header-left">
+
+            <button
+                class="back-btn"
+                ng-click="c.backToDashboard()">
+
+                <i class="fa fa-arrow-left"></i>
+
+            </button>
+
+            <div>
+
+                <h1>Raise Food Request</h1>
+
+                <p>
+                    Report a food service issue or request assistance
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+    <div class="request-container">
+
+
+        <!-- FORM CARD -->
+        <div class="request-card">
+
+            <div class="card-title">
+
+                <div class="title-icon">
+                    <i class="fa fa-cutlery"></i>
+                </div>
+
+                <div>
+
+                    <h2>Food Service Request</h2>
+
+                    <p>
+                        Please provide the details of your request.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUCCESS MESSAGE -->
+            <div
+                class="success-message"
+                ng-if="c.data.success">
+
+                <div class="success-icon">
+                    <i class="fa fa-check"></i>
+                </div>
+
+                <div>
+
+                    <h3>Request Submitted Successfully</h3>
+
+                    <p>
+                        Your request number is
+                        <strong>{{c.data.requestNumber}}</strong>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ERROR MESSAGE -->
+            <div
+                class="error-message"
+                ng-if="c.data.error">
+
+                <i class="fa fa-exclamation-circle"></i>
+
+                <span>
+                    {{c.data.error}}
+                </span>
+
+            </div>
+
+
+            <!-- FORM -->
+            <form
+                ng-if="!c.data.success"
+                ng-submit="c.submitRequest()"
+                novalidate>
+
+
+                <!-- STUDENT -->
+                <div class="form-group">
+
+                    <label>
+                        Student
+                    </label>
+
+                    <div class="student-display">
+
+                        <div class="student-icon">
+                            <i class="fa fa-user"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                {{c.data.userName}}
+                            </strong>
+
+                            <span>
+                                {{c.data.userEmail}}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- USE CASE -->
+                <div class="form-group">
+
+                    <label for="useCase">
+
+                        Request Type
+
+                        <span class="required">
+                            *
+                        </span>
+
+                    </label>
+
+                    <select
+                        id="useCase"
+                        class="form-control"
+                        ng-model="c.form.useCase"
+                        required>
+
+                        <option value="">
+                            Select request type
+                        </option>
+
+                        <option value="Food Quality Complaint">
+                            Food Quality Complaint
+                        </option>
+
+                        <option value="Meal Not Available">
+                            Meal Not Available
+                        </option>
+
+                        <option value="Food Hygiene Issue">
+                            Food Hygiene Issue
+                        </option>
+
+                        <option value="Special Diet Request">
+                            Special Diet Request
+                        </option>
+
+                        <option value="Allergy Management Request">
+                            Allergy Management Request
+                        </option>
+
+                        <option value="Food Menu Feedback">
+                            Food Menu Feedback
+                        </option>
+
+                        <option value="Meal Reservation / Pre-Booking">
+                            Meal Reservation / Pre-Booking
+                        </option>
+
+                        <option value="Missed Meal Request">
+                            Missed Meal Request
+                        </option>
+
+                        <option value="Food Wastage Reporting">
+                            Food Wastage Reporting
+                        </option>
+
+                        <option value="Emergency Food Assistance">
+                            Emergency Food Assistance
+                        </option>
+
+                        <option value="Hostel Mess Billing Issue">
+                            Hostel Mess Billing Issue
+                        </option>
+
+                        <option value="Smart Menu Recommendation">
+                            Smart Menu Recommendation
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- MEAL TYPE -->
+                <div class="form-group">
+
+                    <label for="mealType">
+
+                        Meal Type
+
+                        <span class="required">
+                            *
+                        </span>
+
+                    </label>
+
+                    <select
+                        id="mealType"
+                        class="form-control"
+                        ng-model="c.form.mealType"
+                        required>
+
+                        <option value="">
+                            Select meal type
+                        </option>
+
+                        <option value="Breakfast">
+                            Breakfast
+                        </option>
+
+                        <option value="Lunch">
+                            Lunch
+                        </option>
+
+                        <option value="Snacks">
+                            Snacks
+                        </option>
+
+                        <option value="Dinner">
+                            Dinner
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- MESS HALL -->
+                <div class="form-group">
+
+                    <label for="messHall">
+
+                        Mess Hall
+
+                        <span class="required">
+                            *
+                        </span>
+
+                    </label>
+
+                    <select
+                        id="messHall"
+                        class="form-control"
+                        ng-model="c.form.messHall"
+                        required>
+
+                        <option value="">
+                            Select mess hall
+                        </option>
+
+                        <option value="Main Mess">
+                            Main Mess
+                        </option>
+
+                        <option value="North Mess">
+                            North Mess
+                        </option>
+
+                        <option value="South Mess">
+                            South Mess
+                        </option>
+
+                        <option value="Hostel Mess">
+                            Hostel Mess
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- PRIORITY -->
+                <div class="form-group">
+
+                    <label for="priority">
+
+                        Priority
+
+                        <span class="required">
+                            *
+                        </span>
+
+                    </label>
+
+                    <select
+                        id="priority"
+                        class="form-control"
+                        ng-model="c.form.priority"
+                        required>
+
+                        <option value="">
+                            Select priority
+                        </option>
+
+                        <option value="1">
+                            Critical
+                        </option>
+
+                        <option value="2">
+                            High
+                        </option>
+
+                        <option value="3">
+                            Medium
+                        </option>
+
+                        <option value="4">
+                            Low
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+                <div class="form-group">
+
+                    <label for="description">
+
+                        Description
+
+                        <span class="required">
+                            *
+                        </span>
+
+                    </label>
+
+                    <textarea
+                        id="description"
+                        class="form-control description-box"
+                        ng-model="c.form.description"
+                        placeholder="Describe your food-related issue or request..."
+                        rows="6"
+                        required>
+                    </textarea>
+
+                    <div class="character-help">
+                        Please provide enough information
+                        to help us resolve your request.
+                    </div>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        ng-click="c.backToDashboard()">
+
+                        Cancel
+
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="submit-btn"
+                        ng-disabled="c.submitting">
+
+                        <i
+                            class="fa"
+                            ng-class="c.submitting
+                                ? 'fa-spinner fa-spin'
+                                : 'fa-paper-plane'">
+                        </i>
+
+                        <span ng-if="!c.submitting">
+                            Submit Request
+                        </span>
+
+                        <span ng-if="c.submitting">
+                            Submitting...
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <!-- AFTER SUCCESS -->
+            <div
+                class="after-success"
+                ng-if="c.data.success">
+
+                <button
+                    class="primary-btn"
+                    ng-click="c.viewRequests()">
+
+                    View My Requests
+
+                </button>
+
+                <button
+                    class="secondary-btn"
+                    ng-click="c.raiseAnother()">
+
+                    Raise Another Request
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- INFORMATION CARD -->
+        <div class="request-info-card">
+
+            <div class="info-icon">
+                <i class="fa fa-info-circle"></i>
+            </div>
+
+            <h3>Before You Submit</h3>
+
+            <ul>
+
+                <li>
+                    Select the correct request type.
+                </li>
+
+                <li>
+                    Choose the mess hall where the issue occurred.
+                </li>
+
+                <li>
+                    Provide a clear description of the issue.
+                </li>
+
+                <li>
+                    Select Critical only for urgent issues.
+                </li>
+
+                <li>
+                    You can track your request from
+                    <strong>My Requests</strong>.
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_gen_ai_skill">
+    <sys_gen_ai_skill action="DELETE">
+        <skill_description/>
+        <skill_document>bf164ded116303107f44be1983f83867</skill_document>
+        <skill_name/>
+        <skill_table>sn_aia_skill_metadata</skill_table>
+        <sys_class_name>sys_gen_ai_skill</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-25 09:49:23</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>77164ded116303107f44be1983f8386c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_gen_ai_skill_77164ded116303107f44be1983f8386c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-25 09:49:23</sys_updated_on>
+    </sys_gen_ai_skill>
+    <sys_translated_text action="DELETE" query="documentkey=77164ded116303107f44be1983f8386c"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</application>
+        <file_path/>
+        <instance_id>8ed1cdc7c38fcf94a03197af05013150</instance_id>
+        <instance_name>ltm-hck-2876-0046</instance_name>
+        <name>sys_gen_ai_skill_77164ded116303107f44be1983f8386c</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_gen_ai_skill"><sys_gen_ai_skill action="INSERT_OR_UPDATE"><skill_description/><skill_document>bf164ded116303107f44be1983f83867</skill_document><skill_name/><skill_table>sn_aia_skill_metadata</skill_table><sys_class_name>sys_gen_ai_skill</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-25 09:49:23</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>77164ded116303107f44be1983f8386c</sys_id><sys_mod_count>0</sys_mod_count><sys_name/><sys_overrides/><sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package><sys_policy/><sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope><sys_update_name>sys_gen_ai_skill_77164ded116303107f44be1983f8386c</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-25 09:49:23</sys_updated_on></sys_gen_ai_skill><sys_translated_text action="delete_multiple" query="documentkey=77164ded116303107f44be1983f8386c"/></record_update>]]></payload>
+        <payload_hash>910506905</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>6f2d16f3615703107f44f4898ccc4c88</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-25 09:49:23</sys_created_on>
+        <sys_id>1126412111a303107f44be1983f8384e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a0d7f838440000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-25 09:49:23</sys_updated_on>
+        <type>Generative AI Skill</type>
+        <update_guid>11264121d4a3031082cd0695cd19c54d</update_guid>
+        <update_guid_history>11264121d4a3031082cd0695cd19c54d:910506905</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-25 10:27:41</sys_created_on>
+        <sys_db_object display_value="" name="sys_gen_ai_skill">sys_gen_ai_skill</sys_db_object>
+        <sys_id>01dcc23e68934d7980360de8652a1731</sys_id>
+        <sys_metadata>77164ded116303107f44be1983f8386c</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_scope_delete display_value="">00ca93000f1045668006564f73c0b4e4</sys_scope_delete>
+        <sys_update_name>sys_gen_ai_skill_77164ded116303107f44be1983f8386c</sys_update_name>
+        <sys_update_version display_value="sys_gen_ai_skill_77164ded116303107f44be1983f8386c">1126412111a303107f44be1983f8384e</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-25 10:27:41</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

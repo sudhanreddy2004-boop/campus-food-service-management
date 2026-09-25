@@ -8,7 +8,7 @@
         <choice_list/>
         <contains_large_input>false</contains_large_input>
         <data_type>string</data_type>
-        <default_value>Today's lunch had undercooked chicken and several students were affected.</default_value>
+        <default_value>Five students at Mess Hall A reported allergic reactions after eating breakfast. The students reported symptoms after consuming the meal, and the food item needs to be checked for possible allergen exposure.</default_value>
         <definition/>
         <description>Text containing the student's food-service complaint or reported issue, used by the AI to understand the problem and by the FindFoodKnowledge Retriever to search the ServiceNow Knowledge Base for relevant campus food-service articles.</description>
         <group/>
@@ -25,14 +25,14 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>849e51e455ab03107f4429801dee3e41</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>student_complaint</sys_name>
         <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
         <sys_policy/>
         <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
         <sys_update_name>sys_one_extend_definition_attribute_849e51e455ab03107f4429801dee3e41</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-09-23 09:52:44</sys_updated_on>
+        <sys_updated_on>2026-09-25 12:59:35</sys_updated_on>
         <translate>false</translate>
         <truncate>false</truncate>
         <type>input</type>

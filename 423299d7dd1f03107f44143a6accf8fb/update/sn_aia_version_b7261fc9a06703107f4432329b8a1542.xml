@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_version">
+    <sn_aia_version action="INSERT_OR_UPDATE">
+        <condition/>
+        <instructions>Expert in food service problem analysis for Campus Food Services Assistant application.
+1. Retrieve the food_base_problem record using the supplied record_sys_id as the primary source.
+2. Extract key fields: number, mess_hall, meal_type, student_count, use_case, problem_type_normalized, problem_type, and description.
+3. Locate the active Use Case Priority Configuration record matching the use_case and use it as the authoritative source for thresholds and priority reason.
+4. Determine priority based on student_count and configuration thresholds: Low, Medium, High, or Critical.
+5. Set priority_reason using the configured value from the matched configuration record.
+6. Search for published Knowledge articles relevant to the problem context within the Campus Food Services Assistant scope.
+7. Analyze articles to synthesize the most applicable recommended action, avoiding unsupported procedures.
+8. Extract knowledge_insights relevant to the specific food service problem.
+9. Generate a concise ai_summary combining problem number, context, priority, priority reason, recommended action, and knowledge insights.
+10. Return a structured analysis object for downstream Flow processing without updating the source record.</instructions>
+        <state>published</state>
+        <sys_class_name>sn_aia_version</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 07:01:45</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>b7261fc9a06703107f4432329b8a1542</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>V1</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_version_b7261fc9a06703107f4432329b8a1542</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 09:10:32</sys_updated_on>
+        <target_id>0aa5d349a06703107f4432329b8a15c1</target_id>
+        <target_table>sn_aia_agent</target_table>
+        <version_name>V1</version_name>
+        <version_number>1</version_number>
+    </sn_aia_version>
+</record_update>

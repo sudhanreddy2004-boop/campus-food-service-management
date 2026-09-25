@@ -1,0 +1,1537 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function() {
+
+    var c = this;
+
+
+    /* =========================================
+       DEFAULT FILTERS
+       ========================================= */
+
+    c.searchText = "";
+
+    c.statusFilter = "all";
+
+    c.priorityFilter = "all";
+
+    c.processing = null;
+
+
+    /* =========================================
+       FILTER TICKETS
+       ========================================= */
+
+    c.filteredTickets = function() {
+
+        var result = [];
+
+        var tickets =
+            c.data.tickets || [];
+
+
+        for (var i = 0; i < tickets.length; i++) {
+
+            var ticket = tickets[i];
+
+
+            /* Search */
+
+            var search =
+                (c.searchText || "")
+                .toLowerCase();
+
+
+            var number =
+                (ticket.number || "")
+                .toLowerCase();
+
+
+            var description =
+                (ticket.short_description || "")
+                .toLowerCase();
+
+
+            if (
+                search &&
+                number.indexOf(search) === -1 &&
+                description.indexOf(search) === -1
+            ) {
+
+                continue;
+
+            }
+
+
+            /* Status filter */
+
+            if (
+                c.statusFilter === "open" &&
+                ticket.stateValue != "1"
+            ) {
+
+                continue;
+
+            }
+
+
+            if (
+                c.statusFilter === "progress" &&
+                ticket.stateValue != "2"
+            ) {
+
+                continue;
+
+            }
+
+
+            if (
+                c.statusFilter === "resolved" &&
+                ticket.stateValue != "6" &&
+                ticket.stateValue != "7"
+            ) {
+
+                continue;
+
+            }
+
+
+            /* Priority filter */
+
+            if (
+                c.priorityFilter !== "all" &&
+                ticket.priorityValue !=
+                c.priorityFilter
+            ) {
+
+                continue;
+
+            }
+
+
+            result.push(ticket);
+
+        }
+
+
+        return result;
+
+    };
+
+
+    /* =========================================
+       START TICKET
+       ========================================= */
+
+    c.startTicket = function(ticket) {
+
+        if (!ticket) {
+            return;
+        }
+
+
+        c.processing =
+            ticket.sys_id;
+
+
+        c.server.get({
+
+            action: "start",
+
+            sys_id:
+                ticket.sys_id
+
+        }).then(function(response) {
+
+            c.processing = null;
+
+            c.data.success =
+                response.data.success;
+
+            c.data.error =
+                response.data.error;
+
+            if (!response.data.error) {
+
+                c.reload();
+
+            }
+
+        });
+
+    };
+
+
+    /* =========================================
+       RESOLVE TICKET
+       ========================================= */
+
+    c.resolveTicket = function(ticket) {
+
+        if (!ticket) {
+            return;
+        }
+
+
+        var confirmed =
+            window.confirm(
+                "Are you sure you want to resolve " +
+                ticket.number +
+                "?"
+            );
+
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        c.processing =
+            ticket.sys_id;
+
+
+        c.server.get({
+
+            action: "resolve",
+
+            sys_id:
+                ticket.sys_id
+
+        }).then(function(response) {
+
+            c.processing = null;
+
+            c.data.success =
+                response.data.success;
+
+            c.data.error =
+                response.data.error;
+
+            if (!response.data.error) {
+
+                c.reload();
+
+            }
+
+        });
+
+    };
+
+
+    /* =========================================
+       ESCALATE TICKET
+       ========================================= */
+
+    c.escalateTicket = function(ticket) {
+
+        if (!ticket) {
+            return;
+        }
+
+
+        var confirmed =
+            window.confirm(
+                "Are you sure you want to escalate " +
+                ticket.number +
+                "?"
+            );
+
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        c.processing =
+            ticket.sys_id;
+
+
+        c.server.get({
+
+            action: "escalate",
+
+            sys_id:
+                ticket.sys_id
+
+        }).then(function(response) {
+
+            c.processing = null;
+
+            c.data.success =
+                response.data.success;
+
+            c.data.error =
+                response.data.error;
+
+            if (!response.data.error) {
+
+                c.reload();
+
+            }
+
+        });
+
+    };
+
+
+    /* =========================================
+       RELOAD
+       ========================================= */
+
+    c.reload = function() {
+
+        c.server.get({}).then(function(response) {
+
+            c.data =
+                response.data;
+
+        });
+
+    };
+
+
+    /* =========================================
+       DASHBOARD
+       ========================================= */
+
+    c.goDashboard = function() {
+
+        window.location.href =
+            "?id=cfms_staff";
+
+    };
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>/* =========================================&#13;
+   CFMS ASSIGNED TICKETS&#13;
+   ========================================= */&#13;
+&#13;
+.cfms-page {&#13;
+  min-height: 100vh;&#13;
+  background: #f0fbfc;&#13;
+  padding: 30px;&#13;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;&#13;
+  color: #263238;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   PAGE HEADER&#13;
+   ========================================= */&#13;
+&#13;
+.page-header {&#13;
+  background: linear-gradient(&#13;
+    135deg,&#13;
+    #00acc1,&#13;
+    #4dd0e1&#13;
+  );&#13;
+&#13;
+  color: white;&#13;
+  border-radius: 18px;&#13;
+&#13;
+  padding: 28px 32px;&#13;
+&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+  justify-content: space-between;&#13;
+&#13;
+  margin-bottom: 25px;&#13;
+&#13;
+  box-shadow: 0 8px 25px rgba(0, 172, 193, 0.18);&#13;
+}&#13;
+&#13;
+.page-header h1 {&#13;
+  margin: 0 0 7px;&#13;
+  font-size: 30px;&#13;
+  font-weight: 700;&#13;
+}&#13;
+&#13;
+.page-header p {&#13;
+  margin: 0;&#13;
+  opacity: 0.95;&#13;
+  font-size: 15px;&#13;
+}&#13;
+&#13;
+&#13;
+/* Dashboard button */&#13;
+&#13;
+.back-btn {&#13;
+  border: none;&#13;
+  background: white;&#13;
+  color: #008c9e;&#13;
+&#13;
+  padding: 11px 18px;&#13;
+&#13;
+  border-radius: 10px;&#13;
+&#13;
+  font-weight: 600;&#13;
+&#13;
+  cursor: pointer;&#13;
+&#13;
+  transition: 0.2s;&#13;
+}&#13;
+&#13;
+.back-btn:hover {&#13;
+  transform: translateY(-2px);&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   ALERTS&#13;
+   ========================================= */&#13;
+&#13;
+.alert {&#13;
+  padding: 14px 18px;&#13;
+  border-radius: 10px;&#13;
+  margin-bottom: 20px;&#13;
+  font-weight: 600;&#13;
+}&#13;
+&#13;
+.error-alert {&#13;
+  background: #ffebee;&#13;
+  color: #c62828;&#13;
+  border: 1px solid #ef9a9a;&#13;
+}&#13;
+&#13;
+.success-alert {&#13;
+  background: #e8f5e9;&#13;
+  color: #2e7d32;&#13;
+  border: 1px solid #a5d6a7;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   STATISTICS&#13;
+   ========================================= */&#13;
+&#13;
+.stats-grid {&#13;
+  display: grid;&#13;
+&#13;
+  grid-template-columns:&#13;
+    repeat(4, 1fr);&#13;
+&#13;
+  gap: 18px;&#13;
+&#13;
+  margin-bottom: 25px;&#13;
+}&#13;
+&#13;
+.stat-card {&#13;
+  background: white;&#13;
+&#13;
+  border-radius: 15px;&#13;
+&#13;
+  padding: 22px;&#13;
+&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+&#13;
+  gap: 15px;&#13;
+&#13;
+  box-shadow:&#13;
+    0 4px 15px rgba(38, 50, 56, 0.07);&#13;
+&#13;
+  border: 1px solid #e0f2f3;&#13;
+}&#13;
+&#13;
+.stat-icon {&#13;
+  width: 50px;&#13;
+  height: 50px;&#13;
+&#13;
+  border-radius: 12px;&#13;
+&#13;
+  background: #e0f7fa;&#13;
+&#13;
+  display: flex;&#13;
+  align-items: center;&#13;
+  justify-content: center;&#13;
+&#13;
+  font-size: 23px;&#13;
+}&#13;
+&#13;
+.stat-card span {&#13;
+  display: block;&#13;
+&#13;
+  font-size: 13px;&#13;
+&#13;
+  color: #78909c;&#13;
+&#13;
+  margin-bottom: 5px;&#13;
+}&#13;
+&#13;
+.stat-card strong {&#13;
+  display: block;&#13;
+&#13;
+  font-size: 27px;&#13;
+&#13;
+  color: #263238;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   FILTER&#13;
+   ========================================= */&#13;
+&#13;
+.filter-card {&#13;
+  background: white;&#13;
+&#13;
+  padding: 18px;&#13;
+&#13;
+  border-radius: 15px;&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  gap: 15px;&#13;
+&#13;
+  margin-bottom: 20px;&#13;
+&#13;
+  box-shadow:&#13;
+    0 4px 15px rgba(38, 50, 56, 0.06);&#13;
+}&#13;
+&#13;
+.search-box {&#13;
+  flex: 1;&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  gap: 10px;&#13;
+&#13;
+  background: #f7fcfd;&#13;
+&#13;
+  border: 1px solid #dceff1;&#13;
+&#13;
+  border-radius: 10px;&#13;
+&#13;
+  padding: 0 14px;&#13;
+}&#13;
+&#13;
+.search-box input {&#13;
+  border: none;&#13;
+&#13;
+  outline: none;&#13;
+&#13;
+  background: transparent;&#13;
+&#13;
+  width: 100%;&#13;
+&#13;
+  padding: 12px 0;&#13;
+&#13;
+  font-size: 14px;&#13;
+}&#13;
+&#13;
+.filter-card select {&#13;
+  min-width: 160px;&#13;
+&#13;
+  border: 1px solid #dceff1;&#13;
+&#13;
+  background: #f7fcfd;&#13;
+&#13;
+  border-radius: 10px;&#13;
+&#13;
+  padding: 11px 14px;&#13;
+&#13;
+  color: #37474f;&#13;
+&#13;
+  outline: none;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   TICKETS CARD&#13;
+   ========================================= */&#13;
+&#13;
+.tickets-card {&#13;
+  background: white;&#13;
+&#13;
+  border-radius: 17px;&#13;
+&#13;
+  padding: 25px;&#13;
+&#13;
+  box-shadow:&#13;
+    0 5px 20px rgba(38, 50, 56, 0.07);&#13;
+}&#13;
+&#13;
+.section-title {&#13;
+  display: flex;&#13;
+&#13;
+  justify-content: space-between;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  padding-bottom: 20px;&#13;
+&#13;
+  border-bottom: 1px solid #edf5f6;&#13;
+}&#13;
+&#13;
+.section-title h2 {&#13;
+  margin: 0 0 5px;&#13;
+&#13;
+  font-size: 21px;&#13;
+}&#13;
+&#13;
+.section-title p {&#13;
+  margin: 0;&#13;
+&#13;
+  color: #78909c;&#13;
+&#13;
+  font-size: 13px;&#13;
+}&#13;
+&#13;
+.ticket-count {&#13;
+  background: #e0f7fa;&#13;
+&#13;
+  color: #008c9e;&#13;
+&#13;
+  padding: 7px 13px;&#13;
+&#13;
+  border-radius: 20px;&#13;
+&#13;
+  font-size: 13px;&#13;
+&#13;
+  font-weight: 600;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   TICKET ROW&#13;
+   ========================================= */&#13;
+&#13;
+.ticket-row {&#13;
+  display: grid;&#13;
+&#13;
+  grid-template-columns:&#13;
+    1fr auto auto;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  gap: 25px;&#13;
+&#13;
+  padding: 22px 5px;&#13;
+&#13;
+  border-bottom: 1px solid #edf5f6;&#13;
+}&#13;
+&#13;
+.ticket-row:last-child {&#13;
+  border-bottom: none;&#13;
+}&#13;
+&#13;
+.ticket-number {&#13;
+  color: #0097a7;&#13;
+&#13;
+  font-size: 13px;&#13;
+&#13;
+  font-weight: 700;&#13;
+&#13;
+  margin-bottom: 5px;&#13;
+}&#13;
+&#13;
+.ticket-main h3 {&#13;
+  margin: 0 0 10px;&#13;
+&#13;
+  font-size: 16px;&#13;
+&#13;
+  font-weight: 600;&#13;
+&#13;
+  color: #263238;&#13;
+}&#13;
+&#13;
+.ticket-meta {&#13;
+  display: flex;&#13;
+&#13;
+  gap: 18px;&#13;
+&#13;
+  flex-wrap: wrap;&#13;
+&#13;
+  color: #78909c;&#13;
+&#13;
+  font-size: 12px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   BADGES&#13;
+   ========================================= */&#13;
+&#13;
+.ticket-status {&#13;
+  display: flex;&#13;
+&#13;
+  flex-direction: column;&#13;
+&#13;
+  gap: 7px;&#13;
+&#13;
+  align-items: center;&#13;
+}&#13;
+&#13;
+.status-badge,&#13;
+.priority-badge {&#13;
+  min-width: 90px;&#13;
+&#13;
+  text-align: center;&#13;
+&#13;
+  padding: 6px 10px;&#13;
+&#13;
+  border-radius: 20px;&#13;
+&#13;
+  font-size: 11px;&#13;
+&#13;
+  font-weight: 700;&#13;
+}&#13;
+&#13;
+&#13;
+/* Status */&#13;
+&#13;
+.status-open {&#13;
+  background: #fff3e0;&#13;
+  color: #ef6c00;&#13;
+}&#13;
+&#13;
+.status-progress {&#13;
+  background: #e3f2fd;&#13;
+  color: #1565c0;&#13;
+}&#13;
+&#13;
+.status-resolved {&#13;
+  background: #e8f5e9;&#13;
+  color: #2e7d32;&#13;
+}&#13;
+&#13;
+&#13;
+/* Priority */&#13;
+&#13;
+.priority-critical {&#13;
+  background: #ffebee;&#13;
+  color: #c62828;&#13;
+}&#13;
+&#13;
+.priority-high {&#13;
+  background: #fff3e0;&#13;
+  color: #ef6c00;&#13;
+}&#13;
+&#13;
+.priority-medium {&#13;
+  background: #fffde7;&#13;
+  color: #827717;&#13;
+}&#13;
+&#13;
+.priority-low {&#13;
+  background: #e8f5e9;&#13;
+  color: #2e7d32;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   ACTION BUTTONS&#13;
+   ========================================= */&#13;
+&#13;
+.ticket-actions {&#13;
+  display: flex;&#13;
+&#13;
+  gap: 7px;&#13;
+&#13;
+  flex-wrap: wrap;&#13;
+&#13;
+  justify-content: flex-end;&#13;
+}&#13;
+&#13;
+.action-btn {&#13;
+  border: none;&#13;
+&#13;
+  border-radius: 8px;&#13;
+&#13;
+  padding: 8px 12px;&#13;
+&#13;
+  font-size: 12px;&#13;
+&#13;
+  font-weight: 600;&#13;
+&#13;
+  cursor: pointer;&#13;
+&#13;
+  transition: 0.2s;&#13;
+}&#13;
+&#13;
+.action-btn:hover {&#13;
+  transform: translateY(-1px);&#13;
+}&#13;
+&#13;
+.action-btn:disabled {&#13;
+  opacity: 0.5;&#13;
+&#13;
+  cursor: not-allowed;&#13;
+}&#13;
+&#13;
+.start-btn {&#13;
+  background: #e0f7fa;&#13;
+  color: #008c9e;&#13;
+}&#13;
+&#13;
+.resolve-btn {&#13;
+  background: #e8f5e9;&#13;
+  color: #2e7d32;&#13;
+}&#13;
+&#13;
+.escalate-btn {&#13;
+  background: #fff3e0;&#13;
+  color: #ef6c00;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   EMPTY STATE&#13;
+   ========================================= */&#13;
+&#13;
+.empty-state {&#13;
+  text-align: center;&#13;
+&#13;
+  padding: 70px 20px;&#13;
+}&#13;
+&#13;
+.empty-icon {&#13;
+  font-size: 50px;&#13;
+&#13;
+  margin-bottom: 15px;&#13;
+}&#13;
+&#13;
+.empty-state h3 {&#13;
+  margin: 0 0 8px;&#13;
+&#13;
+  font-size: 20px;&#13;
+}&#13;
+&#13;
+.empty-state p {&#13;
+  color: #78909c;&#13;
+&#13;
+  margin: 0;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   RESPONSIVE&#13;
+   ========================================= */&#13;
+&#13;
+@media (max-width: 1000px) {&#13;
+&#13;
+  .stats-grid {&#13;
+    grid-template-columns:&#13;
+      repeat(2, 1fr);&#13;
+  }&#13;
+&#13;
+  .ticket-row {&#13;
+    grid-template-columns: 1fr;&#13;
+    gap: 15px;&#13;
+  }&#13;
+&#13;
+  .ticket-status {&#13;
+    flex-direction: row;&#13;
+    justify-content: flex-start;&#13;
+  }&#13;
+&#13;
+  .ticket-actions {&#13;
+    justify-content: flex-start;&#13;
+  }&#13;
+}&#13;
+&#13;
+&#13;
+@media (max-width: 700px) {&#13;
+&#13;
+  .cfms-page {&#13;
+    padding: 15px;&#13;
+  }&#13;
+&#13;
+  .page-header {&#13;
+    padding: 22px;&#13;
+&#13;
+    flex-direction: column;&#13;
+&#13;
+    align-items: flex-start;&#13;
+&#13;
+    gap: 15px;&#13;
+  }&#13;
+&#13;
+  .stats-grid {&#13;
+    grid-template-columns: 1fr;&#13;
+  }&#13;
+&#13;
+  .filter-card {&#13;
+    flex-direction: column;&#13;
+  }&#13;
+&#13;
+  .filter-card select {&#13;
+    width: 100%;&#13;
+  }&#13;
+&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>cfms_assigned_tickets</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>CFMS Assigned Tickets</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+    data.userName = gs.getUserDisplayName();
+
+    data.total = 0;
+    data.open = 0;
+    data.inProgress = 0;
+    data.resolved = 0;
+
+    data.tickets = [];
+
+    data.error = "";
+    data.success = "";
+
+
+    /* =========================================
+       SECURITY
+       ========================================= */
+
+    if (!gs.isLoggedIn()) {
+
+        data.redirect = "cfms_login";
+
+        return;
+    }
+
+
+    if (!gs.hasRole("cfms_staff") && !gs.hasRole("admin")) {
+
+        data.error = "You are not authorized to access Assigned Tickets.";
+
+        data.redirect = "cfms_home";
+
+        return;
+    }
+
+
+    /* =========================================
+       ACTIONS
+       ========================================= */
+
+    if (input && input.action) {
+
+        var action = input.action;
+
+        var ticketID = input.sys_id;
+
+
+        if (!ticketID) {
+
+            data.error = "Ticket ID is missing.";
+
+            return;
+        }
+
+
+        var ticket = new GlideRecord("incident");
+
+
+        if (!ticket.get(ticketID)) {
+
+            data.error = "Ticket not found.";
+
+            return;
+        }
+
+
+        /* -----------------------------------------
+           START TICKET
+           ----------------------------------------- */
+
+        if (action == "start") {
+
+            ticket.state = 2;
+
+            /*
+             * If ticket is not assigned to anyone,
+             * assign it to current staff member.
+             */
+
+            if (!ticket.assigned_to) {
+
+                ticket.assigned_to = gs.getUserID();
+
+            }
+
+            ticket.work_notes =
+                "CFMS staff started working on this ticket.";
+
+            ticket.update();
+
+            data.success =
+                ticket.getValue("number") +
+                " has been moved to In Progress.";
+
+        }
+
+
+        /* -----------------------------------------
+           RESOLVE TICKET
+           ----------------------------------------- */
+
+        else if (action == "resolve") {
+
+            ticket.state = 6;
+
+            ticket.resolved_by = gs.getUserID();
+
+            ticket.work_notes =
+                "CFMS staff resolved this ticket.";
+
+            ticket.update();
+
+            data.success =
+                ticket.getValue("number") +
+                " has been resolved.";
+
+        }
+
+
+        /* -----------------------------------------
+           ESCALATE TICKET
+           ----------------------------------------- */
+
+        else if (action == "escalate") {
+
+            /*
+             * Escalation follows the CFMS priority
+             * routing logic.
+             */
+
+            var priority = ticket.getValue("priority");
+
+            var groupName = "";
+
+            if (priority == "1") {
+
+                groupName = "Hostel Management Group";
+
+            } else if (priority == "2") {
+
+                groupName = "Hostel Admin Group";
+
+            } else {
+
+                groupName = "Hostel Management Group";
+
+            }
+
+
+            var group = new GlideRecord("sys_user_group");
+
+            group.addQuery("name", groupName);
+
+            group.setLimit(1);
+
+            group.query();
+
+
+            if (group.next()) {
+
+                ticket.assignment_group =
+                    group.getUniqueValue();
+
+                ticket.work_notes =
+                    "Ticket escalated by CFMS staff to " +
+                    groupName + ".";
+
+                ticket.update();
+
+                data.success =
+                    ticket.getValue("number") +
+                    " has been escalated to " +
+                    groupName + ".";
+
+            } else {
+
+                data.error =
+                    "Escalation group '" +
+                    groupName +
+                    "' was not found.";
+
+            }
+
+        }
+
+
+        return;
+    }
+
+
+    /* =========================================
+       LOAD TICKETS
+       ========================================= */
+
+    var gr = new GlideRecord("incident");
+
+
+    /*
+     * Current model:
+     *
+     * 1. Tickets individually assigned to staff
+     * OR
+     * 2. Tickets assigned to a staff group
+     *
+     */
+
+    var userID = gs.getUserID();
+
+
+    /*
+     * Get groups where current user is a member.
+     */
+
+    var groups = [];
+
+    var membership = new GlideRecord("sys_user_grmember");
+
+    membership.addQuery("user", userID);
+
+    membership.query();
+
+
+    while (membership.next()) {
+
+        groups.push(
+            membership.getValue("group")
+        );
+
+    }
+
+
+    /*
+     * Build ticket query.
+     */
+
+    var qc = gr.addQuery(
+        "assigned_to",
+        userID
+    );
+
+
+    if (groups.length > 0) {
+
+        qc.addOrCondition(
+            "assignment_group",
+            "IN",
+            groups.join(",")
+        );
+
+    }
+
+
+    gr.orderByDesc("sys_updated_on");
+
+    gr.query();
+
+
+    /* =========================================
+       BUILD RESPONSE
+       ========================================= */
+
+    while (gr.next()) {
+
+        data.total++;
+
+
+        var state =
+            gr.getValue("state");
+
+        var stateText =
+            gr.getDisplayValue("state");
+
+
+        /* -----------------------------------------
+           STATUS COUNT
+           ----------------------------------------- */
+
+        if (state == "1") {
+
+            data.open++;
+
+        } else if (state == "2") {
+
+            data.inProgress++;
+
+        } else if (
+            state == "6" ||
+            state == "7"
+        ) {
+
+            data.resolved++;
+
+        }
+
+
+        /* -----------------------------------------
+           STATUS CLASS
+           ----------------------------------------- */
+
+        var statusClass =
+            "status-open";
+
+
+        if (state == "2") {
+
+            statusClass =
+                "status-progress";
+
+        } else if (
+            state == "6" ||
+            state == "7"
+        ) {
+
+            statusClass =
+                "status-resolved";
+
+        }
+
+
+        /* -----------------------------------------
+           PRIORITY
+           ----------------------------------------- */
+
+        var priority =
+            gr.getValue("priority");
+
+        var priorityText =
+            gr.getDisplayValue("priority");
+
+        var priorityClass =
+            "priority-medium";
+
+
+        if (priority == "1") {
+
+            priorityText = "Critical";
+
+            priorityClass =
+                "priority-critical";
+
+        } else if (priority == "2") {
+
+            priorityText = "High";
+
+            priorityClass =
+                "priority-high";
+
+        } else if (priority == "3") {
+
+            priorityText = "Medium";
+
+            priorityClass =
+                "priority-medium";
+
+        } else if (priority == "4") {
+
+            priorityText = "Low";
+
+            priorityClass =
+                "priority-low";
+
+        }
+
+
+        /* -----------------------------------------
+           TICKET DATA
+           ----------------------------------------- */
+
+        data.tickets.push({
+
+            sys_id:
+                gr.getUniqueValue(),
+
+            number:
+                gr.getValue("number"),
+
+            short_description:
+                gr.getValue("short_description"),
+
+            caller:
+                gr.getDisplayValue("caller_id"),
+
+            assignment_group:
+                gr.getDisplayValue(
+                    "assignment_group"
+                ),
+
+            assigned_to:
+                gr.getDisplayValue(
+                    "assigned_to"
+                ),
+
+            state:
+                stateText,
+
+            stateValue:
+                state,
+
+            statusClass:
+                statusClass,
+
+            priority:
+                priorityText,
+
+            priorityValue:
+                priority,
+
+            priorityClass:
+                priorityClass,
+
+            created:
+                gr.getDisplayValue(
+                    "sys_created_on"
+                )
+
+        });
+
+    }
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 11:30:28</sys_created_on>
+        <sys_id>3d93905da0af03107f4432329b8a1525</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>CFMS Assigned Tickets</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_widget_3d93905da0af03107f4432329b8a1525</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 11:37:08</sys_updated_on>
+        <template><![CDATA[<div class="cfms-page">
+
+  <!-- Header -->
+  <div class="page-header">
+    <div>
+      <h1>Assigned Tickets</h1>
+      <p>Manage and resolve campus food service requests.</p>
+    </div>
+
+    <button class="back-btn" ng-click="c.goDashboard()">
+      ← Dashboard
+    </button>
+  </div>
+
+
+  <!-- Error -->
+  <div class="alert error-alert" ng-if="c.data.error">
+    {{c.data.error}}
+  </div>
+
+
+  <!-- Success -->
+  <div class="alert success-alert" ng-if="c.data.success">
+    {{c.data.success}}
+  </div>
+
+
+  <!-- Statistics -->
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <div class="stat-icon">]]>🎫<![CDATA[</div>
+      <div>
+        <span>Total</span>
+        <strong>{{c.data.total}}</strong>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">]]>📂<![CDATA[</div>
+      <div>
+        <span>Open</span>
+        <strong>{{c.data.open}}</strong>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">⚙️</div>
+      <div>
+        <span>In Progress</span>
+        <strong>{{c.data.inProgress}}</strong>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">✓</div>
+      <div>
+        <span>Resolved</span>
+        <strong>{{c.data.resolved}}</strong>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- Filter Section -->
+  <div class="filter-card">
+
+    <div class="search-box">
+      <span>]]>🔍<![CDATA[</span>
+
+      <input
+        type="text"
+        ng-model="c.searchText"
+        placeholder="Search ticket number or description..."
+      />
+    </div>
+
+    <select ng-model="c.statusFilter">
+      <option value="all">All Status</option>
+      <option value="open">Open</option>
+      <option value="progress">In Progress</option>
+      <option value="resolved">Resolved</option>
+    </select>
+
+    <select ng-model="c.priorityFilter">
+      <option value="all">All Priority</option>
+      <option value="1">Critical</option>
+      <option value="2">High</option>
+      <option value="3">Medium</option>
+      <option value="4">Low</option>
+    </select>
+
+  </div>
+
+
+  <!-- Tickets -->
+  <div class="tickets-card">
+
+    <div class="section-title">
+      <div>
+        <h2>Ticket Queue</h2>
+        <p>Tickets assigned to you or your staff group</p>
+      </div>
+
+      <span class="ticket-count">
+        {{c.filteredTickets().length}} Tickets
+      </span>
+    </div>
+
+
+    <!-- Empty -->
+    <div
+      class="empty-state"
+      ng-if="c.filteredTickets().length === 0"
+    >
+      <div class="empty-icon">]]>📭<![CDATA[</div>
+
+      <h3>No tickets found</h3>
+
+      <p>
+        There are no tickets matching your current filters.
+      </p>
+    </div>
+
+
+    <!-- Ticket list -->
+    <div
+      class="ticket-row"
+      ng-repeat="ticket in c.filteredTickets() track by ticket.sys_id"
+    >
+
+      <!-- Ticket information -->
+      <div class="ticket-main">
+
+        <div class="ticket-number">
+          {{ticket.number}}
+        </div>
+
+        <h3>
+          {{ticket.short_description}}
+        </h3>
+
+        <div class="ticket-meta">
+
+          <span>
+            ]]>👤<![CDATA[ {{ticket.caller}}
+          </span>
+
+          <span>
+            ]]>📅<![CDATA[ {{ticket.created}}
+          </span>
+
+          <span ng-if="ticket.assignment_group">
+            ]]>👥<![CDATA[ {{ticket.assignment_group}}
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- Status -->
+      <div class="ticket-status">
+
+        <span
+          class="status-badge"
+          ng-class="ticket.statusClass"
+        >
+          {{ticket.state}}
+        </span>
+
+        <span
+          class="priority-badge"
+          ng-class="ticket.priorityClass"
+        >
+          {{ticket.priority}}
+        </span>
+
+      </div>
+
+
+      <!-- Actions -->
+      <div class="ticket-actions">
+
+        <button
+          class="action-btn start-btn"
+          ng-if="ticket.stateValue == '1'"
+          ng-click="c.startTicket(ticket)"
+          ng-disabled="c.processing == ticket.sys_id"
+        >
+          ▶ Start
+        </button>
+
+
+        <button
+          class="action-btn resolve-btn"
+          ng-if="ticket.stateValue == '1' || ticket.stateValue == '2'"
+          ng-click="c.resolveTicket(ticket)"
+          ng-disabled="c.processing == ticket.sys_id"
+        >
+          ✓ Resolve
+        </button>
+
+
+        <button
+          class="action-btn escalate-btn"
+          ng-if="ticket.stateValue != '6' && ticket.stateValue != '7'"
+          ng-click="c.escalateTicket(ticket)"
+          ng-disabled="c.processing == ticket.sys_id"
+        >
+          ↑ Escalate
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

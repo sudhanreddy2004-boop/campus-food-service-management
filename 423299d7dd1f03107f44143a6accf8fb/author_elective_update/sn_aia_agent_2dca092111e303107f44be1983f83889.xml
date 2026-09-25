@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_agent">
+    <sn_aia_agent action="DELETE">
+        <advanced_mode>false</advanced_mode>
+        <agent_type>internal</agent_type>
+        <applicability_script><![CDATA[/** 
+ * Function to process inputs related to ServiceNow change request operations 
+ * 
+ * @param {Object} inputs - The input parameters object 
+ * @param {string} inputs.objective - The purpose or goal of the operation 
+ * @param {string} inputs.execution_plan_id - Unique identifier for the execution plan 
+ * @param {Object} inputs.context - Context information about the ServiceNow change request 
+ * @param {string} inputs.context.url - The URL of the change request in Service Operations Workspace 
+ * @param {string} inputs.context.table - The ServiceNow table name (e.g., 'change_request') 
+ * @param {string} inputs.context.record_sys_id - The sys ID of the record 
+ * @param {string} inputs.context.route - The route type (e.g., 'record') 
+ * @param {string} inputs.context.additional_context - Additional contextual information in JSON format 
+ * @param {string} inputs.context.experience - The UI experience name (e.g., 'Service Operations Workspace') 
+ * @param {string} inputs.context.number - The request number 
+ * @param {string} inputs.context.portal - The portal ID 
+ * @param {string} inputs.context.device_type - The device type from which the experience is accessed, e.g.'mweb' 
+ * @param {string} inputs.context.deployment_id - The unique identifier for the assistant deployment 
+ * @param {string} inputs.context.assistant_type - The type of assistant, e.g., 'nava' 
+ * 
+ * @returns {boolean} Returns true/false 
+ */
+(function(inputs) {
+    /** const { objective, execution_plan_id, context } = inputs; 
+    return context.table == 'incident' ; */
+    return false;
+})(inputs);]]></applicability_script>
+        <channel>nap_and_va</channel>
+        <compiled_handbook/>
+        <condition/>
+        <context_processing_script><![CDATA[/*
+ * Available Variables:
+ * - task: The task provided to agent to solve either by orchestrator or user(incase of only agent execution i.e agent is invoked as seperate entity instead from a workflow).
+ * - user_utterance: The user utterance provided. and task = user_utterance in case of individual agent execution.
+ * - agent_id: The agent id.
+ * - context: An object that carries additional contextual information for the agent.
+ *          It always includes a "pageContext" and may include a "triggerContext",
+ *          depending on how and from where the agent is invoked.
+ *
+ *          Behavior by invocation type:
+ *          ---------------------------------
+ *          - When invoked via the startAiAgentConversation API:
+ *                If a "contextMemory" parameter is provided in the API request,
+ *                it will be available here as the "triggerContext".
+ *                The "pageContext" is always present in this call, regardless
+ *                of whether the agent is executed individually or as part of a use case.
+ *                Example:
+ *                    {
+ *                        pageContext: { ... },
+ *                        triggerContext: { ... } // Derived from contextMemory (if passed)
+ *                    }
+ *
+ *          - When invoked as part of a use case or workflow:
+ *                The "pageContext" and "triggerContext" objects available here
+ *                may have been *modified* by the use case’s context processing script.
+ *                This means the use case may alter, extend, or overwrite values
+ *                from the original "pageContext" or "triggerContext"
+ *                before the context reaches the agent.
+ *                If the use case was originally triggered via the API,
+ *                the initial "triggerContext" is still derived from the
+ *                "contextMemory" parameter, but its contents may have been updated
+ *                by the use case logic.
+ *
+ *          - When executed directly (standalone agent execution):
+ *                The "pageContext" will always be present (default or empty),
+ *                and the "triggerContext" will only be populated if explicitly
+ *                passed through the API call.
+ * Return an modified context like: { pageContext : {},triggerContext:{} }
+ */
+(function(task, user_utterance, agent_id, context) {
+    return {
+        pageContext : context?.pageContext,
+		triggerContext : context?.triggerContext
+    };
+})(task,user_utterance, agent_id, context);]]></context_processing_script>
+        <description>Analyzes student-reported campus food-service problems by reviewing Food Base Problem records and complaint details. Identifies the applicable food-service use case and normalized problem type, determines priority using configured campus food-service rules and Student Count, retrieves relevant food-service knowledge, and provides priority reasoning, knowledge insights, recommended actions, and related knowledge articles for responsible staff. Uses only available record data, configured rules, and retrieved knowledge.</description>
+        <extends/>
+        <extension_configuration/>
+        <external_agent_configuration/>
+        <inputs>[]</inputs>
+        <instructions>1. Retrieve and review the Food Base Problem record and the student's complaint, including Use Case, Problem Type, Student Count, Meal Type, Mess Hall, Description, and other relevant available fields.
+
+2. Identify the applicable campus food-service use case based on the Food Base Problem record and the student's complaint.
+
+3. Determine the normalized problem type from the available Food Base Problem information and complaint details.
+
+4. Determine the priority using the configured Campus Food Services Assistant priority rules and Student Count. Do not determine priority from knowledge articles, assumptions, or unsupported severity language.
+
+5. Retrieve relevant campus food-service knowledge articles related to the identified problem type and student complaint.
+
+6. Generate the required analysis: Problem Type Normalized, Priority, Priority Reason, Knowledge Insights, Recommended Action, and Related Knowledge Articles.
+
+7. Ensure that Knowledge Insights are based only on retrieved knowledge articles and that the Recommended Action is supported by the complaint, available record information, configured rules, and retrieved knowledge.
+
+8. Do not invent missing record information, knowledge articles, priority rules, or unsupported facts.
+
+9. Return the completed analysis clearly so that responsible campus food-service staff can review the problem and take appropriate action.</instructions>
+        <internal_name>global.x_snc_campus_foo_1.Campus Food Intelligence Agent</internal_name>
+        <name>Campus Food Intelligence Agent</name>
+        <outputs>""</outputs>
+        <parent/>
+        <post_processing_message/>
+        <processing_message/>
+        <proficiency>- Expertly analyzes student-reported food-service problems by systematically reviewing Food Base Problem records and complaint details, ensuring accurate identification of use cases, problem types, and actionable insights for campus food-service staff. The agent's core domain expertise lies in the consistent and reliable interpretation of food-service issues within the campus environment, strictly adhering to available data and configured rules.
+- Retrieves and thoroughly reviews Food Base Problem records and associated student complaints, extracting all relevant information such as Use Case, Problem Type, Student Count, Meal Type, Mess Hall, and Description, to ensure a comprehensive understanding of the reported issue.
+- Identifies the most relevant campus food-service use case for each reported problem by mapping complaint details and Food Base Problem records to predefined use cases, ensuring accurate categorization and targeted analysis.
+- Determines the normalized problem type for each complaint by synthesizing information from the Food Base Problem record and student-provided details, ensuring standardized classification of issues for effective resolution.
+- Assigns priority to each food-service problem strictly according to configured campus food-service priority rules and Student Count, providing a clear and justified priority level without relying on unsupported severity language or assumptions.
+- Retrieves and references relevant campus food-service knowledge articles that directly pertain to the identified problem type and complaint details, ensuring that all insights and recommendations are grounded in established campus food-service knowledge.
+- Generates a clear and actionable analysis for each reported problem, including normalized problem type, assigned priority with justification, knowledge-based insights, recommended actions, and references to related knowledge articles, facilitating effective resolution by campus food-service staff.
+- Ensures that all Knowledge Insights and Recommended Actions are strictly derived from retrieved knowledge articles, complaint details, available record information, and configured rules, avoiding any invention of unsupported facts or recommendations.
+- Operates with strict adherence to available data and configured rules, never inventing missing record information, knowledge articles, priority rules, or unsupported facts, thereby maintaining the integrity and reliability of all analyses and recommendations.
+- Delivers completed analyses in a clear, structured format that enables responsible campus food-service staff to efficiently review problems and take appropriate, informed action.</proficiency>
+        <record_type>custom</record_type>
+        <required_translations/>
+        <research>false</research>
+        <role>You are the Campus Food Intelligence Agent for the Campus Food Services Assistant. Your role is to analyze student-reported food-service problems accurately and consistently. Review the available Food Base Problem record and complaint details, identify the applicable use case and normalized problem type, determine priority using the configured campus food-service priority rules and Student Count, retrieve relevant campus food-service knowledge, and provide clear actionable analysis for food-service staff. Do not invent information, unsupported facts, or priorities that are not supported by the configured rules and available data.</role>
+        <root_agent_id/>
+        <source_id/>
+        <strategy display_value="ReAct">f0bff21f9f13c6108f431597d90a1c74</strategy>
+        <sys_class_name>sn_aia_agent</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-25 10:16:52</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>2dca092111e303107f44be1983f83889</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Campus Food Intelligence Agent</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_agent_2dca092111e303107f44be1983f83889</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-25 10:17:13</sys_updated_on>
+    </sn_aia_agent>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</application>
+        <file_path/>
+        <instance_id>8ed1cdc7c38fcf94a03197af05013150</instance_id>
+        <instance_name>ltm-hck-2876-0046</instance_name>
+        <name>sn_aia_agent_2dca092111e303107f44be1983f83889</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sn_aia_agent"&gt;&lt;sn_aia_agent action="INSERT_OR_UPDATE"&gt;&lt;advanced_mode&gt;false&lt;/advanced_mode&gt;&lt;agent_type&gt;internal&lt;/agent_type&gt;&lt;applicability_script&gt;&lt;![CDATA[/** 
+ * Function to process inputs related to ServiceNow change request operations 
+ * 
+ * @param {Object} inputs - The input parameters object 
+ * @param {string} inputs.objective - The purpose or goal of the operation 
+ * @param {string} inputs.execution_plan_id - Unique identifier for the execution plan 
+ * @param {Object} inputs.context - Context information about the ServiceNow change request 
+ * @param {string} inputs.context.url - The URL of the change request in Service Operations Workspace 
+ * @param {string} inputs.context.table - The ServiceNow table name (e.g., 'change_request') 
+ * @param {string} inputs.context.record_sys_id - The sys ID of the record 
+ * @param {string} inputs.context.route - The route type (e.g., 'record') 
+ * @param {string} inputs.context.additional_context - Additional contextual information in JSON format 
+ * @param {string} inputs.context.experience - The UI experience name (e.g., 'Service Operations Workspace') 
+ * @param {string} inputs.context.number - The request number 
+ * @param {string} inputs.context.portal - The portal ID 
+ * @param {string} inputs.context.device_type - The device type from which the experience is accessed, e.g.'mweb' 
+ * @param {string} inputs.context.deployment_id - The unique identifier for the assistant deployment 
+ * @param {string} inputs.context.assistant_type - The type of assistant, e.g., 'nava' 
+ * 
+ * @returns {boolean} Returns true/false 
+ */
+(function(inputs) {
+    /** const { objective, execution_plan_id, context } = inputs; 
+    return context.table == 'incident' ; */
+    return false;
+})(inputs);]]&gt;&lt;/applicability_script&gt;&lt;channel&gt;nap_and_va&lt;/channel&gt;&lt;compiled_handbook/&gt;&lt;condition/&gt;&lt;context_processing_script&gt;&lt;![CDATA[/*
+ * Available Variables:
+ * - task: The task provided to agent to solve either by orchestrator or user(incase of only agent execution i.e agent is invoked as seperate entity instead from a workflow).
+ * - user_utterance: The user utterance provided. and task = user_utterance in case of individual agent execution.
+ * - agent_id: The agent id.
+ * - context: An object that carries additional contextual information for the agent.
+ *          It always includes a "pageContext" and may include a "triggerContext",
+ *          depending on how and from where the agent is invoked.
+ *
+ *          Behavior by invocation type:
+ *          ---------------------------------
+ *          - When invoked via the startAiAgentConversation API:
+ *                If a "contextMemory" parameter is provided in the API request,
+ *                it will be available here as the "triggerContext".
+ *                The "pageContext" is always present in this call, regardless
+ *                of whether the agent is executed individually or as part of a use case.
+ *                Example:
+ *                    {
+ *                        pageContext: { ... },
+ *                        triggerContext: { ... } // Derived from contextMemory (if passed)
+ *                    }
+ *
+ *          - When invoked as part of a use case or workflow:
+ *                The "pageContext" and "triggerContext" objects available here
+ *                may have been *modified* by the use case’s context processing script.
+ *                This means the use case may alter, extend, or overwrite values
+ *                from the original "pageContext" or "triggerContext"
+ *                before the context reaches the agent.
+ *                If the use case was originally triggered via the API,
+ *                the initial "triggerContext" is still derived from the
+ *                "contextMemory" parameter, but its contents may have been updated
+ *                by the use case logic.
+ *
+ *          - When executed directly (standalone agent execution):
+ *                The "pageContext" will always be present (default or empty),
+ *                and the "triggerContext" will only be populated if explicitly
+ *                passed through the API call.
+ * Return an modified context like: { pageContext : {},triggerContext:{} }
+ */
+(function(task, user_utterance, agent_id, context) {
+    return {
+        pageContext : context?.pageContext,
+		triggerContext : context?.triggerContext
+    };
+})(task,user_utterance, agent_id, context);]]&gt;&lt;/context_processing_script&gt;&lt;description&gt;Analyzes student-reported campus food-service problems by reviewing Food Base Problem records and complaint details. Identifies the applicable food-service use case and normalized problem type, determines priority using configured campus food-service rules and Student Count, retrieves relevant food-service knowledge, and provides priority reasoning, knowledge insights, recommended actions, and related knowledge articles for responsible staff. Uses only available record data, configured rules, and retrieved knowledge.&lt;/description&gt;&lt;extends/&gt;&lt;extension_configuration/&gt;&lt;external_agent_configuration/&gt;&lt;inputs&gt;[]&lt;/inputs&gt;&lt;instructions&gt;1. Retrieve and review the Food Base Problem record and the student's complaint, including Use Case, Problem Type, Student Count, Meal Type, Mess Hall, Description, and other relevant available fields.
+
+2. Identify the applicable campus food-service use case based on the Food Base Problem record and the student's complaint.
+
+3. Determine the normalized problem type from the available Food Base Problem information and complaint details.
+
+4. Determine the priority using the configured Campus Food Services Assistant priority rules and Student Count. Do not determine priority from knowledge articles, assumptions, or unsupported severity language.
+
+5. Retrieve relevant campus food-service knowledge articles related to the identified problem type and student complaint.
+
+6. Generate the required analysis: Problem Type Normalized, Priority, Priority Reason, Knowledge Insights, Recommended Action, and Related Knowledge Articles.
+
+7. Ensure that Knowledge Insights are based only on retrieved knowledge articles and that the Recommended Action is supported by the complaint, available record information, configured rules, and retrieved knowledge.
+
+8. Do not invent missing record information, knowledge articles, priority rules, or unsupported facts.
+
+9. Return the completed analysis clearly so that responsible campus food-service staff can review the problem and take appropriate action.&lt;/instructions&gt;&lt;internal_name&gt;global.x_snc_campus_foo_1.Campus Food Intelligence Agent&lt;/internal_name&gt;&lt;name&gt;Campus Food Intelligence Agent&lt;/name&gt;&lt;outputs&gt;""&lt;/outputs&gt;&lt;parent/&gt;&lt;post_processing_message/&gt;&lt;processing_message/&gt;&lt;proficiency&gt;- Expertly analyzes student-reported food-service problems by systematically reviewing Food Base Problem records and complaint details, ensuring accurate identification of use cases, problem types, and actionable insights for campus food-service staff. The agent's core domain expertise lies in the consistent and reliable interpretation of food-service issues within the campus environment, strictly adhering to available data and configured rules.
+- Retrieves and thoroughly reviews Food Base Problem records and associated student complaints, extracting all relevant information such as Use Case, Problem Type, Student Count, Meal Type, Mess Hall, and Description, to ensure a comprehensive understanding of the reported issue.
+- Identifies the most relevant campus food-service use case for each reported problem by mapping complaint details and Food Base Problem records to predefined use cases, ensuring accurate categorization and targeted analysis.
+- Determines the normalized problem type for each complaint by synthesizing information from the Food Base Problem record and student-provided details, ensuring standardized classification of issues for effective resolution.
+- Assigns priority to each food-service problem strictly according to configured campus food-service priority rules and Student Count, providing a clear and justified priority level without relying on unsupported severity language or assumptions.
+- Retrieves and references relevant campus food-service knowledge articles that directly pertain to the identified problem type and complaint details, ensuring that all insights and recommendations are grounded in established campus food-service knowledge.
+- Generates a clear and actionable analysis for each reported problem, including normalized problem type, assigned priority with justification, knowledge-based insights, recommended actions, and references to related knowledge articles, facilitating effective resolution by campus food-service staff.
+- Ensures that all Knowledge Insights and Recommended Actions are strictly derived from retrieved knowledge articles, complaint details, available record information, and configured rules, avoiding any invention of unsupported facts or recommendations.
+- Operates with strict adherence to available data and configured rules, never inventing missing record information, knowledge articles, priority rules, or unsupported facts, thereby maintaining the integrity and reliability of all analyses and recommendations.
+- Delivers completed analyses in a clear, structured format that enables responsible campus food-service staff to efficiently review problems and take appropriate, informed action.&lt;/proficiency&gt;&lt;record_type&gt;custom&lt;/record_type&gt;&lt;required_translations/&gt;&lt;research&gt;false&lt;/research&gt;&lt;role&gt;You are the Campus Food Intelligence Agent for the Campus Food Services Assistant. Your role is to analyze student-reported food-service problems accurately and consistently. Review the available Food Base Problem record and complaint details, identify the applicable use case and normalized problem type, determine priority using the configured campus food-service priority rules and Student Count, retrieve relevant campus food-service knowledge, and provide clear actionable analysis for food-service staff. Do not invent information, unsupported facts, or priorities that are not supported by the configured rules and available data.&lt;/role&gt;&lt;root_agent_id/&gt;&lt;source_id/&gt;&lt;strategy display_value="ReAct"&gt;f0bff21f9f13c6108f431597d90a1c74&lt;/strategy&gt;&lt;sys_class_name&gt;sn_aia_agent&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2026-09-25 10:16:52&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_id&gt;2dca092111e303107f44be1983f83889&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name&gt;Campus Food Intelligence Agent&lt;/sys_name&gt;&lt;sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1"&gt;423299d7dd1f03107f44143a6accf8fb&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Campus Food Services Assistant"&gt;423299d7dd1f03107f44143a6accf8fb&lt;/sys_scope&gt;&lt;sys_update_name&gt;sn_aia_agent_2dca092111e303107f44be1983f83889&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2026-09-25 10:17:13&lt;/sys_updated_on&gt;&lt;/sn_aia_agent&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-589609008</payload_hash>
+        <record_name>Campus Food Intelligence Agent</record_name>
+        <reverted_from/>
+        <source>6f2d16f3615703107f44f4898ccc4c88</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-25 10:17:13</sys_created_on>
+        <sys_id>f08c8de511e303107f44be1983f83885</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a0d811b2a70000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-25 10:17:13</sys_updated_on>
+        <type>AI Agent</type>
+        <update_guid>348c8de525e30310942c982549bd5984</update_guid>
+        <update_guid_history>348c8de525e30310942c982549bd5984:-589609008,3b6c0de541e3031028b722b8427b0f6c:-1382561384</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Campus Food Intelligence Agent">0f909521112703107f44be1983f838be</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-25 10:35:08</sys_created_on>
+        <sys_db_object display_value="" name="sn_aia_agent">sn_aia_agent</sys_db_object>
+        <sys_id>1e862d24baf24a70a2004a0d73a64900</sys_id>
+        <sys_metadata>2dca092111e303107f44be1983f83889</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Campus Food Intelligence Agent</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_scope_delete display_value="">00ca93000f1045668006564f73c0b4e4</sys_scope_delete>
+        <sys_update_name>sn_aia_agent_2dca092111e303107f44be1983f83889</sys_update_name>
+        <sys_update_version display_value="sn_aia_agent_2dca092111e303107f44be1983f83889">f08c8de511e303107f44be1983f83885</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-25 10:35:08</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

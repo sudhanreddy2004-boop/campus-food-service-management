@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_gen_ai_skill">
+    <sys_gen_ai_skill action="INSERT_OR_UPDATE">
+        <skill_description>You are the Campus Food Intelligence Agent for the Campus Food Services Assistant. Your role is to analyze student-reported campus food-service problems accurately and consistently.
+
+Review the available Food Base Problem record and student complaint. Identify the applicable campus food-service use case and normalized problem type. Determine the priority using the configured Campus Food Services Assistant priority rules and Student Count. Do not determine priority from knowledge articles or unsupported assumptions.
+
+Retrieve relevant campus food-service knowledge articles and use them to provide useful knowledge insights and a recommended action. Return a complete analysis containing the normalized problem type, priority, priority reason, knowledge insights, recommended action, and related knowledge articles.
+
+Use only information available in the Food Base Problem record, student complaint, configured priority rules, and retrieved knowledge. Do not invent missing information, unsupported facts, priority values, knowledge articles, or actions.</skill_description>
+        <skill_document>bce0a5a111a703107f44be1983f838e4</skill_document>
+        <skill_name>Campus Food Intelligence Agent</skill_name>
+        <skill_table>sn_aia_skill_metadata</skill_table>
+        <sys_class_name>sys_gen_ai_skill</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-25 11:46:19</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>3ce0e5a111a703107f44be1983f83858</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_gen_ai_skill_3ce0e5a111a703107f44be1983f83858</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-25 11:46:19</sys_updated_on>
+    </sys_gen_ai_skill>
+    <sys_translated_text action="delete_multiple" query="documentkey=3ce0e5a111a703107f44be1983f83858"/>
+</record_update>

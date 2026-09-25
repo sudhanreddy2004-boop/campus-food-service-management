@@ -1,0 +1,2032 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function() {
+
+    var c = this;
+
+
+    /* =========================================
+       HOME
+       ========================================= */
+
+    c.goHome = function() {
+
+        window.location.href =
+            "?id=cfms_home";
+
+    };
+
+
+    /* =========================================
+       ASSIGNED TICKETS
+       ========================================= */
+
+    c.assignedTickets = function() {
+
+        window.location.href =
+            "?id=cfms_assigned";
+
+    };
+
+
+    /* =========================================
+       RECORDS
+       ========================================= */
+
+    c.records = function() {
+
+        window.location.href =
+            "?id=cfms_records";
+
+    };
+
+
+    /* =========================================
+       REPORTS
+       ========================================= */
+
+    c.reports = function() {
+
+        /*
+         * Create cfms_reports later if you
+         * want a separate Reports page.
+         */
+
+        window.location.href =
+            "?id=cfms_records";
+
+    };
+
+
+    /* =========================================
+       FEEDBACK
+       ========================================= */
+
+    c.feedback = function() {
+
+        /*
+         * Manager can currently view the
+         * records page where feedback-related
+         * information can be displayed.
+         */
+
+        window.location.href =
+            "?id=cfms_records";
+
+    };
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>/* =========================================&#13;
+   CFMS MANAGER HOME&#13;
+   ========================================= */&#13;
+&#13;
+.cfms-manager {&#13;
+&#13;
+  min-height: 100vh;&#13;
+&#13;
+  background: #f0fbfc;&#13;
+&#13;
+  padding: 30px;&#13;
+&#13;
+  font-family:&#13;
+    'Segoe UI',&#13;
+    Tahoma,&#13;
+    Geneva,&#13;
+    Verdana,&#13;
+    sans-serif;&#13;
+&#13;
+  color: #263238;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   HEADER&#13;
+   ========================================= */&#13;
+&#13;
+.manager-header {&#13;
+&#13;
+  background:&#13;
+    linear-gradient(&#13;
+      135deg,&#13;
+      #00acc1,&#13;
+      #4dd0e1&#13;
+    );&#13;
+&#13;
+  color: white;&#13;
+&#13;
+  border-radius: 20px;&#13;
+&#13;
+  padding: 28px 32px;&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  justify-content: space-between;&#13;
+&#13;
+  margin-bottom: 25px;&#13;
+&#13;
+  box-shadow:&#13;
+    0 8px 25px&#13;
+    rgba(0, 172, 193, 0.18);&#13;
+}&#13;
+&#13;
+&#13;
+.header-content {&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  gap: 17px;&#13;
+}&#13;
+&#13;
+&#13;
+.header-icon {&#13;
+&#13;
+  width: 58px;&#13;
+&#13;
+  height: 58px;&#13;
+&#13;
+  background: rgba(255,255,255,0.18);&#13;
+&#13;
+  border-radius: 15px;&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  justify-content: center;&#13;
+&#13;
+  font-size: 28px;&#13;
+}&#13;
+&#13;
+&#13;
+.manager-header h1 {&#13;
+&#13;
+  margin: 0 0 6px;&#13;
+&#13;
+  font-size: 29px;&#13;
+&#13;
+  font-weight: 700;&#13;
+}&#13;
+&#13;
+&#13;
+.manager-header p {&#13;
+&#13;
+  margin: 0;&#13;
+&#13;
+  font-size: 14px;&#13;
+&#13;
+  opacity: 0.95;&#13;
+}&#13;
+&#13;
+&#13;
+.home-btn {&#13;
+&#13;
+  border: none;&#13;
+&#13;
+  background: white;&#13;
+&#13;
+  color: #008c9e;&#13;
+&#13;
+  padding: 11px 18px;&#13;
+&#13;
+  border-radius: 10px;&#13;
+&#13;
+  font-weight: 600;&#13;
+&#13;
+  cursor: pointer;&#13;
+&#13;
+  transition: 0.2s;&#13;
+}&#13;
+&#13;
+&#13;
+.home-btn:hover {&#13;
+&#13;
+  transform: translateY(-2px);&#13;
+&#13;
+  box-shadow:&#13;
+    0 5px 15px&#13;
+    rgba(0,0,0,0.1);&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   ALERT&#13;
+   ========================================= */&#13;
+&#13;
+.alert {&#13;
+&#13;
+  padding: 14px 18px;&#13;
+&#13;
+  border-radius: 10px;&#13;
+&#13;
+  margin-bottom: 20px;&#13;
+&#13;
+  font-weight: 600;&#13;
+}&#13;
+&#13;
+&#13;
+.error-alert {&#13;
+&#13;
+  background: #ffebee;&#13;
+&#13;
+  color: #c62828;&#13;
+&#13;
+  border: 1px solid #ef9a9a;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   WELCOME&#13;
+   ========================================= */&#13;
+&#13;
+.welcome-card {&#13;
+&#13;
+  background: white;&#13;
+&#13;
+  border-radius: 18px;&#13;
+&#13;
+  padding: 27px 30px;&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  justify-content: space-between;&#13;
+&#13;
+  margin-bottom: 25px;&#13;
+&#13;
+  box-shadow:&#13;
+    0 5px 18px&#13;
+    rgba(38,50,56,0.06);&#13;
+}&#13;
+&#13;
+&#13;
+.welcome-label {&#13;
+&#13;
+  color: #0097a7;&#13;
+&#13;
+  font-size: 11px;&#13;
+&#13;
+  font-weight: 800;&#13;
+&#13;
+  letter-spacing: 1px;&#13;
+}&#13;
+&#13;
+&#13;
+.welcome-text h2 {&#13;
+&#13;
+  margin: 7px 0 7px;&#13;
+&#13;
+  font-size: 24px;&#13;
+}&#13;
+&#13;
+&#13;
+.welcome-text p {&#13;
+&#13;
+  margin: 0;&#13;
+&#13;
+  color: #78909c;&#13;
+&#13;
+  font-size: 14px;&#13;
+}&#13;
+&#13;
+&#13;
+.welcome-icon {&#13;
+&#13;
+  width: 72px;&#13;
+&#13;
+  height: 72px;&#13;
+&#13;
+  border-radius: 18px;&#13;
+&#13;
+  background: #e0f7fa;&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  justify-content: center;&#13;
+&#13;
+  font-size: 34px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   STATISTICS&#13;
+   ========================================= */&#13;
+&#13;
+.stats-grid {&#13;
+&#13;
+  display: grid;&#13;
+&#13;
+  grid-template-columns:&#13;
+    repeat(4, 1fr);&#13;
+&#13;
+  gap: 18px;&#13;
+&#13;
+  margin-bottom: 25px;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-card {&#13;
+&#13;
+  background: white;&#13;
+&#13;
+  border-radius: 16px;&#13;
+&#13;
+  padding: 21px;&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  gap: 15px;&#13;
+&#13;
+  box-shadow:&#13;
+    0 4px 15px&#13;
+    rgba(38,50,56,0.06);&#13;
+&#13;
+  border: 1px solid #e4f2f4;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-icon {&#13;
+&#13;
+  width: 51px;&#13;
+&#13;
+  height: 51px;&#13;
+&#13;
+  border-radius: 13px;&#13;
+&#13;
+  background: #e0f7fa;&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  justify-content: center;&#13;
+&#13;
+  font-size: 23px;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-content span {&#13;
+&#13;
+  display: block;&#13;
+&#13;
+  color: #78909c;&#13;
+&#13;
+  font-size: 12px;&#13;
+&#13;
+  margin-bottom: 5px;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-content strong {&#13;
+&#13;
+  font-size: 26px;&#13;
+&#13;
+  color: #263238;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   DASHBOARD GRID&#13;
+   ========================================= */&#13;
+&#13;
+.dashboard-grid {&#13;
+&#13;
+  display: grid;&#13;
+&#13;
+  grid-template-columns:&#13;
+    1fr 1fr;&#13;
+&#13;
+  gap: 20px;&#13;
+&#13;
+  margin-bottom: 28px;&#13;
+}&#13;
+&#13;
+&#13;
+.dashboard-card,&#13;
+.recent-card {&#13;
+&#13;
+  background: white;&#13;
+&#13;
+  border-radius: 17px;&#13;
+&#13;
+  padding: 25px;&#13;
+&#13;
+  box-shadow:&#13;
+    0 5px 20px&#13;
+    rgba(38,50,56,0.06);&#13;
+}&#13;
+&#13;
+&#13;
+.card-header {&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  justify-content: space-between;&#13;
+&#13;
+  padding-bottom: 18px;&#13;
+&#13;
+  border-bottom: 1px solid #edf5f6;&#13;
+}&#13;
+&#13;
+&#13;
+.card-header h3 {&#13;
+&#13;
+  margin: 0 0 5px;&#13;
+&#13;
+  font-size: 18px;&#13;
+}&#13;
+&#13;
+&#13;
+.card-header p {&#13;
+&#13;
+  margin: 0;&#13;
+&#13;
+  color: #78909c;&#13;
+&#13;
+  font-size: 12px;&#13;
+}&#13;
+&#13;
+&#13;
+.card-icon {&#13;
+&#13;
+  width: 42px;&#13;
+&#13;
+  height: 42px;&#13;
+&#13;
+  background: #e0f7fa;&#13;
+&#13;
+  border-radius: 11px;&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  justify-content: center;&#13;
+&#13;
+  font-size: 20px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   PRIORITY&#13;
+   ========================================= */&#13;
+&#13;
+.priority-list {&#13;
+&#13;
+  padding-top: 8px;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-item {&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  justify-content: space-between;&#13;
+&#13;
+  padding: 14px 5px;&#13;
+&#13;
+  border-bottom: 1px solid #f0f5f6;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-item:last-child {&#13;
+&#13;
+  border-bottom: none;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-left {&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  gap: 10px;&#13;
+&#13;
+  font-size: 14px;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-item strong {&#13;
+&#13;
+  font-size: 15px;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-dot {&#13;
+&#13;
+  width: 10px;&#13;
+&#13;
+  height: 10px;&#13;
+&#13;
+  border-radius: 50%;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-dot.critical {&#13;
+  background: #e53935;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-dot.high {&#13;
+  background: #fb8c00;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-dot.medium {&#13;
+  background: #fdd835;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-dot.low {&#13;
+  background: #43a047;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   GROUPS&#13;
+   ========================================= */&#13;
+&#13;
+.group-list {&#13;
+&#13;
+  padding-top: 7px;&#13;
+}&#13;
+&#13;
+&#13;
+.group-item {&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  justify-content: space-between;&#13;
+&#13;
+  padding: 11px 3px;&#13;
+&#13;
+  border-bottom: 1px solid #f0f5f6;&#13;
+}&#13;
+&#13;
+&#13;
+.group-item:last-child {&#13;
+&#13;
+  border-bottom: none;&#13;
+}&#13;
+&#13;
+&#13;
+.group-info {&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  gap: 11px;&#13;
+}&#13;
+&#13;
+&#13;
+.group-avatar {&#13;
+&#13;
+  width: 38px;&#13;
+&#13;
+  height: 38px;&#13;
+&#13;
+  border-radius: 10px;&#13;
+&#13;
+  background: #e0f7fa;&#13;
+&#13;
+  color: #008c9e;&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  justify-content: center;&#13;
+&#13;
+  font-weight: 700;&#13;
+}&#13;
+&#13;
+&#13;
+.group-info strong {&#13;
+&#13;
+  display: block;&#13;
+&#13;
+  font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+.group-info span {&#13;
+&#13;
+  display: block;&#13;
+&#13;
+  color: #90a4ae;&#13;
+&#13;
+  font-size: 11px;&#13;
+&#13;
+  margin-top: 3px;&#13;
+}&#13;
+&#13;
+&#13;
+.group-count {&#13;
+&#13;
+  font-size: 14px;&#13;
+&#13;
+  font-weight: 700;&#13;
+&#13;
+  color: #008c9e;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   QUICK ACTIONS&#13;
+   ========================================= */&#13;
+&#13;
+.quick-section {&#13;
+&#13;
+  margin-bottom: 25px;&#13;
+}&#13;
+&#13;
+&#13;
+.section-heading {&#13;
+&#13;
+  margin-bottom: 15px;&#13;
+}&#13;
+&#13;
+&#13;
+.section-heading h2 {&#13;
+&#13;
+  margin: 0 0 5px;&#13;
+&#13;
+  font-size: 21px;&#13;
+}&#13;
+&#13;
+&#13;
+.section-heading p {&#13;
+&#13;
+  margin: 0;&#13;
+&#13;
+  color: #78909c;&#13;
+&#13;
+  font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+.action-grid {&#13;
+&#13;
+  display: grid;&#13;
+&#13;
+  grid-template-columns:&#13;
+    repeat(4, 1fr);&#13;
+&#13;
+  gap: 17px;&#13;
+}&#13;
+&#13;
+&#13;
+.action-card {&#13;
+&#13;
+  background: white;&#13;
+&#13;
+  border-radius: 15px;&#13;
+&#13;
+  padding: 21px;&#13;
+&#13;
+  cursor: pointer;&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  gap: 13px;&#13;
+&#13;
+  border: 1px solid #e3f2f4;&#13;
+&#13;
+  box-shadow:&#13;
+    0 4px 14px&#13;
+    rgba(38,50,56,0.05);&#13;
+&#13;
+  transition: 0.2s;&#13;
+}&#13;
+&#13;
+&#13;
+.action-card:hover {&#13;
+&#13;
+  transform: translateY(-4px);&#13;
+&#13;
+  border-color: #4dd0e1;&#13;
+&#13;
+  box-shadow:&#13;
+    0 9px 22px&#13;
+    rgba(0,172,193,0.12);&#13;
+}&#13;
+&#13;
+&#13;
+.action-icon {&#13;
+&#13;
+  width: 45px;&#13;
+&#13;
+  height: 45px;&#13;
+&#13;
+  min-width: 45px;&#13;
+&#13;
+  border-radius: 12px;&#13;
+&#13;
+  background: #e0f7fa;&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  justify-content: center;&#13;
+&#13;
+  font-size: 21px;&#13;
+}&#13;
+&#13;
+&#13;
+.action-content h3 {&#13;
+&#13;
+  margin: 0 0 5px;&#13;
+&#13;
+  font-size: 14px;&#13;
+}&#13;
+&#13;
+&#13;
+.action-content p {&#13;
+&#13;
+  margin: 0 0 10px;&#13;
+&#13;
+  color: #78909c;&#13;
+&#13;
+  font-size: 11px;&#13;
+&#13;
+  line-height: 1.5;&#13;
+}&#13;
+&#13;
+&#13;
+.action-content span {&#13;
+&#13;
+  color: #0097a7;&#13;
+&#13;
+  font-size: 11px;&#13;
+&#13;
+  font-weight: 700;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   RECENT REQUESTS&#13;
+   ========================================= */&#13;
+&#13;
+.recent-card {&#13;
+&#13;
+  margin-bottom: 25px;&#13;
+}&#13;
+&#13;
+&#13;
+.view-all {&#13;
+&#13;
+  border: none;&#13;
+&#13;
+  background: transparent;&#13;
+&#13;
+  color: #0097a7;&#13;
+&#13;
+  font-size: 12px;&#13;
+&#13;
+  font-weight: 700;&#13;
+&#13;
+  cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.request-list {&#13;
+&#13;
+  padding-top: 5px;&#13;
+}&#13;
+&#13;
+&#13;
+.request-row {&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  justify-content: space-between;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  gap: 20px;&#13;
+&#13;
+  padding: 16px 4px;&#13;
+&#13;
+  border-bottom: 1px solid #edf5f6;&#13;
+}&#13;
+&#13;
+&#13;
+.request-row:last-child {&#13;
+&#13;
+  border-bottom: none;&#13;
+}&#13;
+&#13;
+&#13;
+.request-info {&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  flex-direction: column;&#13;
+&#13;
+  gap: 4px;&#13;
+}&#13;
+&#13;
+&#13;
+.request-number {&#13;
+&#13;
+  color: #0097a7;&#13;
+&#13;
+  font-size: 11px;&#13;
+&#13;
+  font-weight: 700;&#13;
+}&#13;
+&#13;
+&#13;
+.request-info strong {&#13;
+&#13;
+  font-size: 13px;&#13;
+&#13;
+  font-weight: 600;&#13;
+}&#13;
+&#13;
+&#13;
+.request-caller {&#13;
+&#13;
+  color: #90a4ae;&#13;
+&#13;
+  font-size: 11px;&#13;
+}&#13;
+&#13;
+&#13;
+.request-right {&#13;
+&#13;
+  display: flex;&#13;
+&#13;
+  align-items: center;&#13;
+&#13;
+  gap: 8px;&#13;
+}&#13;
+&#13;
+&#13;
+.status-badge,&#13;
+.priority-badge {&#13;
+&#13;
+  padding: 6px 10px;&#13;
+&#13;
+  border-radius: 20px;&#13;
+&#13;
+  font-size: 10px;&#13;
+&#13;
+  font-weight: 700;&#13;
+&#13;
+  white-space: nowrap;&#13;
+}&#13;
+&#13;
+&#13;
+.status-open {&#13;
+&#13;
+  background: #fff3e0;&#13;
+&#13;
+  color: #ef6c00;&#13;
+}&#13;
+&#13;
+&#13;
+.status-progress {&#13;
+&#13;
+  background: #e3f2fd;&#13;
+&#13;
+  color: #1565c0;&#13;
+}&#13;
+&#13;
+&#13;
+.status-resolved {&#13;
+&#13;
+  background: #e8f5e9;&#13;
+&#13;
+  color: #2e7d32;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-critical {&#13;
+&#13;
+  background: #ffebee;&#13;
+&#13;
+  color: #c62828;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-high {&#13;
+&#13;
+  background: #fff3e0;&#13;
+&#13;
+  color: #ef6c00;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-medium {&#13;
+&#13;
+  background: #fffde7;&#13;
+&#13;
+  color: #827717;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-low {&#13;
+&#13;
+  background: #e8f5e9;&#13;
+&#13;
+  color: #2e7d32;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   EMPTY&#13;
+   ========================================= */&#13;
+&#13;
+.mini-empty {&#13;
+&#13;
+  padding: 30px 10px;&#13;
+&#13;
+  text-align: center;&#13;
+&#13;
+  color: #90a4ae;&#13;
+&#13;
+  font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   RESPONSIVE&#13;
+   ========================================= */&#13;
+&#13;
+@media (max-width: 1050px) {&#13;
+&#13;
+  .stats-grid {&#13;
+&#13;
+    grid-template-columns:&#13;
+      repeat(2, 1fr);&#13;
+  }&#13;
+&#13;
+  .action-grid {&#13;
+&#13;
+    grid-template-columns:&#13;
+      repeat(2, 1fr);&#13;
+  }&#13;
+&#13;
+}&#13;
+&#13;
+&#13;
+@media (max-width: 800px) {&#13;
+&#13;
+  .cfms-manager {&#13;
+&#13;
+    padding: 15px;&#13;
+  }&#13;
+&#13;
+  .manager-header {&#13;
+&#13;
+    flex-direction: column;&#13;
+&#13;
+    align-items: flex-start;&#13;
+&#13;
+    gap: 15px;&#13;
+  }&#13;
+&#13;
+  .dashboard-grid {&#13;
+&#13;
+    grid-template-columns: 1fr;&#13;
+  }&#13;
+&#13;
+}&#13;
+&#13;
+&#13;
+@media (max-width: 600px) {&#13;
+&#13;
+  .stats-grid {&#13;
+&#13;
+    grid-template-columns: 1fr;&#13;
+  }&#13;
+&#13;
+  .action-grid {&#13;
+&#13;
+    grid-template-columns: 1fr;&#13;
+  }&#13;
+&#13;
+  .welcome-card {&#13;
+&#13;
+    align-items: flex-start;&#13;
+  }&#13;
+&#13;
+  .welcome-icon {&#13;
+&#13;
+    display: none;&#13;
+  }&#13;
+&#13;
+  .request-row {&#13;
+&#13;
+    align-items: flex-start;&#13;
+&#13;
+    flex-direction: column;&#13;
+  }&#13;
+&#13;
+  .request-right {&#13;
+&#13;
+    justify-content: flex-start;&#13;
+  }&#13;
+&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>cfms_manager_dashboard</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>CFMS Manager Dashboard</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+    data.userName = gs.getUserDisplayName();
+
+    data.totalRequests = 0;
+    data.activeRequests = 0;
+    data.resolvedRequests = 0;
+
+    data.averageRating = "0.0";
+
+    data.criticalCount = 0;
+    data.highCount = 0;
+    data.mediumCount = 0;
+    data.lowCount = 0;
+
+    data.groups = [];
+    data.recentRequests = [];
+
+    data.error = "";
+
+
+    /* =========================================
+       SECURITY
+       ========================================= */
+
+    if (!gs.isLoggedIn()) {
+
+        data.redirect = "cfms_login";
+
+        return;
+    }
+
+
+    if (
+        !gs.hasRole("cfms_manager") &&
+        !gs.hasRole("admin")
+    ) {
+
+        data.error =
+            "You are not authorized to access the Manager Portal.";
+
+        data.redirect =
+            "cfms_home";
+
+        return;
+    }
+
+
+    /* =========================================
+       INCIDENT DATA
+       ========================================= */
+
+    var groupMap = {};
+
+
+    var gr = new GlideRecord("incident");
+
+    gr.orderByDesc("sys_created_on");
+
+    gr.query();
+
+
+    while (gr.next()) {
+
+        data.totalRequests++;
+
+
+        var state =
+            gr.getValue("state");
+
+
+        /* -----------------------------------------
+           ACTIVE / RESOLVED
+           ----------------------------------------- */
+
+        if (
+            state == "6" ||
+            state == "7"
+        ) {
+
+            data.resolvedRequests++;
+
+        } else {
+
+            data.activeRequests++;
+
+        }
+
+
+        /* -----------------------------------------
+           PRIORITY
+           ----------------------------------------- */
+
+        var priority =
+            gr.getValue("priority");
+
+
+        if (priority == "1") {
+
+            data.criticalCount++;
+
+        } else if (priority == "2") {
+
+            data.highCount++;
+
+        } else if (priority == "3") {
+
+            data.mediumCount++;
+
+        } else if (priority == "4") {
+
+            data.lowCount++;
+
+        }
+
+
+        /* -----------------------------------------
+           ASSIGNMENT GROUP
+           ----------------------------------------- */
+
+        var groupID =
+            gr.getValue("assignment_group");
+
+        var groupName =
+            gr.getDisplayValue("assignment_group");
+
+
+        if (
+            groupID &&
+            groupName
+        ) {
+
+            if (!groupMap[groupID]) {
+
+                groupMap[groupID] = {
+
+                    name: groupName,
+
+                    count: 0
+
+                };
+
+            }
+
+            groupMap[groupID].count++;
+
+        }
+
+
+        /* -----------------------------------------
+           RECENT REQUESTS
+           ----------------------------------------- */
+
+        if (
+            data.recentRequests.length < 6
+        ) {
+
+            var stateText =
+                gr.getDisplayValue("state");
+
+
+            var statusClass =
+                "status-open";
+
+
+            if (state == "2") {
+
+                statusClass =
+                    "status-progress";
+
+            } else if (
+                state == "6" ||
+                state == "7"
+            ) {
+
+                statusClass =
+                    "status-resolved";
+
+            }
+
+
+            var priorityText =
+                gr.getDisplayValue("priority");
+
+
+            var priorityClass =
+                "priority-medium";
+
+
+            if (priority == "1") {
+
+                priorityText =
+                    "Critical";
+
+                priorityClass =
+                    "priority-critical";
+
+            } else if (priority == "2") {
+
+                priorityText =
+                    "High";
+
+                priorityClass =
+                    "priority-high";
+
+            } else if (priority == "3") {
+
+                priorityText =
+                    "Medium";
+
+                priorityClass =
+                    "priority-medium";
+
+            } else if (priority == "4") {
+
+                priorityText =
+                    "Low";
+
+                priorityClass =
+                    "priority-low";
+
+            }
+
+
+            data.recentRequests.push({
+
+                sys_id:
+                    gr.getUniqueValue(),
+
+                number:
+                    gr.getValue("number"),
+
+                short_description:
+                    gr.getValue(
+                        "short_description"
+                    ),
+
+                caller:
+                    gr.getDisplayValue(
+                        "caller_id"
+                    ),
+
+                state:
+                    stateText,
+
+                stateValue:
+                    state,
+
+                statusClass:
+                    statusClass,
+
+                priority:
+                    priorityText,
+
+                priorityClass:
+                    priorityClass,
+
+                created:
+                    gr.getDisplayValue(
+                        "sys_created_on"
+                    )
+
+            });
+
+        }
+
+    }
+
+
+    /* =========================================
+       CONVERT GROUP MAP TO ARRAY
+       ========================================= */
+
+    for (var groupID in groupMap) {
+
+        if (
+            groupMap.hasOwnProperty(groupID)
+        ) {
+
+            var groupName =
+                groupMap[groupID].name;
+
+
+            var initial =
+                groupName
+                .substring(0, 1)
+                .toUpperCase();
+
+
+            data.groups.push({
+
+                name:
+                    groupName,
+
+                count:
+                    groupMap[groupID].count,
+
+                initial:
+                    initial
+
+            });
+
+        }
+
+    }
+
+
+    /* =========================================
+       FEEDBACK RATING
+       ========================================= */
+
+    /*
+     * The CFMS feedback table created earlier
+     * is u_cfms_feedback.
+     */
+
+    var feedback =
+        new GlideRecord("u_cfms_feedback");
+
+
+    if (feedback.isValid()) {
+
+        var totalRating = 0;
+
+        var ratingCount = 0;
+
+
+        feedback.query();
+
+
+        while (feedback.next()) {
+
+            var rating =
+                parseInt(
+                    feedback.getValue(
+                        "u_rating"
+                    ),
+                    10
+                );
+
+
+            if (!isNaN(rating)) {
+
+                totalRating += rating;
+
+                ratingCount++;
+
+            }
+
+        }
+
+
+        if (ratingCount > 0) {
+
+            data.averageRating =
+                (
+                    totalRating /
+                    ratingCount
+                ).toFixed(1);
+
+        }
+
+    }
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 13:34:31</sys_created_on>
+        <sys_id>ec4e6851a0a343107f4432329b8a1557</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CFMS Manager Dashboard</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_widget_ec4e6851a0a343107f4432329b8a1557</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 13:34:31</sys_updated_on>
+        <template><![CDATA[<div class="cfms-manager">
+
+  <!-- ==============================
+       HEADER
+       ============================== -->
+
+  <div class="manager-header">
+
+    <div class="header-content">
+
+      <div class="header-icon">
+        ]]>👨<![CDATA[‍]]>💼
+<![CDATA[      </div>
+
+      <div>
+        <h1>CFMS Manager Portal</h1>
+
+        <p>
+          Welcome back, {{c.data.userName}}.
+          Monitor campus food service operations.
+        </p>
+      </div>
+
+    </div>
+
+    <button
+      class="home-btn"
+      ng-click="c.goHome()">
+
+      ]]>🏠<![CDATA[ Home
+
+    </button>
+
+  </div>
+
+
+  <!-- ==============================
+       ERROR
+       ============================== -->
+
+  <div
+    class="alert error-alert"
+    ng-if="c.data.error">
+
+    {{c.data.error}}
+
+  </div>
+
+
+  <!-- ==============================
+       WELCOME
+       ============================== -->
+
+  <div class="welcome-card">
+
+    <div class="welcome-text">
+
+      <span class="welcome-label">
+        MANAGER DASHBOARD
+      </span>
+
+      <h2>
+        Campus Food Management Overview
+      </h2>
+
+      <p>
+        Monitor requests, priorities, staff workload
+        and student feedback from one place.
+      </p>
+
+    </div>
+
+    <div class="welcome-icon">
+      ]]>📊
+<![CDATA[    </div>
+
+  </div>
+
+
+  <!-- ==============================
+       MAIN STATISTICS
+       ============================== -->
+
+  <div class="stats-grid">
+
+    <!-- Total -->
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        ]]>🎫
+<![CDATA[      </div>
+
+      <div class="stat-content">
+
+        <span>Total Requests</span>
+
+        <strong>
+          {{c.data.totalRequests}}
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <!-- Active -->
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        ]]>🔄
+<![CDATA[      </div>
+
+      <div class="stat-content">
+
+        <span>Active Requests</span>
+
+        <strong>
+          {{c.data.activeRequests}}
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <!-- Resolved -->
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        ✓
+      </div>
+
+      <div class="stat-content">
+
+        <span>Resolved</span>
+
+        <strong>
+          {{c.data.resolvedRequests}}
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <!-- Feedback -->
+
+    <div class="stat-card">
+
+      <div class="stat-icon">
+        ⭐
+      </div>
+
+      <div class="stat-content">
+
+        <span>Feedback Rating</span>
+
+        <strong>
+          {{c.data.averageRating}}
+        </strong>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ==============================
+       DASHBOARD GRID
+       ============================== -->
+
+  <div class="dashboard-grid">
+
+
+    <!-- ==========================
+         PRIORITY OVERVIEW
+         ========================== -->
+
+    <div class="dashboard-card">
+
+      <div class="card-header">
+
+        <div>
+
+          <h3>Priority Overview</h3>
+
+          <p>
+            Current request priorities
+          </p>
+
+        </div>
+
+        <span class="card-icon">
+          ⚡
+        </span>
+
+      </div>
+
+
+      <div class="priority-list">
+
+        <div class="priority-item">
+
+          <div class="priority-left">
+
+            <span class="priority-dot critical"></span>
+
+            <span>Critical</span>
+
+          </div>
+
+          <strong>
+            {{c.data.criticalCount}}
+          </strong>
+
+        </div>
+
+
+        <div class="priority-item">
+
+          <div class="priority-left">
+
+            <span class="priority-dot high"></span>
+
+            <span>High</span>
+
+          </div>
+
+          <strong>
+            {{c.data.highCount}}
+          </strong>
+
+        </div>
+
+
+        <div class="priority-item">
+
+          <div class="priority-left">
+
+            <span class="priority-dot medium"></span>
+
+            <span>Medium</span>
+
+          </div>
+
+          <strong>
+            {{c.data.mediumCount}}
+          </strong>
+
+        </div>
+
+
+        <div class="priority-item">
+
+          <div class="priority-left">
+
+            <span class="priority-dot low"></span>
+
+            <span>Low</span>
+
+          </div>
+
+          <strong>
+            {{c.data.lowCount}}
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ==========================
+         ASSIGNMENT GROUPS
+         ========================== -->
+
+    <div class="dashboard-card">
+
+      <div class="card-header">
+
+        <div>
+
+          <h3>Assigned Groups</h3>
+
+          <p>
+            Current ticket distribution
+          </p>
+
+        </div>
+
+        <span class="card-icon">
+          ]]>👥
+<![CDATA[        </span>
+
+      </div>
+
+
+      <div
+        class="group-list"
+        ng-if="c.data.groups.length > 0"
+      >
+
+        <div
+          class="group-item"
+          ng-repeat="group in c.data.groups"
+        >
+
+          <div class="group-info">
+
+            <div class="group-avatar">
+              {{group.initial}}
+            </div>
+
+            <div>
+
+              <strong>
+                {{group.name}}
+              </strong>
+
+              <span>
+                {{group.count}} tickets
+              </span>
+
+            </div>
+
+          </div>
+
+          <div class="group-count">
+            {{group.count}}
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="mini-empty"
+        ng-if="c.data.groups.length === 0"
+      >
+
+        No assignment groups found.
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ==============================
+       QUICK ACTIONS
+       ============================== -->
+
+  <div class="quick-section">
+
+    <div class="section-heading">
+
+      <div>
+
+        <h2>Manager Actions</h2>
+
+        <p>
+          Access important CFMS management functions.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="action-grid">
+
+
+      <!-- Assigned Tickets -->
+
+      <div
+        class="action-card"
+        ng-click="c.assignedTickets()"
+      >
+
+        <div class="action-icon">
+          ]]>🎫
+<![CDATA[        </div>
+
+        <div class="action-content">
+
+          <h3>Assigned Tickets</h3>
+
+          <p>
+            View and monitor staff tickets.
+          </p>
+
+          <span>
+            Open Tickets →
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- Records -->
+
+      <div
+        class="action-card"
+        ng-click="c.records()"
+      >
+
+        <div class="action-icon">
+          ]]>📋
+<![CDATA[        </div>
+
+        <div class="action-content">
+
+          <h3>View Records</h3>
+
+          <p>
+            Review CFMS requests and records.
+          </p>
+
+          <span>
+            View Records →
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- Reports -->
+
+      <div
+        class="action-card"
+        ng-click="c.reports()"
+      >
+
+        <div class="action-icon">
+          ]]>📈
+<![CDATA[        </div>
+
+        <div class="action-content">
+
+          <h3>Reports</h3>
+
+          <p>
+            Analyze requests and service activity.
+          </p>
+
+          <span>
+            Open Reports →
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- Feedback -->
+
+      <div
+        class="action-card"
+        ng-click="c.feedback()"
+      >
+
+        <div class="action-icon">
+          ⭐
+        </div>
+
+        <div class="action-content">
+
+          <h3>Student Feedback</h3>
+
+          <p>
+            Monitor student feedback and ratings.
+          </p>
+
+          <span>
+            View Feedback →
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ==============================
+       RECENT REQUESTS
+       ============================== -->
+
+  <div class="recent-card">
+
+    <div class="card-header">
+
+      <div>
+
+        <h3>Recent Requests</h3>
+
+        <p>
+          Latest CFMS activity
+        </p>
+
+      </div>
+
+      <button
+        class="view-all"
+        ng-click="c.records()">
+
+        View All →
+
+      </button>
+
+    </div>
+
+
+    <div
+      class="request-list"
+      ng-if="c.data.recentRequests.length > 0"
+    >
+
+      <div
+        class="request-row"
+        ng-repeat="request in c.data.recentRequests"
+      >
+
+        <div class="request-info">
+
+          <span class="request-number">
+            {{request.number}}
+          </span>
+
+          <strong>
+            {{request.short_description}}
+          </strong>
+
+          <span class="request-caller">
+            ]]>👤<![CDATA[ {{request.caller}}
+          </span>
+
+        </div>
+
+
+        <div class="request-right">
+
+          <span
+            class="status-badge"
+            ng-class="request.statusClass"
+          >
+            {{request.state}}
+          </span>
+
+          <span
+            class="priority-badge"
+            ng-class="request.priorityClass"
+          >
+            {{request.priority}}
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="mini-empty"
+      ng-if="c.data.recentRequests.length === 0"
+    >
+
+      No recent requests found.
+
+    </div>
+
+  </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

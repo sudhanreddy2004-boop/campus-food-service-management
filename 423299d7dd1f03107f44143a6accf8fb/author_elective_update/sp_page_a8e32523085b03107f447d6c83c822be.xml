@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page">
+    <sp_page action="DELETE">
+        <category>custom</category>
+        <css/>
+        <draft>false</draft>
+        <dynamic_title_structure/>
+        <human_readable_url_structure/>
+        <id>home_page</id>
+        <internal>false</internal>
+        <omit_watcher>false</omit_watcher>
+        <public>false</public>
+        <roles/>
+        <seo_script/>
+        <short_description/>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-19 06:51:29</sys_created_on>
+        <sys_id>a8e32523085b03107f447d6c83c822be</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>home_page</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_page_a8e32523085b03107f447d6c83c822be</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-19 06:51:29</sys_updated_on>
+        <title>Home Page - Test Page</title>
+        <use_seo_script>false</use_seo_script>
+    </sp_page>
+    <sys_translated_text action="DELETE" query="documentkey=a8e32523085b03107f447d6c83c822be"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</application>
+        <file_path/>
+        <instance_id>8ed1cdc7c38fcf94a03197af05013150</instance_id>
+        <instance_name>ltm-hck-2876-0046</instance_name>
+        <name>sp_page_a8e32523085b03107f447d6c83c822be</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page"><sp_page action="INSERT_OR_UPDATE"><category>custom</category><css/><draft>false</draft><dynamic_title_structure/><human_readable_url_structure/><id>home_page</id><internal>false</internal><omit_watcher>false</omit_watcher><public>false</public><roles/><seo_script/><short_description/><sys_class_name>sp_page</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-19 06:51:29</sys_created_on><sys_id>a8e32523085b03107f447d6c83c822be</sys_id><sys_mod_count>0</sys_mod_count><sys_name>home_page</sys_name><sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package><sys_policy/><sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope><sys_update_name>sp_page_a8e32523085b03107f447d6c83c822be</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-19 06:51:29</sys_updated_on><title>Home Page - Test Page</title><use_seo_script>false</use_seo_script></sp_page><sys_translated_text action="delete_multiple" query="documentkey=a8e32523085b03107f447d6c83c822be"/></record_update>]]></payload>
+        <payload_hash>2087815926</payload_hash>
+        <record_name>home_page</record_name>
+        <reverted_from/>
+        <source>023299d7dd1f03107f44143a6accf8ff</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-19 06:51:29</sys_created_on>
+        <sys_id>a4e32523085b03107f447d6c83c822c2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a0b86f2e570000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-19 06:51:29</sys_updated_on>
+        <type>Page</type>
+        <update_guid>68e32523ef5b031004b0aa0811ef61c1</update_guid>
+        <update_guid_history>68e32523ef5b031004b0aa0811ef61c1:2087815926</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="home_page">501f0fc9a02703107f4432329b8a1585</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 06:30:40</sys_created_on>
+        <sys_db_object display_value="" name="sp_page">sp_page</sys_db_object>
+        <sys_id>078b609bc5024d1b86a690e094a9de19</sys_id>
+        <sys_metadata>a8e32523085b03107f447d6c83c822be</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>home_page</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_scope_delete display_value="">00ca93000f1045668006564f73c0b4e4</sys_scope_delete>
+        <sys_update_name>sp_page_a8e32523085b03107f447d6c83c822be</sys_update_name>
+        <sys_update_version display_value="sp_page_a8e32523085b03107f447d6c83c822be">a4e32523085b03107f447d6c83c822c2</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 06:30:40</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,1871 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function() {
+
+    var c = this;
+
+
+    /* =========================================
+       DASHBOARD
+       ========================================= */
+
+    c.dashboard = function() {
+
+        window.location.href =
+            "?id=cfms_staff";
+
+    };
+
+
+    /* =========================================
+       ASSIGNED TICKETS
+       ========================================= */
+
+    c.assignedTickets = function() {
+
+        window.location.href =
+            "?id=cfms_assigned";
+
+    };
+
+
+    /* =========================================
+       LOGOUT
+       ========================================= */
+
+    c.logout = function() {
+
+        window.location.href =
+            "/logout.do";
+
+    };
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>/* =========================================&#13;
+   CFMS STAFF HOME&#13;
+   ========================================= */&#13;
+&#13;
+.cfms-staff-page {&#13;
+    min-height: 100vh;&#13;
+&#13;
+    background: #f0fbfc;&#13;
+&#13;
+    color: #263238;&#13;
+&#13;
+    font-family:&#13;
+        "Segoe UI",&#13;
+        Tahoma,&#13;
+        Geneva,&#13;
+        Verdana,&#13;
+        sans-serif;&#13;
+}&#13;
+&#13;
+&#13;
+/* HEADER */&#13;
+&#13;
+.staff-header {&#13;
+    height: 72px;&#13;
+&#13;
+    background: #00acc1;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: space-between;&#13;
+&#13;
+    padding: 0 35px;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+}&#13;
+&#13;
+&#13;
+.staff-brand {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 12px;&#13;
+}&#13;
+&#13;
+&#13;
+.brand-icon {&#13;
+    width: 43px;&#13;
+    height: 43px;&#13;
+&#13;
+    border-radius: 9px;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+&#13;
+    font-size: 22px;&#13;
+}&#13;
+&#13;
+&#13;
+.staff-brand h2 {&#13;
+    margin: 0;&#13;
+&#13;
+    font-size: 23px;&#13;
+}&#13;
+&#13;
+&#13;
+.staff-brand span {&#13;
+    font-size: 11px;&#13;
+&#13;
+    opacity: .9;&#13;
+}&#13;
+&#13;
+&#13;
+/* USER */&#13;
+&#13;
+.staff-user {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 10px;&#13;
+}&#13;
+&#13;
+&#13;
+.user-avatar {&#13;
+    width: 38px;&#13;
+    height: 38px;&#13;
+&#13;
+    border-radius: 50%;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+}&#13;
+&#13;
+&#13;
+.user-info {&#13;
+    display: flex;&#13;
+&#13;
+    flex-direction: column;&#13;
+}&#13;
+&#13;
+&#13;
+.user-info strong {&#13;
+    font-size: 14px;&#13;
+}&#13;
+&#13;
+&#13;
+.user-info span {&#13;
+    font-size: 11px;&#13;
+&#13;
+    opacity: .85;&#13;
+}&#13;
+&#13;
+&#13;
+.logout-btn {&#13;
+    margin-left: 15px;&#13;
+&#13;
+    padding: 8px 13px;&#13;
+&#13;
+    border: 1px solid rgba(255,255,255,.7);&#13;
+&#13;
+    background: transparent;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    border-radius: 6px;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.logout-btn:hover {&#13;
+    background: white;&#13;
+&#13;
+    color: #00acc1;&#13;
+}&#13;
+&#13;
+&#13;
+/* LAYOUT */&#13;
+&#13;
+.staff-layout {&#13;
+    display: flex;&#13;
+&#13;
+    min-height: calc(100vh - 72px);&#13;
+}&#13;
+&#13;
+&#13;
+/* SIDEBAR */&#13;
+&#13;
+.staff-sidebar {&#13;
+    width: 235px;&#13;
+&#13;
+    flex-shrink: 0;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    border-right: 1px solid #dceff1;&#13;
+&#13;
+    padding: 25px 15px;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+}&#13;
+&#13;
+&#13;
+.sidebar-title {&#13;
+    padding: 0 12px 15px;&#13;
+&#13;
+    color: #78909c;&#13;
+&#13;
+    font-size: 11px;&#13;
+&#13;
+    font-weight: 700;&#13;
+&#13;
+    letter-spacing: 1px;&#13;
+}&#13;
+&#13;
+&#13;
+.sidebar-item {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 13px;&#13;
+&#13;
+    padding: 13px 14px;&#13;
+&#13;
+    margin-bottom: 5px;&#13;
+&#13;
+    border-radius: 8px;&#13;
+&#13;
+    color: #546e7a !important;&#13;
+&#13;
+    text-decoration: none !important;&#13;
+&#13;
+    cursor: pointer;&#13;
+&#13;
+    position: relative;&#13;
+}&#13;
+&#13;
+&#13;
+.sidebar-item:hover,&#13;
+.sidebar-item.active {&#13;
+    background: #e0f7fa;&#13;
+&#13;
+    color: #00acc1 !important;&#13;
+}&#13;
+&#13;
+&#13;
+.sidebar-item i {&#13;
+    width: 20px;&#13;
+&#13;
+    text-align: center;&#13;
+}&#13;
+&#13;
+&#13;
+.menu-count {&#13;
+    margin-left: auto;&#13;
+&#13;
+    min-width: 20px;&#13;
+&#13;
+    height: 20px;&#13;
+&#13;
+    padding: 0 5px;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+&#13;
+    border-radius: 10px;&#13;
+&#13;
+    background: #00acc1;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    font-size: 10px;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+}&#13;
+&#13;
+&#13;
+.sidebar-divider {&#13;
+    height: 1px;&#13;
+&#13;
+    background: #e5eeee;&#13;
+&#13;
+    margin: 20px 10px;&#13;
+}&#13;
+&#13;
+&#13;
+/* MAIN */&#13;
+&#13;
+.staff-content {&#13;
+    flex: 1;&#13;
+&#13;
+    padding: 35px 45px;&#13;
+&#13;
+    max-width: 1400px;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+}&#13;
+&#13;
+&#13;
+/* WELCOME */&#13;
+&#13;
+.welcome-section {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: space-between;&#13;
+&#13;
+    margin-bottom: 30px;&#13;
+}&#13;
+&#13;
+&#13;
+.page-label {&#13;
+    color: #00acc1;&#13;
+&#13;
+    font-size: 11px;&#13;
+&#13;
+    font-weight: 700;&#13;
+&#13;
+    letter-spacing: 1px;&#13;
+}&#13;
+&#13;
+&#13;
+.welcome-section h1 {&#13;
+    margin: 7px 0;&#13;
+&#13;
+    font-size: 31px;&#13;
+}&#13;
+&#13;
+&#13;
+.welcome-section p {&#13;
+    margin: 0;&#13;
+&#13;
+    color: #607d8b;&#13;
+&#13;
+    font-size: 14px;&#13;
+}&#13;
+&#13;
+&#13;
+.tickets-btn {&#13;
+    padding: 13px 20px;&#13;
+&#13;
+    background: #00acc1;&#13;
+&#13;
+    border: none;&#13;
+&#13;
+    border-radius: 8px;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    font-weight: 600;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.tickets-btn:hover {&#13;
+    background: #008fa1;&#13;
+}&#13;
+&#13;
+&#13;
+/* STATS */&#13;
+&#13;
+.stats-grid {&#13;
+    display: grid;&#13;
+&#13;
+    grid-template-columns:&#13;
+        repeat(4, 1fr);&#13;
+&#13;
+    gap: 18px;&#13;
+&#13;
+    margin-bottom: 35px;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-card {&#13;
+    background: white;&#13;
+&#13;
+    border: 1px solid #e1eff1;&#13;
+&#13;
+    border-radius: 12px;&#13;
+&#13;
+    padding: 20px;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 15px;&#13;
+&#13;
+    box-shadow:&#13;
+        0 3px 15px rgba(0,0,0,.05);&#13;
+}&#13;
+&#13;
+&#13;
+.stat-icon {&#13;
+    width: 50px;&#13;
+    height: 50px;&#13;
+&#13;
+    border-radius: 10px;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+&#13;
+    font-size: 21px;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-icon.teal {&#13;
+    background: #e0f7fa;&#13;
+    color: #00acc1;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-icon.orange {&#13;
+    background: #fff3e0;&#13;
+    color: #fb8c00;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-icon.blue {&#13;
+    background: #e3f2fd;&#13;
+    color: #1976d2;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-icon.green {&#13;
+    background: #e8f5e9;&#13;
+    color: #43a047;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-card span {&#13;
+    display: block;&#13;
+&#13;
+    color: #78909c;&#13;
+&#13;
+    font-size: 12px;&#13;
+}&#13;
+&#13;
+&#13;
+.stat-card strong {&#13;
+    display: block;&#13;
+&#13;
+    margin-top: 3px;&#13;
+&#13;
+    font-size: 25px;&#13;
+}&#13;
+&#13;
+&#13;
+/* SECTIONS */&#13;
+&#13;
+.dashboard-section {&#13;
+    margin-bottom: 35px;&#13;
+}&#13;
+&#13;
+&#13;
+.section-heading {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: space-between;&#13;
+&#13;
+    margin-bottom: 18px;&#13;
+}&#13;
+&#13;
+&#13;
+.section-heading h2 {&#13;
+    margin: 0 0 5px;&#13;
+&#13;
+    font-size: 21px;&#13;
+}&#13;
+&#13;
+&#13;
+.section-heading p {&#13;
+    margin: 0;&#13;
+&#13;
+    color: #78909c;&#13;
+&#13;
+    font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+/* ACTIONS */&#13;
+&#13;
+.action-grid {&#13;
+    display: grid;&#13;
+&#13;
+    grid-template-columns:&#13;
+        repeat(4, 1fr);&#13;
+&#13;
+    gap: 18px;&#13;
+}&#13;
+&#13;
+&#13;
+.action-card {&#13;
+    background: white;&#13;
+&#13;
+    border: 1px solid #e1eff1;&#13;
+&#13;
+    border-radius: 13px;&#13;
+&#13;
+    padding: 24px;&#13;
+&#13;
+    cursor: pointer;&#13;
+&#13;
+    transition: .25s ease;&#13;
+}&#13;
+&#13;
+&#13;
+.action-card:hover {&#13;
+    transform: translateY(-5px);&#13;
+&#13;
+    box-shadow:&#13;
+        0 10px 25px rgba(0,0,0,.08);&#13;
+&#13;
+    border-color: #b2ebf2;&#13;
+}&#13;
+&#13;
+&#13;
+.action-icon {&#13;
+    width: 48px;&#13;
+    height: 48px;&#13;
+&#13;
+    border-radius: 10px;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+&#13;
+    margin-bottom: 15px;&#13;
+&#13;
+    font-size: 20px;&#13;
+}&#13;
+&#13;
+&#13;
+.teal-bg {&#13;
+    background: #e0f7fa;&#13;
+    color: #00acc1;&#13;
+}&#13;
+&#13;
+&#13;
+.blue-bg {&#13;
+    background: #e3f2fd;&#13;
+    color: #1976d2;&#13;
+}&#13;
+&#13;
+&#13;
+.green-bg {&#13;
+    background: #e8f5e9;&#13;
+    color: #43a047;&#13;
+}&#13;
+&#13;
+&#13;
+.red-bg {&#13;
+    background: #ffebee;&#13;
+    color: #e53935;&#13;
+}&#13;
+&#13;
+&#13;
+.action-card h3 {&#13;
+    margin: 0 0 8px;&#13;
+&#13;
+    font-size: 17px;&#13;
+}&#13;
+&#13;
+&#13;
+.action-card p {&#13;
+    min-height: 42px;&#13;
+&#13;
+    margin: 0 0 15px;&#13;
+&#13;
+    color: #607d8b;&#13;
+&#13;
+    font-size: 13px;&#13;
+&#13;
+    line-height: 1.6;&#13;
+}&#13;
+&#13;
+&#13;
+.action-card span {&#13;
+    color: #00acc1;&#13;
+&#13;
+    font-size: 12px;&#13;
+&#13;
+    font-weight: 600;&#13;
+}&#13;
+&#13;
+&#13;
+/* PRIORITY */&#13;
+&#13;
+.priority-grid {&#13;
+    display: grid;&#13;
+&#13;
+    grid-template-columns:&#13;
+        repeat(4, 1fr);&#13;
+&#13;
+    gap: 15px;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-card {&#13;
+    background: white;&#13;
+&#13;
+    border-radius: 10px;&#13;
+&#13;
+    padding: 17px;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 13px;&#13;
+&#13;
+    border-left: 4px solid;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-card.critical {&#13;
+    border-left-color: #e53935;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-card.high {&#13;
+    border-left-color: #fb8c00;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-card.medium {&#13;
+    border-left-color: #f9a825;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-card.low {&#13;
+    border-left-color: #43a047;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-number {&#13;
+    font-size: 25px;&#13;
+&#13;
+    font-weight: 700;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-card strong {&#13;
+    display: block;&#13;
+&#13;
+    font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-card span {&#13;
+    display: block;&#13;
+&#13;
+    margin-top: 3px;&#13;
+&#13;
+    color: #78909c;&#13;
+&#13;
+    font-size: 10px;&#13;
+}&#13;
+&#13;
+&#13;
+/* TICKETS */&#13;
+&#13;
+.view-all-btn {&#13;
+    background: transparent;&#13;
+&#13;
+    border: none;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    font-size: 13px;&#13;
+&#13;
+    font-weight: 600;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.ticket-list {&#13;
+    background: white;&#13;
+&#13;
+    border: 1px solid #e1eff1;&#13;
+&#13;
+    border-radius: 13px;&#13;
+&#13;
+    overflow: hidden;&#13;
+}&#13;
+&#13;
+&#13;
+.ticket-row {&#13;
+    min-height: 65px;&#13;
+&#13;
+    padding: 12px 20px;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 14px;&#13;
+&#13;
+    border-bottom: 1px solid #edf3f4;&#13;
+}&#13;
+&#13;
+&#13;
+.ticket-row:last-child {&#13;
+    border-bottom: none;&#13;
+}&#13;
+&#13;
+&#13;
+.ticket-icon {&#13;
+    width: 40px;&#13;
+    height: 40px;&#13;
+&#13;
+    border-radius: 8px;&#13;
+&#13;
+    background: #e0f7fa;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+}&#13;
+&#13;
+&#13;
+.ticket-info {&#13;
+    flex: 1;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    flex-direction: column;&#13;
+&#13;
+    gap: 3px;&#13;
+&#13;
+    min-width: 0;&#13;
+}&#13;
+&#13;
+&#13;
+.ticket-info strong {&#13;
+    color: #00acc1;&#13;
+&#13;
+    font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+.ticket-info span {&#13;
+    color: #607d8b;&#13;
+&#13;
+    font-size: 12px;&#13;
+&#13;
+    white-space: nowrap;&#13;
+&#13;
+    overflow: hidden;&#13;
+&#13;
+    text-overflow: ellipsis;&#13;
+}&#13;
+&#13;
+&#13;
+/* BADGES */&#13;
+&#13;
+.status-badge,&#13;
+.priority-badge {&#13;
+    padding: 5px 9px;&#13;
+&#13;
+    border-radius: 15px;&#13;
+&#13;
+    font-size: 10px;&#13;
+&#13;
+    font-weight: 600;&#13;
+&#13;
+    white-space: nowrap;&#13;
+}&#13;
+&#13;
+&#13;
+.status-active {&#13;
+    background: #fff8e1;&#13;
+&#13;
+    color: #f57f17;&#13;
+}&#13;
+&#13;
+&#13;
+.status-progress {&#13;
+    background: #e3f2fd;&#13;
+&#13;
+    color: #1976d2;&#13;
+}&#13;
+&#13;
+&#13;
+.status-resolved {&#13;
+    background: #e8f5e9;&#13;
+&#13;
+    color: #2e7d32;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-critical {&#13;
+    background: #ffebee;&#13;
+&#13;
+    color: #c62828;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-high {&#13;
+    background: #fff3e0;&#13;
+&#13;
+    color: #ef6c00;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-medium {&#13;
+    background: #fff8e1;&#13;
+&#13;
+    color: #f9a825;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-low {&#13;
+    background: #e8f5e9;&#13;
+&#13;
+    color: #388e3c;&#13;
+}&#13;
+&#13;
+&#13;
+/* EMPTY */&#13;
+&#13;
+.empty-state {&#13;
+    background: white;&#13;
+&#13;
+    border: 1px solid #e1eff1;&#13;
+&#13;
+    border-radius: 13px;&#13;
+&#13;
+    padding: 45px 20px;&#13;
+&#13;
+    text-align: center;&#13;
+}&#13;
+&#13;
+&#13;
+.empty-icon {&#13;
+    width: 60px;&#13;
+    height: 60px;&#13;
+&#13;
+    margin: 0 auto 15px;&#13;
+&#13;
+    border-radius: 50%;&#13;
+&#13;
+    background: #e8f5e9;&#13;
+&#13;
+    color: #43a047;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+&#13;
+    font-size: 25px;&#13;
+}&#13;
+&#13;
+&#13;
+.empty-state h3 {&#13;
+    margin: 0 0 7px;&#13;
+}&#13;
+&#13;
+&#13;
+.empty-state p {&#13;
+    color: #78909c;&#13;
+&#13;
+    font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+/* RESPONSIVE */&#13;
+&#13;
+@media (max-width: 1100px) {&#13;
+&#13;
+    .stats-grid,&#13;
+    .action-grid,&#13;
+    .priority-grid {&#13;
+        grid-template-columns:&#13;
+            repeat(2, 1fr);&#13;
+    }&#13;
+&#13;
+}&#13;
+&#13;
+&#13;
+@media (max-width: 800px) {&#13;
+&#13;
+    .staff-sidebar {&#13;
+        width: 70px;&#13;
+&#13;
+        padding: 20px 8px;&#13;
+    }&#13;
+&#13;
+    .sidebar-title,&#13;
+    .sidebar-item span {&#13;
+        display: none;&#13;
+    }&#13;
+&#13;
+    .sidebar-item {&#13;
+        justify-content: center;&#13;
+    }&#13;
+&#13;
+    .staff-content {&#13;
+        padding: 25px;&#13;
+    }&#13;
+&#13;
+}&#13;
+&#13;
+&#13;
+@media (max-width: 600px) {&#13;
+&#13;
+    .staff-header {&#13;
+        padding: 15px 18px;&#13;
+    }&#13;
+&#13;
+    .staff-brand span,&#13;
+    .user-info {&#13;
+        display: none;&#13;
+    }&#13;
+&#13;
+    .welcome-section {&#13;
+        flex-direction: column;&#13;
+&#13;
+        align-items: flex-start;&#13;
+&#13;
+        gap: 18px;&#13;
+    }&#13;
+&#13;
+    .tickets-btn {&#13;
+        width: 100%;&#13;
+    }&#13;
+&#13;
+    .stats-grid,&#13;
+    .action-grid,&#13;
+    .priority-grid {&#13;
+        grid-template-columns: 1fr;&#13;
+    }&#13;
+&#13;
+    .ticket-row {&#13;
+        flex-wrap: wrap;&#13;
+    }&#13;
+&#13;
+    .staff-content {&#13;
+        padding: 20px 15px;&#13;
+    }&#13;
+&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>cfms_staff_dashboard</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>CFMS Staff Dashboard</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+    /* =========================================
+       DEFAULT DATA
+       ========================================= */
+
+    data.userName = gs.getUserDisplayName();
+
+    data.assignedCount = 0;
+
+    data.openCount = 0;
+
+    data.inProgressCount = 0;
+
+    data.resolvedCount = 0;
+
+    data.criticalCount = 0;
+
+    data.highCount = 0;
+
+    data.mediumCount = 0;
+
+    data.lowCount = 0;
+
+    data.recentTickets = [];
+
+    data.error = "";
+
+
+    /* =========================================
+       LOGIN CHECK
+       ========================================= */
+
+    if (!gs.isLoggedIn()) {
+
+        data.redirect = "cfms_login";
+
+        return;
+    }
+
+
+    /* =========================================
+       STAFF ROLE CHECK
+       ========================================= */
+
+    if (!gs.hasRole("cfms_staff") &&
+        !gs.hasRole("admin")) {
+
+        data.redirect = "cfms_home";
+
+        return;
+    }
+
+
+    /* =========================================
+       GET ASSIGNED TICKETS
+       ========================================= */
+
+    var gr =
+        new GlideRecord("incident");
+
+
+    /*
+     * Assigned directly to current staff
+     */
+
+    var assignedQuery =
+        gr.addQuery(
+            "assigned_to",
+            gs.getUserID()
+        );
+
+
+    gr.orderByDesc("sys_updated_on");
+
+    gr.query();
+
+
+    while (gr.next()) {
+
+        data.assignedCount++;
+
+
+        /* =====================================
+           STATE
+           ===================================== */
+
+        var state =
+            gr.getValue("state");
+
+        var stateText =
+            gr.getDisplayValue("state");
+
+
+        if (state == "1") {
+
+            data.openCount++;
+
+        }
+
+        else if (state == "2") {
+
+            data.inProgressCount++;
+
+        }
+
+        else if (state == "6" ||
+                 state == "7") {
+
+            data.resolvedCount++;
+
+        }
+
+        else {
+
+            data.openCount++;
+
+        }
+
+
+        /* =====================================
+           PRIORITY
+           ===================================== */
+
+        var priority =
+            gr.getValue("priority");
+
+        var priorityText =
+            gr.getDisplayValue("priority");
+
+        var priorityClass =
+            "priority-medium";
+
+
+        if (priority == "1") {
+
+            data.criticalCount++;
+
+            priorityText = "Critical";
+
+            priorityClass =
+                "priority-critical";
+
+        }
+
+        else if (priority == "2") {
+
+            data.highCount++;
+
+            priorityText = "High";
+
+            priorityClass =
+                "priority-high";
+
+        }
+
+        else if (priority == "3") {
+
+            data.mediumCount++;
+
+            priorityText = "Medium";
+
+            priorityClass =
+                "priority-medium";
+
+        }
+
+        else if (priority == "4") {
+
+            data.lowCount++;
+
+            priorityText = "Low";
+
+            priorityClass =
+                "priority-low";
+
+        }
+
+
+        /* =====================================
+           STATUS CLASS
+           ===================================== */
+
+        var statusClass =
+            "status-active";
+
+
+        if (state == "2") {
+
+            statusClass =
+                "status-progress";
+
+        }
+
+        else if (state == "6" ||
+                 state == "7") {
+
+            statusClass =
+                "status-resolved";
+
+        }
+
+
+        /* =====================================
+           RECENT 5
+           ===================================== */
+
+        if (data.recentTickets.length < 5) {
+
+            data.recentTickets.push({
+
+                sys_id:
+                    gr.getUniqueValue(),
+
+                number:
+                    gr.getValue("number"),
+
+                short_description:
+                    gr.getValue(
+                        "short_description"
+                    ),
+
+                state:
+                    stateText,
+
+                stateValue:
+                    state,
+
+                statusClass:
+                    statusClass,
+
+                priority:
+                    priorityText,
+
+                priorityValue:
+                    priority,
+
+                priorityClass:
+                    priorityClass
+
+            });
+
+        }
+
+    }
+
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 11:26:06</sys_created_on>
+        <sys_id>bca014d5a0af03107f4432329b8a150f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CFMS Staff Dashboard</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_widget_bca014d5a0af03107f4432329b8a150f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 11:26:06</sys_updated_on>
+        <template><![CDATA[<div class="cfms-staff-page">
+
+    <!-- HEADER -->
+    <header class="staff-header">
+
+        <div class="staff-brand">
+
+            <div class="brand-icon">
+                <i class="fa fa-cutlery"></i>
+            </div>
+
+            <div>
+                <h2>CFMS</h2>
+                <span>Staff Portal</span>
+            </div>
+
+        </div>
+
+
+        <div class="staff-user">
+
+            <div class="user-avatar">
+                <i class="fa fa-user"></i>
+            </div>
+
+            <div class="user-info">
+
+                <strong>
+                    {{c.data.userName}}
+                </strong>
+
+                <span>
+                    Food Service Staff
+                </span>
+
+            </div>
+
+            <button
+                class="logout-btn"
+                ng-click="c.logout()">
+
+                <i class="fa fa-sign-out"></i>
+                Logout
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- LAYOUT -->
+    <div class="staff-layout">
+
+
+        <!-- SIDEBAR -->
+        <aside class="staff-sidebar">
+
+            <div class="sidebar-title">
+                STAFF MENU
+            </div>
+
+
+            <a
+                class="sidebar-item active"
+                ng-click="c.dashboard()">
+
+                <i class="fa fa-dashboard"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a
+                class="sidebar-item"
+                ng-click="c.assignedTickets()">
+
+                <i class="fa fa-tasks"></i>
+
+                <span>
+                    Assigned Tickets
+                </span>
+
+                <span
+                    class="menu-count"
+                    ng-if="c.data.assignedCount > 0">
+
+                    {{c.data.assignedCount}}
+
+                </span>
+
+            </a>
+
+
+            <div class="sidebar-divider"></div>
+
+
+            <a
+                class="sidebar-item"
+                ng-click="c.logout()">
+
+                <i class="fa fa-sign-out"></i>
+
+                <span>
+                    Logout
+                </span>
+
+            </a>
+
+        </aside>
+
+
+        <!-- MAIN -->
+        <main class="staff-content">
+
+
+            <!-- WELCOME -->
+            <section class="welcome-section">
+
+                <div>
+
+                    <span class="page-label">
+                        STAFF DASHBOARD
+                    </span>
+
+                    <h1>
+                        Welcome, {{c.data.userName}}
+                    </h1>
+
+                    <p>
+                        Manage and resolve campus food
+                        service requests.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="tickets-btn"
+                    ng-click="c.assignedTickets()">
+
+                    <i class="fa fa-tasks"></i>
+
+                    View Assigned Tickets
+
+                </button>
+
+            </section>
+
+
+            <!-- STATISTICS -->
+            <section class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon teal">
+
+                        <i class="fa fa-tasks"></i>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Assigned Tickets
+                        </span>
+
+                        <strong>
+                            {{c.data.assignedCount}}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+
+                        <i class="fa fa-clock-o"></i>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Open Tickets
+                        </span>
+
+                        <strong>
+                            {{c.data.openCount}}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+
+                        <i class="fa fa-spinner"></i>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            In Progress
+                        </span>
+
+                        <strong>
+                            {{c.data.inProgressCount}}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+
+                        <i class="fa fa-check-circle"></i>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Resolved
+                        </span>
+
+                        <strong>
+                            {{c.data.resolvedCount}}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- QUICK ACTIONS -->
+            <section class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <h2>
+                        Staff Actions
+                    </h2>
+
+                    <p>
+                        Manage food service requests
+                    </p>
+
+                </div>
+
+
+                <div class="action-grid">
+
+
+                    <!-- ASSIGNED -->
+                    <div
+                        class="action-card"
+                        ng-click="c.assignedTickets()">
+
+                        <div class="action-icon teal-bg">
+
+                            <i class="fa fa-tasks"></i>
+
+                        </div>
+
+                        <h3>
+                            Assigned Tickets
+                        </h3>
+
+                        <p>
+                            View and manage requests
+                            assigned to you.
+                        </p>
+
+                        <span>
+                            Open Tickets
+                            <i class="fa fa-arrow-right"></i>
+                        </span>
+
+                    </div>
+
+
+                    <!-- START -->
+                    <div
+                        class="action-card"
+                        ng-click="c.assignedTickets()">
+
+                        <div class="action-icon blue-bg">
+
+                            <i class="fa fa-play"></i>
+
+                        </div>
+
+                        <h3>
+                            Start Work
+                        </h3>
+
+                        <p>
+                            Start working on pending
+                            food service requests.
+                        </p>
+
+                        <span>
+                            Manage Requests
+                            <i class="fa fa-arrow-right"></i>
+                        </span>
+
+                    </div>
+
+
+                    <!-- RESOLVE -->
+                    <div
+                        class="action-card"
+                        ng-click="c.assignedTickets()">
+
+                        <div class="action-icon green-bg">
+
+                            <i class="fa fa-check"></i>
+
+                        </div>
+
+                        <h3>
+                            Resolve Issues
+                        </h3>
+
+                        <p>
+                            Resolve completed requests
+                            and update their status.
+                        </p>
+
+                        <span>
+                            Resolve Tickets
+                            <i class="fa fa-arrow-right"></i>
+                        </span>
+
+                    </div>
+
+
+                    <!-- ESCALATE -->
+                    <div
+                        class="action-card"
+                        ng-click="c.assignedTickets()">
+
+                        <div class="action-icon red-bg">
+
+                            <i class="fa fa-level-up"></i>
+
+                        </div>
+
+                        <h3>
+                            Escalate Issue
+                        </h3>
+
+                        <p>
+                            Escalate requests that require
+                            higher-level assistance.
+                        </p>
+
+                        <span>
+                            Manage Escalations
+                            <i class="fa fa-arrow-right"></i>
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PRIORITY SUMMARY -->
+            <section class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            Priority Overview
+                        </h2>
+
+                        <p>
+                            Current assigned ticket priorities
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="priority-grid">
+
+
+                    <div class="priority-card critical">
+
+                        <div class="priority-number">
+                            {{c.data.criticalCount}}
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Critical
+                            </strong>
+
+                            <span>
+                                Immediate attention
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="priority-card high">
+
+                        <div class="priority-number">
+                            {{c.data.highCount}}
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                High
+                            </strong>
+
+                            <span>
+                                Requires attention
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="priority-card medium">
+
+                        <div class="priority-number">
+                            {{c.data.mediumCount}}
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Medium
+                            </strong>
+
+                            <span>
+                                Normal priority
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="priority-card low">
+
+                        <div class="priority-number">
+                            {{c.data.lowCount}}
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Low
+                            </strong>
+
+                            <span>
+                                Can be handled later
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- RECENT ASSIGNED TICKETS -->
+            <section class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <h2>
+                            Recent Assigned Tickets
+                        </h2>
+
+                        <p>
+                            Latest requests assigned to you
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="view-all-btn"
+                        ng-click="c.assignedTickets()">
+
+                        View All
+
+                        <i class="fa fa-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="ticket-list"
+                    ng-if="c.data.recentTickets.length > 0">
+
+
+                    <div
+                        class="ticket-row"
+                        ng-repeat="ticket in c.data.recentTickets">
+
+                        <div class="ticket-icon">
+
+                            <i class="fa fa-file-text"></i>
+
+                        </div>
+
+
+                        <div class="ticket-info">
+
+                            <strong>
+                                {{ticket.number}}
+                            </strong>
+
+                            <span>
+                                {{ticket.short_description}}
+                            </span>
+
+                        </div>
+
+
+                        <span
+                            class="status-badge"
+                            ng-class="ticket.statusClass">
+
+                            {{ticket.state}}
+
+                        </span>
+
+
+                        <span
+                            class="priority-badge"
+                            ng-class="ticket.priorityClass">
+
+                            {{ticket.priority}}
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="empty-state"
+                    ng-if="c.data.recentTickets.length == 0">
+
+                    <div class="empty-icon">
+
+                        <i class="fa fa-check-circle"></i>
+
+                    </div>
+
+                    <h3>
+                        No Assigned Tickets
+                    </h3>
+
+                    <p>
+                        There are currently no food service
+                        requests assigned to you.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

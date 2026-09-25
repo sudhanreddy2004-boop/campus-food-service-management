@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cs_context_profile_skill">
+    <sys_cs_context_profile_skill action="DELETE">
+        <context_profile display_value="Now Assist in Virtual Agent (default)">e13840cf77d53110569156391e5a99ba</context_profile>
+        <skill_id display_value="Campus Food Intelligence Agent">3ce0e5a111a703107f44be1983f83858</skill_id>
+        <sys_class_name>sys_cs_context_profile_skill</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-25 11:46:21</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>1ae0a9a111a703107f44be1983f8383d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sys_cs_context_profile_skill_1ae0a9a111a703107f44be1983f8383d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-25 11:46:21</sys_updated_on>
+    </sys_cs_context_profile_skill>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</application>
+        <file_path/>
+        <instance_id>8ed1cdc7c38fcf94a03197af05013150</instance_id>
+        <instance_name>ltm-hck-2876-0046</instance_name>
+        <name>sys_cs_context_profile_skill_1ae0a9a111a703107f44be1983f8383d</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cs_context_profile_skill"><sys_cs_context_profile_skill action="INSERT_OR_UPDATE"><context_profile display_value="Now Assist in Virtual Agent (default)">e13840cf77d53110569156391e5a99ba</context_profile><skill_id display_value="Campus Food Intelligence Agent">3ce0e5a111a703107f44be1983f83858</skill_id><sys_class_name>sys_cs_context_profile_skill</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2026-09-25 11:46:21</sys_created_on><sys_domain>global</sys_domain><sys_id>1ae0a9a111a703107f44be1983f8383d</sys_id><sys_mod_count>0</sys_mod_count><sys_name/><sys_overrides/><sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package><sys_policy/><sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope><sys_update_name>sys_cs_context_profile_skill_1ae0a9a111a703107f44be1983f8383d</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2026-09-25 11:46:21</sys_updated_on></sys_cs_context_profile_skill></record_update>]]></payload>
+        <payload_hash>1497689255</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>6f2d16f3615703107f44f4898ccc4c88</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-25 11:46:21</sys_created_on>
+        <sys_id>56e0a9a111a703107f44be1983f83840</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>1a0d8634b940000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-25 11:46:21</sys_updated_on>
+        <type>Profile and Skill Mapping</type>
+        <update_guid>d6e0a9a11ba703108a8284ea4b3c733f</update_guid>
+        <update_guid_history>d6e0a9a11ba703108a8284ea4b3c733f:1497689255</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-25 12:06:09</sys_created_on>
+        <sys_db_object display_value="" name="sys_cs_context_profile_skill">sys_cs_context_profile_skill</sys_db_object>
+        <sys_id>883706fb5de2443899495a3efa7da8e9</sys_id>
+        <sys_metadata>1ae0a9a111a703107f44be1983f8383d</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_scope_delete display_value="">00ca93000f1045668006564f73c0b4e4</sys_scope_delete>
+        <sys_update_name>sys_cs_context_profile_skill_1ae0a9a111a703107f44be1983f8383d</sys_update_name>
+        <sys_update_version display_value="sys_cs_context_profile_skill_1ae0a9a111a703107f44be1983f8383d">56e0a9a111a703107f44be1983f83840</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-25 12:06:09</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

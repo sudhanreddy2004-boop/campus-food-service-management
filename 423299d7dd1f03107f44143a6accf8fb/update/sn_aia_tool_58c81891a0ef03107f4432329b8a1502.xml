@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_tool">
+    <sn_aia_tool action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description>look up record</description>
+        <input_schema>[{"name":"number","description":"incildet number","mandatory":false},{"name":"crudInputs","description":"CRUD Input Variables. These are already pre-defined. Under no circumstances should you prompt the user for this information or attempt to change these values."}]</input_schema>
+        <name>look up record</name>
+        <record_type>custom</record_type>
+        <script><![CDATA[(function (inputs) {
+
+    // parses query expression containing {{variables}}
+    // by replacing {{variableName}} with the value of the variableName property in the inputs object
+    // if the variableName property is not found in the inputs object, the variableName is returned as is
+    function parseQuery(expression, inputs) {
+        if (!expression) return '';
+        return expression.replace(
+            /{{\s*(\w+)\s*}}/g,
+            function (match, variableName) {
+                if (inputs && inputs.hasOwnProperty(variableName)) {
+                    return inputs[variableName];
+                }
+                return '';
+            }
+        );
+    }
+
+    var table = inputs.crudInputs.table.value;
+    var tableName = inputs.crudInputs.table.displayValue;
+    var query = parseQuery(inputs.crudInputs.query, inputs);
+    var sortType = inputs.crudInputs.sortType;
+    var orderBy = inputs.crudInputs.orderBy;
+    var limit = inputs.crudInputs.limit || 5;
+    var fields = inputs.crudInputs.returnFields || [];
+
+    var results = [];
+    var protectedRecords = 0;
+    var gr = new GlideRecordSecure(table);
+    if (query) {
+        gr.addEncodedQuery(query, true);
+    } else {
+        gs.error('[AIA error] No query provided');
+        return {
+            message: 'No query provided',
+            status: sn_i18n.Message.getMessage('sn_aia', 'error'),
+        };
+    }
+
+    if (orderBy && sortType === 'a_to_z') {
+        gr.orderBy(orderBy);
+    } else if (orderBy && sortType !== 'a_to_z') {
+        gr.orderByDesc(orderBy);
+    }
+
+    gr.setLimit(limit);
+    gr.query();
+    while (gr.next()) {
+        var fieldObj = {};
+        if (gr.canRead()) {
+            fields.forEach(function (field) {
+                if (gr.canRead(field.id)) {
+                    // store both value and display value for consistency with other field types
+                    fieldObj[field.id] = {
+                        value: gr.getValue(field.id),
+                        displayValue: gr.getDisplayValue(field.id),
+                    };
+                }
+            });
+        } else {
+            protectedRecords++;
+        }
+        results.push(fieldObj);
+    }
+
+    var recordCount = results.length;
+    var total = recordCount + protectedRecords;
+    var message = sn_i18n.Message.getMessage(
+        'sn_aia',
+        '{count} out of {total} records returned from the {table} table.',
+        {
+            count: recordCount.toString(),
+            total: total.toString(),
+            table: tableName,
+        }
+    );
+
+    return {
+        records: results,
+        message: message,
+        status: sn_i18n.Message.getMessage('sn_aia', 'success'),
+    };
+})(inputs);
+]]></script>
+        <sys_class_name>sn_aia_tool</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 11:52:37</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>58c81891a0ef03107f4432329b8a1502</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>look up record</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_tool_58c81891a0ef03107f4432329b8a1502</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 11:52:37</sys_updated_on>
+        <target_document/>
+        <target_document_table>sn_aia_tool</target_document_table>
+        <type>crud</type>
+    </sn_aia_tool>
+</record_update>

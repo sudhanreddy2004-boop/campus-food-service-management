@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 07:10:24</sys_created_on>
+        <sys_id>9e28d7cda06703107f4432329b8a15b3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>global.x_snc_campus_foo_1.Food Problem Priority and Recommendation Agent1.baseline_user</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_security_acl display_value="global.x_snc_campus_foo_1.Food Problem Priority and Recommendation Agent1">9e28d7cda06703107f4432329b8a1571</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_9e28d7cda06703107f4432329b8a15b3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 07:10:24</sys_updated_on>
+        <sys_user_role display_value="baseline_user" name="baseline_user">5558fa3d73204010aaecfcf2c4f6a78b</sys_user_role>
+    </sys_security_acl_role>
+</record_update>

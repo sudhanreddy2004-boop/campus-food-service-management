@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_agent_tool_m2m">
+    <sn_aia_agent_tool_m2m action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <agent display_value="Food Problem Priority and Recommendation Agent1">0aa5d349a06703107f4432329b8a15c1</agent>
+        <description>Retrieves the food_base_problem record using the supplied record_sys_id. Return the record fields needed for analysis, including number, mess_hall, meal_type, student_count, use_case, problem_type_normalized, problem_type, and description. This operation is read-only and must not modify the food_base_problem record.</description>
+        <display_mode>inline</display_mode>
+        <display_output>true</display_output>
+        <document_status/>
+        <entity>sn_aia_agent</entity>
+        <entity_id>0aa5d349a06703107f4432329b8a15c1</entity_id>
+        <execution_mode>autopilot</execution_mode>
+        <inputs>[{"name":"number","value":"","description":"","mandatory":true},{"name":"crudInputs","value":{"operation":"lookup","table":{"value":"x_snc_campus_foo_1_food_base_problem","displayValue":"Food Base Problem"},"query":"number={{number}}","returnFields":[{"name":"number","label":"Number","type":"string","referenceTable":null,"referenceTableDefaultField":null,"referenceKey":null,"id":"number","sublabel":"number"},{"name":"use_case","label":"Use Case","type":"choice","referenceTable":null,"referenceTableDefaultField":null,"referenceKey":null,"id":"use_case","sublabel":"use_case"},{"name":"mess_hall","label":"Mess Hall","type":"reference","referenceTable":"x_snc_campus_foo_1_mess_hall","referenceTableDefaultField":"name","referenceKey":null,"id":"mess_hall","sublabel":"mess_hall"},{"name":"meal_type","label":"Meal Type","type":"choice","referenceTable":null,"referenceTableDefaultField":null,"referenceKey":null,"id":"meal_type","sublabel":"meal_type"}],"limit":"1","orderBy":"","sortType":""},"description":"CRUD Input Variables. These are already pre-defined. Under no circumstances should you prompt the user for this information or attempt to change these values."}]</inputs>
+        <max_auto_executions>10</max_auto_executions>
+        <name>Get Food Problem Details</name>
+        <output_transformation_strategy>none</output_transformation_strategy>
+        <post_message/>
+        <post_processing_script/>
+        <pre_message/>
+        <pre_run>false</pre_run>
+        <requires_text_refined_message>false</requires_text_refined_message>
+        <requires_widget_transformation>true</requires_widget_transformation>
+        <should_display_refined_message>false</should_display_refined_message>
+        <sys_class_name>sn_aia_agent_tool_m2m</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 07:09:31</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>25f753cda06703107f4432329b8a153e</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Get Food Problem Details</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_agent_tool_m2m_25f753cda06703107f4432329b8a153e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 09:17:51</sys_updated_on>
+        <timeout/>
+        <tool display_value="Get Food Problem Details">69f79b4da06703107f4432329b8a1547</tool>
+        <tool_attributes>{}</tool_attributes>
+        <transformation_instructions/>
+        <widgets>db0e858eff62b210f465ffffffffff2c</widgets>
+    </sn_aia_agent_tool_m2m>
+</record_update>

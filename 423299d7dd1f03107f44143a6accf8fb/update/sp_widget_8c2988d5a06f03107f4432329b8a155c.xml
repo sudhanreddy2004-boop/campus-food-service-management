@@ -1,0 +1,1637 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function() {
+
+    var c = this;
+
+
+    /*
+     * =========================================
+     * FILTER VARIABLES
+     * =========================================
+     */
+
+    c.searchText = "";
+
+    c.statusFilter = "all";
+
+
+    /*
+     * =========================================
+     * FILTER REQUESTS
+     * =========================================
+     */
+
+    c.filteredRequests = function() {
+
+        var results = [];
+
+        var requests =
+            c.data.requests || [];
+
+
+        var search =
+            (c.searchText || "")
+                .toLowerCase();
+
+
+        var filter =
+            c.statusFilter || "all";
+
+
+        angular.forEach(
+            requests,
+            function(request) {
+
+
+                /*
+                 * SEARCH
+                 */
+
+                var matchesSearch = true;
+
+
+                if (search) {
+
+                    var text =
+                        (
+                            request.number +
+                            " " +
+                            request.short_description +
+                            " " +
+                            request.state +
+                            " " +
+                            request.priority +
+                            " " +
+                            request.mealType +
+                            " " +
+                            request.messHall
+                        ).toLowerCase();
+
+
+                    matchesSearch =
+                        text.indexOf(search) !== -1;
+
+                }
+
+
+                /*
+                 * STATUS FILTER
+                 */
+
+                var matchesStatus = true;
+
+
+                if (filter == "active") {
+
+                    matchesStatus =
+                        request.stateValue != "6" &&
+                        request.stateValue != "7";
+
+                }
+
+                else if (filter == "resolved") {
+
+                    matchesStatus =
+                        request.stateValue == "6" ||
+                        request.stateValue == "7";
+
+                }
+
+
+                /*
+                 * ADD RESULT
+                 */
+
+                if (matchesSearch &&
+                    matchesStatus) {
+
+                    results.push(request);
+
+                }
+
+            }
+        );
+
+
+        return results;
+
+    };
+
+
+    /*
+     * =========================================
+     * BACK TO DASHBOARD
+     * =========================================
+     */
+
+    c.backToDashboard = function() {
+
+        window.location.href =
+            "?id=cfms_student";
+
+    };
+
+
+    /*
+     * =========================================
+     * RAISE NEW REQUEST
+     * =========================================
+     */
+
+    c.raiseRequest = function() {
+
+        window.location.href =
+            "?id=cfms_raise";
+
+    };
+
+
+    /*
+     * =========================================
+     * VIEW REQUEST
+     * =========================================
+     */
+
+    c.viewRequest = function(request) {
+
+        /*
+         * For now, open the ServiceNow
+         * incident form.
+         */
+
+        if (request &&
+            request.sys_id) {
+
+            window.location.href =
+                "?id=cfms_request_detail" +
+                "&sys_id=" +
+                encodeURIComponent(
+                    request.sys_id
+                );
+
+        }
+
+    };
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>/* =========================================&#13;
+   CFMS MY REQUESTS&#13;
+   ========================================= */&#13;
+&#13;
+.cfms-my-requests {&#13;
+    min-height: 100vh;&#13;
+&#13;
+    background: #f0fbfc;&#13;
+&#13;
+    color: #263238;&#13;
+&#13;
+    font-family:&#13;
+        "Segoe UI",&#13;
+        Tahoma,&#13;
+        Geneva,&#13;
+        Verdana,&#13;
+        sans-serif;&#13;
+&#13;
+    padding-bottom: 50px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   HEADER&#13;
+   ========================================= */&#13;
+&#13;
+.requests-header {&#13;
+    min-height: 105px;&#13;
+&#13;
+    background: #00acc1;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    padding: 25px 7%;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: space-between;&#13;
+}&#13;
+&#13;
+&#13;
+.header-left {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 18px;&#13;
+}&#13;
+&#13;
+&#13;
+.back-btn {&#13;
+    width: 42px;&#13;
+    height: 42px;&#13;
+&#13;
+    border: 1px solid rgba(255,255,255,0.7);&#13;
+&#13;
+    border-radius: 8px;&#13;
+&#13;
+    background: transparent;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.back-btn:hover {&#13;
+    background: white;&#13;
+&#13;
+    color: #00acc1;&#13;
+}&#13;
+&#13;
+&#13;
+.header-left h1 {&#13;
+    margin: 0 0 5px;&#13;
+&#13;
+    font-size: 29px;&#13;
+}&#13;
+&#13;
+&#13;
+.header-left p {&#13;
+    margin: 0;&#13;
+&#13;
+    font-size: 13px;&#13;
+&#13;
+    opacity: 0.9;&#13;
+}&#13;
+&#13;
+&#13;
+.new-request-btn {&#13;
+    padding: 11px 18px;&#13;
+&#13;
+    border: none;&#13;
+&#13;
+    border-radius: 7px;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    font-size: 13px;&#13;
+&#13;
+    font-weight: 600;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.new-request-btn:hover {&#13;
+    background: #e0f7fa;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   CONTAINER&#13;
+   ========================================= */&#13;
+&#13;
+.requests-container {&#13;
+    max-width: 1100px;&#13;
+&#13;
+    margin: 35px auto;&#13;
+&#13;
+    padding: 0 25px;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   SUMMARY&#13;
+   ========================================= */&#13;
+&#13;
+.summary-grid {&#13;
+    display: grid;&#13;
+&#13;
+    grid-template-columns:&#13;
+        repeat(3, 1fr);&#13;
+&#13;
+    gap: 18px;&#13;
+&#13;
+    margin-bottom: 25px;&#13;
+}&#13;
+&#13;
+&#13;
+.summary-card {&#13;
+    background: white;&#13;
+&#13;
+    border: 1px solid #e1eff1;&#13;
+&#13;
+    border-radius: 12px;&#13;
+&#13;
+    padding: 20px;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 14px;&#13;
+&#13;
+    box-shadow:&#13;
+        0 4px 15px rgba(0,0,0,0.05);&#13;
+}&#13;
+&#13;
+&#13;
+.summary-icon {&#13;
+    width: 48px;&#13;
+    height: 48px;&#13;
+&#13;
+    border-radius: 10px;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+&#13;
+    font-size: 20px;&#13;
+}&#13;
+&#13;
+&#13;
+.summary-icon.teal {&#13;
+    background: #e0f7fa;&#13;
+&#13;
+    color: #00acc1;&#13;
+}&#13;
+&#13;
+&#13;
+.summary-icon.blue {&#13;
+    background: #e3f2fd;&#13;
+&#13;
+    color: #1976d2;&#13;
+}&#13;
+&#13;
+&#13;
+.summary-icon.green {&#13;
+    background: #e8f5e9;&#13;
+&#13;
+    color: #43a047;&#13;
+}&#13;
+&#13;
+&#13;
+.summary-card span {&#13;
+    display: block;&#13;
+&#13;
+    color: #78909c;&#13;
+&#13;
+    font-size: 12px;&#13;
+&#13;
+    margin-bottom: 4px;&#13;
+}&#13;
+&#13;
+&#13;
+.summary-card strong {&#13;
+    color: #263238;&#13;
+&#13;
+    font-size: 24px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   FILTER&#13;
+   ========================================= */&#13;
+&#13;
+.filter-card {&#13;
+    background: white;&#13;
+&#13;
+    border: 1px solid #e1eff1;&#13;
+&#13;
+    border-radius: 12px;&#13;
+&#13;
+    padding: 15px;&#13;
+&#13;
+    margin-bottom: 20px;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    gap: 15px;&#13;
+}&#13;
+&#13;
+&#13;
+.search-box {&#13;
+    flex: 1;&#13;
+&#13;
+    position: relative;&#13;
+}&#13;
+&#13;
+&#13;
+.search-box i {&#13;
+    position: absolute;&#13;
+&#13;
+    left: 13px;&#13;
+&#13;
+    top: 13px;&#13;
+&#13;
+    color: #90a4ae;&#13;
+}&#13;
+&#13;
+&#13;
+.search-box input {&#13;
+    width: 100%;&#13;
+&#13;
+    height: 42px;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+&#13;
+    padding: 8px 12px 8px 38px;&#13;
+&#13;
+    border: 1px solid #d5e4e6;&#13;
+&#13;
+    border-radius: 7px;&#13;
+&#13;
+    outline: none;&#13;
+&#13;
+    font-family: inherit;&#13;
+}&#13;
+&#13;
+&#13;
+.search-box input:focus {&#13;
+    border-color: #00acc1;&#13;
+&#13;
+    box-shadow:&#13;
+        0 0 0 3px rgba(0,172,193,0.08);&#13;
+}&#13;
+&#13;
+&#13;
+.status-filter {&#13;
+    width: 180px;&#13;
+&#13;
+    height: 42px;&#13;
+&#13;
+    padding: 8px 12px;&#13;
+&#13;
+    border: 1px solid #d5e4e6;&#13;
+&#13;
+    border-radius: 7px;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    color: #37474f;&#13;
+&#13;
+    outline: none;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   REQUESTS CARD&#13;
+   ========================================= */&#13;
+&#13;
+.requests-card {&#13;
+    background: white;&#13;
+&#13;
+    border: 1px solid #e1eff1;&#13;
+&#13;
+    border-radius: 13px;&#13;
+&#13;
+    overflow: hidden;&#13;
+&#13;
+    box-shadow:&#13;
+        0 4px 15px rgba(0,0,0,0.04);&#13;
+}&#13;
+&#13;
+&#13;
+.requests-card-header {&#13;
+    padding: 22px 25px;&#13;
+&#13;
+    border-bottom: 1px solid #edf3f4;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: space-between;&#13;
+}&#13;
+&#13;
+&#13;
+.requests-card-header h2 {&#13;
+    margin: 0 0 4px;&#13;
+&#13;
+    font-size: 20px;&#13;
+}&#13;
+&#13;
+&#13;
+.requests-card-header p {&#13;
+    margin: 0;&#13;
+&#13;
+    color: #78909c;&#13;
+&#13;
+    font-size: 12px;&#13;
+}&#13;
+&#13;
+&#13;
+.request-count {&#13;
+    color: #00acc1;&#13;
+&#13;
+    background: #e0f7fa;&#13;
+&#13;
+    padding: 7px 11px;&#13;
+&#13;
+    border-radius: 20px;&#13;
+&#13;
+    font-size: 11px;&#13;
+&#13;
+    font-weight: 600;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   REQUEST ITEM&#13;
+   ========================================= */&#13;
+&#13;
+.request-item {&#13;
+    min-height: 90px;&#13;
+&#13;
+    padding: 18px 22px;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 16px;&#13;
+&#13;
+    border-bottom: 1px solid #edf3f4;&#13;
+&#13;
+    transition: 0.2s ease;&#13;
+}&#13;
+&#13;
+&#13;
+.request-item:last-child {&#13;
+    border-bottom: none;&#13;
+}&#13;
+&#13;
+&#13;
+.request-item:hover {&#13;
+    background: #fbfefe;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   REQUEST ICON&#13;
+   ========================================= */&#13;
+&#13;
+.request-type-icon {&#13;
+    width: 46px;&#13;
+    height: 46px;&#13;
+&#13;
+    flex-shrink: 0;&#13;
+&#13;
+    border-radius: 10px;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+&#13;
+    font-size: 19px;&#13;
+}&#13;
+&#13;
+&#13;
+.request-type-icon.teal {&#13;
+    background: #e0f7fa;&#13;
+&#13;
+    color: #00acc1;&#13;
+}&#13;
+&#13;
+&#13;
+.request-type-icon.orange {&#13;
+    background: #fff3e0;&#13;
+&#13;
+    color: #fb8c00;&#13;
+}&#13;
+&#13;
+&#13;
+.request-type-icon.red {&#13;
+    background: #ffebee;&#13;
+&#13;
+    color: #e53935;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   INFORMATION&#13;
+   ========================================= */&#13;
+&#13;
+.request-information {&#13;
+    flex: 1;&#13;
+&#13;
+    min-width: 0;&#13;
+}&#13;
+&#13;
+&#13;
+.request-title-row {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 10px;&#13;
+&#13;
+    margin-bottom: 5px;&#13;
+}&#13;
+&#13;
+&#13;
+.request-title-row h3 {&#13;
+    margin: 0;&#13;
+&#13;
+    font-size: 14px;&#13;
+&#13;
+    color: #00acc1;&#13;
+}&#13;
+&#13;
+&#13;
+.request-information h4 {&#13;
+    margin: 0 0 9px;&#13;
+&#13;
+    color: #37474f;&#13;
+&#13;
+    font-size: 14px;&#13;
+&#13;
+    font-weight: 600;&#13;
+&#13;
+    white-space: nowrap;&#13;
+&#13;
+    overflow: hidden;&#13;
+&#13;
+    text-overflow: ellipsis;&#13;
+}&#13;
+&#13;
+&#13;
+.request-meta {&#13;
+    display: flex;&#13;
+&#13;
+    gap: 17px;&#13;
+&#13;
+    flex-wrap: wrap;&#13;
+}&#13;
+&#13;
+&#13;
+.request-meta span {&#13;
+    color: #90a4ae;&#13;
+&#13;
+    font-size: 11px;&#13;
+}&#13;
+&#13;
+&#13;
+.request-meta i {&#13;
+    margin-right: 4px;&#13;
+&#13;
+    color: #00acc1;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   STATUS&#13;
+   ========================================= */&#13;
+&#13;
+.status-badge {&#13;
+    padding: 5px 9px;&#13;
+&#13;
+    border-radius: 20px;&#13;
+&#13;
+    font-size: 10px;&#13;
+&#13;
+    font-weight: 600;&#13;
+}&#13;
+&#13;
+&#13;
+.status-active {&#13;
+    background: #fff8e1;&#13;
+&#13;
+    color: #f57f17;&#13;
+}&#13;
+&#13;
+&#13;
+.status-resolved {&#13;
+    background: #e8f5e9;&#13;
+&#13;
+    color: #2e7d32;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   PRIORITY&#13;
+   ========================================= */&#13;
+&#13;
+.priority-section {&#13;
+    min-width: 80px;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    flex-direction: column;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 5px;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-label {&#13;
+    color: #90a4ae;&#13;
+&#13;
+    font-size: 10px;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-badge {&#13;
+    padding: 5px 9px;&#13;
+&#13;
+    border-radius: 15px;&#13;
+&#13;
+    font-size: 10px;&#13;
+&#13;
+    font-weight: 600;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-critical {&#13;
+    background: #ffebee;&#13;
+&#13;
+    color: #c62828;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-high {&#13;
+    background: #fff3e0;&#13;
+&#13;
+    color: #ef6c00;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-medium {&#13;
+    background: #fff8e1;&#13;
+&#13;
+    color: #f9a825;&#13;
+}&#13;
+&#13;
+&#13;
+.priority-low {&#13;
+    background: #e8f5e9;&#13;
+&#13;
+    color: #388e3c;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   VIEW BUTTON&#13;
+   ========================================= */&#13;
+&#13;
+.view-btn {&#13;
+    padding: 8px 12px;&#13;
+&#13;
+    border: 1px solid #b2ebf2;&#13;
+&#13;
+    border-radius: 6px;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    font-size: 11px;&#13;
+&#13;
+    font-weight: 600;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+.view-btn:hover {&#13;
+    background: #e0f7fa;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   EMPTY&#13;
+   ========================================= */&#13;
+&#13;
+.empty-state {&#13;
+    padding: 60px 20px;&#13;
+&#13;
+    text-align: center;&#13;
+}&#13;
+&#13;
+&#13;
+.empty-icon {&#13;
+    width: 65px;&#13;
+    height: 65px;&#13;
+&#13;
+    margin: 0 auto 15px;&#13;
+&#13;
+    border-radius: 50%;&#13;
+&#13;
+    background: #e0f7fa;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+&#13;
+    font-size: 27px;&#13;
+}&#13;
+&#13;
+&#13;
+.empty-state h3 {&#13;
+    margin: 0 0 7px;&#13;
+&#13;
+    font-size: 18px;&#13;
+}&#13;
+&#13;
+&#13;
+.empty-state p {&#13;
+    color: #78909c;&#13;
+&#13;
+    font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+.raise-empty-btn {&#13;
+    margin-top: 10px;&#13;
+&#13;
+    padding: 10px 18px;&#13;
+&#13;
+    border: none;&#13;
+&#13;
+    border-radius: 7px;&#13;
+&#13;
+    background: #00acc1;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    font-weight: 600;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   TRACKING INFO&#13;
+   ========================================= */&#13;
+&#13;
+.tracking-info {&#13;
+    margin-top: 20px;&#13;
+&#13;
+    padding: 18px 20px;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 15px;&#13;
+&#13;
+    border-radius: 11px;&#13;
+&#13;
+    background: #4dd0e1;&#13;
+}&#13;
+&#13;
+&#13;
+.tracking-icon {&#13;
+    width: 42px;&#13;
+    height: 42px;&#13;
+&#13;
+    flex-shrink: 0;&#13;
+&#13;
+    border-radius: 50%;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    justify-content: center;&#13;
+}&#13;
+&#13;
+&#13;
+.tracking-info h3 {&#13;
+    margin: 0 0 4px;&#13;
+&#13;
+    font-size: 15px;&#13;
+}&#13;
+&#13;
+&#13;
+.tracking-info p {&#13;
+    margin: 0;&#13;
+&#13;
+    color: #37474f;&#13;
+&#13;
+    font-size: 12px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   RESPONSIVE&#13;
+   ========================================= */&#13;
+&#13;
+@media (max-width: 800px) {&#13;
+&#13;
+    .summary-grid {&#13;
+        grid-template-columns: 1fr;&#13;
+    }&#13;
+&#13;
+    .request-item {&#13;
+        flex-wrap: wrap;&#13;
+    }&#13;
+&#13;
+    .priority-section {&#13;
+        display: none;&#13;
+    }&#13;
+&#13;
+}&#13;
+&#13;
+&#13;
+@media (max-width: 600px) {&#13;
+&#13;
+    .requests-header {&#13;
+        padding: 22px 20px;&#13;
+&#13;
+        flex-direction: column;&#13;
+&#13;
+        align-items: flex-start;&#13;
+&#13;
+        gap: 15px;&#13;
+    }&#13;
+&#13;
+    .new-request-btn {&#13;
+        width: 100%;&#13;
+    }&#13;
+&#13;
+    .requests-container {&#13;
+        padding: 0 15px;&#13;
+&#13;
+        margin-top: 20px;&#13;
+    }&#13;
+&#13;
+    .filter-card {&#13;
+        flex-direction: column;&#13;
+    }&#13;
+&#13;
+    .status-filter {&#13;
+        width: 100%;&#13;
+    }&#13;
+&#13;
+    .requests-card-header {&#13;
+        padding: 18px;&#13;
+    }&#13;
+&#13;
+    .request-item {&#13;
+        padding: 16px;&#13;
+    }&#13;
+&#13;
+    .view-btn {&#13;
+        width: 100%;&#13;
+    }&#13;
+&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>cfms_my_requests</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>CFMS My Requests</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+    /*
+     * =========================================
+     * DEFAULT DATA
+     * =========================================
+     */
+
+    data.requests = [];
+
+    data.total = 0;
+
+    data.active = 0;
+
+    data.resolved = 0;
+
+    data.error = "";
+
+
+    /*
+     * =========================================
+     * LOGIN CHECK
+     * =========================================
+     */
+
+    if (!gs.isLoggedIn()) {
+
+        data.error =
+            "Please login to view your requests.";
+
+        return;
+    }
+
+
+    /*
+     * =========================================
+     * ROLE CHECK
+     * =========================================
+     */
+
+    if (!gs.hasRole("cfms_student") &&
+        !gs.hasRole("admin")) {
+
+        data.error =
+            "You are not authorized to view these requests.";
+
+        return;
+    }
+
+
+    /*
+     * =========================================
+     * GET STUDENT REQUESTS
+     * =========================================
+     */
+
+    var gr =
+        new GlideRecord("incident");
+
+
+    /*
+     * IMPORTANT:
+     *
+     * Only show incidents created for
+     * the currently logged-in student.
+     */
+
+    gr.addQuery(
+        "caller_id",
+        gs.getUserID()
+    );
+
+
+    gr.orderByDesc("sys_created_on");
+
+    gr.query();
+
+
+    while (gr.next()) {
+
+        data.total++;
+
+
+        /*
+         * STATE
+         */
+
+        var stateValue =
+            gr.getValue("state");
+
+        var stateText =
+            gr.getDisplayValue("state");
+
+
+        /*
+         * ServiceNow incident:
+         *
+         * 6 = Resolved
+         * 7 = Closed
+         */
+
+        var isResolved =
+            stateValue == "6" ||
+            stateValue == "7";
+
+
+        if (isResolved) {
+
+            data.resolved++;
+
+        } else {
+
+            data.active++;
+
+        }
+
+
+        /*
+         * =====================================
+         * PRIORITY
+         * =====================================
+         */
+
+        var priorityValue =
+            gr.getValue("priority");
+
+        var priorityText =
+            gr.getDisplayValue("priority");
+
+        var priorityClass =
+            "priority-medium";
+
+
+        if (priorityValue == "1") {
+
+            priorityText = "Critical";
+
+            priorityClass =
+                "priority-critical";
+
+        }
+
+        else if (priorityValue == "2") {
+
+            priorityText = "High";
+
+            priorityClass =
+                "priority-high";
+
+        }
+
+        else if (priorityValue == "3") {
+
+            priorityText = "Medium";
+
+            priorityClass =
+                "priority-medium";
+
+        }
+
+        else if (priorityValue == "4") {
+
+            priorityText = "Low";
+
+            priorityClass =
+                "priority-low";
+
+        }
+
+
+        /*
+         * =====================================
+         * STATUS CLASS
+         * =====================================
+         */
+
+        var statusClass =
+            isResolved
+                ? "status-resolved"
+                : "status-active";
+
+
+        /*
+         * =====================================
+         * DEFAULT ICON
+         * =====================================
+         */
+
+        var icon =
+            "fa-file-text";
+
+        var iconClass =
+            "teal";
+
+
+        /*
+         * =====================================
+         * CFMS CUSTOM FIELDS
+         * =====================================
+         */
+
+        var mealType = "";
+
+        var messHall = "";
+
+
+        if (gr.isValidField("u_cfms_meal_type")) {
+
+            mealType =
+                gr.getDisplayValue(
+                    "u_cfms_meal_type"
+                );
+
+        }
+
+
+        if (gr.isValidField("u_cfms_mess_hall")) {
+
+            messHall =
+                gr.getDisplayValue(
+                    "u_cfms_mess_hall"
+                );
+
+        }
+
+
+        /*
+         * =====================================
+         * REQUEST OBJECT
+         * =====================================
+         */
+
+        data.requests.push({
+
+            sys_id:
+                gr.getUniqueValue(),
+
+            number:
+                gr.getValue("number"),
+
+            short_description:
+                gr.getValue(
+                    "short_description"
+                ),
+
+            state:
+                stateText,
+
+            stateValue:
+                stateValue,
+
+            statusClass:
+                statusClass,
+
+            priority:
+                priorityText,
+
+            priorityValue:
+                priorityValue,
+
+            priorityClass:
+                priorityClass,
+
+            created:
+                gr.getDisplayValue(
+                    "sys_created_on"
+                ),
+
+            mealType:
+                mealType || "Food Service",
+
+            messHall:
+                messHall || "Campus Mess",
+
+            icon:
+                icon,
+
+            iconClass:
+                iconClass
+
+        });
+
+    }
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 10:52:35</sys_created_on>
+        <sys_id>8c2988d5a06f03107f4432329b8a155c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CFMS My Requests</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_widget_8c2988d5a06f03107f4432329b8a155c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 10:52:35</sys_updated_on>
+        <template><![CDATA[<div class="cfms-my-requests">
+
+    <!-- HEADER -->
+    <div class="requests-header">
+
+        <div class="header-left">
+
+            <button
+                class="back-btn"
+                ng-click="c.backToDashboard()">
+
+                <i class="fa fa-arrow-left"></i>
+
+            </button>
+
+            <div>
+                <h1>My Requests</h1>
+
+                <p>
+                    View and track your food service requests
+                </p>
+            </div>
+
+        </div>
+
+        <button
+            class="new-request-btn"
+            ng-click="c.raiseRequest()">
+
+            <i class="fa fa-plus"></i>
+
+            Raise New Request
+
+        </button>
+
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+    <div class="requests-container">
+
+
+        <!-- SUMMARY -->
+        <div class="summary-grid">
+
+            <div class="summary-card">
+
+                <div class="summary-icon teal">
+                    <i class="fa fa-files-o"></i>
+                </div>
+
+                <div>
+                    <span>Total Requests</span>
+                    <strong>{{c.data.total}}</strong>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon blue">
+                    <i class="fa fa-clock-o"></i>
+                </div>
+
+                <div>
+                    <span>Active</span>
+                    <strong>{{c.data.active}}</strong>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon green">
+                    <i class="fa fa-check-circle"></i>
+                </div>
+
+                <div>
+                    <span>Resolved</span>
+                    <strong>{{c.data.resolved}}</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FILTER BAR -->
+        <div class="filter-card">
+
+            <div class="search-box">
+
+                <i class="fa fa-search"></i>
+
+                <input
+                    type="text"
+                    ng-model="c.searchText"
+                    placeholder="Search requests...">
+
+            </div>
+
+
+            <select
+                class="status-filter"
+                ng-model="c.statusFilter">
+
+                <option value="all">
+                    All Requests
+                </option>
+
+                <option value="active">
+                    Active
+                </option>
+
+                <option value="resolved">
+                    Resolved
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- REQUESTS -->
+        <div class="requests-card">
+
+            <div class="requests-card-header">
+
+                <div>
+                    <h2>Request History</h2>
+
+                    <p>
+                        Your submitted food service requests
+                    </p>
+                </div>
+
+                <span class="request-count">
+                    {{c.filteredRequests().length}} Requests
+                </span>
+
+            </div>
+
+
+            <!-- EMPTY -->
+            <div
+                class="empty-state"
+                ng-if="c.filteredRequests().length == 0">
+
+                <div class="empty-icon">
+
+                    <i class="fa fa-inbox"></i>
+
+                </div>
+
+                <h3>
+                    No Requests Found
+                </h3>
+
+                <p ng-if="c.searchText || c.statusFilter != 'all'">
+                    Try changing your search or filter.
+                </p>
+
+                <p ng-if="!c.searchText && c.statusFilter == 'all'">
+                    You haven't raised any food requests yet.
+                </p>
+
+                <button
+                    class="raise-empty-btn"
+                    ng-click="c.raiseRequest()">
+
+                    Raise Food Request
+
+                </button>
+
+            </div>
+
+
+            <!-- REQUEST LIST -->
+            <div
+                class="request-list"
+                ng-if="c.filteredRequests().length > 0">
+
+                <div
+                    class="request-item"
+                    ng-repeat="request in c.filteredRequests() track by request.sys_id">
+
+
+                    <!-- ICON -->
+                    <div
+                        class="request-type-icon"
+                        ng-class="request.iconClass">
+
+                        <i
+                            class="fa"
+                            ng-class="request.icon">
+                        </i>
+
+                    </div>
+
+
+                    <!-- MAIN INFORMATION -->
+                    <div class="request-information">
+
+                        <div class="request-title-row">
+
+                            <h3>
+                                {{request.number}}
+                            </h3>
+
+                            <span
+                                class="status-badge"
+                                ng-class="request.statusClass">
+
+                                {{request.state}}
+
+                            </span>
+
+                        </div>
+
+
+                        <h4>
+                            {{request.short_description}}
+                        </h4>
+
+
+                        <div class="request-meta">
+
+                            <span>
+
+                                <i class="fa fa-calendar"></i>
+
+                                {{request.created}}
+
+                            </span>
+
+
+                            <span>
+
+                                <i class="fa fa-cutlery"></i>
+
+                                {{request.mealType}}
+
+                            </span>
+
+
+                            <span>
+
+                                <i class="fa fa-building"></i>
+
+                                {{request.messHall}}
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRIORITY -->
+                    <div class="priority-section">
+
+                        <span class="priority-label">
+                            Priority
+                        </span>
+
+                        <span
+                            class="priority-badge"
+                            ng-class="request.priorityClass">
+
+                            {{request.priority}}
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- VIEW -->
+                    <button
+                        class="view-btn"
+                        ng-click="c.viewRequest(request)">
+
+                        View
+
+                        <i class="fa fa-angle-right"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+        <div class="tracking-info">
+
+            <div class="tracking-icon">
+                <i class="fa fa-info-circle"></i>
+            </div>
+
+            <div>
+
+                <h3>Track Your Request</h3>
+
+                <p>
+                    Your request status will be updated as
+                    the food service team works on it.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

@@ -1,0 +1,1002 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function() {
+
+    var c = this;
+
+    c.continueLogin = function() {
+
+        var role = c.data.role;
+
+        sessionStorage.setItem(
+            "cfms_selected_role",
+            role
+        );
+
+        window.location.href =
+            "?id=login&sysparm_url=%3Fid%3Dcfms_role_router";
+    };
+
+
+    c.back = function() {
+
+        window.location.href =
+            "?id=cfms_home";
+
+    };
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>/* =========================================&#13;
+   CFMS - MAIN SITE&#13;
+   ========================================= */&#13;
+&#13;
+.cfms-site {&#13;
+    width: 100%;&#13;
+    min-height: 100vh;&#13;
+    margin: 0;&#13;
+    padding: 0;&#13;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;&#13;
+    color: #263238;&#13;
+    background: #f0fbfc;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   NAVIGATION BAR&#13;
+   ========================================= */&#13;
+&#13;
+.main-nav {&#13;
+    width: 100%;&#13;
+    min-height: 72px;&#13;
+&#13;
+    display: flex;&#13;
+    align-items: center;&#13;
+    justify-content: space-between;&#13;
+&#13;
+    padding: 0 55px;&#13;
+    box-sizing: border-box;&#13;
+&#13;
+    background: #00acc1;&#13;
+    color: white;&#13;
+&#13;
+    position: relative;&#13;
+    z-index: 1000;&#13;
+}&#13;
+&#13;
+.nav-logo-container {&#13;
+    display: flex;&#13;
+    align-items: center;&#13;
+&#13;
+    color: white;&#13;
+    font-size: 26px;&#13;
+    font-weight: 700;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+.nav-app-logo {&#13;
+    width: 42px;&#13;
+    height: 42px;&#13;
+&#13;
+    margin-right: 10px;&#13;
+&#13;
+    border-radius: 10px;&#13;
+&#13;
+    display: flex;&#13;
+    align-items: center;&#13;
+    justify-content: center;&#13;
+&#13;
+    background: white;&#13;
+    color: #00acc1;&#13;
+&#13;
+    font-size: 22px;&#13;
+}&#13;
+&#13;
+&#13;
+/* NAV LINKS */&#13;
+&#13;
+.nav-links {&#13;
+    display: flex;&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 30px;&#13;
+&#13;
+    margin: 0;&#13;
+    padding: 0;&#13;
+&#13;
+    list-style: none;&#13;
+}&#13;
+&#13;
+.nav-links li {&#13;
+    position: relative;&#13;
+}&#13;
+&#13;
+.nav-links li &gt; a {&#13;
+    color: white !important;&#13;
+&#13;
+    text-decoration: none !important;&#13;
+&#13;
+    font-size: 15px;&#13;
+    font-weight: 500;&#13;
+&#13;
+    cursor: pointer;&#13;
+&#13;
+    transition: 0.2s ease;&#13;
+}&#13;
+&#13;
+.nav-links li &gt; a:hover {&#13;
+    opacity: 0.8;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   LOGIN DROPDOWN&#13;
+   ========================================= */&#13;
+&#13;
+.dropdown {&#13;
+    position: relative;&#13;
+}&#13;
+&#13;
+.dropbtn {&#13;
+    display: flex;&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 7px;&#13;
+&#13;
+    padding: 10px 15px;&#13;
+&#13;
+    border-radius: 7px;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    color: #00acc1 !important;&#13;
+&#13;
+    font-weight: 600 !important;&#13;
+}&#13;
+&#13;
+.dropbtn:hover {&#13;
+    background: #e0f7fa;&#13;
+    opacity: 1 !important;&#13;
+}&#13;
+&#13;
+&#13;
+.dropdown-content {&#13;
+    display: none;&#13;
+&#13;
+    position: absolute;&#13;
+&#13;
+    right: 0;&#13;
+    top: 43px;&#13;
+&#13;
+    width: 215px;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    border-radius: 10px;&#13;
+&#13;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);&#13;
+&#13;
+    overflow: hidden;&#13;
+&#13;
+    z-index: 9999;&#13;
+}&#13;
+&#13;
+.dropdown:hover .dropdown-content {&#13;
+    display: block;&#13;
+}&#13;
+&#13;
+.dropdown-content a {&#13;
+    display: flex;&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 12px;&#13;
+&#13;
+    padding: 14px 17px;&#13;
+&#13;
+    color: #263238 !important;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    text-decoration: none !important;&#13;
+&#13;
+    font-size: 14px;&#13;
+&#13;
+    cursor: pointer;&#13;
+&#13;
+    transition: 0.2s ease;&#13;
+}&#13;
+&#13;
+.dropdown-content a:hover {&#13;
+    background: #e0f7fa;&#13;
+&#13;
+    color: #00acc1 !important;&#13;
+}&#13;
+&#13;
+.dropdown-content a i {&#13;
+    width: 20px;&#13;
+&#13;
+    text-align: center;&#13;
+&#13;
+    color: #00acc1;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   HERO SECTION&#13;
+   ========================================= */&#13;
+&#13;
+.hero-section {&#13;
+    width: 100%;&#13;
+    min-height: 480px;&#13;
+&#13;
+    display: flex;&#13;
+    align-items: center;&#13;
+    justify-content: space-between;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+&#13;
+    padding: 70px 9%;&#13;
+&#13;
+    background: #4dd0e1;&#13;
+&#13;
+    gap: 60px;&#13;
+}&#13;
+&#13;
+&#13;
+/* HERO LEFT */&#13;
+&#13;
+.hero-content {&#13;
+    flex: 1;&#13;
+&#13;
+    max-width: 650px;&#13;
+}&#13;
+&#13;
+.hero-title {&#13;
+    margin: 0 0 25px 0;&#13;
+&#13;
+    color: #263238;&#13;
+&#13;
+    font-size: 58px;&#13;
+&#13;
+    line-height: 1.05;&#13;
+&#13;
+    font-weight: 750;&#13;
+&#13;
+    letter-spacing: -1px;&#13;
+}&#13;
+&#13;
+.hero-title span {&#13;
+    color: white;&#13;
+}&#13;
+&#13;
+.hero-subtitle {&#13;
+    max-width: 600px;&#13;
+&#13;
+    margin: 0 0 28px 0;&#13;
+&#13;
+    color: #37474f;&#13;
+&#13;
+    font-size: 17px;&#13;
+&#13;
+    line-height: 1.7;&#13;
+}&#13;
+&#13;
+&#13;
+/* GET STARTED BUTTON */&#13;
+&#13;
+.cta-btn {&#13;
+    display: inline-flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 10px;&#13;
+&#13;
+    padding: 14px 25px;&#13;
+&#13;
+    background: #00acc1;&#13;
+&#13;
+    color: white !important;&#13;
+&#13;
+    border-radius: 8px;&#13;
+&#13;
+    text-decoration: none !important;&#13;
+&#13;
+    font-size: 15px;&#13;
+&#13;
+    font-weight: 600;&#13;
+&#13;
+    cursor: pointer;&#13;
+&#13;
+    transition: all 0.25s ease;&#13;
+}&#13;
+&#13;
+.cta-btn:hover {&#13;
+    background: #008fa1;&#13;
+&#13;
+    color: white !important;&#13;
+&#13;
+    transform: translateY(-2px);&#13;
+&#13;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   HERO APP INFO&#13;
+   ========================================= */&#13;
+&#13;
+.hero-app-info {&#13;
+    flex: 0 0 390px;&#13;
+&#13;
+    padding: 30px;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+&#13;
+    background: rgba(255, 255, 255, 0.95);&#13;
+&#13;
+    border-radius: 18px;&#13;
+&#13;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);&#13;
+&#13;
+    border: 1px solid rgba(255, 255, 255, 0.7);&#13;
+}&#13;
+&#13;
+.hero-app-info h3 {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 10px;&#13;
+&#13;
+    margin: 0 0 18px 0;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    font-size: 21px;&#13;
+}&#13;
+&#13;
+.hero-app-info h3 i {&#13;
+    font-size: 25px;&#13;
+}&#13;
+&#13;
+.hero-app-info p {&#13;
+    margin: 0 0 14px 0;&#13;
+&#13;
+    color: #546e7a;&#13;
+&#13;
+    font-size: 14px;&#13;
+&#13;
+    line-height: 1.7;&#13;
+}&#13;
+&#13;
+.hero-app-info strong {&#13;
+    color: #263238;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   FEATURES&#13;
+   ========================================= */&#13;
+&#13;
+.features-row {&#13;
+    width: 100%;&#13;
+&#13;
+    display: grid;&#13;
+&#13;
+    grid-template-columns: repeat(4, 1fr);&#13;
+&#13;
+    gap: 24px;&#13;
+&#13;
+    padding: 65px 9%;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+&#13;
+    background: #f0fbfc;&#13;
+}&#13;
+&#13;
+&#13;
+.feature-card {&#13;
+    background: white;&#13;
+&#13;
+    padding: 30px 22px;&#13;
+&#13;
+    text-align: center;&#13;
+&#13;
+    border-radius: 15px;&#13;
+&#13;
+    border: 1px solid #e1f2f4;&#13;
+&#13;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);&#13;
+&#13;
+    transition: all 0.25s ease;&#13;
+}&#13;
+&#13;
+.feature-card:hover {&#13;
+    transform: translateY(-7px);&#13;
+&#13;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);&#13;
+}&#13;
+&#13;
+&#13;
+/* FEATURE ICON */&#13;
+&#13;
+.feature-icon {&#13;
+    width: 65px;&#13;
+    height: 65px;&#13;
+&#13;
+    margin: 0 auto 18px auto;&#13;
+&#13;
+    border-radius: 50%;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+    justify-content: center;&#13;
+&#13;
+    font-size: 27px;&#13;
+}&#13;
+&#13;
+.icon-teal {&#13;
+    background: #e0f7fa;&#13;
+    color: #00acc1;&#13;
+}&#13;
+&#13;
+.icon-blue {&#13;
+    background: #e1f5fe;&#13;
+    color: #0288d1;&#13;
+}&#13;
+&#13;
+.icon-yellow {&#13;
+    background: #fff8e1;&#13;
+    color: #f9a825;&#13;
+}&#13;
+&#13;
+.icon-red {&#13;
+    background: #ffebee;&#13;
+    color: #e53935;&#13;
+}&#13;
+&#13;
+&#13;
+.feature-card h4 {&#13;
+    margin: 0 0 12px 0;&#13;
+&#13;
+    color: #263238;&#13;
+&#13;
+    font-size: 18px;&#13;
+&#13;
+    font-weight: 650;&#13;
+}&#13;
+&#13;
+.feature-card p {&#13;
+    margin: 0;&#13;
+&#13;
+    color: #546e7a;&#13;
+&#13;
+    font-size: 14px;&#13;
+&#13;
+    line-height: 1.6;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   ABOUT SECTION&#13;
+   ========================================= */&#13;
+&#13;
+.about-section {&#13;
+    width: 100%;&#13;
+&#13;
+    padding: 80px 9%;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    text-align: center;&#13;
+}&#13;
+&#13;
+.about-label {&#13;
+    display: inline-block;&#13;
+&#13;
+    padding: 7px 15px;&#13;
+&#13;
+    border-radius: 20px;&#13;
+&#13;
+    background: #e0f7fa;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    font-size: 13px;&#13;
+&#13;
+    font-weight: 600;&#13;
+}&#13;
+&#13;
+.about-title {&#13;
+    margin: 18px 0;&#13;
+&#13;
+    color: #263238;&#13;
+&#13;
+    font-size: 38px;&#13;
+&#13;
+    line-height: 1.2;&#13;
+&#13;
+    font-weight: 700;&#13;
+}&#13;
+&#13;
+.about-text {&#13;
+    max-width: 720px;&#13;
+&#13;
+    margin: 0 auto;&#13;
+&#13;
+    color: #546e7a;&#13;
+&#13;
+    font-size: 16px;&#13;
+&#13;
+    line-height: 1.8;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   STATISTICS&#13;
+   ========================================= */&#13;
+&#13;
+.stats-grid {&#13;
+    max-width: 1000px;&#13;
+&#13;
+    margin: 55px auto 0 auto;&#13;
+&#13;
+    display: grid;&#13;
+&#13;
+    grid-template-columns: repeat(4, 1fr);&#13;
+&#13;
+    gap: 25px;&#13;
+}&#13;
+&#13;
+.stat-item {&#13;
+    padding: 25px 15px;&#13;
+&#13;
+    border-radius: 12px;&#13;
+&#13;
+    background: #f0fbfc;&#13;
+}&#13;
+&#13;
+.stat-item i {&#13;
+    font-size: 25px;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    margin-bottom: 10px;&#13;
+}&#13;
+&#13;
+.stat-item h3 {&#13;
+    margin: 5px 0;&#13;
+&#13;
+    color: #263238;&#13;
+&#13;
+    font-size: 25px;&#13;
+}&#13;
+&#13;
+.stat-item p {&#13;
+    margin: 0;&#13;
+&#13;
+    color: #546e7a;&#13;
+&#13;
+    font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   FOOTER&#13;
+   ========================================= */&#13;
+&#13;
+.main-footer {&#13;
+    width: 100%;&#13;
+&#13;
+    background: #00acc1;&#13;
+&#13;
+    color: white;&#13;
+}&#13;
+&#13;
+.footer-content {&#13;
+    display: grid;&#13;
+&#13;
+    grid-template-columns: 2fr 1fr 1.5fr;&#13;
+&#13;
+    gap: 50px;&#13;
+&#13;
+    padding: 50px 9%;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+}&#13;
+&#13;
+&#13;
+/* FOOTER LOGO */&#13;
+&#13;
+.footer-logo {&#13;
+    display: flex;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 10px;&#13;
+&#13;
+    margin-bottom: 15px;&#13;
+&#13;
+    font-size: 24px;&#13;
+&#13;
+    font-weight: 700;&#13;
+}&#13;
+&#13;
+.footer-logo i {&#13;
+    font-size: 25px;&#13;
+}&#13;
+&#13;
+.footer-col p {&#13;
+    margin: 8px 0;&#13;
+&#13;
+    color: rgba(255, 255, 255, 0.9);&#13;
+&#13;
+    font-size: 14px;&#13;
+&#13;
+    line-height: 1.6;&#13;
+}&#13;
+&#13;
+&#13;
+/* FOOTER HEADINGS */&#13;
+&#13;
+.footer-col h3 {&#13;
+    margin: 0 0 17px 0;&#13;
+&#13;
+    color: white;&#13;
+&#13;
+    font-size: 18px;&#13;
+}&#13;
+&#13;
+&#13;
+/* FOOTER LINKS */&#13;
+&#13;
+.footer-col ul {&#13;
+    margin: 0;&#13;
+    padding: 0;&#13;
+&#13;
+    list-style: none;&#13;
+}&#13;
+&#13;
+.footer-col ul li {&#13;
+    margin-bottom: 10px;&#13;
+}&#13;
+&#13;
+.footer-col ul li a {&#13;
+    color: rgba(255, 255, 255, 0.9) !important;&#13;
+&#13;
+    text-decoration: none !important;&#13;
+&#13;
+    font-size: 14px;&#13;
+&#13;
+    cursor: pointer;&#13;
+}&#13;
+&#13;
+.footer-col ul li a:hover {&#13;
+    color: white !important;&#13;
+&#13;
+    text-decoration: underline !important;&#13;
+}&#13;
+&#13;
+&#13;
+/* SUPPORT ICONS */&#13;
+&#13;
+.footer-col p i {&#13;
+    width: 20px;&#13;
+&#13;
+    margin-right: 6px;&#13;
+&#13;
+    text-align: center;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   FOOTER BOTTOM&#13;
+   ========================================= */&#13;
+&#13;
+.footer-bottom {&#13;
+    padding: 18px 20px;&#13;
+&#13;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);&#13;
+&#13;
+    text-align: center;&#13;
+&#13;
+    color: rgba(255, 255, 255, 0.85);&#13;
+&#13;
+    font-size: 13px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   TABLET&#13;
+   ========================================= */&#13;
+&#13;
+@media (max-width: 1000px) {&#13;
+&#13;
+    .main-nav {&#13;
+        padding: 0 25px;&#13;
+    }&#13;
+&#13;
+    .nav-links {&#13;
+        gap: 16px;&#13;
+    }&#13;
+&#13;
+    .hero-section {&#13;
+        padding: 60px 6%;&#13;
+    }&#13;
+&#13;
+    .hero-title {&#13;
+        font-size: 46px;&#13;
+    }&#13;
+&#13;
+    .hero-app-info {&#13;
+        flex-basis: 330px;&#13;
+    }&#13;
+&#13;
+    .features-row {&#13;
+        padding: 55px 6%;&#13;
+        grid-template-columns: repeat(2, 1fr);&#13;
+    }&#13;
+&#13;
+    .stats-grid {&#13;
+        grid-template-columns: repeat(2, 1fr);&#13;
+    }&#13;
+&#13;
+    .footer-content {&#13;
+        padding: 45px 6%;&#13;
+    }&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   MOBILE&#13;
+   ========================================= */&#13;
+&#13;
+@media (max-width: 700px) {&#13;
+&#13;
+    .main-nav {&#13;
+        min-height: auto;&#13;
+&#13;
+        padding: 18px 20px;&#13;
+&#13;
+        flex-direction: column;&#13;
+&#13;
+        gap: 18px;&#13;
+    }&#13;
+&#13;
+    .nav-links {&#13;
+        flex-wrap: wrap;&#13;
+&#13;
+        justify-content: center;&#13;
+&#13;
+        gap: 15px;&#13;
+    }&#13;
+&#13;
+    .hero-section {&#13;
+        flex-direction: column;&#13;
+&#13;
+        padding: 55px 25px;&#13;
+&#13;
+        text-align: center;&#13;
+    }&#13;
+&#13;
+    .hero-content {&#13;
+        width: 100%;&#13;
+    }&#13;
+&#13;
+    .hero-title {&#13;
+        font-size: 40px;&#13;
+    }&#13;
+&#13;
+    .hero-subtitle {&#13;
+        font-size: 15px;&#13;
+    }&#13;
+&#13;
+    .hero-app-info {&#13;
+        width: 100%;&#13;
+&#13;
+        flex: auto;&#13;
+&#13;
+        text-align: left;&#13;
+    }&#13;
+&#13;
+    .features-row {&#13;
+        grid-template-columns: 1fr;&#13;
+&#13;
+        padding: 50px 25px;&#13;
+    }&#13;
+&#13;
+    .about-section {&#13;
+        padding: 60px 25px;&#13;
+    }&#13;
+&#13;
+    .about-title {&#13;
+        font-size: 30px;&#13;
+    }&#13;
+&#13;
+    .stats-grid {&#13;
+        grid-template-columns: 1fr 1fr;&#13;
+    }&#13;
+&#13;
+    .footer-content {&#13;
+        grid-template-columns: 1fr;&#13;
+&#13;
+        gap: 30px;&#13;
+&#13;
+        padding: 40px 25px;&#13;
+    }&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   SMALL MOBILE&#13;
+   ========================================= */&#13;
+&#13;
+@media (max-width: 450px) {&#13;
+&#13;
+    .nav-logo-container {&#13;
+        font-size: 22px;&#13;
+    }&#13;
+&#13;
+    .nav-links {&#13;
+        gap: 10px;&#13;
+    }&#13;
+&#13;
+    .nav-links li &gt; a {&#13;
+        font-size: 13px;&#13;
+    }&#13;
+&#13;
+    .hero-title {&#13;
+        font-size: 34px;&#13;
+    }&#13;
+&#13;
+    .hero-app-info {&#13;
+        padding: 23px;&#13;
+    }&#13;
+&#13;
+    .stats-grid {&#13;
+        grid-template-columns: 1fr;&#13;
+    }&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description>Login</description>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>cfms_login_gateway</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>CFMS Login Gateway</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+    var role =
+        $sp.getParameter("role");
+
+
+    if (!role) {
+
+        role = "student";
+
+    }
+
+
+    data.role = role;
+
+
+    if (role == "student") {
+
+        data.roleName = "Student";
+
+        data.icon =
+            "fa fa-graduation-cap";
+
+    }
+
+
+    else if (role == "staff") {
+
+        data.roleName = "Staff";
+
+        data.icon =
+            "fa fa-user";
+
+    }
+
+
+    else if (role == "manager") {
+
+        data.roleName = "Manager";
+
+        data.icon =
+            "fa fa-briefcase";
+
+    }
+
+
+    else if (role == "admin") {
+
+        data.roleName = "Admin";
+
+        data.icon =
+            "fa fa-shield";
+
+    }
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 09:43:58</sys_created_on>
+        <sys_id>d6d8bf45a0ab03107f4432329b8a15f6</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>CFMS Login Gateway</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_widget_d6d8bf45a0ab03107f4432329b8a15f6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 10:05:27</sys_updated_on>
+        <template><![CDATA[<div class="cfms-login">
+
+    <div class="login-card">
+
+        <div class="login-icon">
+
+            <i class="fa fa-cutlery"></i>
+
+        </div>
+
+
+        <h1>
+            CFMS Login
+        </h1>
+
+
+        <p>
+            {{c.data.roleName}} Login
+        </p>
+
+
+        <div class="selected-role">
+
+            <i class="{{c.data.icon}}"></i>
+
+            {{c.data.roleName}}
+
+        </div>
+
+
+        <button
+            class="login-button"
+            ng-click="c.continueLogin()">
+
+            Continue to Login
+
+            <i class="fa fa-arrow-right"></i>
+
+        </button>
+
+
+        <button
+            class="back-button"
+            ng-click="c.back()">
+
+            ← Back to Home
+
+        </button>
+
+    </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>

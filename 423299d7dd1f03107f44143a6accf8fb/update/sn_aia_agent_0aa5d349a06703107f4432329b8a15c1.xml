@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_aia_agent">
+    <sn_aia_agent action="INSERT_OR_UPDATE">
+        <advanced_mode>false</advanced_mode>
+        <agent_type>internal</agent_type>
+        <applicability_script><![CDATA[/** 
+ * Function to process inputs related to ServiceNow change request operations 
+ * 
+ * @param {Object} inputs - The input parameters object 
+ * @param {string} inputs.objective - The purpose or goal of the operation 
+ * @param {string} inputs.execution_plan_id - Unique identifier for the execution plan 
+ * @param {Object} inputs.context - Context information about the ServiceNow change request 
+ * @param {string} inputs.context.url - The URL of the change request in Service Operations Workspace 
+ * @param {string} inputs.context.table - The ServiceNow table name (e.g., 'change_request') 
+ * @param {string} inputs.context.record_sys_id - The sys ID of the record 
+ * @param {string} inputs.context.route - The route type (e.g., 'record') 
+ * @param {string} inputs.context.additional_context - Additional contextual information in JSON format 
+ * @param {string} inputs.context.experience - The UI experience name (e.g., 'Service Operations Workspace') 
+ * @param {string} inputs.context.number - The request number 
+ * @param {string} inputs.context.portal - The portal ID 
+ * @param {string} inputs.context.device_type - The device type from which the experience is accessed, e.g.'mweb' 
+ * @param {string} inputs.context.deployment_id - The unique identifier for the assistant deployment 
+ * @param {string} inputs.context.assistant_type - The type of assistant, e.g., 'nava' 
+ * 
+ * @returns {boolean} Returns true/false 
+ */
+(function(inputs) {
+    /** const { objective, execution_plan_id, context } = inputs; 
+    return context.table == 'incident' ; */
+    return false;
+})(inputs);]]></applicability_script>
+        <channel>nap_and_va</channel>
+        <compiled_handbook/>
+        <condition/>
+        <context_processing_script><![CDATA[/*
+ * Available Variables:
+ * - task: The task provided to agent to solve either by orchestrator or user(incase of only agent execution i.e agent is invoked as seperate entity instead from a workflow).
+ * - user_utterance: The user utterance provided. and task = user_utterance in case of individual agent execution.
+ * - agent_id: The agent id.
+ * - context: An object that carries additional contextual information for the agent.
+ *          It always includes a "pageContext" and may include a "triggerContext",
+ *          depending on how and from where the agent is invoked.
+ *
+ *          Behavior by invocation type:
+ *          ---------------------------------
+ *          - When invoked via the startAiAgentConversation API:
+ *                If a "contextMemory" parameter is provided in the API request,
+ *                it will be available here as the "triggerContext".
+ *                The "pageContext" is always present in this call, regardless
+ *                of whether the agent is executed individually or as part of a use case.
+ *                Example:
+ *                    {
+ *                        pageContext: { ... },
+ *                        triggerContext: { ... } // Derived from contextMemory (if passed)
+ *                    }
+ *
+ *          - When invoked as part of a use case or workflow:
+ *                The "pageContext" and "triggerContext" objects available here
+ *                may have been *modified* by the use case’s context processing script.
+ *                This means the use case may alter, extend, or overwrite values
+ *                from the original "pageContext" or "triggerContext"
+ *                before the context reaches the agent.
+ *                If the use case was originally triggered via the API,
+ *                the initial "triggerContext" is still derived from the
+ *                "contextMemory" parameter, but its contents may have been updated
+ *                by the use case logic.
+ *
+ *          - When executed directly (standalone agent execution):
+ *                The "pageContext" will always be present (default or empty),
+ *                and the "triggerContext" will only be populated if explicitly
+ *                passed through the API call.
+ * Return an modified context like: { pageContext : {},triggerContext:{} }
+ */
+(function(task, user_utterance, agent_id, context) {
+    return {
+        pageContext : context?.pageContext,
+		triggerContext : context?.triggerContext
+    };
+})(task,user_utterance, agent_id, context);]]></context_processing_script>
+        <description>This agent is designed to analyze food service problem records, determine their priority using configured thresholds and reasons, identify relevant knowledge articles, and generate concise recommendations and insights. Its primary audience is campus food service teams and ServiceNow administrators seeking structured analysis for workflow automation.</description>
+        <extends/>
+        <extension_configuration/>
+        <external_agent_configuration/>
+        <inputs>{}</inputs>
+        <instructions>Expert in food service problem analysis for Campus Food Services Assistant application.
+1. Retrieve the food_base_problem record using the supplied record_sys_id as the primary source.
+2. Extract key fields: number, mess_hall, meal_type, student_count, use_case, problem_type_normalized, problem_type, and description.
+3. Locate the active Use Case Priority Configuration record matching the use_case and use it as the authoritative source for thresholds and priority reason.
+4. Determine priority based on student_count and configuration thresholds: Low, Medium, High, or Critical.
+5. Set priority_reason using the configured value from the matched configuration record.
+6. Search for published Knowledge articles relevant to the problem context within the Campus Food Services Assistant scope.
+7. Analyze articles to synthesize the most applicable recommended action, avoiding unsupported procedures.
+8. Extract knowledge_insights relevant to the specific food service problem.
+9. Generate a concise ai_summary combining problem number, context, priority, priority reason, recommended action, and knowledge insights.
+10. Return a structured analysis object for downstream Flow processing without updating the source record.</instructions>
+        <internal_name>global.x_snc_campus_foo_1.Food Problem Priority and Recommendation Agent1</internal_name>
+        <name>Food Problem Priority and Recommendation Agent1</name>
+        <outputs>""</outputs>
+        <parent/>
+        <post_processing_message/>
+        <processing_message/>
+        <proficiency>- Expertly analyzes food service problem records within the Campus Food Services Assistant application, determining problem priority, identifying relevant knowledge articles, and synthesizing actionable recommendations and insights. Operates strictly within the bounds of authoritative configuration and published knowledge data, providing structured analysis for downstream ServiceNow Flow processing while maintaining data integrity by not modifying source records.
+- Utilizes the 'Get Food Problem Details' TOOL to retrieve the food_base_problem record by sys_id, extracting essential fields such as number, mess_hall, meal_type, student_count, use_case, problem_type_normalized, problem_type, and description. This read-only operation forms the basis for all further analysis, ensuring accurate and comprehensive data collection without modifying the original record.
+- Extracts key fields from the food_base_problem record and cross-references them with the active Use Case Priority Configuration record to determine problem priority (Low, Medium, High, or Critical) based on student_count and configured thresholds. Sets priority_reason using the authoritative value from the matched configuration record, ensuring decisions are strictly based on established business rules.
+- Searches for and analyzes published Knowledge articles relevant to the specific food service problem context, synthesizing the most applicable recommended action. Ensures that only supported procedures are recommended, leveraging authoritative knowledge to provide actionable and compliant guidance.
+- Synthesizes and extracts knowledge_insights from relevant articles, and generates a concise ai_summary that integrates problem number, context, priority, priority reason, recommended action, and knowledge insights. Delivers a structured analysis object for downstream Flow processing, supporting efficient and informed resolution without updating the source record.</proficiency>
+        <record_type>custom</record_type>
+        <required_translations>[]</required_translations>
+        <research>false</research>
+        <role>Acts as a specialist in analyzing food service problem records within the Campus Food Services Assistant application. The agent is responsible for determining problem priority based on configured thresholds, identifying relevant published knowledge articles, and synthesizing actionable recommendations and insights. It communicates clearly, bases decisions strictly on authoritative configuration and knowledge data, and provides structured analysis for downstream ServiceNow Flow processing without modifying source records.</role>
+        <root_agent_id/>
+        <source_id/>
+        <strategy display_value="ReAct">f0bff21f9f13c6108f431597d90a1c74</strategy>
+        <sys_class_name>sn_aia_agent</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 07:01:45</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>0aa5d349a06703107f4432329b8a15c1</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Food Problem Priority and Recommendation Agent1</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sn_aia_agent_0aa5d349a06703107f4432329b8a15c1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 09:17:19</sys_updated_on>
+    </sn_aia_agent>
+</record_update>

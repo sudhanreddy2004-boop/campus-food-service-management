@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function() {
+
+    var c = this;
+
+    /*
+     * Redirect the user to the interface
+     * selected by the server.
+     */
+
+    setTimeout(function() {
+
+        if (c.data.redirect) {
+
+            window.location.href =
+                "?id=" + encodeURIComponent(c.data.redirect);
+
+        }
+
+    }, 500);
+
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>/* =========================================&#13;
+   CFMS ROLE ROUTER&#13;
+   ========================================= */&#13;
+&#13;
+.cfms-router {&#13;
+    min-height: 100vh;&#13;
+&#13;
+    display: flex;&#13;
+    align-items: center;&#13;
+    justify-content: center;&#13;
+&#13;
+    background: #f0fbfc;&#13;
+&#13;
+    font-family: "Segoe UI",&#13;
+                 Tahoma,&#13;
+                 Geneva,&#13;
+                 Verdana,&#13;
+                 sans-serif;&#13;
+&#13;
+    padding: 30px;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   ROUTER CARD&#13;
+   ========================================= */&#13;
+&#13;
+.cfms-router-card {&#13;
+    width: 100%;&#13;
+    max-width: 450px;&#13;
+&#13;
+    padding: 45px 35px;&#13;
+&#13;
+    box-sizing: border-box;&#13;
+&#13;
+    background: white;&#13;
+&#13;
+    border-radius: 18px;&#13;
+&#13;
+    text-align: center;&#13;
+&#13;
+    box-shadow:&#13;
+        0 10px 35px rgba(0, 0, 0, 0.10);&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   ICON&#13;
+   ========================================= */&#13;
+&#13;
+.cfms-router-icon {&#13;
+    width: 75px;&#13;
+    height: 75px;&#13;
+&#13;
+    margin: 0 auto 20px auto;&#13;
+&#13;
+    border-radius: 50%;&#13;
+&#13;
+    display: flex;&#13;
+    align-items: center;&#13;
+    justify-content: center;&#13;
+&#13;
+    background: #e0f7fa;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    font-size: 32px;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   TITLE&#13;
+   ========================================= */&#13;
+&#13;
+.cfms-router-card h2 {&#13;
+    margin: 0 0 8px 0;&#13;
+&#13;
+    color: #00acc1;&#13;
+&#13;
+    font-size: 30px;&#13;
+&#13;
+    font-weight: 700;&#13;
+}&#13;
+&#13;
+.cfms-router-card h3 {&#13;
+    margin: 0 0 15px 0;&#13;
+&#13;
+    color: #263238;&#13;
+&#13;
+    font-size: 20px;&#13;
+&#13;
+    font-weight: 600;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   DESCRIPTION&#13;
+   ========================================= */&#13;
+&#13;
+.cfms-router-card p {&#13;
+    margin: 0;&#13;
+&#13;
+    color: #546e7a;&#13;
+&#13;
+    font-size: 14px;&#13;
+&#13;
+    line-height: 1.6;&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   LOADER&#13;
+   ========================================= */&#13;
+&#13;
+.router-loader {&#13;
+    margin-top: 25px;&#13;
+&#13;
+    display: flex;&#13;
+&#13;
+    justify-content: center;&#13;
+&#13;
+    align-items: center;&#13;
+&#13;
+    gap: 7px;&#13;
+}&#13;
+&#13;
+.router-loader span {&#13;
+    width: 9px;&#13;
+    height: 9px;&#13;
+&#13;
+    border-radius: 50%;&#13;
+&#13;
+    background: #00acc1;&#13;
+&#13;
+    animation: cfmsLoader 1.2s infinite ease-in-out;&#13;
+}&#13;
+&#13;
+.router-loader span:nth-child(2) {&#13;
+    animation-delay: 0.15s;&#13;
+}&#13;
+&#13;
+.router-loader span:nth-child(3) {&#13;
+    animation-delay: 0.3s;&#13;
+}&#13;
+&#13;
+&#13;
+@keyframes cfmsLoader {&#13;
+&#13;
+    0%,&#13;
+    80%,&#13;
+    100% {&#13;
+        transform: scale(0.7);&#13;
+&#13;
+        opacity: 0.5;&#13;
+    }&#13;
+&#13;
+    40% {&#13;
+        transform: scale(1);&#13;
+&#13;
+        opacity: 1;&#13;
+    }&#13;
+&#13;
+}&#13;
+&#13;
+&#13;
+/* =========================================&#13;
+   MOBILE&#13;
+   ========================================= */&#13;
+&#13;
+@media (max-width: 600px) {&#13;
+&#13;
+    .cfms-router {&#13;
+        padding: 20px;&#13;
+    }&#13;
+&#13;
+    .cfms-router-card {&#13;
+        padding: 35px 25px;&#13;
+    }&#13;
+&#13;
+    .cfms-router-card h2 {&#13;
+        font-size: 26px;&#13;
+    }&#13;
+&#13;
+    .cfms-router-card h3 {&#13;
+        font-size: 18px;&#13;
+    }&#13;
+&#13;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description>Router</description>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>cfms_role_router_widget</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>CFMS Role Router</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+
+    data.redirect = "cfms_home";
+
+
+    if (!gs.isLoggedIn()) {
+
+        data.redirect = "cfms_login";
+
+        return;
+
+    }
+
+
+    /*
+     * Admin
+     */
+
+    if (gs.hasRole("admin")) {
+
+        data.redirect =
+            "cfms_admin";
+
+        return;
+
+    }
+
+
+    /*
+     * Manager
+     */
+
+    if (gs.hasRole("cfms_manager")) {
+
+        data.redirect =
+            "cfms_manager";
+
+        return;
+
+    }
+
+
+    /*
+     * Staff
+     */
+
+    if (gs.hasRole("cfms_staff")) {
+
+        data.redirect =
+            "cfms_staff";
+
+        return;
+
+    }
+
+
+    /*
+     * Student
+     */
+
+    if (gs.hasRole("cfms_student")) {
+
+        data.redirect =
+            "cfms_student";
+
+        return;
+
+    }
+
+
+    /*
+     * Default
+     */
+
+    data.redirect =
+        "cfms_home";
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-09-24 10:07:49</sys_created_on>
+        <sys_id>a90fb709a0eb03107f4432329b8a1510</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>CFMS Role Router</sys_name>
+        <sys_package display_value="Campus Food Services Assistant" source="x_snc_campus_foo_1">423299d7dd1f03107f44143a6accf8fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Campus Food Services Assistant">423299d7dd1f03107f44143a6accf8fb</sys_scope>
+        <sys_update_name>sp_widget_a90fb709a0eb03107f4432329b8a1510</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-09-24 10:07:49</sys_updated_on>
+        <template><![CDATA[<div class="cfms-router">
+
+    <div class="cfms-router-card">
+
+        <div class="cfms-router-icon">
+            <i class="fa fa-spinner fa-spin"></i>
+        </div>
+
+        <h2>CFMS</h2>
+
+        <h3>Preparing your dashboard...</h3>
+
+        <p>
+            Please wait while we take you to your
+            CFMS interface.
+        </p>
+
+        <div class="router-loader">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+
+</div>]]></template>
+    </sp_widget>
+</record_update>
